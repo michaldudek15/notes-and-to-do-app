@@ -22,11 +22,16 @@ class NoteRepository extends ServiceEntityRepository
     /**
      * Query all records.
      *
-     * @return QueryBuilder Query builder
+     * @return \Doctrine\ORM\QueryBuilder Query builder
      */
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select(
+                'partial note.{id, createdAt, updatedAt, title, content}',
+                'partial category.{id, title}'
+            )
+            ->join('note.category', 'category')
             ->orderBy('note.updatedAt', 'DESC');
     }
 
