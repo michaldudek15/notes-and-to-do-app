@@ -29,6 +29,9 @@ class Note
     #[ORM\Column(type: 'text')]
     private ?string $content = null;
 
+    #[ORM\ManyToOne]
+    private ?Category $category = null;
+
 
     public function getId(): ?int
     {
@@ -88,6 +91,18 @@ class Note
         $this->content = $content;
 
     }//end setContent()
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 
 
 }//end class
