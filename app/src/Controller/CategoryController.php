@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Repository\CategoryRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\CategoryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,21 +20,23 @@ use Symfony\Component\Routing\Attribute\Route;
 class CategoryController extends AbstractController
 {
     /**
+     * Constructor.
+     */
+    public function __construct(private readonly CategoryService $categoryService)
+    {
+    }
+
+    /**
      * Index action.
      *
-     * @param CategoryRepository     $categoryRepository Category repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param int $page Page number
      *
      * @return Response HTTP response
      */
     #[Route(name: 'category_index', methods: 'GET')]
-    public function index(CategoryRepository $categoryRepository, PaginatorInterface $paginator, #[MapQueryParameter] int $page = 1): Response
+    public function index(#[MapQueryParameter] int $page = 1): Response
     {
-        $pagination = $paginator->paginate(
-            $categoryRepository->queryAll(),
-            $page,
-            CategoryRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
+        $pagination = $this->categoryService->getPaginatedList($page);
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
     }
@@ -43,7 +44,7 @@ class CategoryController extends AbstractController
     /**
      * Show action.
      *
-     * @param Category $category Category entity
+     * @param Category $category Category
      *
      * @return Response HTTP response
      */
@@ -51,13 +52,10 @@ class CategoryController extends AbstractController
         '/{id}',
         name: 'category_show',
         requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET',
+        methods: 'GET'
     )]
     public function show(Category $category): Response
     {
-        return $this->render(
-            'category/show.html.twig',
-            ['category' => $category]
-        );
+        return $this->render('category/show.html.twig', ['category' => $category]);
     }
 }
