@@ -11,13 +11,15 @@
             <dt>{{ 'label.id'|trans }}</dt>
             <dd>{{ note.id }}</dd>
             <dt>{{ 'label.created_at'|trans }}</dt>
-            <dd>{{ note.createdAt|date('Y/m/d') }}</dd>
+            <dd>{{ note.createdAt|format_date('long') }}</dd>
             <dt>{{ 'label.updated_at'|trans }}</dt>
-            <dd>{{ note.updatedAt|date('Y/m/d') }}</dd>
+            <dd>{{ note.updatedAt|format_date('long') }}</dd>
             <dt>{{ 'label.title'|trans }}</dt>
             <dd>{{  note.title }}</dd>
             <dt>{{ 'label.content'|trans }}</dt>
             <dd>{{  note.content }}</dd>
+            <dt>{{ 'label.category'|trans }}</dt>
+            <dd>{{  note.category.title }}</dd>
         </dl>
         <p>
             <a href="{{ url('note_index') }}" title="{{ 'action.back_to_list'|trans }}">
