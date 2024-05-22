@@ -6,8 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Note;
-use App\Repository\NoteRepository;
-use Knp\Component\Pager\PaginatorInterface;
+use App\Service\NoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,21 +20,23 @@ use Symfony\Component\Routing\Attribute\Route;
 class NoteController extends AbstractController
 {
     /**
+     * Constructor.
+     */
+    public function __construct(private readonly NoteService $noteService)
+    {
+    }
+
+    /**
      * Index action.
      *
-     * @param NoteRepository     $noteRepository Note repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param int $page Page number
      *
      * @return Response HTTP response
      */
     #[Route(name: 'note_index', methods: 'GET')]
-    public function index(NoteRepository $noteRepository, PaginatorInterface $paginator, #[MapQueryParameter] int $page = 1): Response
+    public function index(#[MapQueryParameter] int $page = 1): Response
     {
-        $pagination = $paginator->paginate(
-            $noteRepository->queryAll(),
-            $page,
-            NoteRepository::PAGINATOR_ITEMS_PER_PAGE
-        );
+        $pagination = $this->noteService->getPaginatedList($page);
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);
     }
@@ -43,7 +44,7 @@ class NoteController extends AbstractController
     /**
      * Show action.
      *
-     * @param Note $note Note entity
+     * @param Note $note Note
      *
      * @return Response HTTP response
      */
@@ -51,13 +52,10 @@ class NoteController extends AbstractController
         '/{id}',
         name: 'note_show',
         requirements: ['id' => '[1-9]\d*'],
-        methods: 'GET',
+        methods: 'GET'
     )]
     public function show(Note $note): Response
     {
-        return $this->render(
-            'note/show.html.twig',
-            ['note' => $note]
-        );
+        return $this->render('note/show.html.twig', ['note' => $note]);
     }
 }
