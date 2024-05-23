@@ -1,24 +1,20 @@
 <?php
 /**
- * Note type.
+ * Tag type.
  */
 
 namespace App\Form\Type;
 
-use App\Entity\Category;
-use App\Entity\Note;
 use App\Entity\Tag;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class NoteType.
+ * Class TagType.
  */
-class NoteType extends AbstractType
+class TagType extends AbstractType
 {
 
 
@@ -44,46 +40,6 @@ class NoteType extends AbstractType
                 'attr'     => ['max_length' => 64],
             ]
         );
-        $builder->add(
-            'content',
-            TextAreaType::class,
-            [
-                'label'    => 'label.content',
-                'required' => true,
-                'attr'     => [
-                    'max_length' => 65535,
-                    'rows'       => 10,
-                ],
-            ]
-        );
-        $builder->add(
-            'category',
-            EntityType::class,
-            [
-                'class'        => Category::class,
-                'choice_label' => function ($category): string {
-                    return $category->getTitle();
-                },
-                'label'        => 'label.category',
-                'placeholder'  => 'label.none',
-                'required'     => true,
-            ]
-        );
-        $builder->add(
-            'tags',
-            EntityType::class,
-            [
-                'class'        => Tag::class,
-                'choice_label' => function ($tag): string {
-                    return $tag->getTitle();
-                },
-                'label'        => 'label.tags',
-                'placeholder'  => 'label.none',
-                'required'     => false,
-                'expanded'     => true,
-                'multiple'     => true,
-            ]
-        );
 
     }//end buildForm()
 
@@ -95,7 +51,7 @@ class NoteType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Note::class]);
+        $resolver->setDefaults(['data_class' => Tag::class]);
 
     }//end configureOptions()
 
@@ -110,7 +66,7 @@ class NoteType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'note';
+        return 'tag';
 
     }//end getBlockPrefix()
 
