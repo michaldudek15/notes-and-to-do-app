@@ -33,6 +33,9 @@
                         <a href="{{ url('note_show', {id: note.id}) }}" title="{{ 'action.show'|trans }}">
                             {{ 'action.show'|trans }}
                         </a>
+                        <a href="{{ url('note_edit', {id: note.id}) }}" title="{{ 'action.edit'|trans }}">
+                            {{ 'action.edit'|trans }}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

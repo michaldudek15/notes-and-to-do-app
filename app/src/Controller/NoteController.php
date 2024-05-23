@@ -107,4 +107,47 @@ class NoteController extends AbstractController
     }//end create()
 
 
+    /**
+     * Edit action.
+     *
+     * @param Request $request HTTP request
+     * @param Note    $note    Note entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/edit', name: 'note_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function edit(Request $request, Note $note): Response
+    {
+        $form = $this->createForm(
+            NoteType::class,
+            $note,
+            [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('note_edit', ['id' => $note->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->noteService->save($note);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.created_successfully')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
+        return $this->render(
+            'note/edit.html.twig',
+            [
+                'form' => $form->createView(),
+                'note' => $note,
+            ]
+        );
+
+    }//end edit()
+
+
 }//end class
