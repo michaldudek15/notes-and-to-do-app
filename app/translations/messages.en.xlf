@@ -114,6 +114,10 @@
 <source>message.form_error</source>
 <target>Form error.</target>
 </trans-unit>
+<trans-unit id="action.create">
+<source>action.create</source>
+<target>Create</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

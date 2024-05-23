@@ -117,6 +117,10 @@
 <source>message.form_error</source>
 <target>Błąd formularza.</target>
 </trans-unit>
+<trans-unit id="action.create">
+<source>action.create</source>
+<target>Dodaj</target>
+</trans-unit>
     </body>
   </file>
 </xliff>
