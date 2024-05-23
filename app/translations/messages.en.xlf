@@ -126,6 +126,10 @@
 <source>label.none</source>
 <target>None</target>
 </trans-unit>
+<trans-unit id="message.whitespace_error">
+<source>message.whitespace_error</source>
+<target>There should be no whitespaces.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>

@@ -10,6 +10,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 /**
  * Class TagType.
@@ -17,6 +20,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TagType extends AbstractType
 {
 
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+
+    }
 
     /**
      * Builds the form.
@@ -31,14 +38,21 @@ class TagType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $whitespaceError = $this->translator->trans('message.whitespace_error');
+
         $builder->add(
             'title',
             TextType::class,
             [
-                'label'    => 'label.title',
+                'label' => 'label.title',
                 'required' => true,
-                'attr'     => ['max_length' => 64],
-            ]
+                'attr' => ['max_length' => 64],
+                'constraints' => [
+                    new Assert\Regex([
+                        'pattern' => '/^\S+$/',
+                        'message' => $whitespaceError,
+                    ])
+                ]]
         );
 
     }//end buildForm()

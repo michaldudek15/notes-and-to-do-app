@@ -129,6 +129,10 @@
 <source>label.none</source>
 <target>Brak</target>
 </trans-unit>
+<trans-unit id="message.whitespace_error">
+<source>message.whitespace_error</source>
+<target>Białe znaki nie są dozwolone w tym polu.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>
