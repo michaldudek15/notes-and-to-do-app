@@ -74,6 +74,49 @@
                     <source>title.category_details</source>
                     <target>Szczegóły kategorii</target>
                   </trans-unit>
+                   <trans-unit id="action.edit">
+                                                                    <source>action.edit</source>
+                                                                    <target>Edytuj</target>
+                                                                  </trans-unit>
+ <trans-unit id="action.delete">
+                                                                                                  <source>action.delete</source>
+                                                                                                  <target>Usuń</target>
+                                                                                                </trans-unit>
+
+<trans-unit id="action.save">
+        <source>action.save</source>
+        <target>Zapisz</target>
+      </trans-unit>
+            <trans-unit id="title.category_edit">
+                    <source>title.category_edit</source>
+                    <target>Edytuj kategorię</target>
+                  </trans-unit>
+
+
+                  <trans-unit id="message.category_contains_notes">
+                                      <source>message.category_contains_notes</source>
+                                      <target>Nie można usunąć kategorii: kategoria zawiera notatkę.</target>
+                                    </trans-unit>
+ <trans-unit id="message.created_successfully">
+<source>message.created_successfully</source>
+<target>Utworzono pomyślnie.</target>
+</trans-unit>
+ <trans-unit id="message.deleted_successfully">
+<source>message.deleted_successfully</source>
+<target>Usunięto pomyślnie.</target>
+</trans-unit>
+<trans-unit id="title.category_delete">
+<source>title.category_delete</source>
+<target>Usuwanie kategorii.</target>
+</trans-unit>
+<trans-unit id="title.category_create">
+<source>title.category_create</source>
+<target>Tworzenie kategorii.</target>
+</trans-unit>
+<trans-unit id="message.form_error">
+<source>message.form_error</source>
+<target>Błąd formularza.</target>
+</trans-unit>
     </body>
   </file>
 </xliff>
