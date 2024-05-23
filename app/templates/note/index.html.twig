@@ -7,7 +7,7 @@
 {% block body %}
     <h1>{{ 'title.note_list'|trans }}</h1>
     {% if pagination is defined and pagination.items|length %}
-        
+
         <table class="table table-striped">
             <thead>
             <tr>
@@ -42,6 +42,10 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
+
+        <a href="{{ url('note_create') }}" title="{{ 'action.create'|trans }}">
+            {{ 'action.create'|trans }}
+        </a>
 
     {% else %}
         <p>
