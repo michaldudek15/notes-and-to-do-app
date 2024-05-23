@@ -17,6 +17,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+
+
     /**
      * Load data.
      *
@@ -30,29 +32,42 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             return;
         }
 
-        $this->createMany(100, 'notes', function (int $i) {
-            $note = new Note();
-            $note->setTitle($this->faker->sentence);
-            $note->setContent($this->faker->realText);
-            $note->setCreatedAt(
-                \DateTimeImmutable::createFromMutable(
-                    $this->faker->dateTimeBetween('-100 days', '-1 days')
-                )
-            );
-            $note->setUpdatedAt(
-                \DateTimeImmutable::createFromMutable(
-                    $this->faker->dateTimeBetween('-100 days', '-1 days')
-                )
-            );
-            /** @var Category $category */
-            $category = $this->getRandomReference('categories');
-            $note->setCategory($category);
+        $this->createMany(
+            100,
+            'notes',
+            function (int $i) {
+                $note = new Note();
+                $note->setTitle($this->faker->sentence);
+                $note->setContent($this->faker->realText);
+                $note->setCreatedAt(
+                    \DateTimeImmutable::createFromMutable(
+                        $this->faker->dateTimeBetween('-100 days', '-1 days')
+                    )
+                );
+                $note->setUpdatedAt(
+                    \DateTimeImmutable::createFromMutable(
+                        $this->faker->dateTimeBetween('-100 days', '-1 days')
+                    )
+                );
+                /*
+                    @var Category $category
+                */
+                $category = $this->getRandomReference('categories');
+                $note->setCategory($category);
 
-            return $note;
-        });
+                for ($i = 0; $i < 3; ++$i) {
+                    $tag = $this->getRandomReference('tags');
+                    $note->addTag($tag);
+                }
+
+                return $note;
+            }
+        );
 
         $this->manager->flush();
-    }
+
+    }//end loadData()
+
 
     /**
      * This method must return an array of fixtures classes
@@ -64,6 +79,12 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
      */
     public function getDependencies(): array
     {
-        return [CategoryFixtures::class];
-    }
-}
+        return [
+            CategoryFixtures::class,
+            TagFixtures::class,
+        ];
+
+    }//end getDependencies()
+
+
+}//end class
