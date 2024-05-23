@@ -5,8 +5,11 @@ namespace App\Repository;
 use App\Entity\Category;
 use App\Entity\Note;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,6 +50,23 @@ class NoteRepository extends ServiceEntityRepository
         $this->_em->flush();
 
     }//end save()
+
+
+    /**
+     * Delete entity.
+     *
+     * @param Note $note Note entity
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function delete(Note $note): void
+    {
+        assert($this->_em instanceof EntityManager);
+        $this->_em->remove($note);
+        $this->_em->flush();
+
+    }//end delete()
 
 
     /**

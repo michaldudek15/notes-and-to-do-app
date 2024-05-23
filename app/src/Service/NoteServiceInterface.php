@@ -33,4 +33,7 @@ interface NoteServiceInterface
     public function save(Note $note): void;
 
 
+    public function delete(Note $note): void;
+
+
 }//end interface

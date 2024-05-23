@@ -10,6 +10,7 @@ use App\Form\Type\NoteType;
 use App\Service\NoteService;
 use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
@@ -148,6 +149,49 @@ class NoteController extends AbstractController
         );
 
     }//end edit()
+
+
+    /**
+     * Delete action.
+     *
+     * @param Request $request HTTP request
+     * @param Note    $note    Note entity
+     *
+     * @return Response HTTP response
+     */
+    #[Route('/{id}/delete', name: 'note_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    public function delete(Request $request, Note $note): Response
+    {
+        $form = $this->createForm(
+            FormType::class,
+            $note,
+            [
+                'method' => 'DELETE',
+                'action' => $this->generateUrl('note_delete', ['id' => $note->getId()]),
+            ]
+        );
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->noteService->delete($note);
+
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.deleted_successfully')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
+        return $this->render(
+            'note/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'note' => $note,
+            ]
+        );
+
+    }//end delete()
 
 
 }//end class

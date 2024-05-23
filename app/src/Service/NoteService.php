@@ -7,6 +7,8 @@ namespace App\Service;
 
 use App\Entity\Note;
 use App\Repository\NoteRepository;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -67,6 +69,21 @@ class NoteService implements NoteServiceInterface
         $this->noteRepository->save($note);
 
     }//end save()
+
+
+    /**
+     * Delete entity.
+     *
+     * @param Note $note Note entity
+     *
+     * @throws OptimisticLockException
+     * @throws ORMException
+     */
+    public function delete(Note $note): void
+    {
+        $this->noteRepository->delete($note);
+
+    }//end delete()
 
 
 }//end class
