@@ -8,6 +8,7 @@ namespace App\Form\Type;
 use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\Tag;
+use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,6 +21,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class NoteType extends AbstractType
 {
+
+
+    public function __construct(private readonly TagsDataTransformer $tagsDataTransformer)
+    {
+
+    }//end __construct()
 
 
     /**
@@ -71,18 +78,16 @@ class NoteType extends AbstractType
         );
         $builder->add(
             'tags',
-            EntityType::class,
+            TextType::class,
             [
-                'class'        => Tag::class,
-                'choice_label' => function ($tag): string {
-                    return $tag->getTitle();
-                },
-                'label'        => 'label.tags',
-                'placeholder'  => 'label.none',
-                'required'     => false,
-                'expanded'     => true,
-                'multiple'     => true,
+                'label'    => 'label.tags',
+                'required' => false,
+                'attr'     => ['max_length' => 128],
             ]
+        );
+
+        $builder->get('tags')->addModelTransformer(
+            $this->tagsDataTransformer
         );
 
     }//end buildForm()
