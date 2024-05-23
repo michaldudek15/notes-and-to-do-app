@@ -13,13 +13,24 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface NoteServiceInterface
 {
+
+
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param integer $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
-}
+
+    /**
+     * Save entity.
+     *
+     * @param Note $note Note entity
+     */
+    public function save(Note $note): void;
+
+
+}//end interface

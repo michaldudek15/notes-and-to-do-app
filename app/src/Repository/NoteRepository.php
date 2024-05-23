@@ -17,10 +17,13 @@ class NoteRepository extends ServiceEntityRepository
 {
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Note::class);
-    }
+
+    }//end __construct()
+
 
     /**
      * Query all records.
@@ -29,14 +32,22 @@ class NoteRepository extends ServiceEntityRepository
      */
     public function queryAll(): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()
-            ->select(
-                'partial note.{id, createdAt, updatedAt, title, content}',
-                'partial category.{id, title}'
-            )
-            ->join('note.category', 'category')
-            ->orderBy('note.updatedAt', 'DESC');
-    }
+        return $this->getOrCreateQueryBuilder()->select(
+            'partial note.{id, createdAt, updatedAt, title, content}',
+            'partial category.{id, title}'
+        )->join('note.category', 'category')->orderBy('note.updatedAt', 'DESC');
+
+    }//end queryAll()
+
+
+    public function save(Note $note): void
+    {
+        assert($this->_em instanceof EntityManager);
+        $this->_em->persist($note);
+        $this->_em->flush();
+
+    }//end save()
+
 
     /**
      * Get or create new query builder.
@@ -45,17 +56,19 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder=null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('note');
-    }
+        return ($queryBuilder ?? $this->createQueryBuilder('note'));
+
+    }//end getOrCreateQueryBuilder()
+
 
     /**
      * Count notes by category.
      *
      * @param Category $category Category
      *
-     * @return int Number of notes in category
+     * @return integer Number of notes in category
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
@@ -64,10 +77,9 @@ class NoteRepository extends ServiceEntityRepository
     {
         $qb = $this->getOrCreateQueryBuilder();
 
-        return $qb->select($qb->expr()->countDistinct('note.id'))
-            ->where('note.category = :category')
-            ->setParameter(':category', $category)
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
-}
+        return $qb->select($qb->expr()->countDistinct('note.id'))->where('note.category = :category')->setParameter(':category', $category)->getQuery()->getSingleScalarResult();
+
+    }//end countByCategory()
+
+
+}//end class

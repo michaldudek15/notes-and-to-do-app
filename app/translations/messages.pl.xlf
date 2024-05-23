@@ -113,6 +113,10 @@
 <source>title.category_create</source>
 <target>Tworzenie kategorii.</target>
 </trans-unit>
+<trans-unit id="title.note_create">
+<source>title.note_create</source>
+<target>Tworzenie notatki</target>
+</trans-unit>
 <trans-unit id="message.form_error">
 <source>message.form_error</source>
 <target>Błąd formularza.</target>
@@ -120,6 +124,10 @@
 <trans-unit id="action.create">
 <source>action.create</source>
 <target>Dodaj</target>
+</trans-unit>
+<trans-unit id="label.none">
+<source>label.none</source>
+<target>Brak</target>
 </trans-unit>
     </body>
   </file>

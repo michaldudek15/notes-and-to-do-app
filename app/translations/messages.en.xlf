@@ -110,6 +110,10 @@
 <source>title.category_create</source>
 <target>Create category.</target>
 </trans-unit>
+<trans-unit id="title.note_create">
+<source>title.note_create</source>
+<target>Create note</target>
+</trans-unit>
 <trans-unit id="message.form_error">
 <source>message.form_error</source>
 <target>Form error.</target>
@@ -117,6 +121,10 @@
 <trans-unit id="action.create">
 <source>action.create</source>
 <target>Create</target>
+</trans-unit>
+<trans-unit id="label.none">
+<source>label.none</source>
+<target>None</target>
 </trans-unit>
     </body>
   </file>
