@@ -34,7 +34,7 @@
                     <td>
                         {% for tag in note.tags %}
 
-                            {{ tag.title }}
+                            {{ tag.title }}{% if not loop.last %}<br>{% endif %}
 
                         {% endfor %}
                     </td>
@@ -58,8 +58,8 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-
-        <a href="{{ url('note_create') }}" title="{{ 'action.create'|trans }}">
+        
+        <a class="btn btn-primary" href="{{ url('note_create') }}" title="{{ 'action.create'|trans }}">
             {{ 'action.create'|trans }}
         </a>
 
