@@ -111,7 +111,7 @@
 </trans-unit>
 <trans-unit id="title.category_create">
 <source>title.category_create</source>
-<target>Tworzenie kategorii.</target>
+<target>Tworzenie kategorii</target>
 </trans-unit>
 <trans-unit id="title.note_create">
 <source>title.note_create</source>
@@ -137,6 +137,37 @@
               <source>title.tag_list</source>
               <target>Lista tagów</target>
             </trans-unit>
+
+
+<trans-unit id="title.note_edit">
+<source>title.note_edit</source>
+<target>Edytuj notatkę</target>
+</trans-unit>
+<trans-unit id="title.note_delete">
+<source>title.note_delete</source>
+<target>Usuwanie notatki</target>
+</trans-unit>
+<trans-unit id="title.tag_edit">
+<source>title.tag_edit</source>
+<target>Edytuj tag</target>
+</trans-unit>
+<trans-unit id="title.tag_delete">
+<source>title.tag_delete</source>
+<target>Usuwanie taga</target>
+</trans-unit>
+<trans-unit id="title.tag_details">
+<source>title.tag_details</source>
+<target>Szczegóły taga</target>
+</trans-unit>
+<trans-unit id="title.tag_create">
+<source>title.tag_create</source>
+<target>Tworzenie taga</target>
+</trans-unit>
+
+
+
+
+
     </body>
   </file>
 </xliff>
