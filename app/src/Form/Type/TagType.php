@@ -52,7 +52,8 @@ class TagType extends AbstractType
                         'pattern' => '/^\S+$/',
                         'message' => $whitespaceError,
                     ])
-                ]]
+                ]
+            ]
         );
 
     }//end buildForm()

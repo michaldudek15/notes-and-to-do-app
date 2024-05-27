@@ -20,6 +20,8 @@
             <dd>{{ note.content }}</dd>
             <dt>{{ 'label.category'|trans }}</dt>
             <dd>{{ note.category.title }}</dd>
+            <dt>{{ 'label.author'|trans }}</dt>
+            <dd>{{ note.author.email }}</dd>
             <dt>{{ 'label.tags'|trans }}</dt>
             <dd>
                 {% for tag in note.tags %}
