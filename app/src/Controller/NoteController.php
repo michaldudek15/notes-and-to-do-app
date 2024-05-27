@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Note;
+use App\Entity\User;
 use App\Form\Type\NoteType;
 use App\Service\NoteService;
 use App\Service\NoteServiceInterface;
@@ -44,7 +45,7 @@ class NoteController extends AbstractController
     #[Route(name: 'note_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page=1): Response
     {
-        $pagination = $this->noteService->getPaginatedList($page);
+        $pagination = $this->noteService->getPaginatedList($page, $this->getUser());
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);
 
@@ -66,6 +67,15 @@ class NoteController extends AbstractController
     )]
     public function show(Note $note): Response
     {
+        if ($note->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
         return $this->render('note/show.html.twig', ['note' => $note]);
 
     }//end show()
@@ -121,6 +131,15 @@ class NoteController extends AbstractController
     #[Route('/{id}/edit', name: 'note_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Note $note): Response
     {
+        if ($note->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
         $form = $this->createForm(
             NoteType::class,
             $note,
@@ -164,6 +183,15 @@ class NoteController extends AbstractController
     #[Route('/{id}/delete', name: 'note_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Note $note): Response
     {
+        if ($note->getAuthor() !== $this->getUser()) {
+            $this->addFlash(
+                'warning',
+                $this->translator->trans('message.record_not_found')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
         $form = $this->createForm(
             FormType::class,
             $note,

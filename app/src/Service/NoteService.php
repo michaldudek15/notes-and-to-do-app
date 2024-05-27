@@ -6,6 +6,7 @@
 namespace App\Service;
 
 use App\Entity\Note;
+use App\Entity\User;
 use App\Repository\NoteRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -44,14 +45,14 @@ class NoteService implements NoteServiceInterface
     /**
      * Get paginated list.
      *
-     * @param integer $page Page number
-     *
+     * @param  integer $page   Page number
+     * @param  User    $author Author
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface
+    public function getPaginatedList(int $page, User $author): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->noteRepository->queryAll(),
+            $this->noteRepository->queryByAuthor($author),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );

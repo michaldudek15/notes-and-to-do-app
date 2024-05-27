@@ -6,7 +6,9 @@
 namespace App\Service;
 
 use App\Entity\Note;
+use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Interface NoteServiceInterface.
@@ -18,11 +20,12 @@ interface NoteServiceInterface
     /**
      * Get paginated list.
      *
-     * @param integer $page Page number
+     * @param integer $page   Page number
+     * @param User    $author Author
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface;
+    public function getPaginatedList(int $page, User $author): PaginationInterface;
 
 
     /**
