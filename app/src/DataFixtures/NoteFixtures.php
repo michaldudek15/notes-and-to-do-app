@@ -60,6 +60,9 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
                     $note->addTag($tag);
                 }
 
+                $author = $this->getRandomReference('users');
+                $note->setAuthor($author);
+
                 return $note;
             }
         );

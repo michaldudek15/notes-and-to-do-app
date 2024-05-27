@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
@@ -49,6 +50,17 @@ class Note
      */
     #[ORM\ManyToMany(targetEntity: Tag::class)]
     private Collection $tags;
+
+    /**
+     * Author.
+     *
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(User::class)]
+    private ?User $author;
 
 
     public function __construct()
@@ -161,6 +173,22 @@ class Note
         $this->tags->removeElement($tag);
 
     }//end removeTag()
+
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+
+    }//end getAuthor()
+
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
+
+        return $this;
+
+    }//end setAuthor()
 
 
 }//end class
