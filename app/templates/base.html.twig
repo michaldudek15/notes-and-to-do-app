@@ -14,11 +14,12 @@
 </head>
 <body data-bs-theme="dark">
 <main role="main" class="container-fluid">
+
     {% include 'default/_flash_messages.html.twig' %}
     {% block body %}{% endblock %}
 </main>
 {% block javascripts %}
-    {# {% block importmap %}{{ importmap('app') }}{% endblock %}#}
+    {# {% block importmap %}{{ importmap('app') }}{% endblock %} #}
     <script
             src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
             integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
