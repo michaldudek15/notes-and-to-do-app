@@ -133,6 +133,10 @@
 <source>message.whitespace_error</source>
 <target>Białe znaki nie są dozwolone w tym polu.</target>
 </trans-unit>
+<trans-unit id="title.tag_list">
+              <source>title.tag_list</source>
+              <target>Lista tagów</target>
+            </trans-unit>
     </body>
   </file>
 </xliff>

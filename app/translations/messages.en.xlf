@@ -130,6 +130,10 @@
 <source>message.whitespace_error</source>
 <target>There should be no whitespaces.</target>
 </trans-unit>
+<trans-unit id="title.tag_list">
+              <source>title.tag_list</source>
+              <target>Tags list</target>
+            </trans-unit>
     </body>
   </file>
 </xliff>
