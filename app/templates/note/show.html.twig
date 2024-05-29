@@ -17,7 +17,7 @@
             <dt>{{ 'label.title'|trans }}</dt>
             <dd>{{ note.title }}</dd>
             <dt>{{ 'label.content'|trans }}</dt>
-            <dd>{{ note.content }}</dd>
+            <dd>{{ note.content|markdown_to_html }}</dd>
             <dt>{{ 'label.category'|trans }}</dt>
             <dd>{{ note.category.title }}</dd>
             <dt>{{ 'label.author'|trans }}</dt>

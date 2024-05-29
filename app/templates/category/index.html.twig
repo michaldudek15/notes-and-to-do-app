@@ -46,13 +46,16 @@
         <div class="navigation text-center">
             {{ knp_pagination_render(pagination) }}
         </div>
-        <a class="btn btn-primary" href="{{ url('category_create') }}" title="{{ 'action.create'|trans }}">
-            {{ 'action.create'|trans }}
-        </a>
+
 
     {% else %}
         <p>
             {{ 'message.empty_list'|trans }}
         </p>
     {% endif %}
+
+    <a class="btn btn-primary" href="{{ url('category_create') }}" title="{{ 'action.create'|trans }}">
+        {{ 'action.create'|trans }}
+    </a>
+    
 {% endblock %}
