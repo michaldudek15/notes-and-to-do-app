@@ -85,17 +85,17 @@ class NoteType extends AbstractType
             'tags',
             TextType::class,
             [
-                'label'       => 'label.tags',
-                'required'    => false,
-                'attr'        => ['max_length' => 128],
-                'constraints' => [
-                    new Assert\Regex(
-                        [
-                            'pattern' => '/^([a-zA-Z0-9]+, )*[a-zA-Z0-9]+$/',
-                            'message' => $whitespaceError,
-                        ]
-                    ),
-                ],
+                'label'    => 'label.tags',
+                'required' => false,
+                'attr'     => ['max_length' => 128],
+            // 'constraints' => [
+            // new Assert\Regex(
+            // [
+            // 'pattern' => '/^([a-zA-Z0-9]+, )*[a-zA-Z0-9]+$/',
+            // 'message' => $whitespaceError,
+            // ]
+            // ),
+            // ],
             ]
         );
 

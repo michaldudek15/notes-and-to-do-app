@@ -56,6 +56,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 8,
+        max: 50,
+        minMessage: 'minimum 8 symbols',
+        maxMessage: 'maximum 50 symbols',
+    )]
     private ?string $password;
 
 
