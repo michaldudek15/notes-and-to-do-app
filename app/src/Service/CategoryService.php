@@ -7,6 +7,7 @@ namespace App\Service;
 
 use App\Repository\CategoryRepository;
 use App\Repository\NoteRepository;
+use App\Entity\User;
 use App\Entity\Category;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\NonUniqueResultException;
@@ -19,7 +20,6 @@ use Knp\Component\Pager\PaginatorInterface;
  * Class NoteService.
  */
 class CategoryService implements CategoryServiceInterface
-
 {
     /**
      * Items per page.
@@ -32,33 +32,38 @@ class CategoryService implements CategoryServiceInterface
      */
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
+
     /**
      * Constructor.
      *
-     * @param CategoryRepository     $categoryRepository Category repository
-     * @param NoteRepository     $noteRepository Note repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param CategoryRepository $categoryRepository Category repository
+     * @param NoteRepository     $noteRepository     Note repository
+     * @param PaginatorInterface $paginator          Paginator
      */
     public function __construct(private readonly CategoryRepository $categoryRepository, private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator)
     {
 
-    }
+    }//end __construct()
+
 
     /**
      * Get paginated list.
      *
-     * @param int $page Page number
+     * @param integer $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page): PaginationInterface
+    public function getPaginatedList(int $page, User $author): PaginationInterface
     {
         return $this->paginator->paginate(
-            $this->categoryRepository->queryAll(),
+            $this->categoryRepository->queryByAuthor($author),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-    }
+
+    }//end getPaginatedList()
+
+
     /**
      * Save entity.
      *
@@ -67,7 +72,9 @@ class CategoryService implements CategoryServiceInterface
     public function save(Category $category): void
     {
         $this->categoryRepository->save($category);
-    }
+
+    }//end save()
+
 
     /**
      * Delete entity.
@@ -80,14 +87,16 @@ class CategoryService implements CategoryServiceInterface
     public function delete(Category $category): void
     {
         $this->categoryRepository->delete($category);
-    }
+
+    }//end delete()
+
 
     /**
      * Can Category be deleted?
      *
      * @param Category $category Category entity
      *
-     * @return bool Result
+     * @return boolean Result
      */
     public function canBeDeleted(Category $category): bool
     {
@@ -95,8 +104,11 @@ class CategoryService implements CategoryServiceInterface
             $result = $this->noteRepository->countByCategory($category);
 
             return !($result > 0);
-        } catch (NoResultException|NonUniqueResultException) {
+        } catch (NoResultException | NonUniqueResultException) {
             return false;
         }
-    }
-}
+
+    }//end canBeDeleted()
+
+
+}//end class

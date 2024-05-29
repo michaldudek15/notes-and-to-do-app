@@ -20,10 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['title'])]
 class Category
 {
+
     /**
      * Primary key.
      *
-     * @var int|null
+     * @var integer|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -63,6 +64,7 @@ class Category
 
     /**
      * Slug.
+     *
      * @var string|null
      */
     #[ORM\Column(type: 'string', length: 64)]
@@ -70,15 +72,30 @@ class Category
     #[Assert\Length(min: 3, max: 64)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug;
+
+    /**
+     * Author.
+     *
+     * @var User|null
+     */
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
+    #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank]
+    #[Assert\Type(User::class)]
+    private ?User $author;
+
+
     /**
      * Getter for Id.
      *
-     * @return int|null Id
+     * @return integer|null Id
      */
     public function getId(): ?int
     {
         return $this->id;
-    }
+
+    }//end getId()
+
 
     /**
      * Getter for created at.
@@ -88,7 +105,9 @@ class Category
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-    }
+
+    }//end getCreatedAt()
+
 
     /**
      * Setter for created at.
@@ -98,7 +117,9 @@ class Category
     public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-    }
+
+    }//end setCreatedAt()
+
 
     /**
      * Getter for updated at.
@@ -108,7 +129,9 @@ class Category
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
-    }
+
+    }//end getUpdatedAt()
+
 
     /**
      * Setter for updated at.
@@ -118,7 +141,9 @@ class Category
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-    }
+
+    }//end setUpdatedAt()
+
 
     /**
      * Getter for title.
@@ -128,7 +153,9 @@ class Category
     public function getTitle(): ?string
     {
         return $this->title;
-    }
+
+    }//end getTitle()
+
 
     /**
      * Setter for title.
@@ -138,17 +165,40 @@ class Category
     public function setTitle(?string $title): void
     {
         $this->title = $title;
-    }
+
+    }//end setTitle()
+
 
     public function getSlug(): ?string
     {
         return $this->slug;
-    }
+
+    }//end getSlug()
+
 
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
         return $this;
-    }
-}
+
+    }//end setSlug()
+
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+
+    }//end getAuthor()
+
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
+
+        return $this;
+
+    }//end setAuthor()
+
+
+}//end class

@@ -6,6 +6,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\User;
 use App\Form\Type\CategoryType;
 use App\Service\CategoryServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,7 +46,7 @@ class CategoryController extends AbstractController
     #[Route(name: 'category_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page=1): Response
     {
-        $pagination = $this->categoryService->getPaginatedList($page);
+        $pagination = $this->categoryService->getPaginatedList($page, $this->getUser());
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
 
@@ -87,8 +88,11 @@ class CategoryController extends AbstractController
     )]
     public function create(Request $request): Response
     {
+        $user = $this->getUser();
+
         $category = new Category();
-        $form     = $this->createForm(CategoryType::class, $category);
+        $category->setAuthor($user);
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
