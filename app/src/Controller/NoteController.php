@@ -5,9 +5,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\User;
 use App\Form\Type\NoteType;
+use App\Service\CategoryServiceInterface;
 use App\Service\NoteService;
 use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,7 +32,7 @@ class NoteController extends AbstractController
     /**
      * Constructor.
      */
-    public function __construct(private readonly noteServiceInterface $noteService, private readonly TranslatorInterface $translator)
+    public function __construct(private readonly noteServiceInterface $noteService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
 
     }//end __construct()
@@ -96,7 +98,6 @@ class NoteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->noteService->save($note);
-
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')

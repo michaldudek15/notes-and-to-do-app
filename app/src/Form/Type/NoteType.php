@@ -76,11 +76,12 @@ class NoteType extends AbstractType
                 'choice_label' => function ($category): string {
                     return $category->getTitle();
                 },
+
                 'label'        => 'label.category',
-                'placeholder'  => 'label.none',
                 'required'     => true,
             ]
         );
+
         $builder->add(
             'tags',
             TextType::class,
@@ -88,14 +89,14 @@ class NoteType extends AbstractType
                 'label'    => 'label.tags',
                 'required' => false,
                 'attr'     => ['max_length' => 128],
-            // 'constraints' => [
-            // new Assert\Regex(
-            // [
-            // 'pattern' => '/^([a-zA-Z0-9]+, )*[a-zA-Z0-9]+$/',
-            // 'message' => $whitespaceError,
-            // ]
-            // ),
-            // ],
+                // 'constraints' => [
+                // new Assert\Regex(
+                // [
+                // 'pattern' => '/^([a-zA-Z0-9]+, )*[a-zA-Z0-9]+$/',
+                // 'message' => $whitespaceError,
+                // ]
+                // ),
+                // ],
             ]
         );
 

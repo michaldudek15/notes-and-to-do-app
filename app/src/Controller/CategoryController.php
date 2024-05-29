@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -22,15 +23,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
+
+
     /**
      * Constructor.
      *
      * @param CategoryServiceInterface $categoryService Category service
-     * @param TranslatorInterface      $translator  Translator
+     * @param TranslatorInterface      $translator      Translator
      */
     public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly TranslatorInterface $translator)
     {
-    }
+
+    }//end __construct()
+
 
     /**
      * Index action.
@@ -38,12 +43,14 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'category_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page = 1): Response
+    public function index(#[MapQueryParameter] int $page=1): Response
     {
         $pagination = $this->categoryService->getPaginatedList($page);
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
-    }
+
+    }//end index()
+
 
     /**
      * Show action.
@@ -58,10 +65,13 @@ class CategoryController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
+    #[IsGranted('VIEW', subject: 'category')]
     public function show(Category $category): Response
     {
         return $this->render('category/show.html.twig', ['category' => $category]);
-    }
+
+    }//end show()
+
 
     /**
      * Create action.
@@ -78,7 +88,7 @@ class CategoryController extends AbstractController
     public function create(Request $request): Response
     {
         $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
+        $form     = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -96,7 +106,9 @@ class CategoryController extends AbstractController
             'category/create.html.twig',
             ['form' => $form->createView()]
         );
-    }
+
+    }//end create()
+
 
     /**
      * Edit action.
@@ -107,6 +119,7 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'category_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    #[IsGranted('VIEW', subject: 'category')]
     public function edit(Request $request, Category $category): Response
     {
         $form = $this->createForm(
@@ -133,11 +146,13 @@ class CategoryController extends AbstractController
         return $this->render(
             'category/edit.html.twig',
             [
-                'form' => $form->createView(),
+                'form'     => $form->createView(),
                 'category' => $category,
             ]
         );
-    }
+
+    }//end edit()
+
 
     /**
      * Delete action.
@@ -148,9 +163,10 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
+    #[IsGranted('VIEW', subject: 'category')]
     public function delete(Request $request, Category $category): Response
     {
-        if(!$this->categoryService->canBeDeleted($category)) {
+        if (!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(
                 'warning',
                 $this->translator->trans('message.category_contains_notes')
@@ -183,9 +199,12 @@ class CategoryController extends AbstractController
         return $this->render(
             'category/delete.html.twig',
             [
-                'form' => $form->createView(),
+                'form'     => $form->createView(),
                 'category' => $category,
             ]
         );
-    }
-}
+
+    }//end delete()
+
+
+}//end class
