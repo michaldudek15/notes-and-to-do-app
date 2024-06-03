@@ -20,6 +20,7 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class UserService implements UserServiceInterface
 {
+    private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
 
     /**
@@ -27,7 +28,7 @@ class UserService implements UserServiceInterface
      *
      * @param UserRepository $userRepository User repository
      */
-    public function __construct(private readonly UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository, private readonly PaginatorInterface $paginator)
     {
 
     }//end __construct()
@@ -58,6 +59,17 @@ class UserService implements UserServiceInterface
         $this->userRepository->delete($user);
 
     }//end delete()
+
+
+    public function getPaginatedList(int $page): PaginationInterface
+    {
+        return $this->paginator->paginate(
+            $this->userRepository->queryAll(),
+            $page,
+            self::PAGINATOR_ITEMS_PER_PAGE
+        );
+
+    }//end getPaginatedList()
 
 
 }//end class

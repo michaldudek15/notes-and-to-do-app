@@ -15,12 +15,18 @@
 <body data-bs-theme="dark">
 <main role="main" class="container-fluid">
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div>{{ app.user.email }}</div>
-        <div>
-            <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
-        </div>
-    {% endif %}
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="{{ url('note_index') }}">notes and to-do</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div>{{ app.user.email }}</div>
+            <div>
+                <a href="{{ url('note_index') }}">{{ 'title.note_list'|trans }}</a>
+                <a href="{{ url('category_index') }}">{{ 'title.category_list'|trans }}</a>
+                <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
+            </div>
+
+        {% endif %}
+    </nav>
 
     {% include 'default/_flash_messages.html.twig' %}
     {% block body %}{% endblock %}

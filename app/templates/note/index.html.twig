@@ -14,10 +14,14 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'note.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'note.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'note.updatedAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'note.title') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.content'|trans, 'note.content') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.category'|trans, 'note.category') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.author'|trans, 'note.author') }}</th>
+                <th>{{ 'label.title'|trans }}</th>
+                <th>{{ 'label.content'|trans }}</th>
+                <th>{{ 'label.category'|trans }}</th>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ 'label.author'|trans }}</th>
+                {% endif %}
+
                 <th>{{ 'label.tags'|trans }}</th>
                 <th>{{ 'label.actions'|trans }}</th>
             </tr>
@@ -30,13 +34,24 @@
                     <td>{{ note.updatedAt|format_date('long') }}</td>
                     <td>{{ note.title }}</td>
                     <td>{{ note.content }}</td>
-                    <td>{{ note.category.title }}</td>
-                    <td>{{ note.author.email }}</td>
+                    <td>
+                        <a class="btn btn-outline-primary"
+                           href="{{ url('note_index', {'categoryId' : note.category.id}) }}"
+                           title="{{ note.category.title }}">
+                            {{ note.category.title }}</a></td>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td>{{ note.author.email }}</td>
+                    {% endif %}
 
                     <td>
                         {% for tag in note.tags %}
 
-                            {{ tag.title }}{% if not loop.last %}<br>{% endif %}
+                            <a class="btn btn-outline-primary"
+                               href="{{ url('note_index', {'tagId' : tag.id}) }}"
+                               title="{{ tag.title }}">
+                                {{ tag.title }}{% if not loop.last %}<br>{% endif %}
+                            </a>
 
                         {% endfor %}
                     </td>

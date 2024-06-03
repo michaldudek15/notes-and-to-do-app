@@ -5,6 +5,8 @@
 
 namespace App\Service;
 
+use App\Dto\NoteListFiltersDto;
+use App\Dto\NoteListInputFiltersDto;
 use App\Entity\Note;
 use App\Entity\User;
 use App\Repository\NoteRepository;
@@ -36,7 +38,7 @@ class NoteService implements NoteServiceInterface
      * @param NoteRepository     $noteRepository Note repository
      * @param PaginatorInterface $paginator      Paginator
      */
-    public function __construct(private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator)
+    public function __construct(private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator, private readonly CategoryServiceInterface $categoryService, private readonly TagServiceInterface $tagService)
     {
 
     }//end __construct()
@@ -49,10 +51,12 @@ class NoteService implements NoteServiceInterface
      * @param  User    $author Author
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author): PaginationInterface
+    public function getPaginatedList(int $page, User $author, NoteListInputFiltersDto $filters): PaginationInterface
     {
+        $filters = $this->prepareFilters($filters);
+
         return $this->paginator->paginate(
-            $this->noteRepository->queryByAuthor($author),
+            $this->noteRepository->queryByAuthor($author, $filters),
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
@@ -85,6 +89,23 @@ class NoteService implements NoteServiceInterface
         $this->noteRepository->delete($note);
 
     }//end delete()
+
+
+    /**
+     * Prepare filters for the tasks list.
+     *
+     * @param NoteListInputFiltersDto $filters Raw filters from request
+     *
+     * @return NoteListFiltersDto Result filters
+     */
+    private function prepareFilters(NoteListInputFiltersDto $filters): NoteListFiltersDto
+    {
+        return new NoteListFiltersDto(
+            null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
+            null !== $filters->tagId ? $this->tagService->findOneById($filters->tagId) : null
+        );
+
+    }//end prepareFilters()
 
 
 }//end class

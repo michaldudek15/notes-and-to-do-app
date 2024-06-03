@@ -104,4 +104,20 @@ class TagService implements TagServiceInterface
     }//end findOneByTitle()
 
 
+    /**
+     * Find by id.
+     *
+     * @param integer $id Tag id
+     *
+     * @return Tag|null Tag entity
+     *
+     * @throws NonUniqueResultException
+     */
+    public function findOneById(int $id): ?Tag
+    {
+        return $this->tagRepository->findOneById($id);
+
+    }//end findOneById()
+
+
 }//end class

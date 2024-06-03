@@ -5,10 +5,12 @@
 
 namespace App\Controller;
 
+use App\Dto\NoteListInputFiltersDto;
 use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\User;
 use App\Form\Type\NoteType;
+use App\Resolver\NoteListInputFiltersDtoResolver;
 use App\Service\CategoryServiceInterface;
 use App\Service\NoteService;
 use App\Service\NoteServiceInterface;
@@ -17,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
+use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -46,9 +49,14 @@ class NoteController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'note_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page=1): Response
     {
-        $pagination = $this->noteService->getPaginatedList($page, $this->getUser());
+        $user       = $this->getUser();
+        $pagination = $this->noteService->getPaginatedList(
+            $page,
+            $user,
+            $filters
+        );
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);
 

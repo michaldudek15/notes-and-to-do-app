@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Dto\NoteListFiltersDto;
 use App\Entity\Category;
 use App\Entity\Note;
+use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
@@ -13,6 +15,7 @@ use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @extends ServiceEntityRepository<Note>
@@ -34,14 +37,32 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder
      */
-    public function queryAll(): QueryBuilder
+    public function queryAll(NoteListFiltersDto $filters): QueryBuilder
     {
-        return $this->getOrCreateQueryBuilder()->select(
+        $queryBuilder = $this->getOrCreateQueryBuilder()->select(
             'partial note.{id, createdAt, updatedAt, title, content}',
-            'partial category.{id, title}'
-        )->join('note.category', 'category')->orderBy('note.updatedAt', 'DESC');
+            'partial category.{id, title}',
+            'partial tags.{id, title}'
+        )->join('note.category', 'category')->leftJoin('note.tags', 'tags')->orderBy('note.updatedAt', 'DESC');
+
+        return $this->applyFiltersToList($queryBuilder, $filters);
 
     }//end queryAll()
+
+
+    private function applyFiltersToList(QueryBuilder $queryBuilder, NoteListFiltersDto $filters): QueryBuilder
+    {
+        if ($filters->category instanceof Category) {
+            $queryBuilder->andWhere('category = :category')->setParameter('category', $filters->category);
+        }
+
+        if ($filters->tag instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')->setParameter('tag', $filters->tag);
+        }
+
+        return $queryBuilder;
+
+    }//end applyFiltersToList()
 
 
     public function save(Note $note): void
@@ -110,9 +131,9 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    public function queryByAuthor(User $user): QueryBuilder
+    public function queryByAuthor(UserInterface $user, NoteListFiltersDto $filters): QueryBuilder
     {
-        $queryBuilder = $this->queryAll();
+        $queryBuilder = $this->queryAll($filters);
 
         $queryBuilder->andWhere('note.author = :author')->setParameter('author', $user);
 

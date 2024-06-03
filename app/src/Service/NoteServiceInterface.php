@@ -5,6 +5,7 @@
 
 namespace App\Service;
 
+use App\Dto\NoteListInputFiltersDto;
 use App\Entity\Note;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
@@ -25,7 +26,7 @@ interface NoteServiceInterface
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedList(int $page, User $author): PaginationInterface;
+    public function getPaginatedList(int $page, User $author, NoteListInputFiltersDto $filters): PaginationInterface;
 
 
     /**

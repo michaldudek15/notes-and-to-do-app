@@ -26,4 +26,7 @@ interface UserServiceInterface
     public function delete(User $user): void;
 
 
+    public function getPaginatedList(int $page): PaginationInterface;
+
+
 }//end interface

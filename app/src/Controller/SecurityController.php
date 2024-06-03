@@ -86,4 +86,35 @@ class SecurityController extends AbstractController
     }//end register()
 
 
+    // #[Route(
+    // '/changeCredentials',
+    // name: 'changeCredentials',
+    // methods: 'GET|POST',
+    // )]
+    // public function changeCredentials(Request $request): Response
+    // {
+    // $user = $this->getUser();
+    // $form = $this->createForm(RegistrationType::class, $user);
+    // $form->handleRequest($request);
+    //
+    // if ($form->isSubmitted() && $form->isValid()) {
+    // $user->setEmail($user->getEmail());
+    // $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
+    //
+    // $this->userService->save($user);
+    //
+    // $this->addFlash(
+    // 'success',
+    // $this->translator->trans('message.changed_successfully')
+    // );
+    //
+    // return $this->redirectToRoute('note_index');
+    // }
+    //
+    // return $this->render(
+    // 'security/register.html.twig',
+    // ['form' => $form->createView()]
+    // );
+    //
+    // }//end changeCredentials()
 }//end class
