@@ -34,6 +34,17 @@ class UserService implements UserServiceInterface
     }//end __construct()
 
 
+    public function getPaginatedList(int $page): PaginationInterface
+    {
+        return $this->paginator->paginate(
+            $this->userRepository->queryAll(),
+            $page,
+            self::PAGINATOR_ITEMS_PER_PAGE
+        );
+
+    }//end getPaginatedList()
+
+
     /**
      * Save entity.
      *
@@ -61,15 +72,11 @@ class UserService implements UserServiceInterface
     }//end delete()
 
 
-    public function getPaginatedList(int $page): PaginationInterface
+    public function findOneById(int $id): ?User
     {
-        return $this->paginator->paginate(
-            $this->userRepository->queryAll(),
-            $page,
-            self::PAGINATOR_ITEMS_PER_PAGE
-        );
+        return $this->userRepository->findOneById($id);
 
-    }//end getPaginatedList()
+    }//end findOneById()
 
 
 }//end class

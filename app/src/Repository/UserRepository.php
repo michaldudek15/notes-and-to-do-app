@@ -28,6 +28,32 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
 
     /**
+     * Query all records.
+     *
+     * @return QueryBuilder Query builder
+     */
+    public function queryAll(): QueryBuilder
+    {
+        return $this->getOrCreateQueryBuilder()->select('partial user.{id, email, roles}')->orderBy('user.id', 'DESC');
+
+    }//end queryAll()
+
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder=null): QueryBuilder
+    {
+        return ($queryBuilder ?? $this->createQueryBuilder('user'));
+
+    }//end getOrCreateQueryBuilder()
+
+
+    /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void

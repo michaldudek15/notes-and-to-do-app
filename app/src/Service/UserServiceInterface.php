@@ -15,6 +15,9 @@ interface UserServiceInterface
 {
 
 
+    public function getPaginatedList(int $page): PaginationInterface;
+
+
     /**
      * Save entity.
      *
@@ -24,9 +27,6 @@ interface UserServiceInterface
 
 
     public function delete(User $user): void;
-
-
-    public function getPaginatedList(int $page): PaginationInterface;
 
 
 }//end interface

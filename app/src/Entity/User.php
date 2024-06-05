@@ -58,9 +58,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     #[Assert\Length(
         min: 8,
-        max: 50,
+        max: 64,
         minMessage: 'minimum 8 symbols',
-        maxMessage: 'maximum 50 symbols',
+        maxMessage: 'maximum 64 symbols',
     )]
     private ?string $password;
 

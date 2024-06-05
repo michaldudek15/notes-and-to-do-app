@@ -45,6 +45,10 @@ class UserController extends AbstractController
     #[Route(name: 'user_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page=1): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('note_index');
+        }
+
         $pagination = $this->userService->getPaginatedList($page, $this->getUser());
 
         return $this->render('user/index.html.twig', ['pagination' => $pagination]);
@@ -65,7 +69,6 @@ class UserController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    #[IsGranted('VIEW', subject: 'user')]
     public function show(User $user): Response
     {
         return $this->render('user/show.html.twig', ['user' => $user]);
@@ -82,7 +85,6 @@ class UserController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    #[IsGranted('VIEW', subject: 'user')]
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(
@@ -126,18 +128,8 @@ class UserController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    #[IsGranted('VIEW', subject: 'user')]
     public function delete(Request $request, User $user): Response
     {
-        if (!$this->userService->canBeDeleted($user)) {
-            $this->addFlash(
-                'warning',
-                $this->translator->trans('message.user_contains_notes')
-            );
-
-            return $this->redirectToRoute('user_index');
-        }
-
         $form = $this->createForm(
             FormType::class,
             $user,

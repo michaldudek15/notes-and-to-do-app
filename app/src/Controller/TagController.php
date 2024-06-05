@@ -14,12 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class TagController.
  */
 #[Route('/tag')]
+#[IsGranted('ROLE_ADMIN')]
 class TagController extends AbstractController
 {
 
@@ -42,7 +44,7 @@ class TagController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'tag_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryParameter] int $page = 1): Response
     {
         $pagination = $this->tagService->getPaginatedList($page);
 
@@ -85,7 +87,7 @@ class TagController extends AbstractController
     )]
     public function create(Request $request): Response
     {
-        $tag  = new Tag();
+        $tag = new Tag();
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
@@ -112,7 +114,7 @@ class TagController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Tag     $tag     Tag entity
+     * @param Tag $tag Tag entity
      *
      * @return Response HTTP response
      */
@@ -144,7 +146,7 @@ class TagController extends AbstractController
             'tag/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'tag'  => $tag,
+                'tag' => $tag,
             ]
         );
 
@@ -155,7 +157,7 @@ class TagController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Tag     $tag     Tag entity
+     * @param Tag $tag Tag entity
      *
      * @return Response HTTP response
      */
@@ -187,7 +189,7 @@ class TagController extends AbstractController
             'tag/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'tag'  => $tag,
+                'tag' => $tag,
             ]
         );
 

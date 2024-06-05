@@ -84,7 +84,6 @@ class NoteType extends AbstractType
                 'choice_label' => function ($category): string {
                     return $category->getTitle();
                 },
-
                 'label'        => 'label.category',
                 'required'     => true,
             ]
