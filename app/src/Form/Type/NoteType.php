@@ -11,6 +11,7 @@ use App\Entity\User;
 use App\Entity\Tag;
 use App\Form\DataTransformer\TagsDataTransformer;
 use App\Repository\CategoryRepository;
+use App\Service\CategoryService;
 use Doctrine\DBAL\Types\StringType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -32,7 +33,7 @@ class NoteType extends AbstractType
 {
 
 
-    public function __construct(private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
+    public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
     {
 
     }//end __construct()
@@ -52,6 +53,10 @@ class NoteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $whitespaceError = $this->translator->trans('message.whitespace_error');
+
+        $user = $options['user'];
+
+        dump($this->categoryService->getCategoriesByUser($user));
 
         $builder->add(
             'title',
@@ -75,7 +80,10 @@ class NoteType extends AbstractType
             ]
         );
 
-        // $author = $this->getUser();
+        // $categoriesByAuthor = $this->categoryService->$this->categoryRepository->getCategoriesByAuthor($user);
+        // foreach ($categoriesByAuthor as $category) {
+        // $choicesArray[] = $category->getTitle();
+        // }
         $builder->add(
             'category',
             EntityType::class,
@@ -86,6 +94,7 @@ class NoteType extends AbstractType
                 },
                 'label'        => 'label.category',
                 'required'     => true,
+                'choices'      => $this->categoryService->getCategoriesByUser($user),
             ]
         );
 
@@ -128,6 +137,7 @@ class NoteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => Note::class]);
+        $resolver->setDefaults(['user' => 0]);
 
     }//end configureOptions()
 

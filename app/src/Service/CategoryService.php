@@ -127,4 +127,15 @@ class CategoryService implements CategoryServiceInterface
     }//end findOneById()
 
 
+    /**
+     * @param  User $user
+     * @return Category
+     */
+    public function getCategoriesByUser(User $user): array
+    {
+        return $this->categoryRepository->findBy(['author' => $user]);
+
+    }//end getCategoriesByUser()
+
+
 }//end class

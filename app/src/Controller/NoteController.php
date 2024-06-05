@@ -101,7 +101,7 @@ class NoteController extends AbstractController
         $user = $this->getUser();
         $note = new note();
         $note->setAuthor($user);
-        $form = $this->createForm(NoteType::class, $note);
+        $form = $this->createForm(NoteType::class, $note, ['user' => $user]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

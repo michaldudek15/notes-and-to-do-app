@@ -47,4 +47,7 @@ interface CategoryServiceInterface
     public function canBeDeleted(Category $category): bool;
 
 
+    public function getCategoriesByUser(User $user): array;
+
+
 }//end interface
