@@ -134,12 +134,14 @@ class NoteController extends AbstractController
     #[IsGranted('VIEW', subject: 'note')]
     public function edit(Request $request, Note $note): Response
     {
+        $user = $this->getUser();
         $form = $this->createForm(
             NoteType::class,
             $note,
             [
                 'method' => 'PUT',
                 'action' => $this->generateUrl('note_edit', ['id' => $note->getId()]),
+                'user'   => $user,
             ]
         );
         $form->handleRequest($request);
