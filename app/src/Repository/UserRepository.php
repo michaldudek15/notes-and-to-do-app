@@ -21,15 +21,11 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
-
-
     public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, User::class);
         $this->entityManager = $entityManager;
-
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Query all records.
@@ -39,9 +35,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()->select('partial user.{id, email, roles}')->orderBy('user.id', 'DESC');
-
-    }//end queryAll()
-
+    }// end queryAll()
 
     /**
      * Get or create new query builder.
@@ -50,12 +44,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder=null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return ($queryBuilder ?? $this->createQueryBuilder('user'));
-
-    }//end getOrCreateQueryBuilder()
-
+        return $queryBuilder ?? $this->createQueryBuilder('user');
+    }// end getOrCreateQueryBuilder()
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
@@ -69,18 +61,14 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newHashedPassword);
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
-
-    }//end upgradePassword()
-
+    }// end upgradePassword()
 
     public function save(User $user): void
     {
         assert($this->_em instanceof EntityManager);
         $this->_em->persist($user);
         $this->_em->flush();
-
-    }//end save()
-
+    }// end save()
 
     /**
      * Delete entity.
@@ -115,9 +103,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         // usuwanie użytkownika
         $this->_em->remove($user);
         $this->_em->flush();
-
-    }//end delete()
-
+    }// end delete()
 
     // **
     // * @return User[] Returns an array of User objects
@@ -142,4 +128,4 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     // ->getOneOrNullResult()
     // ;
     // }
-}//end class
+}// end class
