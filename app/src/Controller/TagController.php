@@ -21,7 +21,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * Class TagController.
  */
 #[Route('/tag')]
-#[IsGranted('ROLE_ADMIN')]
 class TagController extends AbstractController
 {
 
@@ -44,8 +43,16 @@ class TagController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'tag_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page = 1): Response
+    public function index(#[MapQueryParameter] int $page=1): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         $pagination = $this->tagService->getPaginatedList($page);
 
         return $this->render('tag/index.html.twig', ['pagination' => $pagination]);
@@ -68,6 +75,14 @@ class TagController extends AbstractController
     )]
     public function show(Tag $tag): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         return $this->render('tag/show.html.twig', ['tag' => $tag]);
 
     }//end show()
@@ -87,7 +102,15 @@ class TagController extends AbstractController
     )]
     public function create(Request $request): Response
     {
-        $tag = new Tag();
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
+        $tag  = new Tag();
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
@@ -114,13 +137,21 @@ class TagController extends AbstractController
      * Edit action.
      *
      * @param Request $request HTTP request
-     * @param Tag $tag Tag entity
+     * @param Tag     $tag     Tag entity
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'tag_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Tag $tag): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         $form = $this->createForm(
             TagType::class,
             $tag,
@@ -146,7 +177,7 @@ class TagController extends AbstractController
             'tag/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'tag' => $tag,
+                'tag'  => $tag,
             ]
         );
 
@@ -157,13 +188,21 @@ class TagController extends AbstractController
      * Delete action.
      *
      * @param Request $request HTTP request
-     * @param Tag $tag Tag entity
+     * @param Tag     $tag     Tag entity
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'tag_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Tag $tag): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         $form = $this->createForm(
             FormType::class,
             $tag,
@@ -189,7 +228,7 @@ class TagController extends AbstractController
             'tag/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'tag' => $tag,
+                'tag'  => $tag,
             ]
         );
 

@@ -53,6 +53,10 @@ class UserController extends AbstractController
     public function index(#[MapQueryParameter] int $page=1): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
             return $this->redirectToRoute('note_index');
         }
 
@@ -83,6 +87,14 @@ class UserController extends AbstractController
     )]
     public function show(User $user): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         return $this->render('user/show.html.twig', ['user' => $user]);
 
     }//end show()
@@ -99,6 +111,14 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         $form = $this->createForm(
             UserType::class,
             $user,
@@ -145,6 +165,14 @@ class UserController extends AbstractController
     #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, User $user): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         $form = $this->createForm(
             FormType::class,
             $user,
@@ -180,6 +208,14 @@ class UserController extends AbstractController
     #[Route('/{id}/changeRole', name: 'user_change_role', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function changeRole(Request $request, User $user): Response
     {
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
         $currentUser = $this->getUser();
 
         if ($currentUser->getId() === $user->getId()) {
