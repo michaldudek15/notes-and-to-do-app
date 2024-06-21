@@ -7,6 +7,7 @@
 <source>message.min_8_symbols</source>
 <target>The password must contain at least 8 characters</target>
 </trans-unit>
+
 <trans-unit id="message.max_64_symbols">
 <source>message.max_64_symbols</source>
 <target>The password must contain less than 64 characters</target>

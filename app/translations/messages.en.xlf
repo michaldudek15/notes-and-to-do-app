@@ -2,6 +2,7 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en" datatype="plaintext" original="file.ext">
     <body>
+
       <trans-unit id="label.actions">
         <source>label.actions</source>
         <target>Actions</target>
@@ -21,6 +22,10 @@
       <trans-unit id="label.tags">
         <source>label.tags</source>
         <target>Tags</target>
+      </trans-unit>
+      <trans-unit id="label.none">
+      <source>label.none</source>
+      <target>None</target>
       </trans-unit>
       <trans-unit id="message.empty_list">
         <source>message.empty_list</source>
@@ -42,73 +47,73 @@
         <source>label.created_at</source>
         <target>Created at</target>
       </trans-unit>
-      <trans-unit id="label.updated_at">
-              <source>label.updated_at</source>
-              <target>Updated at</target>
-            </trans-unit>
-            <trans-unit id="label.category">
-                    <source>label.category</source>
-                    <target>Category</target>
-                  </trans-unit>
-      <trans-unit id="title.note_list">
-              <source>title.note_list</source>
-              <target>Notes list</target>
-            </trans-unit>
-      <trans-unit id="action.show">
-                    <source>action.show</source>
-                    <target>Show</target>
-                  </trans-unit>
- <trans-unit id="title.note_details">
-                                       <source>title.note_details</source>
-                                       <target>Note details</target>
-                                     </trans-unit>
+<trans-unit id="label.updated_at">
+<source>label.updated_at</source>
+<target>Updated at</target>
+</trans-unit>
+<trans-unit id="label.category">
+<source>label.category</source>
+<target>Category</target>
+</trans-unit>
+<trans-unit id="title.note_list">
+<source>title.note_list</source>
+<target>Notes list</target>
+</trans-unit>
+<trans-unit id="action.show">
+<source>action.show</source>
+<target>Show</target>
+</trans-unit>
+<trans-unit id="title.note_details">
+<source>title.note_details</source>
+<target>Note details</target>
+</trans-unit>
 <trans-unit id="action.back_to_list">
-        <source>action.back_to_list</source>
-        <target>Back to list</target>
-      </trans-unit>
-      <trans-unit id="title.category_list">
-              <source>title.category_list</source>
-              <target>Categories list</target>
-            </trans-unit>
-            <trans-unit id="title.category_details">
-                          <source>title.category_details</source>
-                          <target>Category details</target>
-                        </trans-unit>
-                        <trans-unit id="action.edit">
-                                                  <source>action.edit</source>
-                                                  <target>Edit</target>
-                                                </trans-unit>
-                                                 <trans-unit id="action.delete">
-                                                                                                  <source>action.delete</source>
-                                                                                                  <target>Delete</target>
-                                                                                                </trans-unit>
+<source>action.back_to_list</source>
+<target>Back to list</target>
+</trans-unit>
+<trans-unit id="title.category_list">
+<source>title.category_list</source>
+<target>Categories list</target>
+</trans-unit>
+<trans-unit id="title.category_details">
+<source>title.category_details</source>
+<target>Category details</target>
+</trans-unit>
+<trans-unit id="action.edit">
+<source>action.edit</source>
+<target>Edit</target>
+</trans-unit>
+<trans-unit id="action.delete">
+<source>action.delete</source>
+<target>Delete</target>
+</trans-unit>
 <trans-unit id="action.save">
-        <source>action.save</source>
-        <target>Save</target>
-      </trans-unit>
-      <trans-unit id="title.category_edit">
-              <source>title.category_edit</source>
-              <target>Edit category</target>
-            </trans-unit>
-                 <trans-unit id="message.category_contains_notes">
-                                                  <source>message.category_contains_notes</source>
-                                                  <target>Cannot delete category: category contains note.</target>
-                                                </trans-unit>
+<source>action.save</source>
+<target>Save</target>
+</trans-unit>
+<trans-unit id="title.category_edit">
+<source>title.category_edit</source>
+<target>Edit category</target>
+</trans-unit>
+<trans-unit id="message.category_contains_notes">
+<source>message.category_contains_notes</source>
+<target>Cannot delete category: category contains note</target>
+</trans-unit>
  <trans-unit id="message.created_successfully">
 <source>message.created_successfully</source>
-<target>Created successfully.</target>
+<target>Created successfully</target>
 </trans-unit>
  <trans-unit id="message.deleted_successfully">
 <source>message.deleted_successfully</source>
-<target>Deleted successfully.</target>
+<target>Deleted successfully</target>
 </trans-unit>
 <trans-unit id="title.category_delete">
 <source>title.category_delete</source>
-<target>Delete category.</target>
+<target>Delete category</target>
 </trans-unit>
 <trans-unit id="title.category_create">
 <source>title.category_create</source>
-<target>Create category.</target>
+<target>Create category</target>
 </trans-unit>
 <trans-unit id="title.note_create">
 <source>title.note_create</source>
@@ -116,16 +121,13 @@
 </trans-unit>
 <trans-unit id="message.form_error">
 <source>message.form_error</source>
-<target>Form error.</target>
+<target>Form error</target>
 </trans-unit>
 <trans-unit id="action.create">
 <source>action.create</source>
 <target>Create</target>
 </trans-unit>
-<trans-unit id="label.none">
-<source>label.none</source>
-<target>None</target>
-</trans-unit>
+
 <trans-unit id="message.whitespace_error">
 <source>message.whitespace_error</source>
 <target>There should be no whitespaces.</target>
@@ -178,6 +180,10 @@
 <trans-unit id="label.new_password">
 <source>label.new_password</source>
 <target>New password</target>
+</trans-unit>
+<trans-unit id="label.repeat_new_password">
+<source>label.repeat_new_password</source>
+<target>Repeat new password</target>
 </trans-unit>
 <trans-unit id="label.repeat_password">
 <source>label.repeat_password</source>
@@ -283,13 +289,22 @@
 <source>title.user_change_role</source>
 <target>Change user role</target>
 </trans-unit>
-<trans-unit id="label.repeat_new_password">
-<source>label.repeat_new_password</source>
-<target>Repeat new password</target>
+
+
+<trans-unit id="label.please_sign_in">
+<source>label.please_sign_in</source>
+<target>Please, sign in</target>
 </trans-unit>
 
+<trans-unit id="label.remember_me">
+<source>label.remember_me</source>
+<target>Remember me</target>
+</trans-unit>
 
-
+<trans-unit id="action.sign_in">
+<source>action.sign_in</source>
+<target>Sign in</target>
+</trans-unit>
 
     </body>
   </file>

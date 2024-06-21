@@ -7,10 +7,12 @@
 <source>message.min_8_symbols</source>
 <target>Hasło musi zawierać przynajmniej 8 znaków</target>
 </trans-unit>
+
 <trans-unit id="message.max_64_symbols">
 <source>message.max_64_symbols</source>
 <target>Hasło musi zawierać mniej, niż 64 znaków</target>
 </trans-unit>
+
 
     </body>
   </file>
