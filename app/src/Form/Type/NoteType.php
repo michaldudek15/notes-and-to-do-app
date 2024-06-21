@@ -117,9 +117,8 @@ class NoteType extends AbstractType
             function (FormEvent $event) {
                 $tagsFormField  = $event->getForm();
                 $tagsFieldValue = $event->getData();
-
                 if (!empty($tagsFieldValue)) {
-                    if (!preg_match_all('/^([a-zA-Z0-9]+, )*[a-zA-Z0-9]+$/', $tagsFieldValue)) {
+                    if (!preg_match_all('/^([a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+, *)*[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $tagsFieldValue)) {
                         $tagsFormField->addError(new FormError('label.invalid_tags'));
                     }
                 }
