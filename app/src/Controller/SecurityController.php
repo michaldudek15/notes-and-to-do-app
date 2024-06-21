@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Enum\UserRole;
 use App\Entity\User;
+use App\Form\Type\EmailChangeType;
 use App\Form\Type\RegistrationType;
 use App\Service\NoteServiceInterface;
 use App\Service\UserServiceInterface;
@@ -89,35 +90,36 @@ class SecurityController extends AbstractController
     }//end register()
 
 
-    // #[Route(
-    // '/changeCredentials',
-    // name: 'changeCredentials',
-    // methods: 'GET|POST',
-    // )]
-    // public function changeCredentials(Request $request): Response
-    // {
-    // $user = $this->getUser();
-    // $form = $this->createForm(RegistrationType::class, $user);
-    // $form->handleRequest($request);
-    //
-    // if ($form->isSubmitted() && $form->isValid()) {
-    // $user->setEmail($user->getEmail());
-    // $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
-    //
-    // $this->userService->save($user);
-    //
-    // $this->addFlash(
-    // 'success',
-    // $this->translator->trans('message.changed_successfully')
-    // );
-    //
-    // return $this->redirectToRoute('note_index');
-    // }
-    //
-    // return $this->render(
-    // 'security/register.html.twig',
-    // ['form' => $form->createView()]
-    // );
-    //
-    // }//end changeCredentials()
+    #[Route(
+        '/changeEmail',
+        name: 'changeEmail',
+        methods: 'GET|POST',
+    )]
+    public function changeEmail(Request $request): Response
+    {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $user = $this->getUser();
+        $form = $this->createForm(EmailChangeType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->save($user);
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.changed_successfully')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
+        return $this->render(
+            'security/changeEmail.html.twig',
+            ['form' => $form->createView()]
+        );
+
+    }//end changeEmail()
+
+
 }//end class
