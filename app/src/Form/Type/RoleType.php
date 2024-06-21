@@ -1,31 +1,25 @@
 <?php
 /**
- * User type.
+ * Role type.
  */
 
 namespace App\Form\Type;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class UserType.
+ * Class RoleType.
  */
-class UserType extends AbstractType
+class RoleType extends AbstractType
 {
-
-
-    public function __construct(private readonly TranslatorInterface $translator)
-    {
-
-    }//end __construct()
 
 
     /**
@@ -42,26 +36,13 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'email',
-            EmailType::class,
+            'roles',
+            ChoiceType::class,
             [
-                'label'    => 'label.email',
-                'required' => false,
-                'attr'     => ['max_length' => 64],
-            ]
-        );
-
-        $builder->add(
-            'password',
-            RepeatedType::class,
-            [
-                'type'            => PasswordType::class,
-                'first_options'   => ['label' => 'label.new_password'],
-                'second_options'  => ['label' => 'label.repeat_password'],
-                'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
-                'mapped'          => false,
-                'label'           => 'label.password',
-                'required'        => true,
+                'choices'  => ['Admin' => 'ROLE_ADMIN'],
+                'multiple' => 'true',
+                'expanded' => 'true',
+                'label'    => 'Grant admin?',
             ]
         );
 

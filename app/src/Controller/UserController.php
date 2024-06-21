@@ -6,16 +6,20 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\Type\RoleType;
 use App\Form\Type\UserType;
 use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 /**
  * Class UserController.
@@ -24,6 +28,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class UserController extends AbstractController
 {
 
+    private Security $security;
+
 
     /**
      * Constructor.
@@ -31,8 +37,9 @@ class UserController extends AbstractController
      * @param UserServiceInterface $userService User service
      * @param TranslatorInterface  $translator  Translator
      */
-    public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator)
+    public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher, Security $security)
     {
+        $this->security = $security;
 
     }//end __construct()
 
@@ -50,8 +57,13 @@ class UserController extends AbstractController
         }
 
         $pagination = $this->userService->getPaginatedList($page, $this->getUser());
-
-        return $this->render('user/index.html.twig', ['pagination' => $pagination]);
+        return $this->render(
+            'user/index.html.twig',
+            [
+                'pagination'    => $pagination,
+                'currentUserId' => $this->getUser()->getId(),
+            ]
+        );
 
     }//end index()
 
@@ -98,11 +110,14 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $newPassword = $form->get('password')->getData();
+
+            $user->setPassword($this->passwordHasher->hashPassword($user, $newPassword));
             $this->userService->save($user);
 
             $this->addFlash(
                 'success',
-                $this->translator->trans('message.created_successfully')
+                $this->translator->trans('message.changed_successfully')
             );
 
             return $this->redirectToRoute('user_index');
@@ -160,6 +175,46 @@ class UserController extends AbstractController
         );
 
     }//end delete()
+
+
+    #[Route('/{id}/changeRole', name: 'user_change_role', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
+    public function changeRole(Request $request, User $user): Response
+    {
+        $currentUser = $this->getUser();
+
+        if ($currentUser->getId() === $user->getId()) {
+            $this->addFlash('warning', $this->translator->trans('message.cannot_change_own_role'));
+            return $this->redirectToRoute('user_index');
+        }
+
+        $form = $this->createForm(
+            RoleType::class,
+            $user,
+            [
+                'method' => 'PUT',
+                'action' => $this->generateUrl('user_change_role', ['id' => $user->getId()]),
+            ]
+        );
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->userService->save($user);
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.changed_successfully')
+            );
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render(
+            'user/changeRole.html.twig',
+            [
+                'form' => $form->createView(),
+                'user' => $user,
+            ]
+        );
+
+    }//end changeRole()
 
 
 }//end class

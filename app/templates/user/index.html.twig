@@ -29,10 +29,12 @@
                         {% endfor %}
                     </td>
                     <td>
-                        <a href="{{ url('user_show', {id: user.id}) }}" title="{{ 'action.show'|trans }}">
-                            {{ 'action.show'|trans }}
-                        </a>
-
+                        {% if user.id != currentUserId %}
+                            <a href="{{ url('user_change_role', {id: user.id}) }}"
+                               title="{{ 'action.change_role'|trans }}">
+                                {{ 'action.change_role'|trans }}
+                            </a>
+                        {% endif %}
                         <a href="{{ url('user_edit', {id: user.id}) }}" title="{{ 'action.edit'|trans }}">
                             {{ 'action.edit'|trans }}
                         </a>
