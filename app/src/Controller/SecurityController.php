@@ -139,14 +139,23 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
-
-            $this->userService->save($user);
-            $this->addFlash(
-                'success',
-                $this->translator->trans('message.changed_successfully')
-            );
-            return $this->redirectToRoute('note_index');
+            $currentPassword = $form->get('currentPassword')->getData();
+            $newPassword     = $form->get('password')->getData();
+            if ($this->passwordHasher->isPasswordValid($user, $currentPassword)) {
+                $user->setPassword($this->passwordHasher->hashPassword($user, $newPassword));
+                $this->userService->save($user);
+                $this->addFlash(
+                    'success',
+                    $this->translator->trans('message.changed_successfully')
+                );
+                return $this->redirectToRoute('note_index');
+            } else {
+                $this->addFlash(
+                    'failure',
+                    $this->translator->trans('message.changed_unsuccessfully')
+                );
+                return $this->redirectToRoute('changePassword');
+            }
         }
 
         return $this->render(

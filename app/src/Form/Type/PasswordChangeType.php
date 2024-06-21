@@ -43,6 +43,16 @@ class PasswordChangeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
+            'currentPassword',
+            PasswordType::class,
+            [
+                'mapped'   => false,
+                'label'    => 'label.currentPassword',
+                'required' => true,
+            ]
+        );
+
+        $builder->add(
             'password',
             RepeatedType::class,
             [
@@ -50,6 +60,7 @@ class PasswordChangeType extends AbstractType
                 'first_options'   => ['label' => 'label.new_password'],
                 'second_options'  => ['label' => 'label.repeat_password'],
                 'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
+                'mapped'          => false,
                 'label'           => 'label.password',
                 'required'        => true,
             ]
