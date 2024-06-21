@@ -47,7 +47,7 @@ class PasswordChangeType extends AbstractType
             PasswordType::class,
             [
                 'mapped'   => false,
-                'label'    => 'label.currentPassword',
+                'label'    => 'label.current_password',
                 'required' => true,
             ]
         );

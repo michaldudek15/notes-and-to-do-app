@@ -10,15 +10,23 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * Class RegistrationType.
  */
 class RegistrationType extends AbstractType
 {
+
+
+    public function __construct(private readonly TranslatorInterface $translator)
+    {
+
+    }//end __construct()
 
 
     /**
@@ -45,10 +53,14 @@ class RegistrationType extends AbstractType
 
         $builder->add(
             'password',
-            PasswordType::class,
+            RepeatedType::class,
             [
-                'label'    => 'label.password',
-                'required' => true,
+                'type'            => PasswordType::class,
+                'first_options'   => ['label' => 'label.new_password'],
+                'second_options'  => ['label' => 'label.repeat_password'],
+                'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
+                'label'           => 'label.password',
+                'required'        => true,
             ]
         );
 

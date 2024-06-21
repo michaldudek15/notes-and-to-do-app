@@ -20,6 +20,8 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <div>{{ app.user.email }}</div>
             <div>
+                <a href="{{ url('changeEmail') }}">{{ 'title.change_email'|trans }}</a>
+                <a href="{{ url('changePassword') }}">{{ 'title.change_password'|trans }}</a>
                 {% if not is_granted('ROLE_ADMIN') %}
                     <a href="{{ url('note_index') }}">{{ 'title.note_list'|trans }}</a>
                 {% endif %}

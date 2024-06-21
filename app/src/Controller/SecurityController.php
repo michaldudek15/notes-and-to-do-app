@@ -151,8 +151,8 @@ class SecurityController extends AbstractController
                 return $this->redirectToRoute('note_index');
             } else {
                 $this->addFlash(
-                    'failure',
-                    $this->translator->trans('message.changed_unsuccessfully')
+                    'warning',
+                    $this->translator->trans('message.wrong_current_password')
                 );
                 return $this->redirectToRoute('changePassword');
             }
