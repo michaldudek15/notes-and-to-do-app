@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title.task_list'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'title.task_list'|trans }}</h1>
+    {% if pagination is defined and pagination.items|length %}
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'task.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'task.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'task.updatedAt') }}</th>
+                <th>{{ 'label.title'|trans }}</th>
+                <th>{{ 'label.status'|trans }}</th>
+                <th>{{ 'label.category'|trans }}</th>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ 'label.author'|trans }}</th>
+                {% endif %}
+
+                <th>{{ 'label.tags'|trans }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in pagination.items %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.createdAt|format_date('long') }}</td>
+                    <td>{{ task.updatedAt|format_date('long') }}</td>
+                    <td>{{ task.title }}</td>
+                    <td>
+                        {% if task.status == 1 %}
+                            {{ 'label.done'|trans }}
+                        {% else %}
+                            {{ task.status|default('label.todo'|trans) }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary"
+                           href="{{ url('task_index', {'categoryId' : task.category.id}) }}"
+                           title="{{ task.category.title }}">
+                            {{ task.category.title }}</a></td>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td>{{ task.author.email }}</td>
+                    {% endif %}
+
+                    <td>
+                        {% for tag in task.tags %}
+
+                            <a class="btn btn-outline-primary"
+                               href="{{ url('task_index', {'tagId' : tag.id}) }}"
+                               title="{{ tag.title }}">
+                                {{ tag.title }}{% if not loop.last %}<br>{% endif %}
+                            </a>
+
+                        {% endfor %}
+                    </td>
+
+                    <td>
+                        {% if is_granted('VIEW', task) %}
+                            <a href="{{ url('task_show', {id: task.id}) }}" title="{{ 'action.show'|trans }}">
+                                {{ 'action.show'|trans }}
+                            </a>
+                        {% endif %}
+
+                        {% if is_granted('VIEW', task) %}
+                            <a href="{{ url('task_edit', {id: task.id}) }}" title="{{ 'action.edit'|trans }}">
+                                {{ 'action.edit'|trans }}
+                            </a>
+                        {% endif %}
+
+                        {% if is_granted('VIEW', task) %}
+                            <a href="{{ url('task_delete', {id: task.id}) }}" title="{{ 'action.delete'|trans }}">
+                                {{ 'action.delete'|trans }}
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+
+    <a class="btn btn-primary" href="{{ url('task_create') }}" title="{{ 'action.create'|trans }}">
+        {{ 'action.create'|trans }}
+    </a>
+
+{% endblock %}

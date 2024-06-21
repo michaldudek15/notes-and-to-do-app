@@ -231,6 +231,62 @@
 <source>title.user_delete</source>
 <target>Delete user</target>
 </trans-unit>
+<trans-unit id="title.task_list">
+<source>title.task_list</source>
+<target>Task list</target>
+</trans-unit>
+<trans-unit id="label.done">
+<source>label.done</source>
+<target>Done</target>
+</trans-unit>
+<trans-unit id="label.todo">
+<source>label.todo</source>
+<target>To do</target>
+</trans-unit>
+<trans-unit id="label.status">
+<source>label.status</source>
+<target>Status</target>
+</trans-unit>
+<trans-unit id="title.task_details">
+<source>title.task_details</source>
+<target>Task details</target>
+</trans-unit>
+<trans-unit id="title.task_edit">
+<source>title.task_edit</source>
+<target>Edit task</target>
+</trans-unit>
+<trans-unit id="label.is_done">
+<source>label.is_done</source>
+<target>Is done?</target>
+</trans-unit>
+<trans-unit id="title.task_delete">
+<source>title.task_delete</source>
+<target>Delete task</target>
+</trans-unit>
+<trans-unit id="title.task_create">
+<source>title.task_create</source>
+<target>Create task</target>
+</trans-unit>
+<trans-unit id="action.change_role">
+<source>action.change_role</source>
+<target>Change role</target>
+</trans-unit>
+<trans-unit id="message.cannot_change_own_role">
+<source>message.cannot_change_own_role</source>
+<target>You can not change your own role</target>
+</trans-unit>
+<trans-unit id="message.not_allowed">
+<source>message.not_allowed</source>
+<target>You are not allowed there</target>
+</trans-unit>
+<trans-unit id="title.user_change_role">
+<source>title.user_change_role</source>
+<target>Change user role</target>
+</trans-unit>
+
+
+
+
 
 
     </body>

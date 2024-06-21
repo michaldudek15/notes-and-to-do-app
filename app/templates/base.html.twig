@@ -25,6 +25,9 @@
                 {% if not is_granted('ROLE_ADMIN') %}
                     <a href="{{ url('note_index') }}">{{ 'title.note_list'|trans }}</a>
                 {% endif %}
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <a href="{{ url('task_index') }}">{{ 'title.task_list'|trans }}</a>
+                {% endif %}
 
                 {% if not is_granted('ROLE_ADMIN') %}
                     <a href="{{ url('category_index') }}">{{ 'title.category_list'|trans }}</a>
