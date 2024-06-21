@@ -34,7 +34,9 @@ class SecurityController extends AbstractController
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('user_index');
+        } else if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('note_index');
         }
 

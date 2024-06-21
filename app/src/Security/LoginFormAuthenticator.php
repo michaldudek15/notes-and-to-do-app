@@ -5,6 +5,7 @@
 
 namespace App\Security;
 
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -39,14 +40,17 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     private const DEFAULT_ROUTE = 'note_index';
 
+    private Security $security;
+
 
     /**
      * Constructor.
      *
      * @param UrlGeneratorInterface $urlGenerator Url generator
      */
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, Security $security)
     {
+        $this->security = $security;
 
     }//end __construct()
 
@@ -125,7 +129,11 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->urlGenerator->generate(self::DEFAULT_ROUTE));
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            return new RedirectResponse($this->urlGenerator->generate('user_index'));
+        } else {
+            return new RedirectResponse($this->urlGenerator->generate(self::DEFAULT_ROUTE));
+        }
 
     }//end onAuthenticationSuccess()
 
