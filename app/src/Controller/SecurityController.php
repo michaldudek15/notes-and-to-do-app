@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Enum\UserRole;
 use App\Entity\User;
 use App\Form\Type\EmailChangeType;
+use App\Form\Type\PasswordChangeType;
 use App\Form\Type\RegistrationType;
 use App\Service\NoteServiceInterface;
 use App\Service\UserServiceInterface;
@@ -120,6 +121,40 @@ class SecurityController extends AbstractController
         );
 
     }//end changeEmail()
+
+
+    #[Route(
+        '/changePassword',
+        name: 'changePassword',
+        methods: 'GET|POST',
+    )]
+    public function changePassword(Request $request): Response
+    {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $user = $this->getUser();
+        $form = $this->createForm(PasswordChangeType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
+
+            $this->userService->save($user);
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message.changed_successfully')
+            );
+            return $this->redirectToRoute('note_index');
+        }
+
+        return $this->render(
+            'security/changePassword.html.twig',
+            ['form' => $form->createView()]
+        );
+
+    }//end changePassword()
 
 
 }//end class
