@@ -6,13 +6,10 @@
 namespace App\Controller;
 
 use App\Dto\NoteListInputFiltersDto;
-use App\Entity\Category;
 use App\Entity\Note;
-use App\Entity\User;
 use App\Form\Type\NoteType;
 use App\Resolver\NoteListInputFiltersDtoResolver;
 use App\Service\CategoryServiceInterface;
-use App\Service\NoteService;
 use App\Service\NoteServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -21,7 +18,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**

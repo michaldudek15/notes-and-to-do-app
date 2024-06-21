@@ -37,8 +37,5 @@ class NoteListInputFiltersDtoResolver implements ValueResolverInterface
         $tagId      = $request->query->get('tagId');
 
         return [new NoteListInputFiltersDto($categoryId, $tagId)];
-
     }//end resolve()
-
-
 }//end class
