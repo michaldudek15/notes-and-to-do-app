@@ -57,7 +57,7 @@ class UserType extends AbstractType
             [
                 'type'            => PasswordType::class,
                 'first_options'   => ['label' => 'label.new_password'],
-                'second_options'  => ['label' => 'label.repeat_password'],
+                'second_options'  => ['label' => 'label.repeat_new_password'],
                 'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
                 'mapped'          => false,
                 'label'           => 'label.password',

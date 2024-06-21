@@ -59,7 +59,7 @@ class Tag
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Regex(pattern: '/^[a-zA-Z0-9]+$/', message: 'message.field_alphanum')]
+    #[Assert\Regex(pattern: '/^[a-zA-Z0-9]+$/')]
     #[Assert\Length(min: 3, max: 64)]
     private ?string $title;
 

@@ -181,7 +181,7 @@
 </trans-unit>
 <trans-unit id="label.repeat_password">
 <source>label.repeat_password</source>
-<target>Repeat new password</target>
+<target>Repeat password</target>
 </trans-unit>
 <trans-unit id="label.email">
 <source>label.email</source>
@@ -283,8 +283,10 @@
 <source>title.user_change_role</source>
 <target>Change user role</target>
 </trans-unit>
-
-
+<trans-unit id="label.repeat_new_password">
+<source>label.repeat_new_password</source>
+<target>Repeat new password</target>
+</trans-unit>
 
 
 
