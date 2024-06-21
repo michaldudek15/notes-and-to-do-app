@@ -101,6 +101,10 @@ class SecurityController extends AbstractController
     public function changeEmail(Request $request): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
             return $this->redirectToRoute('app_login');
         }
 
@@ -133,6 +137,10 @@ class SecurityController extends AbstractController
     public function changePassword(Request $request): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
             return $this->redirectToRoute('app_login');
         }
 

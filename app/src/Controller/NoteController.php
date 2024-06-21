@@ -51,6 +51,14 @@ class NoteController extends AbstractController
     #[Route(name: 'note_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page=1): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $user       = $this->getUser();
         $pagination = $this->noteService->getPaginatedList(
             $page,
@@ -76,9 +84,16 @@ class NoteController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    #[IsGranted('VIEW', subject: 'note')]
     public function show(Note $note): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('note/show.html.twig', ['note' => $note]);
 
     }//end show()
@@ -98,6 +113,14 @@ class NoteController extends AbstractController
     )]
     public function create(Request $request): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $user = $this->getUser();
         $note = new note();
         $note->setAuthor($user);
@@ -131,9 +154,16 @@ class NoteController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'note_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    #[IsGranted('VIEW', subject: 'note')]
     public function edit(Request $request, Note $note): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $user = $this->getUser();
         $form = $this->createForm(
             NoteType::class,
@@ -177,9 +207,16 @@ class NoteController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'note_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    #[IsGranted('VIEW', subject: 'note')]
     public function delete(Request $request, Note $note): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(
             FormType::class,
             $note,

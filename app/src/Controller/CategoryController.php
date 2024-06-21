@@ -46,6 +46,14 @@ class CategoryController extends AbstractController
     #[Route(name: 'category_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page=1): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $pagination = $this->categoryService->getPaginatedList($page, $this->getUser());
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
@@ -66,9 +74,16 @@ class CategoryController extends AbstractController
         requirements: ['id' => '[1-9]\d*'],
         methods: 'GET'
     )]
-    #[IsGranted('VIEW', subject: 'category')]
     public function show(Category $category): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('category/show.html.twig', ['category' => $category]);
 
     }//end show()
@@ -88,6 +103,14 @@ class CategoryController extends AbstractController
     )]
     public function create(Request $request): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $user = $this->getUser();
 
         $category = new Category();
@@ -123,9 +146,16 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/edit', name: 'category_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
-    #[IsGranted('VIEW', subject: 'category')]
     public function edit(Request $request, Category $category): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         $form = $this->createForm(
             CategoryType::class,
             $category,
@@ -167,9 +197,16 @@ class CategoryController extends AbstractController
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'category_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
-    #[IsGranted('VIEW', subject: 'category')]
     public function delete(Request $request, Category $category): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+            return $this->redirectToRoute('app_login');
+        }
+
         if (!$this->categoryService->canBeDeleted($category)) {
             $this->addFlash(
                 'warning',
