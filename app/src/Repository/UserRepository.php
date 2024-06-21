@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
+use App\Entity\Note;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\QueryBuilder;
@@ -20,9 +23,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 {
 
 
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, User::class);
+        $this->entityManager = $entityManager;
 
     }//end __construct()
 
@@ -88,7 +92,27 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      */
     public function delete(User $user): void
     {
-        assert($this->_em instanceof EntityManager);
+        // usuwanie notatek danego użytkownika
+        $notes = $this->_em->getRepository(Note::class)->findBy(['author' => $user]);
+        foreach ($notes as $note) {
+            $this->_em->remove($note);
+        }
+
+        // pobranie kategorii danego użytkownika
+        $categories = $this->_em->getRepository(Category::class)->findBy(['author' => $user]);
+
+        // usuwanie notatek powiązanych z kategoriami danego użytkownika
+        foreach ($categories as $category) {
+            $categoryNotes = $this->_em->getRepository(Note::class)->findBy(['category' => $category]);
+            foreach ($categoryNotes as $note) {
+                $this->_em->remove($note);
+            }
+
+            // uswuanie kategorii
+            $this->_em->remove($category);
+        }
+
+        // usuwanie użytkownika
         $this->_em->remove($user);
         $this->_em->flush();
 
