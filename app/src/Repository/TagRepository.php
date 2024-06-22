@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tag repository.
  */
@@ -25,8 +26,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class TagRepository extends ServiceEntityRepository
 {
-
-
     /**
      * Constructor.
      *
@@ -35,7 +34,6 @@ class TagRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tag::class);
-
     }//end __construct()
 
 
@@ -47,7 +45,6 @@ class TagRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()->select('partial tag.{id, createdAt, updatedAt, title}')->orderBy('tag.updatedAt', 'DESC');
-
     }//end queryAll()
 
 
@@ -58,10 +55,9 @@ class TagRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder=null): QueryBuilder
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return ($queryBuilder ?? $this->createQueryBuilder('tag'));
-
     }//end getOrCreateQueryBuilder()
 
 
@@ -70,7 +66,6 @@ class TagRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->persist($tag);
         $this->_em->flush();
-
     }//end save()
 
 
@@ -87,8 +82,5 @@ class TagRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->remove($tag);
         $this->_em->flush();
-
     }//end delete()
-
-
 }//end class

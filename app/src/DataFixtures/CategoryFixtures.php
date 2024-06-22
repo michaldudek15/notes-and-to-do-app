@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category fixtures.
  */
@@ -18,8 +19,6 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-
-
     /**
      * Load data.
      *
@@ -52,15 +51,11 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
         );
 
         $this->manager->flush();
-
     }//end loadData()
 
 
     public function getDependencies(): array
     {
         return [UserFixtures::class];
-
     }//end getDependencies()
-
-
 }//end class

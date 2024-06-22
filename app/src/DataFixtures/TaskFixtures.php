@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task fixtures.
  */
@@ -17,8 +18,6 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-
-
     /**
      * Load data.
      *
@@ -68,7 +67,6 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         );
 
         $this->manager->flush();
-
     }//end loadData()
 
 
@@ -86,8 +84,5 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             CategoryFixtures::class,
             TagFixtures::class,
         ];
-
     }//end getDependencies()
-
-
 }//end class

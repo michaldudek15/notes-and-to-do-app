@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User controller.
  */
@@ -20,14 +21,12 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-
 /**
  * Class UserController.
  */
 #[Route('/user')]
 class UserController extends AbstractController
 {
-
     private Security $security;
 
 
@@ -40,7 +39,6 @@ class UserController extends AbstractController
     public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher, Security $security)
     {
         $this->security = $security;
-
     }//end __construct()
 
 
@@ -50,7 +48,7 @@ class UserController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'user_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryParameter] int $page = 1): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash(
@@ -68,7 +66,6 @@ class UserController extends AbstractController
                 'currentUserId' => $this->getUser()->getId(),
             ]
         );
-
     }//end index()
 
 
@@ -96,7 +93,6 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/show.html.twig', ['user' => $user]);
-
     }//end show()
 
 
@@ -150,7 +146,6 @@ class UserController extends AbstractController
                 'user' => $user,
             ]
         );
-
     }//end edit()
 
 
@@ -201,7 +196,6 @@ class UserController extends AbstractController
                 'user' => $user,
             ]
         );
-
     }//end delete()
 
 
@@ -249,8 +243,5 @@ class UserController extends AbstractController
                 'user' => $user,
             ]
         );
-
     }//end changeRole()
-
-
 }//end class

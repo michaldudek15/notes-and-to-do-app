@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tag type.
  */
@@ -13,16 +14,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-
 /**
  * Class TagType.
  */
 class TagType extends AbstractType
 {
-
     public function __construct(private readonly TranslatorInterface $translator)
     {
-
     }
 
     /**
@@ -55,7 +53,6 @@ class TagType extends AbstractType
                 ]
             ]
         );
-
     }//end buildForm()
 
 
@@ -67,7 +64,6 @@ class TagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => Tag::class]);
-
     }//end configureOptions()
 
 
@@ -82,8 +78,5 @@ class TagType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'tag';
-
     }//end getBlockPrefix()
-
-
 }//end class

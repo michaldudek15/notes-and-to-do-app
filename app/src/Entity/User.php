@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User entity.
  */
@@ -20,7 +21,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\UniqueConstraint(name: 'email_idx', columns: ['email'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-
     /**
      * Primary key.
      *
@@ -73,7 +73,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
-
     }//end getId()
 
 
@@ -85,7 +84,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getEmail(): ?string
     {
         return $this->email;
-
     }//end getEmail()
 
 
@@ -97,7 +95,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): void
     {
         $this->email = $email;
-
     }//end setEmail()
 
 
@@ -111,7 +108,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
-
     }//end getUserIdentifier()
 
 
@@ -122,7 +118,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
-
     }//end getUsername()
 
 
@@ -140,7 +135,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles[] = UserRole::ROLE_USER->value;
 
         return array_unique($roles);
-
     }//end getRoles()
 
 
@@ -152,7 +146,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): void
     {
         $this->roles = $roles;
-
     }//end setRoles()
 
 
@@ -166,7 +159,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPassword(): ?string
     {
         return $this->password;
-
     }//end getPassword()
 
 
@@ -178,7 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): void
     {
         $this->password = $password;
-
     }//end setPassword()
 
 
@@ -191,7 +182,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getSalt(): ?string
     {
         return null;
-
     }//end getSalt()
 
 
@@ -204,8 +194,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-
     }//end eraseCredentials()
-
-
 }//end class

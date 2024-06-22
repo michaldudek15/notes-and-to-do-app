@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tag entity.
  */
@@ -20,7 +21,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['title'])]
 class Tag
 {
-
     /**
      * Primary key.
      *
@@ -83,7 +83,6 @@ class Tag
     public function getId(): ?int
     {
         return $this->id;
-
     }//end getId()
 
 
@@ -95,7 +94,6 @@ class Tag
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-
     }//end getCreatedAt()
 
 
@@ -107,7 +105,6 @@ class Tag
     public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-
     }//end setCreatedAt()
 
 
@@ -119,7 +116,6 @@ class Tag
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
-
     }//end getUpdatedAt()
 
 
@@ -131,7 +127,6 @@ class Tag
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-
     }//end setUpdatedAt()
 
 
@@ -143,7 +138,6 @@ class Tag
     public function getTitle(): ?string
     {
         return $this->title;
-
     }//end getTitle()
 
 
@@ -155,14 +149,12 @@ class Tag
     public function setTitle(?string $title): void
     {
         $this->title = $title;
-
     }//end setTitle()
 
 
     public function getSlug(): ?string
     {
         return $this->slug;
-
     }//end getSlug()
 
 
@@ -171,8 +163,5 @@ class Tag
         $this->slug = $slug;
 
         return $this;
-
     }//end setSlug()
-
-
 }//end class

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tag service interface.
  */
@@ -13,8 +14,6 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface TagServiceInterface
 {
-
-
     /**
      * @param int $page
      *

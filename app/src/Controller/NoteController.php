@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note controller.
  */
@@ -26,14 +27,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/note')]
 class NoteController extends AbstractController
 {
-
-
     /**
      * Constructor.
      */
     public function __construct(private readonly noteServiceInterface $noteService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
-
     }//end __construct()
 
 
@@ -45,7 +43,7 @@ class NoteController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'note_index', methods: 'GET')]
-    public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             $this->addFlash(
@@ -63,7 +61,6 @@ class NoteController extends AbstractController
         );
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);
-
     }//end index()
 
 
@@ -91,7 +88,6 @@ class NoteController extends AbstractController
         }
 
         return $this->render('note/show.html.twig', ['note' => $note]);
-
     }//end show()
 
 
@@ -137,7 +133,6 @@ class NoteController extends AbstractController
             'note/create.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end create()
 
 
@@ -190,7 +185,6 @@ class NoteController extends AbstractController
                 'note' => $note,
             ]
         );
-
     }//end edit()
 
 
@@ -241,8 +235,5 @@ class NoteController extends AbstractController
                 'note' => $note,
             ]
         );
-
     }//end delete()
-
-
 }//end class

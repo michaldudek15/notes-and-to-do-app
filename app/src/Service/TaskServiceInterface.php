@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task service interface.
  */
@@ -15,8 +16,6 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface TaskServiceInterface
 {
-
-
     /**
      * @param int                     $page
      * @param User                    $author

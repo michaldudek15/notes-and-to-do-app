@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PasswordChange type.
  */
@@ -15,17 +16,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-
 /**
  * Class PasswordChangeType.
  */
 class PasswordChangeType extends AbstractType
 {
-
-
     public function __construct(private readonly TranslatorInterface $translator)
     {
-
     }//end __construct()
 
 
@@ -65,7 +62,6 @@ class PasswordChangeType extends AbstractType
                 'required'        => true,
             ]
         );
-
     }//end buildForm()
 
 
@@ -77,7 +73,6 @@ class PasswordChangeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => User::class]);
-
     }//end configureOptions()
 
 
@@ -92,8 +87,5 @@ class PasswordChangeType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'user';
-
     }//end getBlockPrefix()
-
-
 }//end class

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Login form authenticator.
  */
@@ -51,7 +52,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator, Security $security)
     {
         $this->security = $security;
-
     }//end __construct()
 
 
@@ -68,7 +68,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     {
         return self::LOGIN_ROUTE === $request->attributes->get('_route')
             && $request->isMethod('POST');
-
     }//end supports()
 
 
@@ -102,7 +101,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
                 new CsrfTokenBadge('authenticate', (string) $request->request->get('_csrf_token')),
             ]
         );
-
     }//end authenticate()
 
 
@@ -134,7 +132,6 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         } else {
             return new RedirectResponse($this->urlGenerator->generate(self::DEFAULT_ROUTE));
         }
-
     }//end onAuthenticationSuccess()
 
 
@@ -148,8 +145,5 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     protected function getLoginUrl(Request $request): string
     {
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
-
     }//end getLoginUrl()
-
-
 }//end class

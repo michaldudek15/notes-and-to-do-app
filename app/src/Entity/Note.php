@@ -11,12 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
 #[ORM\Table(name: 'notes')]
 class Note
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -66,77 +64,66 @@ class Note
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-
     }//end __construct()
 
 
     public function getId(): ?int
     {
         return $this->id;
-
     }//end getId()
 
 
     public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
-
     }//end getCreatedAt()
 
 
     public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-
     }//end setCreatedAt()
 
 
     public function getUpdatedAt(): ?DateTimeImmutable
     {
         return $this->updatedAt;
-
     }//end getUpdatedAt()
 
 
     public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-
     }//end setUpdatedAt()
 
 
     public function getTitle(): ?string
     {
         return $this->title;
-
     }//end getTitle()
 
 
     public function setTitle(string $title): void
     {
         $this->title = $title;
-
     }//end setTitle()
 
 
     public function getContent(): ?string
     {
         return $this->content;
-
     }//end getContent()
 
 
     public function setContent(string $content): void
     {
         $this->content = $content;
-
     }//end setContent()
 
 
     public function getCategory(): ?Category
     {
         return $this->category;
-
     }//end getCategory()
 
 
@@ -145,7 +132,6 @@ class Note
         $this->category = $category;
 
         return $this;
-
     }//end setCategory()
 
 
@@ -155,7 +141,6 @@ class Note
     public function getTags(): Collection
     {
         return $this->tags;
-
     }//end getTags()
 
 
@@ -164,21 +149,18 @@ class Note
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
-
     }//end addTag()
 
 
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
-
     }//end removeTag()
 
 
     public function getAuthor(): ?User
     {
         return $this->author;
-
     }//end getAuthor()
 
 
@@ -187,8 +169,5 @@ class Note
         $this->author = $author;
 
         return $this;
-
     }//end setAuthor()
-
-
 }//end class

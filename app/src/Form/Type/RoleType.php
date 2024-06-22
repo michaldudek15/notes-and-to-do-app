@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Role type.
  */
@@ -16,8 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class RoleType extends AbstractType
 {
-
-
     /**
      * Builds the form.
      *
@@ -41,7 +40,6 @@ class RoleType extends AbstractType
                 'label'    => 'label.grant_admin',
             ]
         );
-
     }//end buildForm()
 
 
@@ -53,7 +51,6 @@ class RoleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => User::class]);
-
     }//end configureOptions()
 
 
@@ -68,8 +65,5 @@ class RoleType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'user';
-
     }//end getBlockPrefix()
-
-
 }//end class

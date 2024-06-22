@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task voter.
  */
@@ -49,7 +50,6 @@ class TaskVoter extends Voter
     {
         return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE])
             && $subject instanceof Task;
-
     }//end supports()
 
 
@@ -80,7 +80,6 @@ class TaskVoter extends Voter
             self::DELETE => $this->canDelete($subject, $user),
             default => false,
         };
-
     }//end voteOnAttribute()
 
 
@@ -95,7 +94,6 @@ class TaskVoter extends Voter
     private function canEdit(Task $task, UserInterface $user): bool
     {
         return $task->getAuthor() === $user;
-
     }//end canEdit()
 
 
@@ -110,7 +108,6 @@ class TaskVoter extends Voter
     private function canView(Task $task, UserInterface $user): bool
     {
         return $task->getAuthor() === $user;
-
     }//end canView()
 
 
@@ -125,8 +122,5 @@ class TaskVoter extends Voter
     private function canDelete(Task $task, UserInterface $user): bool
     {
         return $task->getAuthor() === $user;
-
     }//end canDelete()
-
-
 }//end class

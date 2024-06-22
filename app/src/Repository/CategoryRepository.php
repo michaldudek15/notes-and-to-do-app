@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category repository.
  */
@@ -26,8 +27,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CategoryRepository extends ServiceEntityRepository
 {
-
-
     /**
      * Constructor.
      *
@@ -36,7 +35,6 @@ class CategoryRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Category::class);
-
     }//end __construct()
 
 
@@ -48,7 +46,6 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()->select('partial category.{id, createdAt, updatedAt, title}')->orderBy('category.updatedAt', 'DESC');
-
     }//end queryAll()
 
 
@@ -59,10 +56,9 @@ class CategoryRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder=null): QueryBuilder
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return ($queryBuilder ?? $this->createQueryBuilder('category'));
-
     }//end getOrCreateQueryBuilder()
 
 
@@ -71,7 +67,6 @@ class CategoryRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->persist($category);
         $this->_em->flush();
-
     }//end save()
 
 
@@ -88,7 +83,6 @@ class CategoryRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->remove($category);
         $this->_em->flush();
-
     }//end delete()
 
 
@@ -106,8 +100,5 @@ class CategoryRepository extends ServiceEntityRepository
         $queryBuilder->andWhere('category.author = :author')->setParameter('author', $user);
 
         return $queryBuilder;
-
     }//end queryByAuthor()
-
-
 }//end class

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category entity.
  */
@@ -20,7 +21,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[UniqueEntity(fields: ['title'])]
 class Category
 {
-
     /**
      * Primary key.
      *
@@ -93,7 +93,6 @@ class Category
     public function getId(): ?int
     {
         return $this->id;
-
     }//end getId()
 
 
@@ -105,7 +104,6 @@ class Category
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-
     }//end getCreatedAt()
 
 
@@ -117,7 +115,6 @@ class Category
     public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-
     }//end setCreatedAt()
 
 
@@ -129,7 +126,6 @@ class Category
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
-
     }//end getUpdatedAt()
 
 
@@ -141,7 +137,6 @@ class Category
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-
     }//end setUpdatedAt()
 
 
@@ -153,7 +148,6 @@ class Category
     public function getTitle(): ?string
     {
         return $this->title;
-
     }//end getTitle()
 
 
@@ -165,14 +159,12 @@ class Category
     public function setTitle(?string $title): void
     {
         $this->title = $title;
-
     }//end setTitle()
 
 
     public function getSlug(): ?string
     {
         return $this->slug;
-
     }//end getSlug()
 
 
@@ -181,14 +173,12 @@ class Category
         $this->slug = $slug;
 
         return $this;
-
     }//end setSlug()
 
 
     public function getAuthor(): ?User
     {
         return $this->author;
-
     }//end getAuthor()
 
 
@@ -197,8 +187,5 @@ class Category
         $this->author = $author;
 
         return $this;
-
     }//end setAuthor()
-
-
 }//end class

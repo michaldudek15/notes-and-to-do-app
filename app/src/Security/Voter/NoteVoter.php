@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note voter.
  */
@@ -49,7 +50,6 @@ class NoteVoter extends Voter
     {
         return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE])
             && $subject instanceof Note;
-
     }//end supports()
 
 
@@ -80,7 +80,6 @@ class NoteVoter extends Voter
             self::DELETE => $this->canDelete($subject, $user),
             default => false,
         };
-
     }//end voteOnAttribute()
 
 
@@ -95,7 +94,6 @@ class NoteVoter extends Voter
     private function canEdit(Note $note, UserInterface $user): bool
     {
         return $note->getAuthor() === $user;
-
     }//end canEdit()
 
 
@@ -110,7 +108,6 @@ class NoteVoter extends Voter
     private function canView(Note $note, UserInterface $user): bool
     {
         return $note->getAuthor() === $user;
-
     }//end canView()
 
 
@@ -125,8 +122,5 @@ class NoteVoter extends Voter
     private function canDelete(Note $note, UserInterface $user): bool
     {
         return $note->getAuthor() === $user;
-
     }//end canDelete()
-
-
 }//end class

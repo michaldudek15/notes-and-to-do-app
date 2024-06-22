@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note list filters DTO.
  */
@@ -13,8 +14,6 @@ use App\Entity\Tag;
  */
 class TaskListFiltersDto
 {
-
-
     /**
      * Constructor.
      *
@@ -23,8 +22,5 @@ class TaskListFiltersDto
      */
     public function __construct(public readonly ?Category $category, public readonly ?Tag $tag)
     {
-
     }//end __construct()
-
-
 }//end class

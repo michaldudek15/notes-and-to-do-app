@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category service interface.
  */
@@ -14,8 +15,6 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface CategoryServiceInterface
 {
-
-
     /**
      * Get paginated list.
      *

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Base fixtures.
  */
@@ -102,7 +103,7 @@ abstract class AbstractBaseFixtures extends Fixture
             $this->referencesIndex[$groupName] = [];
 
             foreach (array_keys($this->referenceRepository->getReferences()) as $key) {
-                if (str_starts_with((string) $key, $groupName.'_')) {
+                if (str_starts_with((string) $key, $groupName . '_')) {
                     $this->referencesIndex[$groupName][] = $key;
                 }
             }

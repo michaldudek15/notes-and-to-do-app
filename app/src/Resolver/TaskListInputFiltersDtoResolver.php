@@ -1,4 +1,5 @@
 <?php
+
 /**
  * TaskListInputFiltersDto resolver.
  */
@@ -15,8 +16,6 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
  */
 class TaskListInputFiltersDtoResolver implements ValueResolverInterface
 {
-
-
     /**
      * Returns the possible value(s).
      *

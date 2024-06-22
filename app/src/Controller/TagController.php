@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tag controller.
  */
@@ -23,8 +24,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/tag')]
 class TagController extends AbstractController
 {
-
-
     /**
      * Constructor.
      *
@@ -33,7 +32,6 @@ class TagController extends AbstractController
      */
     public function __construct(private readonly TagServiceInterface $tagService, private readonly TranslatorInterface $translator)
     {
-
     }//end __construct()
 
 
@@ -43,7 +41,7 @@ class TagController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'tag_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryParameter] int $page = 1): Response
     {
         if (!$this->isGranted('ROLE_ADMIN')) {
             $this->addFlash(
@@ -56,7 +54,6 @@ class TagController extends AbstractController
         $pagination = $this->tagService->getPaginatedList($page);
 
         return $this->render('tag/index.html.twig', ['pagination' => $pagination]);
-
     }//end index()
 
 
@@ -84,7 +81,6 @@ class TagController extends AbstractController
         }
 
         return $this->render('tag/show.html.twig', ['tag' => $tag]);
-
     }//end show()
 
 
@@ -129,7 +125,6 @@ class TagController extends AbstractController
             'tag/create.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end create()
 
 
@@ -180,7 +175,6 @@ class TagController extends AbstractController
                 'tag'  => $tag,
             ]
         );
-
     }//end edit()
 
 
@@ -231,8 +225,5 @@ class TagController extends AbstractController
                 'tag'  => $tag,
             ]
         );
-
     }//end delete()
-
-
 }//end class

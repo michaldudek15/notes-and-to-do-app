@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User fixtures.
  */
@@ -16,14 +17,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class UserFixtures extends AbstractBaseFixtures
 {
-
-
     /**
      * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
     {
-
     }//end __construct()
 
 
@@ -73,8 +71,5 @@ class UserFixtures extends AbstractBaseFixtures
         );
 
         $this->manager->flush();
-
     }//end loadData()
-
-
 }//end class

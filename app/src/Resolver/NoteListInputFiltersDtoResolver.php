@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NoteListInputFiltersDto resolver.
  */
@@ -15,8 +16,6 @@ use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
  */
 class NoteListInputFiltersDtoResolver implements ValueResolverInterface
 {
-
-
     /**
      * Returns the possible value(s).
      *

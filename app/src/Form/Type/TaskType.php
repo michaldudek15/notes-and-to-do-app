@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note type.
  */
@@ -27,17 +28,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * Class TaskType.
  */
 class TaskType extends AbstractType
 {
-
-
     public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
     {
-
     }//end __construct()
 
 
@@ -122,7 +119,6 @@ class TaskType extends AbstractType
                 }
             }
         );
-
     }//end buildForm()
 
 
@@ -135,7 +131,6 @@ class TaskType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Task::class]);
         $resolver->setDefaults(['user' => 0]);
-
     }//end configureOptions()
 
 
@@ -150,8 +145,5 @@ class TaskType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'task';
-
     }//end getBlockPrefix()
-
-
 }//end class

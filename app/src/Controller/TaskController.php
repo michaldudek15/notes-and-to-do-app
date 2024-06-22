@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Task controller.
  */
@@ -30,14 +31,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/task')]
 class TaskController extends AbstractController
 {
-
-
     /**
      * Constructor.
      */
     public function __construct(private readonly taskServiceInterface $taskService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
-
     }//end __construct()
 
 
@@ -49,7 +47,7 @@ class TaskController extends AbstractController
      * @return Response HTTP response
      */
     #[Route(name: 'task_index', methods: 'GET')]
-    public function index(#[MapQueryString(resolver: TaskListInputFiltersDtoResolver::class)] TaskListInputFiltersDto $filters, #[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryString(resolver: TaskListInputFiltersDtoResolver::class)] TaskListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             $this->addFlash(
@@ -67,7 +65,6 @@ class TaskController extends AbstractController
         );
 
         return $this->render('task/index.html.twig', ['pagination' => $pagination]);
-
     }//end index()
 
 
@@ -95,7 +92,6 @@ class TaskController extends AbstractController
         }
 
         return $this->render('task/show.html.twig', ['task' => $task]);
-
     }//end show()
 
 
@@ -141,7 +137,6 @@ class TaskController extends AbstractController
             'task/create.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end create()
 
 
@@ -194,7 +189,6 @@ class TaskController extends AbstractController
                 'task' => $task,
             ]
         );
-
     }//end edit()
 
 
@@ -245,8 +239,5 @@ class TaskController extends AbstractController
                 'task' => $task,
             ]
         );
-
     }//end delete()
-
-
 }//end class

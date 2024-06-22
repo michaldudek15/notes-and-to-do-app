@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User type.
  */
@@ -20,11 +21,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class UserType extends AbstractType
 {
-
-
     public function __construct(private readonly TranslatorInterface $translator)
     {
-
     }//end __construct()
 
 
@@ -64,7 +62,6 @@ class UserType extends AbstractType
                 'required'        => true,
             ]
         );
-
     }//end buildForm()
 
 
@@ -76,7 +73,6 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => User::class]);
-
     }//end configureOptions()
 
 
@@ -91,8 +87,5 @@ class UserType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'user';
-
     }//end getBlockPrefix()
-
-
 }//end class

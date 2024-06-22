@@ -17,17 +17,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-
 class SecurityController extends AbstractController
 {
-
-
     /**
      * Constructor.
      */
     public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
     {
-
     }//end __construct()
 
 
@@ -36,7 +32,7 @@ class SecurityController extends AbstractController
     {
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('user_index');
-        } else if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+        } elseif ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('note_index');
         }
 
@@ -44,7 +40,6 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-
     }//end login()
 
 
@@ -52,7 +47,6 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
-
     }//end logout()
 
 
@@ -89,7 +83,6 @@ class SecurityController extends AbstractController
             'security/register.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end register()
 
 
@@ -125,7 +118,6 @@ class SecurityController extends AbstractController
             'security/changeEmail.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end changeEmail()
 
 
@@ -172,8 +164,5 @@ class SecurityController extends AbstractController
             'security/changePassword.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end changePassword()
-
-
 }//end class

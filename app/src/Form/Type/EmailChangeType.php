@@ -1,4 +1,5 @@
 <?php
+
 /**
  * EmailChange type.
  */
@@ -18,8 +19,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class EmailChangeType extends AbstractType
 {
-
-
     /**
      * Builds the form.
      *
@@ -41,7 +40,6 @@ class EmailChangeType extends AbstractType
                 'required' => true,
             ]
         );
-
     }//end buildForm()
 
 
@@ -53,7 +51,6 @@ class EmailChangeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => User::class]);
-
     }//end configureOptions()
 
 
@@ -68,8 +65,5 @@ class EmailChangeType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'user';
-
     }//end getBlockPrefix()
-
-
 }//end class

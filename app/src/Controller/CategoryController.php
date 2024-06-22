@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category controller.
  */
@@ -22,8 +23,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-
-
     /**
      * Constructor.
      *
@@ -32,30 +31,31 @@ class CategoryController extends AbstractController
      */
     public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly TranslatorInterface $translator)
     {
-
     }//end __construct()
 
 
     /**
      * Index action.
      *
+     * @param int $page Page number
+     *
      * @return Response HTTP response
      */
     #[Route(name: 'category_index', methods: 'GET')]
-    public function index(#[MapQueryParameter] int $page=1): Response
+    public function index(#[MapQueryParameter] int $page = 1): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             $this->addFlash(
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
         $pagination = $this->categoryService->getPaginatedList($page, $this->getUser());
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
-
     }//end index()
 
 
@@ -79,11 +79,11 @@ class CategoryController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
         return $this->render('category/show.html.twig', ['category' => $category]);
-
     }//end show()
 
 
@@ -106,6 +106,7 @@ class CategoryController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -131,7 +132,6 @@ class CategoryController extends AbstractController
             'category/create.html.twig',
             ['form' => $form->createView()]
         );
-
     }//end create()
 
 
@@ -151,6 +151,7 @@ class CategoryController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -182,7 +183,6 @@ class CategoryController extends AbstractController
                 'category' => $category,
             ]
         );
-
     }//end edit()
 
 
@@ -202,6 +202,7 @@ class CategoryController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -242,8 +243,5 @@ class CategoryController extends AbstractController
                 'category' => $category,
             ]
         );
-
     }//end delete()
-
-
 }//end class

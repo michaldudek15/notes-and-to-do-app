@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User role.
  */
@@ -25,8 +26,5 @@ enum UserRole: string
             UserRole::ROLE_USER => 'label.role_user',
             UserRole::ROLE_ADMIN => 'label.role_admin',
         };
-
     }//end label()
-
-
 }//end enum

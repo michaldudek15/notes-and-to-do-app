@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note service interface.
  */
@@ -15,8 +16,6 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface NoteServiceInterface
 {
-
-
     /**
      * Get paginated list.
      *

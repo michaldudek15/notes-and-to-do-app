@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note type.
  */
@@ -25,17 +26,13 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * Class NoteType.
  */
 class NoteType extends AbstractType
 {
-
-
     public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
     {
-
     }//end __construct()
 
 
@@ -124,7 +121,6 @@ class NoteType extends AbstractType
                 }
             }
         );
-
     }//end buildForm()
 
 
@@ -137,7 +133,6 @@ class NoteType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Note::class]);
         $resolver->setDefaults(['user' => 0]);
-
     }//end configureOptions()
 
 
@@ -152,8 +147,5 @@ class NoteType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'note';
-
     }//end getBlockPrefix()
-
-
 }//end class

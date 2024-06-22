@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Category voter.
  */
@@ -49,7 +50,6 @@ class CategoryVoter extends Voter
     {
         return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE])
             && $subject instanceof Category;
-
     }//end supports()
 
 
@@ -80,7 +80,6 @@ class CategoryVoter extends Voter
             self::DELETE => $this->canDelete($subject, $user),
             default => false,
         };
-
     }//end voteOnAttribute()
 
 
@@ -95,7 +94,6 @@ class CategoryVoter extends Voter
     private function canEdit(Category $category, UserInterface $user): bool
     {
         return $category->getAuthor() === $user;
-
     }//end canEdit()
 
 
@@ -110,7 +108,6 @@ class CategoryVoter extends Voter
     private function canView(Category $category, UserInterface $user): bool
     {
         return $category->getAuthor() === $user;
-
     }//end canView()
 
 
@@ -125,8 +122,5 @@ class CategoryVoter extends Voter
     private function canDelete(Category $category, UserInterface $user): bool
     {
         return $category->getAuthor() === $user;
-
     }//end canDelete()
-
-
 }//end class

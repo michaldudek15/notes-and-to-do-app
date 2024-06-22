@@ -1,4 +1,5 @@
 <?php
+
 /**
  * User service interface.
  */
@@ -13,8 +14,6 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface UserServiceInterface
 {
-
-
     /**
      * @param int $page
      *

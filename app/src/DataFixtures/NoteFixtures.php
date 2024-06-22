@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Note fixtures.
  */
@@ -17,8 +18,6 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
  */
 class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-
-
     /**
      * Load data.
      *
@@ -68,7 +67,6 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         );
 
         $this->manager->flush();
-
     }//end loadData()
 
 
@@ -86,8 +84,5 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             CategoryFixtures::class,
             TagFixtures::class,
         ];
-
     }//end getDependencies()
-
-
 }//end class

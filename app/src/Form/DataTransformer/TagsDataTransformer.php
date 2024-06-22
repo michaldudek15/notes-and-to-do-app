@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tags data transformer.
  */
@@ -17,8 +18,6 @@ use Symfony\Component\Form\DataTransformerInterface;
  */
 class TagsDataTransformer implements DataTransformerInterface
 {
-
-
     /**
      * Constructor.
      *
@@ -26,7 +25,6 @@ class TagsDataTransformer implements DataTransformerInterface
      */
     public function __construct(private readonly TagServiceInterface $tagService)
     {
-
     }//end __construct()
 
 
@@ -50,7 +48,6 @@ class TagsDataTransformer implements DataTransformerInterface
         }
 
         return implode(', ', $tagTitles);
-
     }//end transform()
 
 
@@ -86,8 +83,5 @@ class TagsDataTransformer implements DataTransformerInterface
         }
 
         return $tags;
-
     }//end reverseTransform()
-
-
 }//end class

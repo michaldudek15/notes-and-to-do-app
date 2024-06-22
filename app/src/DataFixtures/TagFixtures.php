@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tag fixtures.
  */
@@ -14,8 +15,6 @@ use App\Entity\Tag;
  */
 class TagFixtures extends AbstractBaseFixtures
 {
-
-
     /**
      * Load data.
      *
@@ -46,8 +45,5 @@ class TagFixtures extends AbstractBaseFixtures
         );
 
         $this->manager->flush();
-
     }//end loadData()
-
-
 }//end class

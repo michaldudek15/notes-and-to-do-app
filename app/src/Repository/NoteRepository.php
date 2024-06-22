@@ -28,7 +28,6 @@ class NoteRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Note::class);
-
     }//end __construct()
 
 
@@ -46,7 +45,6 @@ class NoteRepository extends ServiceEntityRepository
         )->join('note.category', 'category')->leftJoin('note.tags', 'tags')->orderBy('note.updatedAt', 'DESC');
 
         return $this->applyFiltersToList($queryBuilder, $filters);
-
     }//end queryAll()
 
 
@@ -61,7 +59,6 @@ class NoteRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder;
-
     }//end applyFiltersToList()
 
 
@@ -70,7 +67,6 @@ class NoteRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->persist($note);
         $this->_em->flush();
-
     }//end save()
 
 
@@ -87,7 +83,6 @@ class NoteRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->remove($note);
         $this->_em->flush();
-
     }//end delete()
 
 
@@ -98,10 +93,9 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder=null): QueryBuilder
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
         return ($queryBuilder ?? $this->createQueryBuilder('note'));
-
     }//end getOrCreateQueryBuilder()
 
 
@@ -120,7 +114,6 @@ class NoteRepository extends ServiceEntityRepository
         $qb = $this->getOrCreateQueryBuilder();
 
         return $qb->select($qb->expr()->countDistinct('note.id'))->where('note.category = :category')->setParameter(':category', $category)->getQuery()->getSingleScalarResult();
-
     }//end countByCategory()
 
 
@@ -138,8 +131,5 @@ class NoteRepository extends ServiceEntityRepository
         $queryBuilder->andWhere('note.author = :author')->setParameter('author', $user);
 
         return $queryBuilder;
-
     }//end queryByAuthor()
-
-
 }//end class
