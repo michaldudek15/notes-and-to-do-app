@@ -16,11 +16,9 @@ interface TagServiceInterface
 
 
     /**
-     * Get paginated list.
+     * @param int $page
      *
-     * @param integer $page Page number
-     *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface
      */
     public function getPaginatedList(int $page): PaginationInterface;
 
@@ -33,6 +31,11 @@ interface TagServiceInterface
     public function save(Tag $tag): void;
 
 
+    /**
+     * @param Tag $tag
+     *
+     * @return void
+     */
     public function delete(Tag $tag): void;
 
 
@@ -44,6 +47,4 @@ interface TagServiceInterface
      * @return Tag|null Tag entity
      */
     public function findOneByTitle(string $title): ?Tag;
-
-
 }//end interface

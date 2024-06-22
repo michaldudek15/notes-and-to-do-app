@@ -6,11 +6,9 @@
 namespace App\Service;
 
 use App\Repository\TagRepository;
-use App\Repository\NoteRepository;
 use App\Entity\Tag;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -35,13 +33,11 @@ class TagService implements TagServiceInterface
     /**
      * Constructor.
      *
-     * @param TagRepository      $tagRepository  Tag repository
-     * @param NoteRepository     $noteRepository Note repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param TagRepository      $tagRepository Tag repository
+     * @param PaginatorInterface $paginator     Paginator
      */
-    public function __construct(private readonly TagRepository $tagRepository, private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator)
+    public function __construct(private readonly TagRepository $tagRepository, private readonly PaginatorInterface $paginator)
     {
-
     }//end __construct()
 
 
@@ -59,7 +55,6 @@ class TagService implements TagServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-
     }//end getPaginatedList()
 
 
@@ -71,7 +66,6 @@ class TagService implements TagServiceInterface
     public function save(Tag $tag): void
     {
         $this->tagRepository->save($tag);
-
     }//end save()
 
 
@@ -86,7 +80,6 @@ class TagService implements TagServiceInterface
     public function delete(Tag $tag): void
     {
         $this->tagRepository->delete($tag);
-
     }//end delete()
 
 
@@ -100,7 +93,6 @@ class TagService implements TagServiceInterface
     public function findOneByTitle(string $title): ?Tag
     {
         return $this->tagRepository->findOneByTitle($title);
-
     }//end findOneByTitle()
 
 
@@ -116,8 +108,5 @@ class TagService implements TagServiceInterface
     public function findOneById(int $id): ?Tag
     {
         return $this->tagRepository->findOneById($id);
-
     }//end findOneById()
-
-
 }//end class

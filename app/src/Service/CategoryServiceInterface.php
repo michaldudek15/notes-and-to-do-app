@@ -19,7 +19,8 @@ interface CategoryServiceInterface
     /**
      * Get paginated list.
      *
-     * @param integer $page Page number
+     * @param integer $page   Page number
+     * @param User    $author Author
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -34,6 +35,11 @@ interface CategoryServiceInterface
     public function save(Category $category): void;
 
 
+    /**
+     * @param Category $category
+     *
+     * @return void
+     */
     public function delete(Category $category): void;
 
 
@@ -46,8 +52,10 @@ interface CategoryServiceInterface
      */
     public function canBeDeleted(Category $category): bool;
 
-
+    /**
+     * @param User $user
+     *
+     * @return array
+     */
     public function getCategoriesByUser(User $user): array;
-
-
 }//end interface

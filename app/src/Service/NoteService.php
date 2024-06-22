@@ -35,20 +35,23 @@ class NoteService implements NoteServiceInterface
     /**
      * Constructor.
      *
-     * @param NoteRepository     $noteRepository Note repository
-     * @param PaginatorInterface $paginator      Paginator
+     * @param NoteRepository           $noteRepository  Note repository
+     * @param PaginatorInterface       $paginator       Paginator
+     * @param CategoryServiceInterface $categoryService Category service
+     * @param TagServiceInterface      $tagService      Tag service
      */
     public function __construct(private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator, private readonly CategoryServiceInterface $categoryService, private readonly TagServiceInterface $tagService)
     {
-
     }//end __construct()
 
 
     /**
      * Get paginated list.
      *
-     * @param  integer $page   Page number
-     * @param  User    $author Author
+     * @param integer                 $page    Page number
+     * @param User                    $author  Author
+     * @param NoteListInputFiltersDto $filters Filters
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page, User $author, NoteListInputFiltersDto $filters): PaginationInterface
@@ -60,7 +63,6 @@ class NoteService implements NoteServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-
     }//end getPaginatedList()
 
 
@@ -72,7 +74,6 @@ class NoteService implements NoteServiceInterface
     public function save(Note $note): void
     {
         $this->noteRepository->save($note);
-
     }//end save()
 
 
@@ -87,7 +88,6 @@ class NoteService implements NoteServiceInterface
     public function delete(Note $note): void
     {
         $this->noteRepository->delete($note);
-
     }//end delete()
 
 
@@ -104,8 +104,5 @@ class NoteService implements NoteServiceInterface
             null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
             null !== $filters->tagId ? $this->tagService->findOneById($filters->tagId) : null
         );
-
     }//end prepareFilters()
-
-
 }//end class

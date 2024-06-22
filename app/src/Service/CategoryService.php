@@ -42,14 +42,14 @@ class CategoryService implements CategoryServiceInterface
      */
     public function __construct(private readonly CategoryRepository $categoryRepository, private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator)
     {
-
     }//end __construct()
 
 
     /**
      * Get paginated list.
      *
-     * @param integer $page Page number
+     * @param integer $page   Page number
+     * @param User    $author Author
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -60,7 +60,6 @@ class CategoryService implements CategoryServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-
     }//end getPaginatedList()
 
 
@@ -72,7 +71,6 @@ class CategoryService implements CategoryServiceInterface
     public function save(Category $category): void
     {
         $this->categoryRepository->save($category);
-
     }//end save()
 
 
@@ -87,7 +85,6 @@ class CategoryService implements CategoryServiceInterface
     public function delete(Category $category): void
     {
         $this->categoryRepository->delete($category);
-
     }//end delete()
 
 
@@ -107,7 +104,6 @@ class CategoryService implements CategoryServiceInterface
         } catch (NoResultException | NonUniqueResultException) {
             return false;
         }
-
     }//end canBeDeleted()
 
 
@@ -123,19 +119,16 @@ class CategoryService implements CategoryServiceInterface
     public function findOneById(int $id): ?Category
     {
         return $this->categoryRepository->findOneById($id);
-
     }//end findOneById()
 
 
     /**
      * @param  User $user
+     *
      * @return Category
      */
     public function getCategoriesByUser(User $user): array
     {
         return $this->categoryRepository->findBy(['author' => $user]);
-
     }//end getCategoriesByUser()
-
-
 }//end class

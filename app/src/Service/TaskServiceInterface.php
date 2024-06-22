@@ -9,7 +9,6 @@ use App\Dto\TaskListInputFiltersDto;
 use App\Entity\Task;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Interface TaskServiceInterface.
@@ -19,12 +18,11 @@ interface TaskServiceInterface
 
 
     /**
-     * Get paginated list.
+     * @param int                     $page
+     * @param User                    $author
+     * @param TaskListInputFiltersDto $filters
      *
-     * @param integer $page   Page number
-     * @param User    $author Author
-     *
-     * @return PaginationInterface<string, mixed> Paginated list
+     * @return PaginationInterface
      */
     public function getPaginatedList(int $page, User $author, TaskListInputFiltersDto $filters): PaginationInterface;
 
@@ -37,7 +35,10 @@ interface TaskServiceInterface
     public function save(Task $task): void;
 
 
+    /**
+     * @param Task $task
+     *
+     * @return void
+     */
     public function delete(Task $task): void;
-
-
 }//end interface

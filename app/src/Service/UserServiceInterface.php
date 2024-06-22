@@ -15,6 +15,11 @@ interface UserServiceInterface
 {
 
 
+    /**
+     * @param int $page
+     *
+     * @return PaginationInterface
+     */
     public function getPaginatedList(int $page): PaginationInterface;
 
 
@@ -26,7 +31,10 @@ interface UserServiceInterface
     public function save(User $user): void;
 
 
+    /**
+     * @param User $user
+     *
+     * @return void
+     */
     public function delete(User $user): void;
-
-
 }//end interface

@@ -9,7 +9,6 @@ use App\Dto\NoteListInputFiltersDto;
 use App\Entity\Note;
 use App\Entity\User;
 use Knp\Component\Pager\Pagination\PaginationInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Interface NoteServiceInterface.
@@ -21,8 +20,9 @@ interface NoteServiceInterface
     /**
      * Get paginated list.
      *
-     * @param integer $page   Page number
-     * @param User    $author Author
+     * @param integer                 $page    Page number
+     * @param User                    $author  Author
+     * @param NoteListInputFiltersDto $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -36,8 +36,10 @@ interface NoteServiceInterface
      */
     public function save(Note $note): void;
 
-
+    /**
+     * @param Note $note
+     *
+     * @return void
+     */
     public function delete(Note $note): void;
-
-
 }//end interface
