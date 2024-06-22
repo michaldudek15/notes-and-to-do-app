@@ -15,7 +15,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'task.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label.updated_at'|trans, 'task.updatedAt') }}</th>
                 <th>{{ 'label.title'|trans }}</th>
-                <th>{{ 'label.status'|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.status'|trans, 'task.status') }}</th>
                 <th>{{ 'label.category'|trans }}</th>
 
                 {% if is_granted('ROLE_ADMIN') %}

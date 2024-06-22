@@ -303,6 +303,13 @@
 <target>Zaloguj</target>
 </trans-unit>
 
+<trans-unit id="label.grant_admin">
+<source>label.grant_admin</source>
+<target>Przyznać uprawnienia admina?</target>
+</trans-unit>
+
+
+
     </body>
   </file>
 </xliff>

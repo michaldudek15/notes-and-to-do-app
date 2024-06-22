@@ -306,6 +306,13 @@
 <target>Sign in</target>
 </trans-unit>
 
+
+<trans-unit id="label.grant_admin">
+<source>label.grant_admin</source>
+<target>Grant admin?</target>
+</trans-unit>
+
+
     </body>
   </file>
 </xliff>

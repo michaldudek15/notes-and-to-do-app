@@ -42,7 +42,7 @@ class RoleType extends AbstractType
                 'choices'  => ['Admin' => 'ROLE_ADMIN'],
                 'multiple' => 'true',
                 'expanded' => 'true',
-                'label'    => 'Grant admin?',
+                'label'    => 'label.grant_admin',
             ]
         );
 
