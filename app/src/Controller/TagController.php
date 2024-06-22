@@ -38,6 +38,8 @@ class TagController extends AbstractController
     /**
      * Index action.
      *
+     * @param int $page Page number
+     *
      * @return Response HTTP response
      */
     #[Route(name: 'tag_index', methods: 'GET')]
@@ -48,6 +50,7 @@ class TagController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -77,6 +80,7 @@ class TagController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -103,6 +107,7 @@ class TagController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -144,6 +149,7 @@ class TagController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -194,6 +200,7 @@ class TagController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 

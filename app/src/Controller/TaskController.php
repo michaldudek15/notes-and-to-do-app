@@ -31,8 +31,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/task')]
 class TaskController extends AbstractController
 {
+
     /**
-     * Constructor.
+     * @param TaskServiceInterface     $taskService     Task service
+     * @param TranslatorInterface      $translator      Translator
+     * @param CategoryServiceInterface $categoryService Category service
      */
     public function __construct(private readonly taskServiceInterface $taskService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
@@ -40,11 +43,10 @@ class TaskController extends AbstractController
 
 
     /**
-     * Index action.
+     * @param TaskListInputFiltersDto $filters Filters
+     * @param int                     $page    Page number
      *
-     * @param integer $page Page number
-     *
-     * @return Response HTTP response
+     * @return Response
      */
     #[Route(name: 'task_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: TaskListInputFiltersDtoResolver::class)] TaskListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
@@ -54,6 +56,7 @@ class TaskController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -88,6 +91,7 @@ class TaskController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -114,6 +118,7 @@ class TaskController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -156,6 +161,7 @@ class TaskController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -208,6 +214,7 @@ class TaskController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 

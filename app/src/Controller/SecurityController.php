@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Security controller.
+ */
+
 namespace App\Controller;
 
 use App\Entity\Enum\UserRole;
@@ -17,22 +21,34 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * Security controller
+ */
 class SecurityController extends AbstractController
 {
+
     /**
-     * Constructor.
+     * @param UserServiceInterface        $userService    User service
+     * @param TranslatorInterface         $translator     Translator
+     * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
     public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
     {
     }//end __construct()
 
 
+    /**
+     * @param AuthenticationUtils $authenticationUtils Authentication utils
+     *
+     * @return Response
+     */
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('user_index');
-        } elseif ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+        }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('note_index');
         }
 
@@ -43,6 +59,9 @@ class SecurityController extends AbstractController
     }//end login()
 
 
+    /**
+     * @return void
+     */
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
@@ -50,6 +69,11 @@ class SecurityController extends AbstractController
     }//end logout()
 
 
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     #[Route(
         '/register',
         name: 'register',
@@ -86,6 +110,11 @@ class SecurityController extends AbstractController
     }//end register()
 
 
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     #[Route(
         '/changeEmail',
         name: 'changeEmail',
@@ -98,6 +127,7 @@ class SecurityController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -111,6 +141,7 @@ class SecurityController extends AbstractController
                 'success',
                 $this->translator->trans('message.changed_successfully')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -121,6 +152,11 @@ class SecurityController extends AbstractController
     }//end changeEmail()
 
 
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     #[Route(
         '/changePassword',
         name: 'changePassword',
@@ -133,6 +169,7 @@ class SecurityController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -150,14 +187,13 @@ class SecurityController extends AbstractController
                     'success',
                     $this->translator->trans('message.changed_successfully')
                 );
+
                 return $this->redirectToRoute('note_index');
-            } else {
-                $this->addFlash(
-                    'warning',
-                    $this->translator->trans('message.wrong_current_password')
-                );
-                return $this->redirectToRoute('changePassword');
             }
+
+            $this->addFlash('warning', $this->translator->trans('message.wrong_current_password'));
+
+            return $this->redirectToRoute('changePassword');
         }
 
         return $this->render(

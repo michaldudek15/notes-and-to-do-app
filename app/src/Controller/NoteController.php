@@ -27,8 +27,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/note')]
 class NoteController extends AbstractController
 {
+
     /**
-     * Constructor.
+     * @param NoteServiceInterface     $noteService     Note service
+     * @param TranslatorInterface      $translator      Translator
+     * @param CategoryServiceInterface $categoryService Category service
      */
     public function __construct(private readonly noteServiceInterface $noteService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
@@ -36,11 +39,10 @@ class NoteController extends AbstractController
 
 
     /**
-     * Index action.
+     * @param NoteListInputFiltersDto $filters Filters
+     * @param int                     $page    Page number
      *
-     * @param integer $page Page number
-     *
-     * @return Response HTTP response
+     * @return Response
      */
     #[Route(name: 'note_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
@@ -50,6 +52,7 @@ class NoteController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -84,6 +87,7 @@ class NoteController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -110,6 +114,7 @@ class NoteController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -152,6 +157,7 @@ class NoteController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
@@ -204,6 +210,7 @@ class NoteController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('app_login');
         }
 
