@@ -32,7 +32,6 @@ class TaskService implements TaskServiceInterface
      */
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-
     /**
      * Constructor.
      *
@@ -43,13 +42,12 @@ class TaskService implements TaskServiceInterface
      */
     public function __construct(private readonly TaskRepository $taskRepository, private readonly PaginatorInterface $paginator, private readonly CategoryServiceInterface $categoryService, private readonly TagServiceInterface $tagService)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Get paginated list.
      *
-     * @param integer                 $page    Page number
+     * @param int                     $page    Page number
      * @param User                    $author  Author
      * @param TaskListInputFiltersDto $filters Filters
      *
@@ -64,8 +62,7 @@ class TaskService implements TaskServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-    }//end getPaginatedList()
-
+    }// end getPaginatedList()
 
     /**
      * Save entity.
@@ -75,8 +72,7 @@ class TaskService implements TaskServiceInterface
     public function save(Task $task): void
     {
         $this->taskRepository->save($task);
-    }//end save()
-
+    }// end save()
 
     /**
      * Delete entity.
@@ -89,8 +85,7 @@ class TaskService implements TaskServiceInterface
     public function delete(Task $task): void
     {
         $this->taskRepository->delete($task);
-    }//end delete()
-
+    }// end delete()
 
     /**
      * Prepare filters for the tasks list.
@@ -105,5 +100,5 @@ class TaskService implements TaskServiceInterface
             null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
             null !== $filters->tagId ? $this->tagService->findOneById($filters->tagId) : null
         );
-    }//end prepareFilters()
-}//end class
+    }// end prepareFilters()
+}// end class

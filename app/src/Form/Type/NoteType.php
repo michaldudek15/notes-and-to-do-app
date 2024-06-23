@@ -9,11 +9,9 @@ namespace App\Form\Type;
 use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\User;
-use App\Entity\Tag;
 use App\Form\DataTransformer\TagsDataTransformer;
 use App\Repository\CategoryRepository;
 use App\Service\CategoryService;
-use Doctrine\DBAL\Types\StringType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -24,7 +22,6 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class NoteType.
@@ -38,8 +35,7 @@ class NoteType extends AbstractType
      */
     public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Builds the form.
@@ -71,7 +67,7 @@ class NoteType extends AbstractType
         );
         $builder->add(
             'content',
-            TextAreaType::class,
+            TextareaType::class,
             [
                 'label'    => 'label.content',
                 'required' => true,
@@ -126,8 +122,7 @@ class NoteType extends AbstractType
                 }
             }
         );
-    }//end buildForm()
-
+    }// end buildForm()
 
     /**
      * Configures the options for this type.
@@ -138,8 +133,7 @@ class NoteType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Note::class]);
         $resolver->setDefaults(['user' => 0]);
-    }//end configureOptions()
-
+    }// end configureOptions()
 
     /**
      * Returns the prefix of the template block name for this type.
@@ -152,5 +146,5 @@ class NoteType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'note';
-    }//end getBlockPrefix()
-}//end class
+    }// end getBlockPrefix()
+}// end class

@@ -11,7 +11,6 @@ use App\Entity\User;
 use App\Form\Type\EmailChangeType;
 use App\Form\Type\PasswordChangeType;
 use App\Form\Type\RegistrationType;
-use App\Service\NoteServiceInterface;
 use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,11 +21,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
- * Security controller
+ * Security controller.
  */
 class SecurityController extends AbstractController
 {
-
     /**
      * @param UserServiceInterface        $userService    User service
      * @param TranslatorInterface         $translator     Translator
@@ -34,13 +32,10 @@ class SecurityController extends AbstractController
      */
     public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * @param AuthenticationUtils $authenticationUtils Authentication utils
-     *
-     * @return Response
      */
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
@@ -56,24 +51,14 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-    }//end login()
+    }// end login()
 
-
-    /**
-     * @return void
-     */
     #[Route(path: '/logout', name: 'app_logout')]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
-    }//end logout()
+    }// end logout()
 
-
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     #[Route(
         '/register',
         name: 'register',
@@ -85,7 +70,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('note_index');
         }
 
-        $user = new user();
+        $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
@@ -107,14 +92,8 @@ class SecurityController extends AbstractController
             'security/register.html.twig',
             ['form' => $form->createView()]
         );
-    }//end register()
+    }// end register()
 
-
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     #[Route(
         '/changeEmail',
         name: 'changeEmail',
@@ -149,14 +128,8 @@ class SecurityController extends AbstractController
             'security/changeEmail.html.twig',
             ['form' => $form->createView()]
         );
-    }//end changeEmail()
+    }// end changeEmail()
 
-
-    /**
-     * @param Request $request
-     *
-     * @return Response
-     */
     #[Route(
         '/changePassword',
         name: 'changePassword',
@@ -200,5 +173,5 @@ class SecurityController extends AbstractController
             'security/changePassword.html.twig',
             ['form' => $form->createView()]
         );
-    }//end changePassword()
-}//end class
+    }// end changePassword()
+}// end class

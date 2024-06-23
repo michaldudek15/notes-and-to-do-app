@@ -33,7 +33,6 @@ class CategoryService implements CategoryServiceInterface
      */
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-
     /**
      * Constructor.
      *
@@ -43,14 +42,13 @@ class CategoryService implements CategoryServiceInterface
      */
     public function __construct(private readonly CategoryRepository $categoryRepository, private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Get paginated list.
      *
-     * @param integer $page   Page number
-     * @param User    $author Author
+     * @param int  $page   Page number
+     * @param User $author Author
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -61,8 +59,7 @@ class CategoryService implements CategoryServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-    }//end getPaginatedList()
-
+    }// end getPaginatedList()
 
     /**
      * Save entity.
@@ -72,8 +69,7 @@ class CategoryService implements CategoryServiceInterface
     public function save(Category $category): void
     {
         $this->categoryRepository->save($category);
-    }//end save()
-
+    }// end save()
 
     /**
      * Delete entity.
@@ -86,15 +82,14 @@ class CategoryService implements CategoryServiceInterface
     public function delete(Category $category): void
     {
         $this->categoryRepository->delete($category);
-    }//end delete()
-
+    }// end delete()
 
     /**
      * Can Category be deleted?
      *
      * @param Category $category Category entity
      *
-     * @return boolean Result
+     * @return bool Result
      */
     public function canBeDeleted(Category $category): bool
     {
@@ -102,16 +97,15 @@ class CategoryService implements CategoryServiceInterface
             $result = $this->noteRepository->countByCategory($category);
 
             return !($result > 0);
-        } catch (NoResultException | NonUniqueResultException) {
+        } catch (NoResultException|NonUniqueResultException) {
             return false;
         }
-    }//end canBeDeleted()
-
+    }// end canBeDeleted()
 
     /**
      * Find by id.
      *
-     * @param integer $id Category id
+     * @param int $id Category id
      *
      * @return Category|null Category entity
      *
@@ -120,16 +114,13 @@ class CategoryService implements CategoryServiceInterface
     public function findOneById(int $id): ?Category
     {
         return $this->categoryRepository->findOneById($id);
-    }//end findOneById()
-
+    }// end findOneById()
 
     /**
-     * @param  User $user
-     *
      * @return Category
      */
     public function getCategoriesByUser(User $user): array
     {
         return $this->categoryRepository->findBy(['author' => $user]);
-    }//end getCategoriesByUser()
-}//end class
+    }// end getCategoriesByUser()
+}// end class

@@ -22,5 +22,5 @@ class TaskListFiltersDto
      */
     public function __construct(public readonly ?Category $category, public readonly ?Tag $tag)
     {
-    }//end __construct()
-}//end class
+    }// end __construct()
+}// end class

@@ -19,9 +19,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class TagType extends AbstractType
 {
-    /**
-     * @param TranslatorInterface $translator
-     */
     public function __construct(private readonly TranslatorInterface $translator)
     {
     }
@@ -56,8 +53,7 @@ class TagType extends AbstractType
                 ],
             ],
         );
-    }//end buildForm()
-
+    }// end buildForm()
 
     /**
      * Configures the options for this type.
@@ -67,8 +63,7 @@ class TagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => Tag::class]);
-    }//end configureOptions()
-
+    }// end configureOptions()
 
     /**
      * Returns the prefix of the template block name for this type.
@@ -81,5 +76,5 @@ class TagType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'tag';
-    }//end getBlockPrefix()
-}//end class
+    }// end getBlockPrefix()
+}// end class

@@ -20,20 +20,14 @@ class UserService implements UserServiceInterface
 {
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-
     /**
-     * @param UserRepository     $userRepository
-     * @param PaginatorInterface $paginator
+     * @param UserRepository     $userRepository User repository
+     * @param PaginatorInterface $paginator Paginator
      */
     public function __construct(private readonly UserRepository $userRepository, private readonly PaginatorInterface $paginator)
     {
-    }//end __construct()
+    }// end __construct()
 
-    /**
-     * @param int $page
-     *
-     * @return PaginationInterface
-     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
@@ -41,7 +35,7 @@ class UserService implements UserServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-    }//end getPaginatedList()
+    }// end getPaginatedList()
 
     /**
      * Save entity.
@@ -51,7 +45,7 @@ class UserService implements UserServiceInterface
     public function save(User $user): void
     {
         $this->userRepository->save($user);
-    }//end save()
+    }// end save()
 
     /**
      * Delete entity.
@@ -64,5 +58,5 @@ class UserService implements UserServiceInterface
     public function delete(User $user): void
     {
         $this->userRepository->delete($user);
-    }//end delete()
-}//end class
+    }// end delete()
+}// end class

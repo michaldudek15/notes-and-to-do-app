@@ -27,22 +27,18 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/note')]
 class NoteController extends AbstractController
 {
-
     /**
      * @param NoteServiceInterface     $noteService     Note service
      * @param TranslatorInterface      $translator      Translator
      * @param CategoryServiceInterface $categoryService Category service
      */
-    public function __construct(private readonly noteServiceInterface $noteService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
+    public function __construct(private readonly NoteServiceInterface $noteService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * @param NoteListInputFiltersDto $filters Filters
      * @param int                     $page    Page number
-     *
-     * @return Response
      */
     #[Route(name: 'note_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
@@ -64,8 +60,7 @@ class NoteController extends AbstractController
         );
 
         return $this->render('note/index.html.twig', ['pagination' => $pagination]);
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
@@ -92,8 +87,7 @@ class NoteController extends AbstractController
         }
 
         return $this->render('note/show.html.twig', ['note' => $note]);
-    }//end show()
-
+    }// end show()
 
     /**
      * Create action.
@@ -119,7 +113,7 @@ class NoteController extends AbstractController
         }
 
         $user = $this->getUser();
-        $note = new note();
+        $note = new Note();
         $note->setAuthor($user);
         $form = $this->createForm(NoteType::class, $note, ['user' => $user]);
         $form->handleRequest($request);
@@ -138,8 +132,7 @@ class NoteController extends AbstractController
             'note/create.html.twig',
             ['form' => $form->createView()]
         );
-    }//end create()
-
+    }// end create()
 
     /**
      * Edit action.
@@ -191,8 +184,7 @@ class NoteController extends AbstractController
                 'note' => $note,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
@@ -242,5 +234,5 @@ class NoteController extends AbstractController
                 'note' => $note,
             ]
         );
-    }//end delete()
-}//end class
+    }// end delete()
+}// end class

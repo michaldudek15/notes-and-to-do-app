@@ -19,14 +19,13 @@ interface NoteServiceInterface
     /**
      * Get paginated list.
      *
-     * @param integer                 $page    Page number
+     * @param int                     $page    Page number
      * @param User                    $author  Author
      * @param NoteListInputFiltersDto $filters Filters
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page, User $author, NoteListInputFiltersDto $filters): PaginationInterface;
-
 
     /**
      * Save entity.
@@ -35,10 +34,5 @@ interface NoteServiceInterface
      */
     public function save(Note $note): void;
 
-    /**
-     * @param Note $note
-     *
-     * @return void
-     */
     public function delete(Note $note): void;
-}//end interface
+}// end interface

@@ -31,8 +31,7 @@ class CategoryController extends AbstractController
      */
     public function __construct(private readonly CategoryServiceInterface $categoryService, private readonly TranslatorInterface $translator)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Index action.
@@ -56,8 +55,7 @@ class CategoryController extends AbstractController
         $pagination = $this->categoryService->getPaginatedList($page, $this->getUser());
 
         return $this->render('category/index.html.twig', ['pagination' => $pagination]);
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
@@ -84,8 +82,7 @@ class CategoryController extends AbstractController
         }
 
         return $this->render('category/show.html.twig', ['category' => $category]);
-    }//end show()
-
+    }// end show()
 
     /**
      * Create action.
@@ -132,8 +129,7 @@ class CategoryController extends AbstractController
             'category/create.html.twig',
             ['form' => $form->createView()]
         );
-    }//end create()
-
+    }// end create()
 
     /**
      * Edit action.
@@ -183,8 +179,7 @@ class CategoryController extends AbstractController
                 'category' => $category,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
@@ -243,5 +238,5 @@ class CategoryController extends AbstractController
                 'category' => $category,
             ]
         );
-    }//end delete()
-}//end class
+    }// end delete()
+}// end class

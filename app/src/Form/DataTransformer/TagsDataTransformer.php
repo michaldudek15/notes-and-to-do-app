@@ -25,8 +25,7 @@ class TagsDataTransformer implements DataTransformerInterface
      */
     public function __construct(private readonly TagServiceInterface $tagService)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Transform array of tags to string of tag titles.
@@ -48,8 +47,7 @@ class TagsDataTransformer implements DataTransformerInterface
         }
 
         return implode(', ', $tagTitles);
-    }//end transform()
-
+    }// end transform()
 
     /**
      * Transform string of tag names into array of Tag entities.
@@ -83,5 +81,5 @@ class TagsDataTransformer implements DataTransformerInterface
         }
 
         return $tags;
-    }//end reverseTransform()
-}//end class
+    }// end reverseTransform()
+}// end class

@@ -9,16 +9,12 @@ namespace App\Form\Type;
 use App\Entity\Category;
 use App\Entity\Task;
 use App\Entity\User;
-use App\Entity\Tag;
 use App\Form\DataTransformer\TagsDataTransformer;
 use App\Repository\CategoryRepository;
 use App\Service\CategoryService;
-use Doctrine\DBAL\Types\StringType;
-use PHPStan\Type\BooleanType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormError;
@@ -26,7 +22,6 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class TaskType.
@@ -40,8 +35,7 @@ class TaskType extends AbstractType
      */
     public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Builds the form.
@@ -124,8 +118,7 @@ class TaskType extends AbstractType
                 }
             }
         );
-    }//end buildForm()
-
+    }// end buildForm()
 
     /**
      * Configures the options for this type.
@@ -136,8 +129,7 @@ class TaskType extends AbstractType
     {
         $resolver->setDefaults(['data_class' => Task::class]);
         $resolver->setDefaults(['user' => 0]);
-    }//end configureOptions()
-
+    }// end configureOptions()
 
     /**
      * Returns the prefix of the template block name for this type.
@@ -150,5 +142,5 @@ class TaskType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'task';
-    }//end getBlockPrefix()
-}//end class
+    }// end getBlockPrefix()
+}// end class

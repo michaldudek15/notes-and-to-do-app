@@ -45,5 +45,5 @@ class TagFixtures extends AbstractBaseFixtures
         );
 
         $this->manager->flush();
-    }//end loadData()
-}//end class
+    }// end loadData()
+}// end class

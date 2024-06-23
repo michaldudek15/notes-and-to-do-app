@@ -18,13 +18,12 @@ interface CategoryServiceInterface
     /**
      * Get paginated list.
      *
-     * @param integer $page   Page number
-     * @param User    $author Author
+     * @param int  $page   Page number
+     * @param User $author Author
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page, User $author): PaginationInterface;
-
 
     /**
      * Save entity.
@@ -33,28 +32,16 @@ interface CategoryServiceInterface
      */
     public function save(Category $category): void;
 
-
-    /**
-     * @param Category $category
-     *
-     * @return void
-     */
     public function delete(Category $category): void;
-
 
     /**
      * Can Category be deleted?
      *
      * @param Category $category Category entity
      *
-     * @return boolean Result
+     * @return bool Result
      */
     public function canBeDeleted(Category $category): bool;
 
-    /**
-     * @param User $user
-     *
-     * @return array
-     */
     public function getCategoriesByUser(User $user): array;
-}//end interface
+}// end interface

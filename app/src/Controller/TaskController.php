@@ -9,11 +9,9 @@ namespace App\Controller;
 use App\Dto\TaskListInputFiltersDto;
 use App\Entity\Category;
 use App\Entity\Task;
-use App\Entity\User;
 use App\Form\Type\TaskType;
 use App\Resolver\TaskListInputFiltersDtoResolver;
 use App\Service\CategoryServiceInterface;
-use App\Service\TaskService;
 use App\Service\TaskServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -22,7 +20,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\HttpKernel\Attribute\MapQueryString;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -31,22 +28,20 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/task')]
 class TaskController extends AbstractController
 {
-
     /**
      * @param TaskServiceInterface     $taskService     Task service
      * @param TranslatorInterface      $translator      Translator
      * @param CategoryServiceInterface $categoryService Category service
      */
-    public function __construct(private readonly taskServiceInterface $taskService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
+    public function __construct(private readonly TaskServiceInterface $taskService, private readonly TranslatorInterface $translator, private readonly CategoryServiceInterface $categoryService)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * @param TaskListInputFiltersDto $filters Filters
      * @param int                     $page    Page number
      *
-     * @return Response
+     * @return Response Response
      */
     #[Route(name: 'task_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: TaskListInputFiltersDtoResolver::class)] TaskListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
@@ -68,8 +63,7 @@ class TaskController extends AbstractController
         );
 
         return $this->render('task/index.html.twig', ['pagination' => $pagination]);
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
@@ -96,8 +90,7 @@ class TaskController extends AbstractController
         }
 
         return $this->render('task/show.html.twig', ['task' => $task]);
-    }//end show()
-
+    }// end show()
 
     /**
      * Create action.
@@ -123,7 +116,7 @@ class TaskController extends AbstractController
         }
 
         $user = $this->getUser();
-        $task = new task();
+        $task = new Task();
         $task->setAuthor($user);
         $form = $this->createForm(TaskType::class, $task, ['user' => $user]);
         $form->handleRequest($request);
@@ -142,8 +135,7 @@ class TaskController extends AbstractController
             'task/create.html.twig',
             ['form' => $form->createView()]
         );
-    }//end create()
-
+    }// end create()
 
     /**
      * Edit action.
@@ -195,8 +187,7 @@ class TaskController extends AbstractController
                 'task' => $task,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
@@ -246,5 +237,5 @@ class TaskController extends AbstractController
                 'task' => $task,
             ]
         );
-    }//end delete()
-}//end class
+    }// end delete()
+}// end class

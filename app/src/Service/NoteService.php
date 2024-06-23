@@ -32,7 +32,6 @@ class NoteService implements NoteServiceInterface
      */
     private const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-
     /**
      * Constructor.
      *
@@ -43,13 +42,12 @@ class NoteService implements NoteServiceInterface
      */
     public function __construct(private readonly NoteRepository $noteRepository, private readonly PaginatorInterface $paginator, private readonly CategoryServiceInterface $categoryService, private readonly TagServiceInterface $tagService)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Get paginated list.
      *
-     * @param integer                 $page    Page number
+     * @param int                     $page    Page number
      * @param User                    $author  Author
      * @param NoteListInputFiltersDto $filters Filters
      *
@@ -64,8 +62,7 @@ class NoteService implements NoteServiceInterface
             $page,
             self::PAGINATOR_ITEMS_PER_PAGE
         );
-    }//end getPaginatedList()
-
+    }// end getPaginatedList()
 
     /**
      * Save entity.
@@ -75,8 +72,7 @@ class NoteService implements NoteServiceInterface
     public function save(Note $note): void
     {
         $this->noteRepository->save($note);
-    }//end save()
-
+    }// end save()
 
     /**
      * Delete entity.
@@ -89,8 +85,7 @@ class NoteService implements NoteServiceInterface
     public function delete(Note $note): void
     {
         $this->noteRepository->delete($note);
-    }//end delete()
-
+    }// end delete()
 
     /**
      * Prepare filters for the tasks list.
@@ -105,5 +100,5 @@ class NoteService implements NoteServiceInterface
             null !== $filters->categoryId ? $this->categoryService->findOneById($filters->categoryId) : null,
             null !== $filters->tagId ? $this->tagService->findOneById($filters->tagId) : null
         );
-    }//end prepareFilters()
-}//end class
+    }// end prepareFilters()
+}// end class

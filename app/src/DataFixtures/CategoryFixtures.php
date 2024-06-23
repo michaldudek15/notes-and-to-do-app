@@ -7,9 +7,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
-use App\Entity\Tag;
-use App\Entity\User;
-use DateTimeImmutable;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 
@@ -52,17 +49,16 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
         );
 
         $this->manager->flush();
-    }//end loadData()
-
+    }// end loadData()
 
     /**
      * This method must return an array of fixtures classes
-     * on which the implementing class depends on
+     * on which the implementing class depends on.
      *
      * @return array<class-string<FixtureInterface>>
      */
     public function getDependencies(): array
     {
         return [UserFixtures::class];
-    }//end getDependencies()
-}//end class
+    }// end getDependencies()
+}// end class

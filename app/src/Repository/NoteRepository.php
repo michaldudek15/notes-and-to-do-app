@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Note repository
+ * Note repository.
  */
 
 namespace App\Repository;
@@ -28,22 +28,20 @@ class NoteRepository extends ServiceEntityRepository
 {
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-
     /**
      * @param ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Note::class);
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Query all records.
      *
      * @param NoteListFiltersDto $filters Note list filters dto
      *
-     * @return \Doctrine\ORM\QueryBuilder Query builder
+     * @return QueryBuilder Query builder
      */
     public function queryAll(NoteListFiltersDto $filters): QueryBuilder
     {
@@ -54,8 +52,7 @@ class NoteRepository extends ServiceEntityRepository
         )->join('note.category', 'category')->leftJoin('note.tags', 'tags')->orderBy('note.updatedAt', 'DESC');
 
         return $this->applyFiltersToList($queryBuilder, $filters);
-    }//end queryAll()
-
+    }// end queryAll()
 
     /**
      * @param Note $note Note
@@ -70,8 +67,7 @@ class NoteRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->persist($note);
         $this->_em->flush();
-    }//end save()
-
+    }// end save()
 
     /**
      * Delete entity.
@@ -86,14 +82,14 @@ class NoteRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->remove($note);
         $this->_em->flush();
-    }//end delete()
+    }// end delete()
 
     /**
      * Count notes by category.
      *
      * @param Category $category Category
      *
-     * @return integer Number of notes in category
+     * @return int Number of notes in category
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
@@ -103,8 +99,7 @@ class NoteRepository extends ServiceEntityRepository
         $qb = $this->getOrCreateQueryBuilder();
 
         return $qb->select($qb->expr()->countDistinct('note.id'))->where('note.category = :category')->setParameter(':category', $category)->getQuery()->getSingleScalarResult();
-    }//end countByCategory()
-
+    }// end countByCategory()
 
     /**
      * Query notes by author.
@@ -121,7 +116,7 @@ class NoteRepository extends ServiceEntityRepository
         $queryBuilder->andWhere('note.author = :author')->setParameter('author', $user);
 
         return $queryBuilder;
-    }//end queryByAuthor()
+    }// end queryByAuthor()
 
     /**
      * Get or create new query builder.
@@ -130,13 +125,13 @@ class NoteRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return ($queryBuilder ?? $this->createQueryBuilder('note'));
-    }//end getOrCreateQueryBuilder()
+        return $queryBuilder ?? $this->createQueryBuilder('note');
+    }// end getOrCreateQueryBuilder()
 
     /**
-     * Apply filters to list
+     * Apply filters to list.
      *
      * @param QueryBuilder       $queryBuilder Query builder
      * @param NoteListFiltersDto $filters      Note list filters dto
@@ -154,5 +149,5 @@ class NoteRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder;
-    }//end applyFiltersToList()
-}//end class
+    }// end applyFiltersToList()
+}// end class

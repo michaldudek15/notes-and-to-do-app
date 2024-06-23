@@ -40,8 +40,7 @@ class RoleType extends AbstractType
                 'label'    => 'label.grant_admin',
             ]
         );
-    }//end buildForm()
-
+    }// end buildForm()
 
     /**
      * Configures the options for this type.
@@ -51,8 +50,7 @@ class RoleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(['data_class' => User::class]);
-    }//end configureOptions()
-
+    }// end configureOptions()
 
     /**
      * Returns the prefix of the template block name for this type.
@@ -65,5 +63,5 @@ class RoleType extends AbstractType
     public function getBlockPrefix(): string
     {
         return 'user';
-    }//end getBlockPrefix()
-}//end class
+    }// end getBlockPrefix()
+}// end class

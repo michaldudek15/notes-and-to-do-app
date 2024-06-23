@@ -1,7 +1,7 @@
 <?php
 
 /**
- * User repository
+ * User repository.
  */
 
 namespace App\Repository;
@@ -64,8 +64,6 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * @param User $user User
-     *
-     * @return void
      *
      * @throws ORMException
      * @throws OptimisticLockException

@@ -17,14 +17,13 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface TaskServiceInterface
 {
     /**
-     * @param int                     $page
-     * @param User                    $author
-     * @param TaskListInputFiltersDto $filters
+     * @param int                     $page    Page number
+     * @param User                    $author  User entity
+     * @param TaskListInputFiltersDto $filters Filters
      *
-     * @return PaginationInterface
+     * @return PaginationInterface Pagination
      */
     public function getPaginatedList(int $page, User $author, TaskListInputFiltersDto $filters): PaginationInterface;
-
 
     /**
      * Save entity.
@@ -33,11 +32,10 @@ interface TaskServiceInterface
      */
     public function save(Task $task): void;
 
-
     /**
-     * @param Task $task
+     * @param Task $task Task
      *
-     * @return void
+     * @return void Void
      */
     public function delete(Task $task): void;
-}//end interface
+}// end interface

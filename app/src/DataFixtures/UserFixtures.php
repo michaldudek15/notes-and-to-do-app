@@ -22,8 +22,7 @@ class UserFixtures extends AbstractBaseFixtures
      */
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Load data.
@@ -71,5 +70,5 @@ class UserFixtures extends AbstractBaseFixtures
         );
 
         $this->manager->flush();
-    }//end loadData()
-}//end class
+    }// end loadData()
+}// end class

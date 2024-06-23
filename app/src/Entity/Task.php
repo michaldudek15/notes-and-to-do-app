@@ -7,22 +7,19 @@
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Task
+ * Class Task.
  */
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[ORM\Table(name: 'tasks')]
 class Task
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -30,11 +27,11 @@ class Task
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?\DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
@@ -44,8 +41,6 @@ class Task
 
     /**
      * Category.
-     *
-     * @var Category
      */
     #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
@@ -59,8 +54,6 @@ class Task
 
     /**
      * Author.
-     *
-     * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
@@ -68,119 +61,74 @@ class Task
     #[Assert\Type(User::class)]
     private ?User $author;
 
-
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-    }//end __construct()
-
+    }// end __construct()
 
     /**
-     * @return integer|null
+     * Getter id
+     *
+     * @return integer|null Id
      */
     public function getId(): ?int
     {
         return $this->id;
-    }//end getId()
-
+    }// end getId()
 
     /**
-     * @return DateTimeImmutable|null
+     * @return DateTimeImmutable|null Created at
      */
-    public function getCreatedAt(): ?DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-    }//end getCreatedAt()
+    }// end getCreatedAt()
 
-
-    /**
-     * @param  DateTimeImmutable|null $createdAt
-     *
-     * @return void
-     */
-    public function setCreatedAt(?DateTimeImmutable $createdAt): void
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-    }//end setCreatedAt()
+    }// end setCreatedAt()
 
-
-    /**
-     * @return DateTimeImmutable|null
-     */
-    public function getUpdatedAt(): ?DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
-    }//end getUpdatedAt()
+    }// end getUpdatedAt()
 
-
-    /**
-     * @param  DateTimeImmutable|null $updatedAt
-     *
-     * @return void
-     */
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-    }//end setUpdatedAt()
+    }// end setUpdatedAt()
 
-
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
-    }//end getTitle()
+    }// end getTitle()
 
-
-    /**
-     * @param  string $title
-     *
-     * @return void
-     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }//end setTitle()
+    }// end setTitle()
 
-
-    /**
-     * @return boolean|null
-     */
     public function getStatus(): ?bool
     {
         return $this->status;
-    }//end getStatus()
+    }// end getStatus()
 
-
-    /**
-     * @param  boolean $status
-     *
-     *
-     * @return void
-     */
     public function setStatus(bool $status): void
     {
         $this->status = $status;
-    }//end setStatus()
+    }// end setStatus()
 
-
-    /**
-     * @return Category|null
-     */
     public function getCategory(): ?Category
     {
         return $this->category;
-    }//end getCategory()
-
+    }// end getCategory()
 
     /**
-     * Setter for category
-     *
-     * @param Category|null $category
+     * Setter for category.
      *
      * @return $this
      */
@@ -189,8 +137,7 @@ class Task
         $this->category = $category;
 
         return $this;
-    }//end setCategory()
-
+    }// end setCategory()
 
     /**
      * @return Collection<int, Tag>
@@ -198,52 +145,36 @@ class Task
     public function getTags(): Collection
     {
         return $this->tags;
-    }//end getTags()
-
+    }// end getTags()
 
     /**
-     * Add tag
-     *
-     * @param Tag $tag
-     *
-     * @return void
+     * Add tag.
      */
     public function addTag(Tag $tag): void
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
-    }//end addTag()
-
+    }// end addTag()
 
     /**
-     * Remove tag
-     *
-     * @param Tag $tag
-     *
-     * @return void
+     * Remove tag.
      */
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
-    }//end removeTag()
-
+    }// end removeTag()
 
     /**
-     * Getter for author
-     *
-     * @return User|null
+     * Getter for author.
      */
     public function getAuthor(): ?User
     {
         return $this->author;
-    }//end getAuthor()
-
+    }// end getAuthor()
 
     /**
-     * Setter for author
-     *
-     * @param User|null $author
+     * Setter for author.
      *
      * @return $this
      */
@@ -252,5 +183,5 @@ class Task
         $this->author = $author;
 
         return $this;
-    }//end setAuthor()
-}//end class
+    }// end setAuthor()
+}// end class

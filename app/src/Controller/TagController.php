@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -32,8 +31,7 @@ class TagController extends AbstractController
      */
     public function __construct(private readonly TagServiceInterface $tagService, private readonly TranslatorInterface $translator)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Index action.
@@ -57,8 +55,7 @@ class TagController extends AbstractController
         $pagination = $this->tagService->getPaginatedList($page);
 
         return $this->render('tag/index.html.twig', ['pagination' => $pagination]);
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
@@ -85,8 +82,7 @@ class TagController extends AbstractController
         }
 
         return $this->render('tag/show.html.twig', ['tag' => $tag]);
-    }//end show()
-
+    }// end show()
 
     /**
      * Create action.
@@ -130,8 +126,7 @@ class TagController extends AbstractController
             'tag/create.html.twig',
             ['form' => $form->createView()]
         );
-    }//end create()
-
+    }// end create()
 
     /**
      * Edit action.
@@ -181,8 +176,7 @@ class TagController extends AbstractController
                 'tag'  => $tag,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
@@ -232,5 +226,5 @@ class TagController extends AbstractController
                 'tag'  => $tag,
             ]
         );
-    }//end delete()
-}//end class
+    }// end delete()
+}// end class

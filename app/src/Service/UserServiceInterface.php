@@ -15,12 +15,11 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface UserServiceInterface
 {
     /**
-     * @param int $page
+     * @param int $page Page number
      *
-     * @return PaginationInterface
+     * @return PaginationInterface Pagination
      */
     public function getPaginatedList(int $page): PaginationInterface;
-
 
     /**
      * Save entity.
@@ -29,11 +28,10 @@ interface UserServiceInterface
      */
     public function save(User $user): void;
 
-
     /**
-     * @param User $user
+     * @param User $user User entity
      *
-     * @return void
+     * @return void Void
      */
     public function delete(User $user): void;
-}//end interface
+}// end interface

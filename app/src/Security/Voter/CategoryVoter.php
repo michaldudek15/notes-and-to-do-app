@@ -37,21 +37,19 @@ class CategoryVoter extends Voter
      */
     private const DELETE = 'DELETE';
 
-
     /**
      * Determines if the attribute and subject are supported by this voter.
      *
      * @param string $attribute An attribute
      * @param mixed  $subject   The subject to secure, e.g. an object the user wants to access or any other PHP type
      *
-     * @return boolean Result
+     * @return bool Result
      */
     protected function supports(string $attribute, mixed $subject): bool
     {
         return in_array($attribute, [self::EDIT, self::VIEW, self::DELETE])
             && $subject instanceof Category;
-    }//end supports()
-
+    }// end supports()
 
     /**
      * Perform a single access check operation on a given attribute, subject and token.
@@ -61,7 +59,7 @@ class CategoryVoter extends Voter
      * @param mixed          $subject   Object
      * @param TokenInterface $token     Security token
      *
-     * @return boolean Vote result
+     * @return bool Vote result
      */
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
     {
@@ -80,8 +78,7 @@ class CategoryVoter extends Voter
             self::DELETE => $this->canDelete($subject, $user),
             default => false,
         };
-    }//end voteOnAttribute()
-
+    }// end voteOnAttribute()
 
     /**
      * Checks if user can edit category.
@@ -89,13 +86,12 @@ class CategoryVoter extends Voter
      * @param Category      $category Category entity
      * @param UserInterface $user     User
      *
-     * @return boolean Result
+     * @return bool Result
      */
     private function canEdit(Category $category, UserInterface $user): bool
     {
         return $category->getAuthor() === $user;
-    }//end canEdit()
-
+    }// end canEdit()
 
     /**
      * Checks if user can view category.
@@ -103,13 +99,12 @@ class CategoryVoter extends Voter
      * @param Category      $category Category entity
      * @param UserInterface $user     User
      *
-     * @return boolean Result
+     * @return bool Result
      */
     private function canView(Category $category, UserInterface $user): bool
     {
         return $category->getAuthor() === $user;
-    }//end canView()
-
+    }// end canView()
 
     /**
      * Checks if user can delete category.
@@ -117,10 +112,10 @@ class CategoryVoter extends Voter
      * @param Category      $category Category entity
      * @param UserInterface $user     User
      *
-     * @return boolean Result
+     * @return bool Result
      */
     private function canDelete(Category $category, UserInterface $user): bool
     {
         return $category->getAuthor() === $user;
-    }//end canDelete()
-}//end class
+    }// end canDelete()
+}// end class

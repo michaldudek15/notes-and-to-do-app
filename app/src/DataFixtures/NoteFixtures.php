@@ -7,10 +7,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
-use App\Entity\Enum\NoteStatus;
-use App\Entity\Tag;
 use App\Entity\Note;
-use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -67,8 +64,7 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         );
 
         $this->manager->flush();
-    }//end loadData()
-
+    }// end loadData()
 
     /**
      * This method must return an array of fixtures classes
@@ -84,5 +80,5 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             CategoryFixtures::class,
             TagFixtures::class,
         ];
-    }//end getDependencies()
-}//end class
+    }// end getDependencies()
+}// end class

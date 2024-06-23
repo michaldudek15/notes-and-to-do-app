@@ -23,8 +23,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * Primary key.
-     *
-     * @var integer|null
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -33,8 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Email.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank]
@@ -51,8 +47,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * Password.
-     *
-     * @var string|null
      */
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
@@ -64,17 +58,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $password;
 
-
     /**
      * Getter for id.
      *
-     * @return integer|null Id
+     * @return int|null Id
      */
     public function getId(): ?int
     {
         return $this->id;
-    }//end getId()
-
+    }// end getId()
 
     /**
      * Getter for email.
@@ -84,8 +76,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getEmail(): ?string
     {
         return $this->email;
-    }//end getEmail()
-
+    }// end getEmail()
 
     /**
      * Setter for email.
@@ -95,8 +86,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): void
     {
         $this->email = $email;
-    }//end setEmail()
-
+    }// end setEmail()
 
     /**
      * A visual identifier that represents this user.
@@ -108,19 +98,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
-    }//end getUserIdentifier()
-
+    }// end getUserIdentifier()
 
     /**
-     * @return     string Username
+     * @return string Username
      *
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
     public function getUsername(): string
     {
         return (string) $this->email;
-    }//end getUsername()
-
+    }// end getUsername()
 
     /**
      * Getter for roles.
@@ -136,8 +124,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles[] = UserRole::ROLE_USER->value;
 
         return array_unique($roles);
-    }//end getRoles()
-
+    }// end getRoles()
 
     /**
      * Setter for roles.
@@ -147,8 +134,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): void
     {
         $this->roles = $roles;
-    }//end setRoles()
-
+    }// end setRoles()
 
     /**
      * Getter for password.
@@ -160,8 +146,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPassword(): ?string
     {
         return $this->password;
-    }//end getPassword()
-
+    }// end getPassword()
 
     /**
      * Setter for password.
@@ -171,22 +156,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }//end setPassword()
-
+    }// end setPassword()
 
     /**
      * Returning a salt is only needed, if you are not using a modern
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
      * @see UserInterface
-     *
-     * @return string
      */
     public function getSalt(): ?string
     {
         return null;
-    }//end getSalt()
-
+    }// end getSalt()
 
     /**
      * Removes sensitive information from the token.
@@ -197,5 +178,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }//end eraseCredentials()
-}//end class
+    }// end eraseCredentials()
+}// end class

@@ -25,7 +25,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-
     /**
      * Constructor.
      *
@@ -35,8 +34,7 @@ class UserController extends AbstractController
      */
     public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
     {
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Index action.
@@ -66,8 +64,7 @@ class UserController extends AbstractController
                 'currentUserId' => $this->getUser()->getId(),
             ]
         );
-    }//end index()
-
+    }// end index()
 
     /**
      * Show action.
@@ -94,8 +91,7 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/show.html.twig', ['user' => $user]);
-    }//end show()
-
+    }// end show()
 
     /**
      * Edit action.
@@ -148,8 +144,7 @@ class UserController extends AbstractController
                 'user' => $user,
             ]
         );
-    }//end edit()
-
+    }// end edit()
 
     /**
      * Delete action.
@@ -199,7 +194,7 @@ class UserController extends AbstractController
                 'user' => $user,
             ]
         );
-    }//end delete()
+    }// end delete()
 
     /**
      * Change role action.
@@ -256,5 +251,5 @@ class UserController extends AbstractController
                 'user' => $user,
             ]
         );
-    }//end changeRole()
-}//end class
+    }// end changeRole()
+}// end class

@@ -1,22 +1,20 @@
 <?php
 
 /**
- * Note entity
+ * Note entity.
  */
 
 namespace App\Entity;
 
 use App\Repository\NoteRepository;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class Note
+ * Class Note.
  */
 #[ORM\Entity(repositoryClass: NoteRepository::class)]
 #[ORM\Table(name: 'notes')]
@@ -29,11 +27,11 @@ class Note
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?DateTimeImmutable $updatedAt;
+    private ?\DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
@@ -43,8 +41,6 @@ class Note
 
     /**
      * Category.
-     *
-     * @var Category
      */
     #[ORM\ManyToOne(targetEntity: Category::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
@@ -58,8 +54,6 @@ class Note
 
     /**
      * Author.
-     *
-     * @var User|null
      */
     #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EXTRA_LAZY')]
     #[ORM\JoinColumn(nullable: false)]
@@ -68,115 +62,64 @@ class Note
     private ?User $author;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
-    }//end __construct()
+    }// end __construct()
 
-
-    /**
-     * @return int|null
-     */
     public function getId(): ?int
     {
         return $this->id;
-    }//end getId()
+    }// end getId()
 
-
-    /**
-     * @return DateTimeImmutable|null
-     */
-    public function getCreatedAt(): ?DateTimeImmutable
+    public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
-    }//end getCreatedAt()
+    }// end getCreatedAt()
 
-
-    /**
-     * @param DateTimeImmutable|null $createdAt
-     *
-     * @return void
-     */
-    public function setCreatedAt(?DateTimeImmutable $createdAt): void
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
-    }//end setCreatedAt()
+    }// end setCreatedAt()
 
-
-    /**
-     * @return DateTimeImmutable|null
-     */
-    public function getUpdatedAt(): ?DateTimeImmutable
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
-    }//end getUpdatedAt()
+    }// end getUpdatedAt()
 
-
-    /**
-     * @param DateTimeImmutable|null $updatedAt
-     *
-     * @return void
-     */
-    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
-    }//end setUpdatedAt()
+    }// end setUpdatedAt()
 
-
-    /**
-     * @return string|null
-     */
     public function getTitle(): ?string
     {
         return $this->title;
-    }//end getTitle()
+    }// end getTitle()
 
-
-    /**
-     * @param string $title
-     *
-     * @return void
-     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }//end setTitle()
+    }// end setTitle()
 
-
-    /**
-     * @return string|null
-     */
     public function getContent(): ?string
     {
         return $this->content;
-    }//end getContent()
+    }// end getContent()
 
-
-    /**
-     * @param string $content
-     *
-     * @return void
-     */
     public function setContent(string $content): void
     {
         $this->content = $content;
-    }//end setContent()
+    }// end setContent()
 
-
-    /**
-     * @return Category|null
-     */
     public function getCategory(): ?Category
     {
         return $this->category;
-    }//end getCategory()
-
+    }// end getCategory()
 
     /**
-     * @param Category|null $category
-     *
      * @return $this
      */
     public function setCategory(?Category $category): static
@@ -184,8 +127,7 @@ class Note
         $this->category = $category;
 
         return $this;
-    }//end setCategory()
-
+    }// end setCategory()
 
     /**
      * @return Collection<int, Tag>
@@ -193,45 +135,26 @@ class Note
     public function getTags(): Collection
     {
         return $this->tags;
-    }//end getTags()
+    }// end getTags()
 
-
-    /**
-     * @param Tag $tag
-     *
-     * @return void
-     */
     public function addTag(Tag $tag): void
     {
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
-    }//end addTag()
+    }// end addTag()
 
-
-    /**
-     * @param Tag $tag
-     *
-     * @return void
-     */
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
-    }//end removeTag()
+    }// end removeTag()
 
-
-    /**
-     * @return User|null
-     */
     public function getAuthor(): ?User
     {
         return $this->author;
-    }//end getAuthor()
-
+    }// end getAuthor()
 
     /**
-     * @param User|null $author
-     *
      * @return $this
      */
     public function setAuthor(?User $author): static
@@ -239,5 +162,5 @@ class Note
         $this->author = $author;
 
         return $this;
-    }//end setAuthor()
-}//end class
+    }// end setAuthor()
+}// end class

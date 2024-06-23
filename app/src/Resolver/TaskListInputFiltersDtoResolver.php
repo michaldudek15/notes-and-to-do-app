@@ -36,5 +36,5 @@ class TaskListInputFiltersDtoResolver implements ValueResolverInterface
         $tagId      = $request->query->get('tagId');
 
         return [new TaskListInputFiltersDto($categoryId, $tagId)];
-    }//end resolve()
-}//end class
+    }// end resolve()
+}// end class

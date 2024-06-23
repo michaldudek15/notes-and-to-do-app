@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Task repository
+ * Task repository.
  */
 
 namespace App\Repository;
@@ -28,24 +28,22 @@ class TaskRepository extends ServiceEntityRepository
 {
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Task::class);
-    }//end __construct()
-
+    }// end __construct()
 
     /**
      * Query all records.
      *
      * @param TaskListFiltersDto $filters Filters
      *
-     * @return \Doctrine\ORM\QueryBuilder Query builder
+     * @return QueryBuilder Query builder
      */
     public function queryAll(TaskListFiltersDto $filters): QueryBuilder
     {
@@ -56,11 +54,10 @@ class TaskRepository extends ServiceEntityRepository
         )->join('task.category', 'category')->leftJoin('task.tags', 'tags')->orderBy('task.updatedAt', 'DESC');
 
         return $this->applyFiltersToList($queryBuilder, $filters);
-    }//end queryAll()
-
+    }// end queryAll()
 
     /**
-     * Save
+     * Save.
      *
      * @param Task $task Task
      *
@@ -74,8 +71,7 @@ class TaskRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->persist($task);
         $this->_em->flush();
-    }//end save()
-
+    }// end save()
 
     /**
      * Delete entity.
@@ -90,18 +86,14 @@ class TaskRepository extends ServiceEntityRepository
         assert($this->_em instanceof EntityManager);
         $this->_em->remove($task);
         $this->_em->flush();
-    }//end delete()
-
-
-
-
+    }// end delete()
 
     /**
      * Count tasks by category.
      *
      * @param Category $category Category
      *
-     * @return integer Number of tasks in category
+     * @return int Number of tasks in category
      *
      * @throws NoResultException
      * @throws NonUniqueResultException
@@ -111,8 +103,7 @@ class TaskRepository extends ServiceEntityRepository
         $qb = $this->getOrCreateQueryBuilder();
 
         return $qb->select($qb->expr()->countDistinct('task.id'))->where('task.category = :category')->setParameter(':category', $category)->getQuery()->getSingleScalarResult();
-    }//end countByCategory()
-
+    }// end countByCategory()
 
     /**
      * Query tasks by author.
@@ -129,15 +120,13 @@ class TaskRepository extends ServiceEntityRepository
         $queryBuilder->andWhere('task.author = :author')->setParameter('author', $user);
 
         return $queryBuilder;
-    }//end queryByAuthor()
+    }// end queryByAuthor()
 
     /**
-     * Apply filters to list
+     * Apply filters to list.
      *
      * @param QueryBuilder       $queryBuilder Query builder
      * @param TaskListFiltersDto $filters      Filters
-     *
-     * @return QueryBuilder
      */
     private function applyFiltersToList(QueryBuilder $queryBuilder, TaskListFiltersDto $filters): QueryBuilder
     {
@@ -150,7 +139,7 @@ class TaskRepository extends ServiceEntityRepository
         }
 
         return $queryBuilder;
-    }//end applyFiltersToList()
+    }// end applyFiltersToList()
 
     /**
      * Get or create new query builder.
@@ -159,8 +148,8 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @return QueryBuilder Query builder
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return ($queryBuilder ?? $this->createQueryBuilder('task'));
-    }//end getOrCreateQueryBuilder()
-}//end class
+        return $queryBuilder ?? $this->createQueryBuilder('task');
+    }// end getOrCreateQueryBuilder()
+}// end class
