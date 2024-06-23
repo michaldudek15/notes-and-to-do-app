@@ -33,7 +33,7 @@
                     <td>{{ note.createdAt|format_date('long') }}</td>
                     <td>{{ note.updatedAt|format_date('long') }}</td>
                     <td>{{ note.title }}</td>
-                    <td>{{ note.content }}</td>
+                    <td>{{ note.content|markdown_to_html }}</td>
                     <td>
                         <a class="btn btn-outline-primary"
                            href="{{ url('note_index', {'categoryId' : note.category.id}) }}"
