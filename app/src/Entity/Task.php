@@ -7,7 +7,6 @@
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,11 +27,11 @@ class Task
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?\DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updatedAt;
+    private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
@@ -60,7 +59,7 @@ class Task
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Type(User::class)]
-    private ?User $author;
+    private ?User $author = null;
 
     /**
      * Constructor.
@@ -71,9 +70,9 @@ class Task
     }// end __construct()
 
     /**
-     * Getter id
+     * Getter id.
      *
-     * @return integer|null Id
+     * @return int|null Id
      */
     public function getId(): ?int
     {
@@ -81,9 +80,9 @@ class Task
     }// end getId()
 
     /**
-     * Getter for created at
+     * Getter for created at.
      *
-     * @return DateTimeImmutable|null Created at
+     * @return \DateTimeImmutable|null Created at
      */
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -91,7 +90,7 @@ class Task
     }// end getCreatedAt()
 
     /**
-     * Setter for created at
+     * Setter for created at.
      *
      * @param \DateTimeImmutable|null $createdAt Created at
      *
@@ -103,7 +102,7 @@ class Task
     }// end setCreatedAt()
 
     /**
-     * Getter for updated at
+     * Getter for updated at.
      *
      * @return \DateTimeImmutable|null Updated at
      */
@@ -113,7 +112,7 @@ class Task
     }// end getUpdatedAt()
 
     /**
-     * Setter for updated at
+     * Setter for updated at.
      *
      * @param \DateTimeImmutable|null $updatedAt Updated at
      *
@@ -125,7 +124,7 @@ class Task
     }// end setUpdatedAt()
 
     /**
-     * Getter for title
+     * Getter for title.
      *
      * @return string|null Title
      */
@@ -135,7 +134,7 @@ class Task
     }// end getTitle()
 
     /**
-     * Setter for title
+     * Setter for title.
      *
      * @param string $title Title
      *
@@ -147,7 +146,7 @@ class Task
     }// end setTitle()
 
     /**
-     * Getter for status
+     * Getter for status.
      *
      * @return bool|null Status
      */
@@ -157,7 +156,7 @@ class Task
     }// end getStatus()
 
     /**
-     * Setter for status
+     * Setter for status.
      *
      * @param bool $status Status
      *
@@ -169,7 +168,7 @@ class Task
     }// end setStatus()
 
     /**
-     * Getter for category
+     * Getter for category.
      *
      * @return Category|null Category
      */
@@ -193,7 +192,7 @@ class Task
     }// end setCategory()
 
     /**
-     * Getter for tags
+     * Getter for tags.
      *
      * @return Collection<int, Tag> Tags
      */

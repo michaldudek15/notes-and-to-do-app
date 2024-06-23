@@ -27,11 +27,11 @@ class Note
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?\DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updatedAt;
+    private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(type: 'string', length: 255)]
     private ?string $title = null;
@@ -59,7 +59,7 @@ class Note
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Type(User::class)]
-    private ?User $author;
+    private ?User $author = null;
 
     /**
      * Constructor.
@@ -70,7 +70,7 @@ class Note
     }// end __construct()
 
     /**
-     * Getter for id
+     * Getter for id.
      *
      * @return int|null Id
      */
@@ -80,7 +80,7 @@ class Note
     }// end getId()
 
     /**
-     * Getter for created at
+     * Getter for created at.
      *
      * @return \DateTimeImmutable|null Created at
      */
@@ -90,7 +90,7 @@ class Note
     }// end getCreatedAt()
 
     /**
-     * Setter for created at
+     * Setter for created at.
      *
      * @param \DateTimeImmutable|null $createdAt Created at
      *
@@ -102,7 +102,7 @@ class Note
     }// end setCreatedAt()
 
     /**
-     * Getter for updated at
+     * Getter for updated at.
      *
      * @return \DateTimeImmutable|null Updated at
      */
@@ -112,7 +112,7 @@ class Note
     }// end getUpdatedAt()
 
     /**
-     * Setter for updated at
+     * Setter for updated at.
      *
      * @param \DateTimeImmutable|null $updatedAt Updated at
      *
@@ -124,7 +124,7 @@ class Note
     }// end setUpdatedAt()
 
     /**
-     * Getter for title
+     * Getter for title.
      *
      * @return string|null Title
      */
@@ -134,7 +134,7 @@ class Note
     }// end getTitle()
 
     /**
-     * Setter for title
+     * Setter for title.
      *
      * @param string $title Title
      *
@@ -146,7 +146,7 @@ class Note
     }// end setTitle()
 
     /**
-     * Getter for content
+     * Getter for content.
      *
      * @return string|null Content
      */
@@ -156,7 +156,7 @@ class Note
     }// end getContent()
 
     /**
-     * Setter for content
+     * Setter for content.
      *
      * @param string $content Content
      *
@@ -168,7 +168,7 @@ class Note
     }// end setContent()
 
     /**
-     * Getter for category
+     * Getter for category.
      *
      * @return Category|null Category
      */
@@ -178,7 +178,7 @@ class Note
     }// end getCategory()
 
     /**
-     * Setter for category
+     * Setter for category.
      *
      * @param ?Category $category Category
      *
@@ -192,7 +192,7 @@ class Note
     }// end setCategory()
 
     /**
-     * Getter for tags
+     * Getter for tags.
      *
      * @return Collection<int, Tag> Tags
      */
@@ -202,7 +202,7 @@ class Note
     }// end getTags()
 
     /**
-     * Add tag
+     * Add tag.
      *
      * @param Tag $tag Tag
      *
@@ -216,7 +216,7 @@ class Note
     }// end addTag()
 
     /**
-     * Remove tag
+     * Remove tag.
      *
      * @param Tag $tag Tag
      *
@@ -228,7 +228,7 @@ class Note
     }// end removeTag()
 
     /**
-     * Getter for author
+     * Getter for author.
      *
      * @return User|null Author
      */
@@ -238,7 +238,7 @@ class Note
     }// end getAuthor()
 
     /**
-     * Setter for author
+     * Setter for author.
      *
      * @param User $author User
      *

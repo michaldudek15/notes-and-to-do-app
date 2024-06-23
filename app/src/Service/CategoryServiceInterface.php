@@ -51,7 +51,7 @@ interface CategoryServiceInterface
     public function canBeDeleted(Category $category): bool;
 
     /**
-     * Get categories by user
+     * Get categories by user.
      *
      * @param User $user User
      *

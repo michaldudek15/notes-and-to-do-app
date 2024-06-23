@@ -35,7 +35,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\NotBlank]
     #[Assert\Email]
-    private ?string $email;
+    private ?string $email = null;
 
     /**
      * Roles.
@@ -56,7 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         minMessage: 'message.min_8_symbols',
         maxMessage: 'message.max_64_symbols',
     )]
-    private ?string $password;
+    private ?string $password = null;
 
     /**
      * Getter for id.

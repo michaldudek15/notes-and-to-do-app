@@ -29,7 +29,7 @@ class UserService implements UserServiceInterface
     }// end __construct()
 
     /**
-     * Get paginated list
+     * Get paginated list.
      *
      * @param int $page Page number
      *

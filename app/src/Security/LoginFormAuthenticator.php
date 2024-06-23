@@ -41,17 +41,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      */
     private const DEFAULT_ROUTE = 'note_index';
 
-    private Security $security;
-
     /**
      * Constructor.
      *
      * @param UrlGeneratorInterface $urlGenerator Url generator
      * @param Security              $security     Security
      */
-    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, Security $security)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, private Security $security)
     {
-        $this->security = $security;
     }// end __construct()
 
     /**

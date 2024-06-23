@@ -96,7 +96,7 @@ class CategoryService implements CategoryServiceInterface
         try {
             $result = $this->noteRepository->countByCategory($category);
 
-            return !($result > 0);
+            return $result <= 0;
         } catch (NoResultException|NonUniqueResultException) {
             return false;
         }
@@ -117,7 +117,7 @@ class CategoryService implements CategoryServiceInterface
     }// end findOneById()
 
     /**
-     * Get categories by user
+     * Get categories by user.
      *
      * @param User $user User
      *

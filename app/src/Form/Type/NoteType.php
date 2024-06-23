@@ -87,9 +87,7 @@ class NoteType extends AbstractType
             EntityType::class,
             [
                 'class'        => Category::class,
-                'choice_label' => function ($category): string {
-                    return $category->getTitle();
-                },
+                'choice_label' => fn($category): string => $category->getTitle(),
                 'label'        => 'label.category',
                 'required'     => true,
                 'choices'      => $this->categoryService->getCategoriesByUser($user),
@@ -115,10 +113,8 @@ class NoteType extends AbstractType
             function (FormEvent $event) {
                 $tagsFormField  = $event->getForm();
                 $tagsFieldValue = $event->getData();
-                if (!empty($tagsFieldValue)) {
-                    if (!preg_match_all('/^([a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+, *)*[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $tagsFieldValue)) {
-                        $tagsFormField->addError(new FormError('label.invalid_tags'));
-                    }
+                if (!empty($tagsFieldValue) && !preg_match_all('/^([a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+, *)*[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $tagsFieldValue)) {
+                    $tagsFormField->addError(new FormError('label.invalid_tags'));
                 }
             }
         );

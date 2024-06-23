@@ -15,7 +15,7 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 interface TagServiceInterface
 {
     /**
-     * Get paginated list
+     * Get paginated list.
      *
      * @param int $page Page number
      *
@@ -31,7 +31,7 @@ interface TagServiceInterface
     public function save(Tag $tag): void;
 
     /**
-     * Delete
+     * Delete.
      *
      * @param Tag $tag Tag
      *

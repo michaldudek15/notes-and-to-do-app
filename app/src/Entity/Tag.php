@@ -34,7 +34,7 @@ class Tag
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(\DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?\DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt = null;
 
     /**
      * Updated at.
@@ -42,7 +42,7 @@ class Tag
     #[ORM\Column(type: 'datetime_immutable')]
     #[Assert\Type(\DateTimeImmutable::class)]
     #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updatedAt;
+    private ?\DateTimeImmutable $updatedAt = null;
 
     /**
      * Title.
@@ -52,7 +52,7 @@ class Tag
     #[Assert\NotBlank]
     #[Assert\Regex(pattern: '/^[a-zA-Z0-9]+$/')]
     #[Assert\Length(min: 3, max: 64)]
-    private ?string $title;
+    private ?string $title = null;
 
     /**
      * Slug.
@@ -61,7 +61,7 @@ class Tag
     #[Assert\Type('string')]
     #[Assert\Length(min: 3, max: 64)]
     #[Gedmo\Slug(fields: ['title'])]
-    private ?string $slug;
+    private ?string $slug = null;
 
     /**
      * Getter for Id.
@@ -134,7 +134,7 @@ class Tag
     }// end setTitle()
 
     /**
-     * Getter for slug
+     * Getter for slug.
      *
      * @return string|null Slug
      */
@@ -144,7 +144,7 @@ class Tag
     }// end getSlug()
 
     /**
-     * Setter for slug
+     * Setter for slug.
      *
      * @param string $slug Slug
      *
