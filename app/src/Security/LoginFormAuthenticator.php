@@ -48,6 +48,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
      * Constructor.
      *
      * @param UrlGeneratorInterface $urlGenerator Url generator
+     * @param Security              $security     Security
+     *
      */
     public function __construct(private readonly UrlGeneratorInterface $urlGenerator, Security $security)
     {
@@ -129,9 +131,9 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
         if ($this->security->isGranted('ROLE_ADMIN')) {
             return new RedirectResponse($this->urlGenerator->generate('user_index'));
-        } else {
-            return new RedirectResponse($this->urlGenerator->generate(self::DEFAULT_ROUTE));
         }
+
+        return new RedirectResponse($this->urlGenerator->generate(self::DEFAULT_ROUTE));
     }//end onAuthenticationSuccess()
 
 

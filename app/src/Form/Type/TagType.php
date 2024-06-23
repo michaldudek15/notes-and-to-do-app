@@ -19,6 +19,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class TagType extends AbstractType
 {
+    /**
+     * @param TranslatorInterface $translator
+     */
     public function __construct(private readonly TranslatorInterface $translator)
     {
     }
@@ -49,9 +52,9 @@ class TagType extends AbstractType
                     new Assert\Regex([
                         'pattern' => '/^\S+$/',
                         'message' => $whitespaceError,
-                    ])
-                ]
-            ]
+                    ]),
+                ],
+            ],
         );
     }//end buildForm()
 

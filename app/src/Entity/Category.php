@@ -162,12 +162,20 @@ class Category
     }//end setTitle()
 
 
+    /**
+     * @return string|null
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }//end getSlug()
 
 
+    /**
+     * @param string $slug
+     *
+     * @return $this
+     */
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
@@ -176,12 +184,20 @@ class Category
     }//end setSlug()
 
 
+    /**
+     * @return User|null
+     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }//end getAuthor()
 
 
+    /**
+     * @param User|null $author
+     *
+     * @return $this
+     */
     public function setAuthor(?User $author): static
     {
         $this->author = $author;

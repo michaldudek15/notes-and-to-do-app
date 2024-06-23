@@ -33,6 +33,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class TaskType extends AbstractType
 {
+    /**
+     * @param CategoryService     $categoryService     Category service
+     * @param TagsDataTransformer $tagsDataTransformer Tags data transofrmer
+     * @param TranslatorInterface $translator          Translator
+     */
     public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)
     {
     }//end __construct()
