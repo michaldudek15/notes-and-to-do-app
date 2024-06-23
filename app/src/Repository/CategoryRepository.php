@@ -49,19 +49,19 @@ class CategoryRepository extends ServiceEntityRepository
     }//end queryAll()
 
 
+
+
+
     /**
-     * Get or create new query builder.
+     * Save
      *
-     * @param QueryBuilder|null $queryBuilder Query builder
+     * @param Category $category Category
      *
-     * @return QueryBuilder Query builder
+     * @return void Void
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
      */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return ($queryBuilder ?? $this->createQueryBuilder('category'));
-    }//end getOrCreateQueryBuilder()
-
-
     public function save(Category $category): void
     {
         assert($this->_em instanceof EntityManager);
@@ -101,4 +101,16 @@ class CategoryRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }//end queryByAuthor()
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return ($queryBuilder ?? $this->createQueryBuilder('category'));
+    }//end getOrCreateQueryBuilder()
 }//end class
