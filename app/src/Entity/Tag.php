@@ -51,7 +51,7 @@ class Tag
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     #[Assert\Regex(pattern: '/^[a-zA-Z0-9]+$/')]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 2, max: 64)]
     private ?string $title = null;
 
     /**

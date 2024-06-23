@@ -34,9 +34,11 @@ class Note
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(min: 1, max: 255)]
     private ?string $title = null;
 
     #[ORM\Column(type: 'text')]
+    #[Assert\Length(min: 1, max: 65535)]
     private ?string $content = null;
 
     /**
