@@ -133,13 +133,22 @@ class Tag
         $this->title = $title;
     }// end setTitle()
 
+    /**
+     * Getter for slug
+     *
+     * @return string|null Slug
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }// end getSlug()
 
     /**
-     * @return $this
+     * Setter for slug
+     *
+     * @param string $slug Slug
+     *
+     * @return $this Static
      */
     public function setSlug(string $slug): static
     {

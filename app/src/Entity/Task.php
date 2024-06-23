@@ -7,6 +7,7 @@
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -80,6 +81,8 @@ class Task
     }// end getId()
 
     /**
+     * Getter for created at
+     *
      * @return DateTimeImmutable|null Created at
      */
     public function getCreatedAt(): ?\DateTimeImmutable
@@ -87,41 +90,89 @@ class Task
         return $this->createdAt;
     }// end getCreatedAt()
 
+    /**
+     * Setter for created at
+     *
+     * @param \DateTimeImmutable|null $createdAt Created at
+     *
+     * @return void Void
+     */
     public function setCreatedAt(?\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }// end setCreatedAt()
 
+    /**
+     * Getter for updated at
+     *
+     * @return \DateTimeImmutable|null Updated at
+     */
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }// end getUpdatedAt()
 
+    /**
+     * Setter for updated at
+     *
+     * @param \DateTimeImmutable|null $updatedAt Updated at
+     *
+     * @return void Void
+     */
     public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }// end setUpdatedAt()
 
+    /**
+     * Getter for title
+     *
+     * @return string|null Title
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }// end getTitle()
 
+    /**
+     * Setter for title
+     *
+     * @param string $title Title
+     *
+     * @return void Void
+     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
     }// end setTitle()
 
+    /**
+     * Getter for status
+     *
+     * @return bool|null Status
+     */
     public function getStatus(): ?bool
     {
         return $this->status;
     }// end getStatus()
 
+    /**
+     * Setter for status
+     *
+     * @param bool $status Status
+     *
+     * @return void Void
+     */
     public function setStatus(bool $status): void
     {
         $this->status = $status;
     }// end setStatus()
 
+    /**
+     * Getter for category
+     *
+     * @return Category|null Category
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -130,7 +181,9 @@ class Task
     /**
      * Setter for category.
      *
-     * @return $this
+     * @param Category $category Category
+     *
+     * @return $this Static
      */
     public function setCategory(?Category $category): static
     {
@@ -140,7 +193,9 @@ class Task
     }// end setCategory()
 
     /**
-     * @return Collection<int, Tag>
+     * Getter for tags
+     *
+     * @return Collection<int, Tag> Tags
      */
     public function getTags(): Collection
     {
@@ -149,6 +204,8 @@ class Task
 
     /**
      * Add tag.
+     *
+     * @param Tag $tag Tag
      */
     public function addTag(Tag $tag): void
     {
@@ -159,6 +216,8 @@ class Task
 
     /**
      * Remove tag.
+     *
+     * @param Tag $tag Tag
      */
     public function removeTag(Tag $tag): void
     {
@@ -167,6 +226,8 @@ class Task
 
     /**
      * Getter for author.
+     *
+     * @return User User
      */
     public function getAuthor(): ?User
     {
@@ -175,6 +236,8 @@ class Task
 
     /**
      * Setter for author.
+     *
+     * @param User $author Author
      *
      * @return $this
      */
