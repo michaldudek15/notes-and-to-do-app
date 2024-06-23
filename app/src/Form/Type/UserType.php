@@ -22,7 +22,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class UserType extends AbstractType
 {
     /**
-     * @param TranslatorInterface $translator
+     * @param TranslatorInterface $translator Translator
      */
     public function __construct(private readonly TranslatorInterface $translator)
     {
