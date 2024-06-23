@@ -134,8 +134,7 @@ class SecurityController extends AbstractController
         }
 
         $user = $this->getUser();
-        $form = $this->createForm(EmailChangeType::class, $user,
-        ['method' => 'PUT']);
+        $form = $this->createForm(EmailChangeType::class, $user, ['method' => 'PUT']);
 
         $form->handleRequest($request);
 
@@ -179,8 +178,7 @@ class SecurityController extends AbstractController
         }
 
         $user = $this->getUser();
-        $form = $this->createForm(PasswordChangeType::class, $user,
-        ['method' => 'PUT']);
+        $form = $this->createForm(PasswordChangeType::class, $user, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

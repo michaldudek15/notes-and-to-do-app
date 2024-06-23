@@ -60,17 +60,16 @@ class PasswordChangeType extends AbstractType
                     'attr'     => [
                         'minlength' => 8,
                         'maxlength' => 64,
-                    ],],
+                    ], ],
                 'second_options'  => ['label' => 'label.repeat_new_password',
                     'attr'     => [
                         'minlength' => 8,
                         'maxlength' => 64,
-                    ],],
+                    ], ],
                 'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
                 'mapped'          => false,
                 'label'           => 'label.password',
                 'required'        => true,
-
             ]
         );
     }// end buildForm()
