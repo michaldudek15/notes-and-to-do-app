@@ -120,7 +120,7 @@ class SecurityController extends AbstractController
     #[Route(
         '/changeEmail',
         name: 'changeEmail',
-        methods: 'GET|POST',
+        methods: 'GET|PUT',
     )]
     public function changeEmail(Request $request): Response
     {
@@ -134,7 +134,9 @@ class SecurityController extends AbstractController
         }
 
         $user = $this->getUser();
-        $form = $this->createForm(EmailChangeType::class, $user);
+        $form = $this->createForm(EmailChangeType::class, $user,
+        ['method' => 'PUT']);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -163,7 +165,7 @@ class SecurityController extends AbstractController
     #[Route(
         '/changePassword',
         name: 'changePassword',
-        methods: 'GET|POST',
+        methods: 'GET|PUT',
     )]
     public function changePassword(Request $request): Response
     {
@@ -177,7 +179,8 @@ class SecurityController extends AbstractController
         }
 
         $user = $this->getUser();
-        $form = $this->createForm(PasswordChangeType::class, $user);
+        $form = $this->createForm(PasswordChangeType::class, $user,
+        ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
