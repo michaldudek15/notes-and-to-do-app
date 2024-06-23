@@ -32,6 +32,13 @@ interface CategoryServiceInterface
      */
     public function save(Category $category): void;
 
+    /**
+     * Delete entity.
+     *
+     * @param Category $category Category
+     *
+     * @return void Void
+     */
     public function delete(Category $category): void;
 
     /**
@@ -43,5 +50,12 @@ interface CategoryServiceInterface
      */
     public function canBeDeleted(Category $category): bool;
 
+    /**
+     * Get categories by user
+     *
+     * @param User $user User
+     *
+     * @return array Array
+     */
     public function getCategoriesByUser(User $user): array;
 }// end interface

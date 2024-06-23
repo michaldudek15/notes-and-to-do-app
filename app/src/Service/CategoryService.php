@@ -117,7 +117,11 @@ class CategoryService implements CategoryServiceInterface
     }// end findOneById()
 
     /**
-     * @return Category
+     * Get categories by user
+     *
+     * @param User $user User
+     *
+     * @return Category Category
      */
     public function getCategoriesByUser(User $user): array
     {

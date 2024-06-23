@@ -39,6 +39,8 @@ class NoteController extends AbstractController
     /**
      * @param NoteListInputFiltersDto $filters Filters
      * @param int                     $page    Page number
+     *
+     * @return Response Response
      */
     #[Route(name: 'note_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: NoteListInputFiltersDtoResolver::class)] NoteListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response

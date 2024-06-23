@@ -34,5 +34,12 @@ interface NoteServiceInterface
      */
     public function save(Note $note): void;
 
+    /**
+     * Delete entity.
+     *
+     * @param Note $note Note
+     *
+     * @return void Void
+     */
     public function delete(Note $note): void;
 }// end interface

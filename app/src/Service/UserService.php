@@ -22,12 +22,19 @@ class UserService implements UserServiceInterface
 
     /**
      * @param UserRepository     $userRepository User repository
-     * @param PaginatorInterface $paginator Paginator
+     * @param PaginatorInterface $paginator      Paginator
      */
     public function __construct(private readonly UserRepository $userRepository, private readonly PaginatorInterface $paginator)
     {
     }// end __construct()
 
+    /**
+     * Get paginated list
+     *
+     * @param int $page Page number
+     *
+     * @return PaginationInterface Pagination
+     */
     public function getPaginatedList(int $page): PaginationInterface
     {
         return $this->paginator->paginate(
