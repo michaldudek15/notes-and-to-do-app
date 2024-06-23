@@ -17,6 +17,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -127,6 +128,8 @@ class TaskRepository extends ServiceEntityRepository
      *
      * @param QueryBuilder       $queryBuilder Query builder
      * @param TaskListFiltersDto $filters      Filters
+     *
+     * @return QueryBuilder Query
      */
     private function applyFiltersToList(QueryBuilder $queryBuilder, TaskListFiltersDto $filters): QueryBuilder
     {

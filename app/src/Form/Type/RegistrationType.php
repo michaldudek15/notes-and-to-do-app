@@ -20,6 +20,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class RegistrationType extends AbstractType
 {
+    /**
+     * Constructor.
+     *
+     * @param TranslatorInterface $translator Translator
+     */
     public function __construct(private readonly TranslatorInterface $translator)
     {
     }// end __construct()

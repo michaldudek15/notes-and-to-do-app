@@ -29,8 +29,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class TaskType extends AbstractType
 {
     /**
+     * Constructor.
+     *
      * @param CategoryService     $categoryService     Category service
-     * @param TagsDataTransformer $tagsDataTransformer Tags data transofrmer
+     * @param TagsDataTransformer $tagsDataTransformer Tags data transformer
      * @param TranslatorInterface $translator          Translator
      */
     public function __construct(private readonly CategoryService $categoryService, private readonly TagsDataTransformer $tagsDataTransformer, private readonly TranslatorInterface $translator)

@@ -19,6 +19,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class TagType extends AbstractType
 {
+    /** Constructor.
+     *
+     * @param TranslatorInterface $translator Translator
+     */
     public function __construct(private readonly TranslatorInterface $translator)
     {
     }
