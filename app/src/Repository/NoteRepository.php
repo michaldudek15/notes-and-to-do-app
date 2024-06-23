@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Note repository
+ */
+
 namespace App\Repository;
 
 use App\Dto\NoteListFiltersDto;
@@ -25,6 +29,9 @@ class NoteRepository extends ServiceEntityRepository
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
 
+    /**
+     * @param ManagerRegistry $registry Manager registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Note::class);
@@ -33,6 +40,8 @@ class NoteRepository extends ServiceEntityRepository
 
     /**
      * Query all records.
+     *
+     * @param NoteListFiltersDto $filters Note list filters dto
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder
      */
@@ -48,20 +57,14 @@ class NoteRepository extends ServiceEntityRepository
     }//end queryAll()
 
 
-    private function applyFiltersToList(QueryBuilder $queryBuilder, NoteListFiltersDto $filters): QueryBuilder
-    {
-        if ($filters->category instanceof Category) {
-            $queryBuilder->andWhere('category = :category')->setParameter('category', $filters->category);
-        }
-
-        if ($filters->tag instanceof Tag) {
-            $queryBuilder->andWhere('tags IN (:tag)')->setParameter('tag', $filters->tag);
-        }
-
-        return $queryBuilder;
-    }//end applyFiltersToList()
-
-
+    /**
+     * @param Note $note Note
+     *
+     * @return void Void
+     *
+     * @throws OptimisticLockException
+     * @throws \Doctrine\ORM\Exception\ORMException
+     */
     public function save(Note $note): void
     {
         assert($this->_em instanceof EntityManager);
@@ -85,20 +88,6 @@ class NoteRepository extends ServiceEntityRepository
         $this->_em->flush();
     }//end delete()
 
-
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return ($queryBuilder ?? $this->createQueryBuilder('note'));
-    }//end getOrCreateQueryBuilder()
-
-
     /**
      * Count notes by category.
      *
@@ -120,7 +109,8 @@ class NoteRepository extends ServiceEntityRepository
     /**
      * Query notes by author.
      *
-     * @param User $user User entity
+     * @param User               $user    User entity
+     * @param NoteListFiltersDto $filters Note list filters dto
      *
      * @return QueryBuilder Query builder
      */
@@ -132,4 +122,37 @@ class NoteRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }//end queryByAuthor()
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return ($queryBuilder ?? $this->createQueryBuilder('note'));
+    }//end getOrCreateQueryBuilder()
+
+    /**
+     * Apply filters to list
+     *
+     * @param QueryBuilder       $queryBuilder Query builder
+     * @param NoteListFiltersDto $filters      Note list filters dto
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, NoteListFiltersDto $filters): QueryBuilder
+    {
+        if ($filters->category instanceof Category) {
+            $queryBuilder->andWhere('category = :category')->setParameter('category', $filters->category);
+        }
+
+        if ($filters->tag instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')->setParameter('tag', $filters->tag);
+        }
+
+        return $queryBuilder;
+    }//end applyFiltersToList()
 }//end class

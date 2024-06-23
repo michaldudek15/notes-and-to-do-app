@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Task repository
+ */
+
 namespace App\Repository;
 
 use App\Dto\TaskListFiltersDto;
@@ -25,6 +29,11 @@ class TaskRepository extends ServiceEntityRepository
     public const PAGINATOR_ITEMS_PER_PAGE = 10;
 
 
+    /**
+     * Constructor
+     *
+     * @param ManagerRegistry $registry Manager registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Task::class);
@@ -33,6 +42,8 @@ class TaskRepository extends ServiceEntityRepository
 
     /**
      * Query all records.
+     *
+     * @param TaskListFiltersDto $filters Filters
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder
      */
@@ -48,20 +59,16 @@ class TaskRepository extends ServiceEntityRepository
     }//end queryAll()
 
 
-    private function applyFiltersToList(QueryBuilder $queryBuilder, TaskListFiltersDto $filters): QueryBuilder
-    {
-        if ($filters->category instanceof Category) {
-            $queryBuilder->andWhere('category = :category')->setParameter('category', $filters->category);
-        }
-
-        if ($filters->tag instanceof Tag) {
-            $queryBuilder->andWhere('tags IN (:tag)')->setParameter('tag', $filters->tag);
-        }
-
-        return $queryBuilder;
-    }//end applyFiltersToList()
-
-
+    /**
+     * Save
+     *
+     * @param Task $task Task
+     *
+     * @return void Void
+     *
+     * @throws OptimisticLockException
+     * @throws \Doctrine\ORM\Exception\ORMException
+     */
     public function save(Task $task): void
     {
         assert($this->_em instanceof EntityManager);
@@ -86,17 +93,7 @@ class TaskRepository extends ServiceEntityRepository
     }//end delete()
 
 
-    /**
-     * Get or create new query builder.
-     *
-     * @param QueryBuilder|null $queryBuilder Query builder
-     *
-     * @return QueryBuilder Query builder
-     */
-    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
-    {
-        return ($queryBuilder ?? $this->createQueryBuilder('task'));
-    }//end getOrCreateQueryBuilder()
+
 
 
     /**
@@ -120,7 +117,8 @@ class TaskRepository extends ServiceEntityRepository
     /**
      * Query tasks by author.
      *
-     * @param User $user User entity
+     * @param User               $user    User entity
+     * @param TaskListFiltersDto $filters Filters
      *
      * @return QueryBuilder Query builder
      */
@@ -132,4 +130,37 @@ class TaskRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }//end queryByAuthor()
+
+    /**
+     * Apply filters to list
+     *
+     * @param QueryBuilder       $queryBuilder Query builder
+     * @param TaskListFiltersDto $filters      Filters
+     *
+     * @return QueryBuilder
+     */
+    private function applyFiltersToList(QueryBuilder $queryBuilder, TaskListFiltersDto $filters): QueryBuilder
+    {
+        if ($filters->category instanceof Category) {
+            $queryBuilder->andWhere('category = :category')->setParameter('category', $filters->category);
+        }
+
+        if ($filters->tag instanceof Tag) {
+            $queryBuilder->andWhere('tags IN (:tag)')->setParameter('tag', $filters->tag);
+        }
+
+        return $queryBuilder;
+    }//end applyFiltersToList()
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query builder
+     *
+     * @return QueryBuilder Query builder
+     */
+    private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return ($queryBuilder ?? $this->createQueryBuilder('task'));
+    }//end getOrCreateQueryBuilder()
 }//end class
