@@ -64,8 +64,10 @@ class TaskType extends AbstractType
             [
                 'label'    => 'label.title',
                 'required' => true,
-                'attr'     => ['max_length' => 64],
-            ]
+                'attr'     => [
+                    'minlength' => 1,
+                    'maxlength' => 64,
+                ],            ]
         );
 
         $builder->add(

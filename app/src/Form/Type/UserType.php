@@ -46,8 +46,10 @@ class UserType extends AbstractType
             [
                 'label'    => 'label.email',
                 'required' => false,
-                'attr'     => ['max_length' => 64],
-            ]
+                'attr'     => [
+                    'minlength' => 3,
+                    'maxlength' => 180,
+                ],            ]
         );
 
         $builder->add(
@@ -61,6 +63,10 @@ class UserType extends AbstractType
                 'mapped'          => false,
                 'label'           => 'label.password',
                 'required'        => true,
+                'attr'     => [
+                    'minlength' => 8,
+                    'maxlength' => 64,
+                ],
             ]
         );
     }// end buildForm()

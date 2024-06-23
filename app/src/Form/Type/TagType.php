@@ -48,7 +48,10 @@ class TagType extends AbstractType
             [
                 'label' => 'label.title',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr'     => [
+                    'minlength' => 1,
+                    'maxlength' => 64,
+                ],
                 'constraints' => [
                     new Assert\Regex([
                         'pattern' => '/^\S+$/',

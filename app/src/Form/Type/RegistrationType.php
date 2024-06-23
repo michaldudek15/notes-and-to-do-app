@@ -47,6 +47,10 @@ class RegistrationType extends AbstractType
             EmailType::class,
             [
                 'label'    => 'label.email',
+                'attr'     => [
+                    'minlength' => 3,
+                    'maxlength' => 180,
+                ],
                 'required' => true,
             ]
         );
@@ -61,6 +65,10 @@ class RegistrationType extends AbstractType
                 'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
                 'label'           => 'label.password',
                 'required'        => true,
+                'attr'     => [
+                    'minlength' => 8,
+                    'maxlength' => 64,
+                ],
             ]
         );
     }// end buildForm()

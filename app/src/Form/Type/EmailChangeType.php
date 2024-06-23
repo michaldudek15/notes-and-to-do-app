@@ -36,6 +36,10 @@ class EmailChangeType extends AbstractType
             [
                 'label'    => 'label.email',
                 'required' => true,
+                'attr' => [
+                    'maxlength' => 180,
+                    'minlength' => 1,
+                ],
             ]
         );
     }// end buildForm()

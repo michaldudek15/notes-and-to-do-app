@@ -72,7 +72,8 @@ class NoteType extends AbstractType
                 'label'    => 'label.content',
                 'required' => true,
                 'attr'     => [
-                    'max_length' => 65535,
+                    'minlength' => 1,
+                    'maxlength' => 65535,
                     'rows'       => 10,
                 ],
             ]
