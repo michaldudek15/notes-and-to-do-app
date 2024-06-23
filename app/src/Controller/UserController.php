@@ -11,14 +11,12 @@ use App\Form\Type\RoleType;
 use App\Form\Type\UserType;
 use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -27,23 +25,23 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    private Security $security;
-
 
     /**
      * Constructor.
      *
-     * @param UserServiceInterface $userService User service
-     * @param TranslatorInterface  $translator  Translator
+     * @param UserServiceInterface        $userService    User service
+     * @param TranslatorInterface         $translator     Translator
+     * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
-    public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher, Security $security)
+    public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
     {
-        $this->security = $security;
     }//end __construct()
 
 
     /**
      * Index action.
+     *
+     * @param int $page Page number
      *
      * @return Response HTTP response
      */
@@ -55,10 +53,12 @@ class UserController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
         $pagination = $this->userService->getPaginatedList($page, $this->getUser());
+
         return $this->render(
             'user/index.html.twig',
             [
@@ -89,6 +89,7 @@ class UserController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -112,6 +113,7 @@ class UserController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -165,6 +167,7 @@ class UserController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -198,7 +201,14 @@ class UserController extends AbstractController
         );
     }//end delete()
 
-
+    /**
+     * Change role action.
+     *
+     * @param Request $request HTTP request
+     * @param User    $user    User entity
+     *
+     * @return Response HTTP response
+     */
     #[Route('/{id}/changeRole', name: 'user_change_role', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function changeRole(Request $request, User $user): Response
     {
@@ -207,6 +217,7 @@ class UserController extends AbstractController
                 'danger',
                 $this->translator->trans('message.not_allowed')
             );
+
             return $this->redirectToRoute('note_index');
         }
 
@@ -214,6 +225,7 @@ class UserController extends AbstractController
 
         if ($currentUser->getId() === $user->getId()) {
             $this->addFlash('warning', $this->translator->trans('message.cannot_change_own_role'));
+
             return $this->redirectToRoute('user_index');
         }
 
@@ -233,6 +245,7 @@ class UserController extends AbstractController
                 'success',
                 $this->translator->trans('message.changed_successfully')
             );
+
             return $this->redirectToRoute('user_index');
         }
 

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Task entity.
+ */
+
 namespace App\Entity;
 
 use App\Repository\TaskRepository;
@@ -11,10 +15,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Class Task
+ */
 #[ORM\Entity(repositoryClass: TaskRepository::class)]
 #[ORM\Table(name: 'tasks')]
 class Task
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -61,72 +69,121 @@ class Task
     private ?User $author;
 
 
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->tags = new ArrayCollection();
     }//end __construct()
 
 
+    /**
+     * @return integer|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }//end getId()
 
 
+    /**
+     * @return DateTimeImmutable|null
+     */
     public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
     }//end getCreatedAt()
 
 
+    /**
+     * @param  DateTimeImmutable|null $createdAt
+     *
+     * @return void
+     */
     public function setCreatedAt(?DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }//end setCreatedAt()
 
 
+    /**
+     * @return DateTimeImmutable|null
+     */
     public function getUpdatedAt(): ?DateTimeImmutable
     {
         return $this->updatedAt;
     }//end getUpdatedAt()
 
 
+    /**
+     * @param  DateTimeImmutable|null $updatedAt
+     *
+     * @return void
+     */
     public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }//end setUpdatedAt()
 
 
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }//end getTitle()
 
 
+    /**
+     * @param  string $title
+     *
+     * @return void
+     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
     }//end setTitle()
 
 
+    /**
+     * @return boolean|null
+     */
     public function getStatus(): ?bool
     {
         return $this->status;
     }//end getStatus()
 
 
+    /**
+     * @param  boolean $status
+     *
+     *
+     * @return void
+     */
     public function setStatus(bool $status): void
     {
         $this->status = $status;
     }//end setStatus()
 
 
+    /**
+     * @return Category|null
+     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }//end getCategory()
 
 
+    /**
+     * Setter for category
+     *
+     * @param Category|null $category
+     *
+     * @return $this
+     */
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
@@ -144,6 +201,13 @@ class Task
     }//end getTags()
 
 
+    /**
+     * Add tag
+     *
+     * @param Tag $tag
+     *
+     * @return void
+     */
     public function addTag(Tag $tag): void
     {
         if (!$this->tags->contains($tag)) {
@@ -152,18 +216,37 @@ class Task
     }//end addTag()
 
 
+    /**
+     * Remove tag
+     *
+     * @param Tag $tag
+     *
+     * @return void
+     */
     public function removeTag(Tag $tag): void
     {
         $this->tags->removeElement($tag);
     }//end removeTag()
 
 
+    /**
+     * Getter for author
+     *
+     * @return User|null
+     */
     public function getAuthor(): ?User
     {
         return $this->author;
     }//end getAuthor()
 
 
+    /**
+     * Setter for author
+     *
+     * @param User|null $author
+     *
+     * @return $this
+     */
     public function setAuthor(?User $author): static
     {
         $this->author = $author;

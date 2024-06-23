@@ -113,6 +113,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @return     string Username
+     *
      * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
     public function getUsername(): string
@@ -178,6 +179,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
      *
      * @see UserInterface
+     *
+     * @return string
      */
     public function getSalt(): ?string
     {
