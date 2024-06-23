@@ -312,6 +312,10 @@
 <target>Grant admin?</target>
 </trans-unit>
 
+<trans-unit id="label.invalid_tags">
+<source>label.invalid_tags</source>
+<target>Tags can only contain letters and numbers</target>
+</trans-unit>
 
     </body>
   </file>

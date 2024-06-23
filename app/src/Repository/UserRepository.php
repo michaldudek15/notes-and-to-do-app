@@ -8,6 +8,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use App\Entity\Note;
+use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
@@ -91,6 +92,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             $this->_em->remove($note);
         }
 
+        // usuwanie tasków danego użytkownika
+        $tasks = $this->_em->getRepository(Task::class)->findBy(['author' => $user]);
+        foreach ($tasks as $task) {
+            $this->_em->remove($task);
+        }
+
         // pobranie kategorii danego użytkownika
         $categories = $this->_em->getRepository(Category::class)->findBy(['author' => $user]);
 
@@ -99,6 +106,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             $categoryNotes = $this->_em->getRepository(Note::class)->findBy(['category' => $category]);
             foreach ($categoryNotes as $note) {
                 $this->_em->remove($note);
+            }
+
+            // uswuanie kategorii
+            $this->_em->remove($category);
+        }
+
+        // usuwanie tasków powiązanych z kategoriami danego użytkownika
+        foreach ($categories as $category) {
+            $categoryTasks = $this->_em->getRepository(Task::class)->findBy(['category' => $category]);
+            foreach ($categoryTasks as $task) {
+                $this->_em->remove($task);
             }
 
             // uswuanie kategorii

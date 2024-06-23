@@ -6,11 +6,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Enum\UserRole;
 use App\Entity\User;
 use App\Form\Type\EmailChangeType;
 use App\Form\Type\PasswordChangeType;
 use App\Form\Type\RegistrationType;
+use App\Service\CategoryServiceInterface;
 use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,14 +27,18 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
  */
 class SecurityController extends AbstractController
 {
+
+
     /**
-     * @param UserServiceInterface        $userService    User service
-     * @param TranslatorInterface         $translator     Translator
-     * @param UserPasswordHasherInterface $passwordHasher Password hasher
+     * @param UserServiceInterface        $userService     User service
+     * @param CategoryServiceInterface    $categoryService User service
+     * @param TranslatorInterface         $translator      Translator
+     * @param UserPasswordHasherInterface $passwordHasher  Password hasher
      */
-    public function __construct(private readonly UserServiceInterface $userService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
+    public function __construct(private readonly UserServiceInterface $userService, private readonly CategoryServiceInterface $categoryService, private readonly TranslatorInterface $translator, private readonly UserPasswordHasherInterface $passwordHasher)
     {
-    }// end __construct()
+    }//end __construct()
+
 
     /**
      * Login.
@@ -47,6 +53,7 @@ class SecurityController extends AbstractController
         if ($this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('user_index');
         }
+
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('note_index');
         }
@@ -55,7 +62,8 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-    }// end login()
+    }//end login()
+
 
     /**
      * Logout.
@@ -66,7 +74,8 @@ class SecurityController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
-    }// end logout()
+    }//end logout()
+
 
     /**
      * Register.
@@ -96,6 +105,12 @@ class SecurityController extends AbstractController
             $user->setRoles([UserRole::ROLE_USER->value]);
             $this->userService->save($user);
 
+            $category = new Category();
+            $category->setAuthor($user);
+            $category->setTitle('standard');
+            $category->setSlug('standard');
+            $this->categoryService->save($category);
+
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.created_successfully')
@@ -108,7 +123,8 @@ class SecurityController extends AbstractController
             'security/register.html.twig',
             ['form' => $form->createView()]
         );
-    }// end register()
+    }//end register()
+
 
     /**
      * Change email.
@@ -152,7 +168,8 @@ class SecurityController extends AbstractController
             'security/changeEmail.html.twig',
             ['form' => $form->createView()]
         );
-    }// end changeEmail()
+    }//end changeEmail()
+
 
     /**
      * Change password.
@@ -204,5 +221,5 @@ class SecurityController extends AbstractController
             'security/changePassword.html.twig',
             ['form' => $form->createView()]
         );
-    }// end changePassword()
-}// end class
+    }//end changePassword()
+}//end class

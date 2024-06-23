@@ -113,8 +113,9 @@ class TaskType extends AbstractType
             function (FormEvent $event) {
                 $tagsFormField  = $event->getForm();
                 $tagsFieldValue = $event->getData();
+                $tagsError = $this->translator->trans('label.invalid_tags');
                 if (!empty($tagsFieldValue) && !preg_match_all('/^([a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+, *)*[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $tagsFieldValue)) {
-                    $tagsFormField->addError(new FormError('label.invalid_tags'));
+                    $tagsFormField->addError(new FormError($tagsError));
                 }
             }
         );

@@ -302,13 +302,19 @@
 <source>action.sign_in</source>
 <target>Zaloguj</target>
 </trans-unit>
-
+<trans-unit id="label.is_done">
+<source>label.is_done</source>
+<target>Zrobione?</target>
+</trans-unit>
 <trans-unit id="label.grant_admin">
 <source>label.grant_admin</source>
 <target>Przyznać uprawnienia admina?</target>
 </trans-unit>
 
-
+<trans-unit id="label.invalid_tags">
+<source>label.invalid_tags</source>
+<target>Tagi mogą zawierać tylko cyfry i litery</target>
+</trans-unit>
 
     </body>
   </file>
