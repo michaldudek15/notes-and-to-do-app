@@ -81,6 +81,15 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if (!$this->isGranted('VIEW', $category)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
+
         return $this->render('category/show.html.twig', ['category' => $category]);
     }// end show()
 
@@ -151,6 +160,15 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if (!$this->isGranted('EDIT', $category)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('category_index');
+        }
+
         $form = $this->createForm(
             CategoryType::class,
             $category,
@@ -199,6 +217,15 @@ class CategoryController extends AbstractController
             );
 
             return $this->redirectToRoute('app_login');
+        }
+
+        if (!$this->isGranted('DELETE', $category)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('category_index');
         }
 
         if (!$this->categoryService->canBeDeleted($category)) {

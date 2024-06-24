@@ -88,6 +88,15 @@ class NoteController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if (!$this->isGranted('VIEW', $note)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
         return $this->render('note/show.html.twig', ['note' => $note]);
     }// end show()
 
@@ -156,6 +165,15 @@ class NoteController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if (!$this->isGranted('EDIT', $note)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
         $user = $this->getUser();
         $form = $this->createForm(
             NoteType::class,
@@ -206,6 +224,15 @@ class NoteController extends AbstractController
             );
 
             return $this->redirectToRoute('app_login');
+        }
+
+        if (!$this->isGranted('DELETE', $note)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('note_index');
         }
 
         $form = $this->createForm(

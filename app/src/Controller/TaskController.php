@@ -89,6 +89,15 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if (!$this->isGranted('VIEW', $task)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('task_index');
+        }
+
         return $this->render('task/show.html.twig', ['task' => $task]);
     }// end show()
 
@@ -157,6 +166,15 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        if (!$this->isGranted('EDIT', $task)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('task_index');
+        }
+
         $user = $this->getUser();
         $form = $this->createForm(
             TaskType::class,
@@ -207,6 +225,15 @@ class TaskController extends AbstractController
             );
 
             return $this->redirectToRoute('app_login');
+        }
+
+        if (!$this->isGranted('DELETE', $task)) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('task_index');
         }
 
         $form = $this->createForm(
