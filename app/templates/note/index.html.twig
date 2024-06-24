@@ -6,11 +6,11 @@
 
 {% block body %}
     <h1>{{ 'title.note_list'|trans }}</h1>
-    <a class="btn btn-primary" href="{{ url('note_create') }}" title="{{ 'action.create'|trans }}">
-        {{ 'action.create'|trans }}
-    </a>
-    {% if pagination is defined and pagination.items|length %}
 
+    {% if pagination is defined and pagination.items|length %}
+        <a class="btn btn-primary" href="{{ url('note_create') }}" title="{{ 'action.create'|trans }}">
+            {{ 'action.create'|trans }}
+        </a>
         <table class="table table-striped">
             <thead>
             <tr>
