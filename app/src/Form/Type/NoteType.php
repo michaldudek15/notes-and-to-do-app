@@ -101,7 +101,9 @@ class NoteType extends AbstractType
             [
                 'label'    => 'label.tags',
                 'required' => false,
-                'attr'     => ['max_length' => 128],
+                'attr'     => ['max_length' => 128,
+                    'placeholder' => 'label.tags_info',
+                ],
             ]
         );
 

@@ -1,6 +1,7 @@
 .idea
 var
 vendor
+.DS_Store
 .php_cs.cache
 .php-cs-fixer.cache
 .phpunit.result.cache
