@@ -13,24 +13,34 @@ use Symfony\Component\Routing\Attribute\Route;
 /**
  * Class HelloController.
  */
-#[Route('/hello')]
 class HelloController extends AbstractController
 {
     /**
      * Index action.
      *
-     * @param string $name User input
+     * @return Response HTTP response
+     */
+    #[Route('/')]
+    public function index(): Response
+    {
+        return $this->redirectToRoute('app_login');
+    }
+
+    /**
+     * Hello action.
+     *
+     * @param string $name Name
      *
      * @return Response HTTP response
      */
     #[Route(
-        '/{name}',
+        'hello/{name}',
         name: 'hello_index',
         requirements: ['name' => '[a-zA-Z]+'],
         defaults: ['name' => 'World'],
         methods: 'GET'
     )]
-    public function index(string $name): Response
+    public function hello(string $name): Response
     {
         return $this->render(
             'hello/index.html.twig',
