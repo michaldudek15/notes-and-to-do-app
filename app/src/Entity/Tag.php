@@ -50,8 +50,8 @@ class Tag
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    #[Assert\Regex(pattern: '/^[a-zA-Z0-9]+$/')]
-    #[Assert\Length(min: 2, max: 64)]
+    #[Assert\Regex(pattern: '/[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]*/')]
+    #[Assert\Length(min: 1, max: 64)]
     private ?string $title = null;
 
     /**
@@ -59,7 +59,7 @@ class Tag
      */
     #[ORM\Column(type: 'string', length: 64)]
     #[Assert\Type('string')]
-    #[Assert\Length(min: 3, max: 64)]
+    #[Assert\Length(min: 1, max: 64)]
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
