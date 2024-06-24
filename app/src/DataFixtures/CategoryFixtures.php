@@ -27,7 +27,7 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
     {
         $this->createMany(
             20,
-            'categories',
+            'categories_users',
             function (int $i) {
                 $category = new Category();
                 $category->setTitle($this->faker->unique()->word);
@@ -42,6 +42,29 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
                     )
                 );
                 $author = $this->getRandomReference('users');
+                $category->setAuthor($author);
+
+                return $category;
+            }
+        );
+
+        $this->createMany(
+            10,
+            'categories_admins',
+            function (int $i) {
+                $category = new Category();
+                $category->setTitle($this->faker->unique()->word);
+                $category->setCreatedAt(
+                    \DateTimeImmutable::createFromMutable(
+                        $this->faker->dateTimeBetween('-100 days', '-1 days')
+                    )
+                );
+                $category->setUpdatedAt(
+                    \DateTimeImmutable::createFromMutable(
+                        $this->faker->dateTimeBetween('-100 days', '-1 days')
+                    )
+                );
+                $author = $this->getRandomReference('admins');
                 $category->setAuthor($author);
 
                 return $category;
