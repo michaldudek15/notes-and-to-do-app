@@ -40,8 +40,6 @@ class TagType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $whitespaceError = $this->translator->trans('message.whitespace_error');
-
         $builder->add(
             'title',
             TextType::class,
@@ -54,8 +52,8 @@ class TagType extends AbstractType
                 ],
                 'constraints' => [
                     new Assert\Regex([
-                        'pattern' => '/^\S+$/',
-                        'message' => $whitespaceError,
+                        'pattern' => '/^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/',
+                        'message' => $this->translator->trans('label.invalid_tags'),
                     ]),
                 ],
             ],
