@@ -1,0 +1,4 @@
+td {
+    max-width: 300px; /* Adjust the value as per your requirement */
+    overflow: hidden; /* Optional: Hide any content that overflows */
+}
