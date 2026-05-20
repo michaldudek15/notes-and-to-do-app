@@ -6,6 +6,7 @@ RUN apt-get update && \
     build-essential locales acl mailutils wget nodejs zip unzip \
     gnupg gnupg1 gnupg2 \
     zlib1g-dev \
+    libicu-dev \
     sudo
 
 # Install gd extension
@@ -60,6 +61,7 @@ RUN docker-php-source delete
 
 # Development tools
 RUN apt-get install -y gcc g++ make
+RUN apt-get install libicu-dev
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x && \
