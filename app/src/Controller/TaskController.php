@@ -55,7 +55,7 @@ class TaskController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $user       = $this->getUser();
+        $user = $this->getUser();
         $pagination = $this->taskService->getPaginatedList(
             $page,
             $user,
@@ -182,7 +182,7 @@ class TaskController extends AbstractController
             [
                 'method' => 'PUT',
                 'action' => $this->generateUrl('task_edit', ['id' => $task->getId()]),
-                'user'   => $user,
+                'user' => $user,
             ]
         );
         $form->handleRequest($request);

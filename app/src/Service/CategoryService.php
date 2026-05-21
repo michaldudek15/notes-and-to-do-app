@@ -6,10 +6,10 @@
 
 namespace App\Service;
 
+use App\Entity\Category;
+use App\Entity\User;
 use App\Repository\CategoryRepository;
 use App\Repository\NoteRepository;
-use App\Entity\User;
-use App\Entity\Category;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;

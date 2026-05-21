@@ -17,10 +17,10 @@ use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Security controller.
@@ -55,7 +55,7 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('note_index');
         }
 
-        $error        = $authenticationUtils->getLastAuthenticationError();
+        $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
@@ -193,7 +193,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $currentPassword = $form->get('currentPassword')->getData();
-            $newPassword     = $form->get('password')->getData();
+            $newPassword = $form->get('password')->getData();
             if ($this->passwordHasher->isPasswordValid($user, $currentPassword)) {
                 $user->setPassword($this->passwordHasher->hashPassword($user, $newPassword));
                 $this->userService->save($user);

@@ -6,8 +6,8 @@
 
 namespace App\Service;
 
-use App\Repository\TagRepository;
 use App\Entity\Tag;
+use App\Repository\TagRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\OptimisticLockException;

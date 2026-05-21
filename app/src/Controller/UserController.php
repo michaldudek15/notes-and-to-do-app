@@ -60,7 +60,7 @@ class UserController extends AbstractController
         return $this->render(
             'user/index.html.twig',
             [
-                'pagination'    => $pagination,
+                'pagination' => $pagination,
                 'currentUserId' => $this->getUser()->getId(),
             ]
         );

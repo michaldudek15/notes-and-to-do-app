@@ -107,7 +107,7 @@ class TagController extends AbstractController
             return $this->redirectToRoute('note_index');
         }
 
-        $tag  = new Tag();
+        $tag = new Tag();
         $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
@@ -173,7 +173,7 @@ class TagController extends AbstractController
             'tag/edit.html.twig',
             [
                 'form' => $form->createView(),
-                'tag'  => $tag,
+                'tag' => $tag,
             ]
         );
     }// end edit()
@@ -223,7 +223,7 @@ class TagController extends AbstractController
             'tag/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'tag'  => $tag,
+                'tag' => $tag,
             ]
         );
     }// end delete()

@@ -54,7 +54,7 @@ class NoteController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        $user       = $this->getUser();
+        $user = $this->getUser();
         $pagination = $this->noteService->getPaginatedList(
             $page,
             $user,
@@ -181,7 +181,7 @@ class NoteController extends AbstractController
             [
                 'method' => 'PUT',
                 'action' => $this->generateUrl('note_edit', ['id' => $note->getId()]),
-                'user'   => $user,
+                'user' => $user,
             ]
         );
         $form->handleRequest($request);

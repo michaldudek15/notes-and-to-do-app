@@ -44,9 +44,9 @@ class UserType extends AbstractType
             'email',
             EmailType::class,
             [
-                'label'    => 'label.email',
+                'label' => 'label.email',
                 'required' => false,
-                'attr'     => [
+                'attr' => [
                     'minlength' => 3,
                     'maxlength' => 180,
                 ],            ]
@@ -56,21 +56,21 @@ class UserType extends AbstractType
             'password',
             RepeatedType::class,
             [
-                'type'            => PasswordType::class,
-                'first_options'   => ['label' => 'label.new_password',
-                    'attr'     => [
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'label.new_password',
+                    'attr' => [
                         'minlength' => 8,
                         'maxlength' => 64,
                     ], ],
-                'second_options'  => ['label' => 'label.repeat_new_password',
-                    'attr'     => [
+                'second_options' => ['label' => 'label.repeat_new_password',
+                    'attr' => [
                         'minlength' => 8,
                         'maxlength' => 64,
                     ], ],
                 'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
-                'mapped'          => false,
-                'label'           => 'label.password',
-                'required'        => true,
+                'mapped' => false,
+                'label' => 'label.password',
+                'required' => true,
             ]
         );
     }// end buildForm()

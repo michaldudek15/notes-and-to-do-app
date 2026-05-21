@@ -34,7 +34,7 @@ class EmailChangeType extends AbstractType
             'email',
             EmailType::class,
             [
-                'label'    => 'label.email',
+                'label' => 'label.email',
                 'required' => true,
                 'attr' => [
                     'maxlength' => 180,

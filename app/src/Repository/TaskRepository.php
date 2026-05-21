@@ -8,8 +8,8 @@ namespace App\Repository;
 
 use App\Dto\TaskListFiltersDto;
 use App\Entity\Category;
-use App\Entity\Task;
 use App\Entity\Tag;
+use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;

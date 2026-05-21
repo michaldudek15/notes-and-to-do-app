@@ -6,8 +6,8 @@
 
 namespace App\Service;
 
-use App\Repository\UserRepository;
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Knp\Component\Pager\Pagination\PaginationInterface;

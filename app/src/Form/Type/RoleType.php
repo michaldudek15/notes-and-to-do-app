@@ -34,10 +34,10 @@ class RoleType extends AbstractType
             'roles',
             ChoiceType::class,
             [
-                'choices'  => ['Admin' => 'ROLE_ADMIN'],
+                'choices' => ['Admin' => 'ROLE_ADMIN'],
                 'multiple' => 'true',
                 'expanded' => 'true',
-                'label'    => 'label.grant_admin',
+                'label' => 'label.grant_admin',
             ]
         );
     }// end buildForm()

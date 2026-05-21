@@ -33,7 +33,7 @@ class NoteListInputFiltersDtoResolver implements ValueResolverInterface
         }
 
         $categoryId = $request->query->get('categoryId');
-        $tagId      = $request->query->get('tagId');
+        $tagId = $request->query->get('tagId');
 
         return [new NoteListInputFiltersDto($categoryId, $tagId)];
     }// end resolve()

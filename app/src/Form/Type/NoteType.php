@@ -59,21 +59,21 @@ class NoteType extends AbstractType
             'title',
             TextType::class,
             [
-                'label'    => 'label.title',
+                'label' => 'label.title',
                 'required' => true,
-                'attr'     => ['max_length' => 64],
+                'attr' => ['max_length' => 64],
             ]
         );
         $builder->add(
             'content',
             TextareaType::class,
             [
-                'label'    => 'label.content',
+                'label' => 'label.content',
                 'required' => true,
-                'attr'     => [
+                'attr' => [
                     'minlength' => 1,
                     'maxlength' => 65535,
-                    'rows'       => 10,
+                    'rows' => 10,
                 ],
             ]
         );
@@ -86,11 +86,11 @@ class NoteType extends AbstractType
             'category',
             EntityType::class,
             [
-                'class'        => Category::class,
+                'class' => Category::class,
                 'choice_label' => fn ($category): string => $category->getTitle(),
-                'label'        => 'label.category',
-                'required'     => true,
-                'choices'      => $this->categoryService->getCategoriesByUser($user),
+                'label' => 'label.category',
+                'required' => true,
+                'choices' => $this->categoryService->getCategoriesByUser($user),
             ]
         );
 
@@ -98,9 +98,9 @@ class NoteType extends AbstractType
             'tags',
             TextType::class,
             [
-                'label'    => 'label.tags',
+                'label' => 'label.tags',
                 'required' => false,
-                'attr'     => ['max_length' => 128,
+                'attr' => ['max_length' => 128,
                     'placeholder' => 'label.tags_info',
                 ],
             ]
@@ -113,7 +113,7 @@ class NoteType extends AbstractType
         $builder->get('tags')->addEventListener(
             FormEvents::PRE_SUBMIT,
             function (FormEvent $event) {
-                $tagsFormField  = $event->getForm();
+                $tagsFormField = $event->getForm();
                 $tagsFieldValue = $event->getData();
                 $tagsError = $this->translator->trans('label.invalid_tags');
                 if (!empty($tagsFieldValue) && !preg_match_all('/^([a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+, *)*[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/', $tagsFieldValue)) {
