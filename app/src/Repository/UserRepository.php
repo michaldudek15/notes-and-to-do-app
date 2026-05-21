@@ -86,47 +86,37 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      */
     public function delete(User $user): void
     {
-        // usuwanie notatek danego użytkownika
-        $notes = $this->_em->getRepository(Note::class)->findBy(['author' => $user]);
+        $em = $this->getEntityManager();
+
+        $notes = $em->getRepository(Note::class)->findBy(['author' => $user]);
         foreach ($notes as $note) {
-            $this->_em->remove($note);
+            $em->remove($note);
         }
 
-        // usuwanie tasków danego użytkownika
-        $tasks = $this->_em->getRepository(Task::class)->findBy(['author' => $user]);
+        $tasks = $em->getRepository(Task::class)->findBy(['author' => $user]);
         foreach ($tasks as $task) {
-            $this->_em->remove($task);
+            $em->remove($task);
         }
 
-        // pobranie kategorii danego użytkownika
-        $categories = $this->_em->getRepository(Category::class)->findBy(['author' => $user]);
+        $categories = $em->getRepository(Category::class)->findBy(['author' => $user]);
 
-        // usuwanie notatek powiązanych z kategoriami danego użytkownika
         foreach ($categories as $category) {
-            $categoryNotes = $this->_em->getRepository(Note::class)->findBy(['category' => $category]);
+            $categoryNotes = $em->getRepository(Note::class)->findBy(['category' => $category]);
             foreach ($categoryNotes as $note) {
-                $this->_em->remove($note);
+                $em->remove($note);
             }
 
-            // uswuanie kategorii
-            $this->_em->remove($category);
-        }
-
-        // usuwanie tasków powiązanych z kategoriami danego użytkownika
-        foreach ($categories as $category) {
-            $categoryTasks = $this->_em->getRepository(Task::class)->findBy(['category' => $category]);
+            $categoryTasks = $em->getRepository(Task::class)->findBy(['category' => $category]);
             foreach ($categoryTasks as $task) {
-                $this->_em->remove($task);
+                $em->remove($task);
             }
 
-            // uswuanie kategorii
-            $this->_em->remove($category);
+            $em->remove($category);
         }
 
-        // usuwanie użytkownika
-        $this->_em->remove($user);
-        $this->_em->flush();
-    }// end delete()
+        $em->remove($user);
+        $em->flush();
+    }
 
     /**
      * Get or create new query builder.

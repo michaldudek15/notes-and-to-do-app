@@ -30,14 +30,14 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
     /**
      * Login route.
      *
-     * @const string
+     * @var string
      */
     private const LOGIN_ROUTE = 'app_login';
 
     /**
      * Default route.
      *
-     * @const string
+     * @var string
      */
     private const DEFAULT_ROUTE = 'note_index';
 

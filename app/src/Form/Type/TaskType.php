@@ -8,7 +8,6 @@ namespace App\Form\Type;
 
 use App\Entity\Category;
 use App\Entity\Task;
-use App\Entity\User;
 use App\Form\DataTransformer\TagsDataTransformer;
 use App\Repository\CategoryRepository;
 use App\Service\CategoryService;
