@@ -116,6 +116,7 @@
         }
     },
     "require-dev": {
+        "dama/doctrine-test-bundle": "*",
         "doctrine/doctrine-fixtures-bundle": "^3.6",
         "ergebnis/agent-detector": "^1.2",
         "escapestudios/symfony2-coding-standard": "^3.13",
