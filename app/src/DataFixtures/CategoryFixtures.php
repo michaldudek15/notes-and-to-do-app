@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Category fixtures.
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\Category;
@@ -8,8 +12,20 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
 
+/**
+ * Class CategoryFixtures.
+ *
+ * @psalm-suppress MissingConstructor
+ */
 class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    /**
+     * Load data.
+     *
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
+     */
     public function loadData(): void
     {
         if (!$this->manager instanceof ObjectManager || !$this->faker instanceof Generator) {
@@ -35,10 +51,18 @@ class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureI
 
             return $category;
         });
-    }
+    }// end loadData()
 
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: UserFixtures::class}
+     */
     public function getDependencies(): array
     {
         return [UserFixtures::class];
-    }
-}
+    }// end getDependencies()
+}// end class

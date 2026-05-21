@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Note fixtures.
+ */
+
 namespace App\DataFixtures;
 
 use App\Entity\Category;
@@ -8,8 +12,20 @@ use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
+/**
+ * Class NoteFixtures.
+ *
+ * @psalm-suppress MissingConstructor
+ */
 class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
+    /**
+     * Load data.
+     *
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
+     */
     public function loadData(): void
     {
         if (!$this->manager instanceof \Doctrine\Persistence\ObjectManager || !$this->faker instanceof \Faker\Generator) {
@@ -50,8 +66,16 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         );
 
         $this->manager->flush();
-    }
+    }// end loadData()
 
+    /**
+     * This method must return an array of fixtures classes
+     * on which the implementing class depends on.
+     *
+     * @return string[] of dependencies
+     *
+     * @psalm-return array{0: CategoryFixtures::class, 1: TagFixtures::class, 2: UserFixtures::class}
+     */
     public function getDependencies(): array
     {
         return [
@@ -59,5 +83,5 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             TagFixtures::class,
             UserFixtures::class,
         ];
-    }
-}
+    }// end getDependencies()
+}// end class
