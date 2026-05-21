@@ -1,87 +1,44 @@
 <?php
 
-/**
- * Category fixtures.
- */
-
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use Doctrine\Persistence\ObjectManager;
+use Faker\Generator;
 
-/**
- * Class CategoryFixtures.
- *
- * @psalm-suppress MissingConstructor
- */
 class CategoryFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-    /**
-     * Load data.
-     *
-     * @psalm-suppress PossiblyNullReference
-     * @psalm-suppress UnusedClosureParam
-     */
     public function loadData(): void
     {
-        $this->createMany(
-            20,
-            'categories_users',
-            function (int $i) {
-                $category = new Category();
-                $category->setTitle($this->faker->unique()->word);
-                $category->setCreatedAt(
-                    \DateTimeImmutable::createFromMutable(
-                        $this->faker->dateTimeBetween('-100 days', '-1 days')
-                    )
-                );
-                $category->setUpdatedAt(
-                    \DateTimeImmutable::createFromMutable(
-                        $this->faker->dateTimeBetween('-100 days', '-1 days')
-                    )
-                );
-                $author = $this->getRandomReference('users');
-                $category->setAuthor($author);
+        if (!$this->manager instanceof ObjectManager || !$this->faker instanceof Generator) {
+            return;
+        }
 
-                return $category;
-            }
-        );
+        $this->createMany(20, 'category', function (int $i) {
+            $category = new Category();
+            $category->setTitle($this->faker->unique()->word);
+            $category->setCreatedAt(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-100 days', '-1 days')
+                )
+            );
+            $category->setUpdatedAt(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-100 days', '-1 days')
+                )
+            );
 
-        $this->createMany(
-            10,
-            'categories_admins',
-            function (int $i) {
-                $category = new Category();
-                $category->setTitle($this->faker->unique()->word);
-                $category->setCreatedAt(
-                    \DateTimeImmutable::createFromMutable(
-                        $this->faker->dateTimeBetween('-100 days', '-1 days')
-                    )
-                );
-                $category->setUpdatedAt(
-                    \DateTimeImmutable::createFromMutable(
-                        $this->faker->dateTimeBetween('-100 days', '-1 days')
-                    )
-                );
-                $author = $this->getRandomReference('admins');
-                $category->setAuthor($author);
+            $author = $this->getRandomReference('user', User::class);
+            $category->setAuthor($author);
 
-                return $category;
-            }
-        );
+            return $category;
+        });
+    }
 
-        $this->manager->flush();
-    }// end loadData()
-
-    /**
-     * This method must return an array of fixtures classes
-     * on which the implementing class depends on.
-     *
-     * @return array<class-string<FixtureInterface>>
-     */
     public function getDependencies(): array
     {
         return [UserFixtures::class];
-    }// end getDependencies()
-}// end class
+    }
+}

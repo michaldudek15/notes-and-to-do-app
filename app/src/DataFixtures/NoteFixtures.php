@@ -1,27 +1,15 @@
 <?php
 
-/**
- * Note fixtures.
- */
-
 namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Note;
+use App\Entity\Tag;
+use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-/**
- * Class NoteFixtures.
- */
 class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInterface
 {
-    /**
-     * Load data.
-     *
-     * @psalm-suppress PossiblyNullPropertyFetch
-     * @psalm-suppress PossiblyNullReference
-     * @psalm-suppress UnusedClosureParam
-     */
     public function loadData(): void
     {
         if (!$this->manager instanceof \Doctrine\Persistence\ObjectManager || !$this->faker instanceof \Faker\Generator) {
@@ -45,18 +33,16 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
                         $this->faker->dateTimeBetween('-100 days', '-1 days')
                     )
                 );
-                /*
-                    @var Category $category
-                */
-                $category = $this->getRandomReference('categories');
+
+                $category = $this->getRandomReference('category', Category::class);
                 $note->setCategory($category);
 
-                for ($i = 0; $i < 3; ++$i) {
-                    $tag = $this->getRandomReference('tags');
+                for ($j = 0; $j < 3; ++$j) {
+                    $tag = $this->getRandomReference('tags', Tag::class);
                     $note->addTag($tag);
                 }
 
-                $author = $this->getRandomReference('users');
+                $author = $this->getRandomReference('user', User::class);
                 $note->setAuthor($author);
 
                 return $note;
@@ -64,21 +50,14 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         );
 
         $this->manager->flush();
-    }// end loadData()
+    }
 
-    /**
-     * This method must return an array of fixtures classes
-     * on which the implementing class depends on.
-     *
-     * @return string[] of dependencies
-     *
-     * @psalm-return array{0: CategoryFixtures::class}
-     */
     public function getDependencies(): array
     {
         return [
             CategoryFixtures::class,
             TagFixtures::class,
+            UserFixtures::class,
         ];
-    }// end getDependencies()
-}// end class
+    }
+}

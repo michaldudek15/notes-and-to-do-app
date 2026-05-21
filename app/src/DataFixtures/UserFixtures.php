@@ -14,18 +14,26 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * Class UserFixtures.
+ *
+ * @psalm-suppress MissingConstructor
  */
 class UserFixtures extends AbstractBaseFixtures
 {
     /**
+     * Constructor.
+     *
      * @param UserPasswordHasherInterface $passwordHasher Password hasher
      */
     public function __construct(private readonly UserPasswordHasherInterface $passwordHasher)
     {
-    }// end __construct()
+    }
 
     /**
      * Load data.
+     *
+     * @psalm-suppress PossiblyNullPropertyFetch
+     * @psalm-suppress PossiblyNullReference
+     * @psalm-suppress UnusedClosureParam
      */
     protected function loadData(): void
     {
@@ -33,42 +41,32 @@ class UserFixtures extends AbstractBaseFixtures
             return;
         }
 
-        $this->createMany(
-            10,
-            'users',
-            function (int $i) {
-                $user = new User();
-                $user->setEmail(sprintf('user%d@example.com', $i));
-                $user->setRoles([UserRole::ROLE_USER->value]);
-                $user->setPassword(
-                    $this->passwordHasher->hashPassword(
-                        $user,
-                        'user1234'
-                    )
-                );
+        $this->createMany(10, 'user', function (int $i) {
+            $user = new User();
+            $user->setEmail(sprintf('user%d@example.com', $i));
+            $user->setRoles([UserRole::ROLE_USER->value]);
+            $user->setPassword(
+                $this->passwordHasher->hashPassword(
+                    $user,
+                    'user1234'
+                )
+            );
 
-                return $user;
-            }
-        );
+            return $user;
+        });
 
-        $this->createMany(
-            3,
-            'admins',
-            function (int $i) {
-                $user = new User();
-                $user->setEmail(sprintf('admin%d@example.com', $i));
-                $user->setRoles([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
-                $user->setPassword(
-                    $this->passwordHasher->hashPassword(
-                        $user,
-                        'admin1234'
-                    )
-                );
+        $this->createMany(3, 'admin', factory: function (int $i = 10) {
+            $user = new User();
+            $user->setEmail(sprintf('admin%d@example.com', $i));
+            $user->setRoles([UserRole::ROLE_USER->value, UserRole::ROLE_ADMIN->value]);
+            $user->setPassword(
+                $this->passwordHasher->hashPassword(
+                    $user,
+                    'admin1234'
+                )
+            );
 
-                return $user;
-            }
-        );
-
-        $this->manager->flush();
-    }// end loadData()
-}// end class
+            return $user;
+        });
+    }
+}

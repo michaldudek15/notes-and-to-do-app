@@ -29,13 +29,6 @@ abstract class AbstractBaseFixtures extends Fixture
     protected ?ObjectManager $manager = null;
 
     /**
-     * Object reference index.
-     *
-     * @var array<string, array<int, array-key>>
-     */
-    private array $referencesIndex = [];
-
-    /**
      * Load.
      *
      * @param ObjectManager $manager Persistence object manager
@@ -55,22 +48,20 @@ abstract class AbstractBaseFixtures extends Fixture
     /**
      * Create many objects at once:.
      *
-     *      $this->createMany(10, function(int $i) {
+     *      $this->createMany(10, 'user', function(int $i) {
      *          $user = new User();
      *          $user->setFirstName('Ryan');
      *
      *           return $user;
      *      });
      *
-     * @param int      $count     Number of object to create
-     * @param string   $groupName Tag these created objects with this group name,
-     *                            and use this later with getRandomReference(s)
-     *                            to fetch only from this specific group
-     * @param callable $factory   Defines method of creating objects
-     *
-     * @psalm-suppress PossiblyNullReference
+     * @param int      $count              Number of object to create
+     * @param string   $referenceGroupName Tag these created objects with this group name,
+     *                                     and use this later with getRandomReference(s)
+     *                                     to fetch only from this specific group
+     * @param callable $factory            Defines method of creating objects
      */
-    protected function createMany(int $count, string $groupName, callable $factory): void
+    protected function createMany(int $count, string $referenceGroupName, callable $factory): void
     {
         for ($i = 0; $i < $count; ++$i) {
             /** @var object|null $entity */
@@ -83,58 +74,78 @@ abstract class AbstractBaseFixtures extends Fixture
             $this->manager->persist($entity);
 
             // store for usage later than groupName_#COUNT#
-            $this->addReference(sprintf('%s_%d', $groupName, $i), $entity);
+            $this->addReference(sprintf('%s_%d', $referenceGroupName, $i), $entity);
         }
+
+        $this->manager->flush();
     }
 
     /**
      * Set random reference to the object.
      *
-     * @param string $groupName Objects group name
+     * @param string $referenceGroupName Objects reference group name
+     * @param string $className          Class name
      *
      * @return object Random object reference
-     *
-     * @psalm-suppress MixedAssignment
-     * @psalm-suppress UnusedForeachValue
      */
-    protected function getRandomReference(string $groupName): object
+    protected function getRandomReference(string $referenceGroupName, string $className): object
     {
-        if (!isset($this->referencesIndex[$groupName])) {
-            $this->referencesIndex[$groupName] = [];
+        $referenceNameList = $this->getReferenceNameListByClassName($referenceGroupName, $className);
+        $randomReferenceName = (string) $this->faker->randomElement($referenceNameList);
 
-            foreach (array_keys($this->referenceRepository->getReferences()) as $key) {
-                if (str_starts_with((string) $key, $groupName.'_')) {
-                    $this->referencesIndex[$groupName][] = $key;
-                }
-            }
-        }
-
-        if (empty($this->referencesIndex[$groupName])) {
-            throw new \InvalidArgumentException(sprintf('Did not find any references saved with the group name "%s"', $groupName));
-        }
-
-        $randomReferenceKey = (string) $this->faker->randomElement($this->referencesIndex[$groupName]);
-
-        return $this->getReference($randomReferenceKey);
+        return $this->getReference($randomReferenceName, $className);
     }
 
     /**
      * Get array of objects references based on count.
      *
-     * @param string $groupName Object group name
-     * @param int    $count     Number of references
+     * @param string $referenceGroupName Objects reference group name
+     * @param string $className          Objects class name
+     * @param int    $count              Number of references
      *
      * @return object[] Result
-     *
-     * @psalm-return list<object>
      */
-    protected function getRandomReferences(string $groupName, int $count): array
+    protected function getRandomReferenceList(string $referenceGroupName, string $className, int $count): array
     {
+        $referenceNameList = $this->getReferenceNameListByClassName($referenceGroupName, $className);
         $references = [];
         while (count($references) < $count) {
-            $references[] = $this->getRandomReference($groupName);
+            $randomReferenceName = (string) $this->faker->randomElement($referenceNameList);
+            $references[] = $this->getReference($randomReferenceName, $className);
         }
 
         return $references;
+    }
+
+    /**
+     * Get reference name list by class name.
+     *
+     * @param string $referenceGroupName Objects reference group name
+     * @param string $className          Objects class name
+     *
+     * @return array Reference name list
+     */
+    private function getReferenceNameListByClassName(string $referenceGroupName, string $className): array
+    {
+        if (!array_key_exists($className, $this->referenceRepository->getIdentitiesByClass())) {
+            throw new \InvalidArgumentException(sprintf('Did not find any references saved with the name "%s"', $className));
+        }
+
+        $referenceNameListByClass = array_keys($this->referenceRepository->getIdentitiesByClass()[$className]);
+
+        if ([] === $referenceNameListByClass) {
+            throw new \InvalidArgumentException(sprintf('Did not find any references saved with the name "%s"', $className));
+        }
+
+        $referenceNameList = array_filter(
+            $referenceNameListByClass,
+            fn ($referenceName) => preg_match_all("/^{$referenceGroupName}_\\d+\$/", (string) $referenceName)
+        );
+
+        if ([] === $referenceNameList) {
+            throw new \InvalidArgumentException(sprintf('Did not find any references saved with the group name "%s" and class name "%s"', $referenceGroupName, $className));
+        }
+
+        return $referenceNameList;
     }
 }
