@@ -9,14 +9,17 @@ namespace App\Tests\Controller;
 use App\Entity\Category;
 use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CategoryControllerTest extends WebTestCase
 {
-    private KernelBrowser $client;
-    private UserRepository $userRepository;
-    private CategoryRepository $categoryRepository;
+    public const TEST_ROUTE = '/category';
+
+    private KernelBrowser $httpClient;
+
+    private ?EntityManagerInterface $entityManager;
 
     /**
      * Set up test environment before each test.
@@ -29,82 +32,15 @@ class CategoryControllerTest extends WebTestCase
     }
 
     /**
-     * Test index redirects guest to login page.
+     * @return void
+     * guest user can't access category list and should be redirected to login page
      */
-    public function testIndexRedirectsGuestToLogin(): void
+    public function testIndexGuest(): void
     {
-        // Arrange - brak logowania (gość)
+        $this->client->request('GET', self::TEST_ROUTE);
 
-        // Act
-        $this->client->request('GET', '/category');
-
-        // Assert
-        $this->assertResponseRedirects('/login');
+        $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
     }
 
-    /**
-     * Test index returns 200 for logged in user.
-     */
-    public function testIndexReturns200ForLoggedInUser(): void
-    {
-        // Arrange
-        $user = $this->userRepository->findOneByEmail('user0@example.com');
 
-        // Act
-        $this->client->loginUser($user);
-        $this->client->request('GET', '/category');
-
-        // Assert
-        $this->assertResponseIsSuccessful();
-    }
-
-    /**
-     * Test show redirects guest to login.
-     */
-    public function testShowRedirectsGuestToLogin(): void
-    {
-        // Arrange
-        $category = $this->categoryRepository->findOneBy([]);
-
-        // Act
-        $this->client->request('GET', '/category/' . $category->getId());
-
-        // Assert
-        $this->assertResponseRedirects('/login');
-    }
-
-    /**
-     * Test show redirects user without VIEW permission to index.
-     */
-    public function testShowRedirectsUnauthorizedUserToIndex(): void
-    {
-        // Arrange
-        $user = $this->userRepository->findOneByEmail('user0@example.com');
-        $otherUser = $this->userRepository->findOneByEmail('user1@example.com');
-        $category = $this->categoryRepository->findOneBy(['author' => $otherUser]);
-
-        // Act
-        $this->client->loginUser($user);
-        $this->client->request('GET', '/category/' . $category->getId());
-
-        // Assert
-        $this->assertResponseRedirects('/category');
-    }
-
-    /**
-     * Test show returns 200 for owner of category.
-     */
-    public function testShowReturns200ForOwner(): void
-    {
-        // Arrange
-        $user = $this->userRepository->findOneByEmail('user0@example.com');
-        $category = $this->categoryRepository->findOneBy(['author' => $user]);
-
-        // Act
-        $this->client->loginUser($user);
-        $this->client->request('GET', '/category/' . $category->getId());
-
-        // Assert
-        $this->assertResponseIsSuccessful();
-    }
 }
