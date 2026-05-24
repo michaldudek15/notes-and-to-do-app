@@ -14,7 +14,7 @@ class CategoryControllerTest extends AbstractWebTestCase
     private const string TEST_ROUTE = '/category';
 
     /**
-     * Guest cannot access category list and is redirected to login.
+     * category list is only for logged-in users
      */
     public function testIndexGuest(): void
     {
@@ -23,6 +23,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * logged-in user should be able to see the list of categories
+     */
     public function testIndexUser(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
@@ -33,6 +36,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    /**
+     * test pagination and parameter page
+     */
     public function testIndexPagination(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
@@ -47,6 +53,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    /**
+     * Guest users should be redirected to the login page when attempting to access a private category.
+     */
     public function testShowGuestRedirectsToLogin(): void
     {
         $owner = $this->createUser();
@@ -57,6 +66,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Category owner should be able to access the specific category details successfully.
+     */
     public function testShowOwnerReturnsSuccess(): void
     {
         $owner = $this->createUser();
@@ -68,6 +80,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    /**
+     * Ensures that when a logged-in user tries to access a category owned by another user,
+     * they are redirected to the category index page.
+     */
     public function testShowOtherUserRedirectsToIndex(): void
     {
         $owner = $this->createUser();
@@ -80,6 +96,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/category');
     }
 
+    /**
+     * Guest users should be redirected to the login page when attempting to access the create route.
+     */
     public function testCreateGuestRedirectsToLogin(): void
     {
         $this->client->request('GET', self::TEST_ROUTE.'/create');
@@ -87,6 +106,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Ensures that the create category route displays the creation form successfully.
+     */
     public function testCreateGetShowsForm(): void
     {
         $this->login($this->createUser());
@@ -97,6 +119,11 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertSelectorExists('input[name="category[title]"]');
     }
 
+    /**
+     * Authenticated user should be able to create a new category and
+     * should be redirected to the category list upon successful creation.
+     * The created category should persist in the database with the correct author.
+     */
     public function testCreatePostValidRedirectsToIndex(): void
     {
         $user = $this->createUser();
@@ -117,6 +144,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         self::assertSame($user->getId(), $saved->getAuthor()?->getId());
     }
 
+    /**
+     * Tests that submitting a form with invalid data in the create post process
+     * does not modify the database and re-renders the form correctly.
+     */
     public function testCreatePostInvalidRendersFormAgain(): void
     {
         $user = $this->createUser();
@@ -133,6 +164,9 @@ class CategoryControllerTest extends AbstractWebTestCase
         self::assertCount($beforeCount, $this->categoryRepository->findBy(['author' => $user]));
     }
 
+    /**
+     * Tests that accessing the edit page as a guest redirects the user to the login page.
+     */
     public function testEditGuestRedirectsToLogin(): void
     {
         $category = $this->createCategory($this->createUser(), 'To edit');
@@ -142,6 +176,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Tests that attempting to edit a category owned by another user redirects
+     * the current user to the category index page.
+     */
     public function testEditOtherUserRedirectsToIndex(): void
     {
         $owner = $this->createUser();
@@ -154,6 +192,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/category');
     }
 
+    /**
+     * Tests that accessing the edit category endpoint as the owner
+     * successfully displays the edit form.
+     */
     public function testEditOwnerGetShowsForm(): void
     {
         $category = $this->createCategory($this->createUser(), 'Editable');
@@ -165,6 +207,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertCount(1, $crawler->filter('form'));
     }
 
+    /**
+     * Tests that submitting a form with valid data in the edit category process
+     * updates the database correctly and redirects to the expected route.
+     */
     public function testEditOwnerPutValidUpdatesAndRedirects(): void
     {
         $category = $this->createCategory($this->createUser(), 'Old title');
@@ -183,6 +229,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         self::assertSame('Updated title', $updated->getTitle());
     }
 
+    /**
+     * Tests that submitting invalid data during the edit category process
+     * does not modify the existing category and correctly re-renders the form.
+     */
     public function testEditOwnerPutInvalidShowsForm(): void
     {
         $category = $this->createCategory($this->createUser(), 'Valid title');
@@ -201,6 +251,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         self::assertSame('Valid title', $unchanged->getTitle());
     }
 
+    /**
+     * Ensures that attempting to delete a category as a guest user
+     * redirects to the login page, preventing unauthorized access.
+     */
     public function testDeleteGuestRedirectsToLogin(): void
     {
         $category = $this->createCategory($this->createUser(), 'To delete');
@@ -210,6 +264,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Tests that attempting to delete a category owned by another user
+     * redirects the user to the category index page without modifying the database.
+     */
     public function testDeleteOtherUserRedirectsToIndex(): void
     {
         $owner = $this->createUser();
@@ -222,6 +280,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/category');
     }
 
+    /**
+     * Tests that accessing the delete confirmation page via a GET request
+     * renders the confirmation form correctly and does not perform any deletion.
+     */
     public function testDeleteGetShowsConfirmation(): void
     {
         $category = $this->createCategory($this->createUser(), 'Delete me');
@@ -233,6 +295,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->assertCount(1, $crawler->filter('form'));
     }
 
+    /**
+     * Tests that deleting a category successfully removes it from the database
+     * and redirects to the category index page.
+     */
     public function testDeletePostSuccessRemovesCategory(): void
     {
         $category = $this->createCategory($this->createUser(), 'Gone soon');
@@ -247,6 +313,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         self::assertNull($this->categoryRepository->find($categoryId));
     }
 
+    /**
+     * Tests that attempting to delete a category with associated notes
+     * redirects to the category list page and ensures the category is not deleted.
+     */
     public function testDeleteCategoryWithNotesRedirectsAndKeepsCategory(): void
     {
         $owner = $this->createUser();
