@@ -55,7 +55,7 @@ class TaskType extends AbstractType
 
         $user = $options['user'];
 
-        dump($this->categoryService->getCategoriesByUser($user));
+        // dump($this->categoryService->getCategoriesByUser($user));
 
         $builder->add(
             'title',

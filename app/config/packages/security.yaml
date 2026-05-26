@@ -45,6 +45,7 @@ security:
     - { path: ^/hello, roles: PUBLIC_ACCESS }
     - { path: ^/category, roles: ROLE_USER }
     - { path: ^/note, roles: ROLE_USER }
+    - { path: ^/task, roles: ROLE_USER }
 
 when@test:
   security:

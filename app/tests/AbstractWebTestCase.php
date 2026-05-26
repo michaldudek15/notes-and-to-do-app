@@ -10,10 +10,12 @@ use App\Entity\Category;
 use App\Entity\Enum\UserRole;
 use App\Entity\Note;
 use App\Entity\Tag;
+use App\Entity\Task;
 use App\Entity\User;
 use App\Repository\CategoryRepository;
 use App\Repository\NoteRepository;
 use App\Repository\TagRepository;
+use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -30,6 +32,8 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     protected TagRepository $tagRepository;
 
+    protected TaskRepository $taskRepository;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,6 +44,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         $this->categoryRepository = $container->get(CategoryRepository::class);
         $this->noteRepository = $container->get(NoteRepository::class);
         $this->tagRepository = $container->get(TagRepository::class);
+        $this->taskRepository = $container->get(TaskRepository::class);
     }
 
     /**
@@ -101,6 +106,28 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $tag;
     }
 
+    protected function createTask(
+        User $author,
+        Category $category,
+        string $title = 'Test task',
+        bool $status = false,
+    ): Task {
+        $author = $this->userRepository->find($author->getId());
+        $category = $this->categoryRepository->find($category->getId());
+        self::assertInstanceOf(User::class, $author);
+        self::assertInstanceOf(Category::class, $category);
+
+        $task = new Task();
+        $task->setTitle($title);
+        $task->setStatus($status);
+        $task->setAuthor($author);
+        $task->setCategory($category);
+
+        $this->taskRepository->save($task);
+
+        return $task;
+    }
+
     protected function login(User $user): void
     {
         $user = $this->userRepository->find($user->getId());
@@ -131,5 +158,17 @@ abstract class AbstractWebTestCase extends WebTestCase
         self::assertInstanceOf(User::class, $note->getAuthor());
 
         $this->client->loginUser($note->getAuthor());
+    }
+
+    /**
+     * Log in as the task owner so TaskVoter identity checks pass.
+     */
+    protected function loginAsTaskOwner(Task $task): void
+    {
+        $task = $this->taskRepository->find($task->getId());
+        self::assertInstanceOf(Task::class, $task);
+        self::assertInstanceOf(User::class, $task->getAuthor());
+
+        $this->client->loginUser($task->getAuthor());
     }
 }

@@ -7,7 +7,6 @@
 namespace App\Controller;
 
 use App\Dto\TaskListInputFiltersDto;
-use App\Entity\Category;
 use App\Entity\Task;
 use App\Form\Type\TaskType;
 use App\Resolver\TaskListInputFiltersDtoResolver;
@@ -46,15 +45,6 @@ class TaskController extends AbstractController
     #[Route(name: 'task_index', methods: 'GET')]
     public function index(#[MapQueryString(resolver: TaskListInputFiltersDtoResolver::class)] TaskListInputFiltersDto $filters, #[MapQueryParameter] int $page = 1): Response
     {
-        if (!$this->isGranted('ROLE_USER')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('app_login');
-        }
-
         $user = $this->getUser();
         $pagination = $this->taskService->getPaginatedList(
             $page,
@@ -80,15 +70,6 @@ class TaskController extends AbstractController
     )]
     public function show(Task $task): Response
     {
-        if (!$this->isGranted('ROLE_USER')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('app_login');
-        }
-
         if (!$this->isGranted('VIEW', $task)) {
             $this->addFlash(
                 'danger',
@@ -115,15 +96,6 @@ class TaskController extends AbstractController
     )]
     public function create(Request $request): Response
     {
-        if (!$this->isGranted('ROLE_USER')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('app_login');
-        }
-
         $user = $this->getUser();
         $task = new Task();
         $task->setAuthor($user);
@@ -157,15 +129,6 @@ class TaskController extends AbstractController
     #[Route('/{id}/edit', name: 'task_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, Task $task): Response
     {
-        if (!$this->isGranted('ROLE_USER')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('app_login');
-        }
-
         if (!$this->isGranted('EDIT', $task)) {
             $this->addFlash(
                 'danger',
@@ -218,15 +181,6 @@ class TaskController extends AbstractController
     #[Route('/{id}/delete', name: 'task_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Task $task): Response
     {
-        if (!$this->isGranted('ROLE_USER')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('app_login');
-        }
-
         if (!$this->isGranted('DELETE', $task)) {
             $this->addFlash(
                 'danger',
