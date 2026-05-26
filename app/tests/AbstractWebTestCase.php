@@ -9,9 +9,11 @@ namespace App\Tests;
 use App\Entity\Category;
 use App\Entity\Enum\UserRole;
 use App\Entity\Note;
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Repository\CategoryRepository;
 use App\Repository\NoteRepository;
+use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -26,6 +28,8 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     protected NoteRepository $noteRepository;
 
+    protected TagRepository $tagRepository;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -35,6 +39,7 @@ abstract class AbstractWebTestCase extends WebTestCase
         $this->userRepository = $container->get(UserRepository::class);
         $this->categoryRepository = $container->get(CategoryRepository::class);
         $this->noteRepository = $container->get(NoteRepository::class);
+        $this->tagRepository = $container->get(TagRepository::class);
     }
 
     /**
@@ -86,6 +91,16 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $note;
     }
 
+    protected function createTag(string $title = 'Test tag'): Tag
+    {
+        $tag = new Tag();
+        $tag->setTitle($title);
+
+        $this->tagRepository->save($tag);
+
+        return $tag;
+    }
+
     protected function login(User $user): void
     {
         $user = $this->userRepository->find($user->getId());
@@ -104,5 +119,17 @@ abstract class AbstractWebTestCase extends WebTestCase
         self::assertInstanceOf(User::class, $category->getAuthor());
 
         $this->client->loginUser($category->getAuthor());
+    }
+
+    /**
+     * Log in as the note owner so NoteVoter identity checks pass.
+     */
+    protected function loginAsNoteOwner(Note $note): void
+    {
+        $note = $this->noteRepository->find($note->getId());
+        self::assertInstanceOf(Note::class, $note);
+        self::assertInstanceOf(User::class, $note->getAuthor());
+
+        $this->client->loginUser($note->getAuthor());
     }
 }
