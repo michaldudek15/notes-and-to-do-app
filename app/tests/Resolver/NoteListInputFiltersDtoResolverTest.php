@@ -70,7 +70,7 @@ class NoteListInputFiltersDtoResolverTest extends TestCase
      */
     public function testResolveReturnsDtoWithCategoryIdAndTagIdFromQuery(): void
     {
-        $request = Request::create('/note', \Symfony\Component\HttpFoundation\Request::METHOD_GET, [
+        $request = Request::create('/note', Request::METHOD_GET, [
             'categoryId' => '12',
             'tagId' => '34',
         ]);
@@ -89,7 +89,7 @@ class NoteListInputFiltersDtoResolverTest extends TestCase
      */
     public function testResolveReturnsDtoWithOnlyCategoryId(): void
     {
-        $request = Request::create('/note', \Symfony\Component\HttpFoundation\Request::METHOD_GET, ['categoryId' => '7']);
+        $request = Request::create('/note', Request::METHOD_GET, ['categoryId' => '7']);
         $argument = $this->createFiltersArgument();
 
         $result = iterator_to_array($this->resolver->resolve($request, $argument));
