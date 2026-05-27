@@ -12,7 +12,6 @@ use App\Entity\Task;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\QueryBuilder;
@@ -27,13 +26,11 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
     /**
-     * @param ManagerRegistry        $registry      Manager registry
-     * @param EntityManagerInterface $entityManager Entity manager
+     * @param ManagerRegistry $registry Manager registry
      */
-    public function __construct(ManagerRegistry $registry, EntityManagerInterface $entityManager)
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
-        $this->entityManager = $entityManager;
     }// end __construct()
 
     /**
