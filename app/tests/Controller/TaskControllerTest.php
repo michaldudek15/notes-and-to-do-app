@@ -18,7 +18,7 @@ class TaskControllerTest extends AbstractWebTestCase
      */
     public function testIndexGuest(): void
     {
-        $this->client->request('GET', self::TEST_ROUTE);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
 
         $this->assertResponseRedirects('/login');
     }
@@ -31,7 +31,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($user);
 
-        $this->client->request('GET', self::TEST_ROUTE);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
 
         $this->assertResponseIsSuccessful();
     }
@@ -49,7 +49,7 @@ class TaskControllerTest extends AbstractWebTestCase
             $this->createTask($user, $category, sprintf('Task %02d', $i));
         }
 
-        $this->client->request('GET', self::TEST_ROUTE.'?page=2');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?page=2');
 
         $this->assertResponseIsSuccessful();
     }
@@ -64,7 +64,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->createTask($user, $category);
         $this->login($user);
 
-        $this->client->request('GET', self::TEST_ROUTE.'?categoryId='.$category->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?categoryId='.$category->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -82,7 +82,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->taskRepository->save($task);
         $this->login($user);
 
-        $this->client->request('GET', self::TEST_ROUTE.'?tagId='.$tag->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?tagId='.$tag->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -96,7 +96,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $category = $this->createCategory($owner);
         $task = $this->createTask($owner, $category, 'Private task');
 
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId());
 
         $this->assertResponseRedirects('/login');
     }
@@ -111,7 +111,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'My task');
         $this->loginAsTaskOwner($task);
 
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -128,7 +128,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Not yours');
 
         $this->login($other);
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId());
 
         $this->assertResponseRedirects('/task');
     }
@@ -138,7 +138,7 @@ class TaskControllerTest extends AbstractWebTestCase
      */
     public function testCreateGuestRedirectsToLogin(): void
     {
-        $this->client->request('GET', self::TEST_ROUTE.'/create');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
 
         $this->assertResponseRedirects('/login');
     }
@@ -152,7 +152,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->createCategory($user, 'Form category');
         $this->login($user);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -169,7 +169,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $category = $this->createCategory($user, 'Create task category');
         $this->login($user);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
         $form = $crawler->filter('form')->form([
             'task[title]' => 'New task title',
             'task[category]' => $category->getId(),
@@ -198,7 +198,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->login($user);
         $beforeCount = count($this->taskRepository->findBy(['author' => $user]));
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
         $form = $crawler->filter('form')->form([
             'task[title]' => 'Valid title',
             'task[category]' => $category->getId(),
@@ -219,7 +219,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $category = $this->createCategory($owner);
         $task = $this->createTask($owner, $category, 'To edit');
 
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/edit');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/edit');
 
         $this->assertResponseRedirects('/login');
     }
@@ -236,7 +236,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Protected');
 
         $this->login($other);
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/edit');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/edit');
 
         $this->assertResponseRedirects('/task');
     }
@@ -252,7 +252,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Editable');
         $this->loginAsTaskOwner($task);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/edit');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -269,7 +269,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Old title', false);
         $this->loginAsTaskOwner($task);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/edit');
         $form = $crawler->filter('form')->form([
             'task[title]' => 'Updated title',
             'task[category]' => $category->getId(),
@@ -296,7 +296,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Valid title');
         $this->loginAsTaskOwner($task);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/edit');
         $form = $crawler->filter('form')->form([
             'task[title]' => 'Valid title',
             'task[category]' => $category->getId(),
@@ -321,7 +321,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $category = $this->createCategory($owner);
         $task = $this->createTask($owner, $category, 'To delete');
 
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/delete');
 
         $this->assertResponseRedirects('/login');
     }
@@ -338,7 +338,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Keep');
 
         $this->login($other);
-        $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/delete');
 
         $this->assertResponseRedirects('/task');
     }
@@ -354,7 +354,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $task = $this->createTask($owner, $category, 'Delete me');
         $this->loginAsTaskOwner($task);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/'.$task->getId().'/delete');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$task->getId().'/delete');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -372,7 +372,7 @@ class TaskControllerTest extends AbstractWebTestCase
         $taskId = $task->getId();
         $this->loginAsTaskOwner($task);
 
-        $crawler = $this->client->request('GET', self::TEST_ROUTE.'/'.$taskId.'/delete');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$taskId.'/delete');
         $form = $crawler->filter('form')->form();
         $this->client->submit($form);
 

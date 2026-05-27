@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Hello World controller tests.
  */
 
 namespace App\Tests\Controller;
 
-use Generator;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -22,7 +22,7 @@ class HelloControllerTest extends WebTestCase
         $client = static::createClient();
 
         // when
-        $client->request('GET', '/hello');
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/hello');
         $resultHttpStatusCode = $client->getResponse()->getStatusCode();
 
         // then
@@ -32,16 +32,16 @@ class HelloControllerTest extends WebTestCase
     public function testRootRedirectsToLogin(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/');
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/');
 
         $this->assertResponseRedirects('/login');
-        $this->assertEquals(302, $client->getResponse()->getStatusCode());
+        $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
     public function testHelloWithInvalidNameReturns404(): void
     {
         $client = static::createClient();
-        $client->request('GET', '/hello/123');
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/hello/123');
 
         $this->assertResponseStatusCodeSame(404);
     }
@@ -49,7 +49,7 @@ class HelloControllerTest extends WebTestCase
     public function testHelloPostMethodNotAllowed(): void
     {
         $client = static::createClient();
-        $client->request('POST', '/hello/Ann');
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_POST, '/hello/Ann');
 
         $this->assertResponseStatusCodeSame(405);
     }
@@ -57,8 +57,8 @@ class HelloControllerTest extends WebTestCase
     public function testHelloRouteIsAccessibleByName(): void
     {
         $client = static::createClient();
-        $url = $client->getContainer()->get('router')->generate('hello_index', ['name' => 'Ann']);
-        $client->request('GET', $url);
+        $url = $client->getContainer()->get(\Symfony\Bundle\FrameworkBundle\Routing\Router::class)->generate('hello_index', ['name' => 'Ann']);
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, $url);
 
         $this->assertResponseIsSuccessful();
     }
@@ -72,7 +72,7 @@ class HelloControllerTest extends WebTestCase
         $client = static::createClient();
 
         // when
-        $client->request('GET', '/hello');
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/hello');
 
         // then
         $this->assertSelectorTextContains('html title', 'Hello World!');
@@ -93,7 +93,7 @@ class HelloControllerTest extends WebTestCase
         $client = static::createClient();
 
         // when
-        $client->request('GET', '/hello/'.$name);
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/hello/'.$name);
 
         // then
         $this->assertSelectorTextContains('html title', $expectedGreetings);
@@ -105,7 +105,7 @@ class HelloControllerTest extends WebTestCase
      *
      * @return \Generator Test case
      */
-    public function dataProviderForTestPersonalizedGreetings(): Generator
+    public function dataProviderForTestPersonalizedGreetings(): \Generator
     {
         yield 'Hello Ann' => [
             'name' => 'Ann',

@@ -1549,12 +1549,14 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     },
  *     template?: array{
  *         pagination?: scalar|Param|null, // Default: "@KnpPaginator/Pagination/sliding.html.twig"
+ *         rel_links?: scalar|Param|null, // Default: "@KnpPaginator/Pagination/rel_links.html.twig"
  *         filtration?: scalar|Param|null, // Default: "@KnpPaginator/Pagination/filtration.html.twig"
  *         sortable?: scalar|Param|null, // Default: "@KnpPaginator/Pagination/sortable_link.html.twig"
  *     },
  *     page_range?: scalar|Param|null, // Default: 5
- *     page_limit?: int|Param, // Default: null
+ *     page_limit?: scalar|Param|null, // Default: null
  *     convert_exception?: bool|Param, // Default: false
+ *     remove_first_page_param?: bool|Param, // Default: false
  * }
  * @psalm-type StofDoctrineExtensionsConfig = array{
  *     orm?: array<string, array{ // Default: []
