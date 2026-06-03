@@ -52,8 +52,7 @@ abstract class AbstractWebTestCase extends WebTestCase
      */
     protected function createUser(array $roles = [UserRole::ROLE_USER->value]): User
     {
-        $passwordHasher = static::getContainer()->get(\Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher::class);
-
+        $passwordHasher = static::getContainer()->get(\Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface::class);
         $user = new User();
         $user->setEmail('user'.uniqid().'@example.com');
         $user->setRoles($roles);
