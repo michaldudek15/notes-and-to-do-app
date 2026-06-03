@@ -33,6 +33,9 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory suffix=".php">src/DataFixtures</directory>
+        </exclude>
         <report>
             <text outputFile="php://stdout" showUncoveredFiles="true" showOnlySummary="false"/>
             <html outputDirectory="html-coverage" lowUpperBound="50" highLowerBound="90"/>
