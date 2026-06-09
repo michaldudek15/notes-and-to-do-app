@@ -41,6 +41,7 @@ class UserServiceTest extends KernelTestCase
 
         // then
         $expectedUserId = $expectedUser->getId();
+        $this->entityManager->clear();
 
         $resultUser = $this->entityManager->createQueryBuilder()
             ->select('user')
@@ -63,9 +64,6 @@ class UserServiceTest extends KernelTestCase
 
         $this->userService->save($user);
 
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
-
         $id = $user->getId();
 
         // when
@@ -85,9 +83,6 @@ class UserServiceTest extends KernelTestCase
         $user->setRoles([UserRole::ROLE_USER->value]);
 
         $this->userService->save($user);
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
 
         // when
         $pagination = $this->userService->getPaginatedList(1);
