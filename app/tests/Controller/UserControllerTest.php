@@ -65,6 +65,15 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/note');
     }
 
+    public function testShowGuestRedirectsToLogin(): void
+    {
+        $target = $this->createUser([UserRole::ROLE_USER->value]);
+
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId());
+
+        $this->assertResponseRedirects('/login');
+    }
+
     public function testEditAdminGetShowsForm(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -76,6 +85,15 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
         $this->assertSelectorExists('input[name="user[email]"]');
+    }
+
+    public function testEditGuestRedirectsToLogin(): void
+    {
+        $target = $this->createUser([UserRole::ROLE_USER->value]);
+
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/edit');
+
+        $this->assertResponseRedirects('/login');
     }
 
     public function testEditAdminPutValidUpdatesUserAndRedirects(): void
@@ -164,6 +182,15 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/note');
     }
 
+    public function testDeleteGuestRedirectsToLogin(): void
+    {
+        $target = $this->createUser([UserRole::ROLE_USER->value]);
+
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/delete');
+
+        $this->assertResponseRedirects('/login');
+    }
+
     public function testChangeRoleAdminGetShowsForm(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -215,5 +242,14 @@ class UserControllerTest extends AbstractWebTestCase
         $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/changeRole');
 
         $this->assertResponseRedirects('/note');
+    }
+
+    public function testChangeRoleGuestRedirectsToLogin(): void
+    {
+        $target = $this->createUser([UserRole::ROLE_USER->value]);
+
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/changeRole');
+
+        $this->assertResponseRedirects('/login');
     }
 }
