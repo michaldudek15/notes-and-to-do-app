@@ -46,13 +46,8 @@ class UserController extends AbstractController
     #[Route(name: 'user_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page = 1): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('note_index');
+        if (null !== ($response = $this->denyUnlessAdmin())) {
+            return $response;
         }
 
         $pagination = $this->userService->getPaginatedList($page, $this->getUser());
@@ -81,13 +76,8 @@ class UserController extends AbstractController
     )]
     public function show(User $user): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('note_index');
+        if (null !== ($response = $this->denyUnlessAdmin())) {
+            return $response;
         }
 
         return $this->render('user/show.html.twig', ['user' => $user]);
@@ -104,13 +94,8 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('note_index');
+        if (null !== ($response = $this->denyUnlessAdmin())) {
+            return $response;
         }
 
         $form = $this->createForm(
@@ -157,13 +142,8 @@ class UserController extends AbstractController
     #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, User $user): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('note_index');
+        if (null !== ($response = $this->denyUnlessAdmin())) {
+            return $response;
         }
 
         $form = $this->createForm(
@@ -207,13 +187,8 @@ class UserController extends AbstractController
     #[Route('/{id}/changeRole', name: 'user_change_role', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function changeRole(Request $request, User $user): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
-            $this->addFlash(
-                'danger',
-                $this->translator->trans('message.not_allowed')
-            );
-
-            return $this->redirectToRoute('note_index');
+        if (null !== ($response = $this->denyUnlessAdmin())) {
+            return $response;
         }
 
         $currentUser = $this->getUser();
@@ -252,4 +227,32 @@ class UserController extends AbstractController
             ]
         );
     }// end changeRole()
+
+    /**
+     * Ensure current user has ROLE_ADMIN.
+     *
+     * @return Response|null Redirect response when access should be denied
+     */
+    private function denyUnlessAdmin(): ?Response
+    {
+        if (null === $this->getUser()) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        if (!$this->isGranted('ROLE_ADMIN')) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('note_index');
+        }
+
+        return null;
+    }// end denyUnlessAdmin()
 }// end class

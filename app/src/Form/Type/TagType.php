@@ -51,10 +51,10 @@ class TagType extends AbstractType
                     'maxlength' => 64,
                 ],
                 'constraints' => [
-                    new Assert\Regex([
-                        'pattern' => '/^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/',
-                        'message' => $this->translator->trans('label.invalid_tags'),
-                    ]),
+                    new Assert\Regex(
+                        pattern: '/^[a-zA-Z0-9ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+$/',
+                        message: $this->translator->trans('label.invalid_tags'),
+                    ),
                 ],
             ],
         );
