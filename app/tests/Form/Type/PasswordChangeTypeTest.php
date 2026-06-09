@@ -38,7 +38,7 @@ class PasswordChangeTypeTest extends KernelTestCase
         self::assertSame('user', $formType->getBlockPrefix());
     }
 
-    public function testSubmitValidDataIsValidAndReturnsNewPassword(): void
+    public function testSubmitMatchingNewPasswordsIsValidAndExposesNewPassword(): void
     {
         $user = new User();
         $user->setEmail('user@example.com');
@@ -62,7 +62,7 @@ class PasswordChangeTypeTest extends KernelTestCase
         self::assertSame('oldpassword123', $user->getPassword());
     }
 
-    public function testSubmitMismatchedPasswordsIsInvalid(): void
+    public function testSubmitMismatchedNewPasswordsIsInvalid(): void
     {
         $user = new User();
         $user->setEmail('user@example.com');
