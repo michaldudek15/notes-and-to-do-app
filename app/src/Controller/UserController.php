@@ -46,7 +46,7 @@ class UserController extends AbstractController
     #[Route(name: 'user_index', methods: 'GET')]
     public function index(#[MapQueryParameter] int $page = 1): Response
     {
-        if (null !== ($response = $this->denyUnlessAdmin())) {
+        if (($response = $this->denyUnlessAdmin()) instanceof Response) {
             return $response;
         }
 
@@ -76,7 +76,7 @@ class UserController extends AbstractController
     )]
     public function show(User $user): Response
     {
-        if (null !== ($response = $this->denyUnlessAdmin())) {
+        if (($response = $this->denyUnlessAdmin()) instanceof Response) {
             return $response;
         }
 
@@ -94,7 +94,7 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
-        if (null !== ($response = $this->denyUnlessAdmin())) {
+        if (($response = $this->denyUnlessAdmin()) instanceof Response) {
             return $response;
         }
 
@@ -142,7 +142,7 @@ class UserController extends AbstractController
     #[Route('/{id}/delete', name: 'user_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, User $user): Response
     {
-        if (null !== ($response = $this->denyUnlessAdmin())) {
+        if (($response = $this->denyUnlessAdmin()) instanceof Response) {
             return $response;
         }
 
@@ -187,7 +187,7 @@ class UserController extends AbstractController
     #[Route('/{id}/changeRole', name: 'user_change_role', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function changeRole(Request $request, User $user): Response
     {
-        if (null !== ($response = $this->denyUnlessAdmin())) {
+        if (($response = $this->denyUnlessAdmin()) instanceof Response) {
             return $response;
         }
 
@@ -235,7 +235,7 @@ class UserController extends AbstractController
      */
     private function denyUnlessAdmin(): ?Response
     {
-        if (null === $this->getUser()) {
+        if (!$this->getUser() instanceof \Symfony\Component\Security\Core\User\UserInterface) {
             $this->addFlash(
                 'danger',
                 $this->translator->trans('message.not_allowed')

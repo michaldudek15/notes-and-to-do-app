@@ -57,7 +57,7 @@ class HelloControllerTest extends WebTestCase
     public function testHelloRouteIsAccessibleByName(): void
     {
         $client = static::createClient();
-        $router = $client->getContainer()->get('router');
+        $router = $client->getContainer()->get(\Symfony\Bundle\FrameworkBundle\Routing\Router::class);
         $url = $router->generate('hello_index', ['name' => 'Ann']);
         $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, $url);
 

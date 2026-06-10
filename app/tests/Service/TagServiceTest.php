@@ -27,7 +27,7 @@ class TagServiceTest extends KernelTestCase
         parent::setUp();
 
         $container = static::getContainer();
-        $this->entityManager = $container->get('doctrine.orm.entity_manager');
+        $this->entityManager = $container->get(\Doctrine\ORM\EntityManager::class);
         $this->tagService = $container->get(TagService::class);
     }
 

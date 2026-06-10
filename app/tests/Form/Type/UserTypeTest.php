@@ -20,7 +20,7 @@ class UserTypeTest extends KernelTestCase
         parent::setUp();
 
         self::bootKernel();
-        $this->formFactory = static::getContainer()->get('form.factory');
+        $this->formFactory = static::getContainer()->get(\Symfony\Component\Form\FormFactory::class);
     }
 
     public function testFormContainsEmailAndPasswordFields(): void

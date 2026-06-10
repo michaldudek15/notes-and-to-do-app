@@ -1,5 +1,288 @@
 
-Found 0 of 56 files that can be fixed in 0.970 seconds, 18.00 MB memory used
+Found 0 of 57 files that can be fixed in 1.122 seconds, 126.00 MB memory used
+
+Found 0 of 22 files that can be fixed in 1.029 seconds, 72.00 MB memory used
+
+FILE: /home/wwwroot/app/tests/Repository/TaskRepositoryTest.php
+---------------------------------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 3 LINES
+---------------------------------------------------------------------------------------------
+ 11 | ERROR | Missing doc comment for class TaskRepositoryTest
+ 13 | ERROR | Missing doc comment for function
+    |       | testCountByCategoryReturnsNumberOfTasksInGivenCategory()
+ 26 | ERROR | Missing doc comment for function
+    |       | testCountByCategoryReturnsZeroWhenCategoryHasNoTasks()
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Repository/UserRepositoryTest.php
+---------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+---------------------------------------------------------------------------------------------
+ 14 | ERROR | Missing doc comment for class UserRepositoryTest
+ 16 | ERROR | Missing doc comment for function testUpgradePasswordUpdatesPersistedPassword()
+ 28 | ERROR | Missing doc comment for function testUpgradePasswordThrowsForUnsupportedUser()
+ 30 | ERROR | Use parentheses when instantiating classes
+ 31 | ERROR | Missing doc comment for function getPassword()
+ 42 | ERROR | Missing doc comment for function testDeleteRemovesUserWithAuthoredData()
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Form/Type/UserTypeTest.php
+---------------------------------------------------------------------------------------------
+FOUND 8 ERRORS AFFECTING 8 LINES
+---------------------------------------------------------------------------------------------
+  14 | ERROR | Missing doc comment for class UserTypeTest
+  18 | ERROR | Missing doc comment for function setUp()
+  26 | ERROR | Missing doc comment for function testFormContainsEmailAndPasswordFields()
+  34 | ERROR | Missing doc comment for function testGetBlockPrefixReturnsUser()
+  41 | ERROR | Missing doc comment for function
+     |       | testSubmitValidDataUpdatesEmailAndExposesPassword()
+  68 | ERROR | Missing doc comment for function testSubmitMismatchedPasswordsIsInvalid()
+  90 | ERROR | Missing doc comment for function
+     |       | testSubmitWithoutPasswordDoesNotChangeEntityPassword()
+ 115 | ERROR | Missing doc comment for function testSubmitInvalidEmailIsInvalid()
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Form/Type/TagTypeTest.php
+-----------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+-----------------------------------------------------------------------------------
+ 14 | ERROR | Missing doc comment for class TagTypeTest
+ 18 | ERROR | Missing doc comment for function setUp()
+ 26 | ERROR | Missing doc comment for function testFormContainsTitleField()
+ 33 | ERROR | Missing doc comment for function testGetBlockPrefixReturnsTag()
+ 40 | ERROR | Missing doc comment for function testSubmitValidTitleUpdatesEntity()
+ 57 | ERROR | Missing doc comment for function testSubmitInvalidTitleIsInvalid()
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Form/Type/RegistrationTypeTest.php
+------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+------------------------------------------------------------------------------------------
+ 14 | ERROR | Missing doc comment for class RegistrationTypeTest
+ 18 | ERROR | Missing doc comment for function setUp()
+ 26 | ERROR | Missing doc comment for function testFormContainsEmailAndPasswordFields()
+ 34 | ERROR | Missing doc comment for function testGetBlockPrefixReturnsUser()
+ 41 | ERROR | Missing doc comment for function testSubmitValidDataUpdatesEntityPassword()
+ 67 | ERROR | Missing doc comment for function testSubmitMismatchedPasswordsIsInvalid()
+------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Form/Type/PasswordChangeTypeTest.php
+---------------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+---------------------------------------------------------------------------------------------
+ 14 | ERROR | Missing doc comment for class PasswordChangeTypeTest
+ 18 | ERROR | Missing doc comment for function setUp()
+ 26 | ERROR | Missing doc comment for function
+    |       | testFormContainsCurrentPasswordAndPasswordFields()
+ 34 | ERROR | Missing doc comment for function testGetBlockPrefixReturnsUser()
+ 41 | ERROR | Missing doc comment for function
+    |       | testSubmitMatchingNewPasswordsIsValidAndExposesNewPassword()
+ 65 | ERROR | Missing doc comment for function testSubmitMismatchedNewPasswordsIsInvalid()
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Form/Type/EmailChangeTypeTest.php
+-----------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+-----------------------------------------------------------------------------------
+ 14 | ERROR | Missing doc comment for class EmailChangeTypeTest
+ 18 | ERROR | Missing doc comment for function setUp()
+ 26 | ERROR | Missing doc comment for function testFormContainsEmailField()
+ 33 | ERROR | Missing doc comment for function testGetBlockPrefixReturnsUser()
+ 40 | ERROR | Missing doc comment for function testSubmitValidEmailUpdatesEntity()
+ 59 | ERROR | Missing doc comment for function testSubmitInvalidEmailIsInvalid()
+-----------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/AbstractWebTestCase.php
+---------------------------------------------------------------------------------------------
+FOUND 12 ERRORS AFFECTING 11 LINES
+---------------------------------------------------------------------------------------------
+  23 | ERROR | Missing doc comment for class AbstractWebTestCase
+  37 | ERROR | Missing doc comment for function setUp()
+  52 | ERROR | Missing @return tag in function comment
+  66 | ERROR | Missing doc comment for function createCategory()
+  80 | ERROR | Missing doc comment for function createNote()
+  98 | ERROR | Missing doc comment for function createTag()
+ 108 | ERROR | Declare all the arguments on the same line as the method/function name, no
+     |       | matter how many arguments there are.
+ 108 | ERROR | Missing doc comment for function createTask()
+ 130 | ERROR | Missing doc comment for function login()
+ 138 | ERROR | Doc comment for parameter "$category" missing
+ 150 | ERROR | Doc comment for parameter "$note" missing
+ 162 | ERROR | Doc comment for parameter "$task" missing
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Entity/Enum/UserRoleTest.php
+-----------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 3 LINES
+-----------------------------------------------------------------------
+ 12 | ERROR | Missing doc comment for class UserRoleTest
+ 14 | ERROR | Missing doc comment for function testLabelForRoleUser()
+ 19 | ERROR | Missing doc comment for function testLabelForRoleAdmin()
+-----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Controller/UserControllerTest.php
+---------------------------------------------------------------------------------------------
+FOUND 20 ERRORS AFFECTING 20 LINES
+---------------------------------------------------------------------------------------------
+  14 | ERROR | Missing doc comment for class UserControllerTest
+  18 | ERROR | Missing doc comment for function testIndexGuestRedirectsToLogin()
+  25 | ERROR | Missing doc comment for function testIndexNonAdminRedirectsToNote()
+  35 | ERROR | Missing doc comment for function testIndexAdminReturnsSuccess()
+  46 | ERROR | Missing doc comment for function testShowAdminReturnsSuccess()
+  57 | ERROR | Missing doc comment for function testShowNonAdminRedirectsToNote()
+  68 | ERROR | Missing doc comment for function testShowGuestRedirectsToLogin()
+  77 | ERROR | Missing doc comment for function testEditAdminGetShowsForm()
+  90 | ERROR | Missing doc comment for function testEditGuestRedirectsToLogin()
+  99 | ERROR | Missing doc comment for function
+     |       | testEditAdminPutValidUpdatesUserAndRedirects()
+ 124 | ERROR | Missing doc comment for function testEditAdminPutInvalidShowsFormAgain()
+ 147 | ERROR | Missing doc comment for function testDeleteAdminGetShowsConfirmation()
+ 159 | ERROR | Missing doc comment for function
+     |       | testDeleteAdminDeleteRemovesUserAndRedirects()
+ 174 | ERROR | Missing doc comment for function testDeleteNonAdminRedirectsToNote()
+ 185 | ERROR | Missing doc comment for function testDeleteGuestRedirectsToLogin()
+ 194 | ERROR | Missing doc comment for function testChangeRoleAdminGetShowsForm()
+ 206 | ERROR | Missing doc comment for function
+     |       | testChangeRoleAdminPutValidUpdatesRolesAndRedirects()
+ 226 | ERROR | Missing doc comment for function
+     |       | testChangeRoleForCurrentAdminRedirectsToIndex()
+ 236 | ERROR | Missing doc comment for function testChangeRoleNonAdminRedirectsToNote()
+ 247 | ERROR | Missing doc comment for function testChangeRoleGuestRedirectsToLogin()
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Controller/NoteControllerTest.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 12 | ERROR | Missing doc comment for class NoteControllerTest
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Controller/TaskControllerTest.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 12 | ERROR | Missing doc comment for class TaskControllerTest
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Controller/CategoryControllerTest.php
+----------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------
+ 12 | ERROR | Missing doc comment for class CategoryControllerTest
+----------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Controller/HelloControllerTest.php
+------------------------------------------------------------------------------------
+FOUND 4 ERRORS AFFECTING 4 LINES
+------------------------------------------------------------------------------------
+ 32 | ERROR | Missing doc comment for function testRootRedirectsToLogin()
+ 41 | ERROR | Missing doc comment for function testHelloWithInvalidNameReturns404()
+ 49 | ERROR | Missing doc comment for function testHelloPostMethodNotAllowed()
+ 57 | ERROR | Missing doc comment for function testHelloRouteIsAccessibleByName()
+------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Service/UserServiceTest.php
+---------------------------------------------------------------------------------------
+FOUND 6 ERRORS AFFECTING 6 LINES
+---------------------------------------------------------------------------------------
+ 20 | ERROR | Missing doc comment for class UserServiceTest
+ 25 | ERROR | Missing doc comment for function setUp()
+ 32 | ERROR | Missing doc comment for function testSaveUserToDatabase()
+ 58 | ERROR | Missing doc comment for function testDeleteRemovesUserFromDatabase()
+ 77 | ERROR | Missing doc comment for function testGetPaginatedListReturnsPagination()
+ 97 | ERROR | Missing doc comment for function testSaveDelegatesToRepository()
+---------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Service/CategoryServiceTest.php
+---------------------------------------------------------------------------------------------
+FOUND 9 ERRORS AFFECTING 9 LINES
+---------------------------------------------------------------------------------------------
+  20 | ERROR | Missing doc comment for class CategoryServiceTest
+  22 | ERROR | Missing doc comment for function
+     |       | testGetPaginatedListDelegatesToRepositoryAndPaginator()
+  53 | ERROR | Missing doc comment for function testSaveDelegatesToRepository()
+  71 | ERROR | Missing doc comment for function testDeleteDelegatesToRepository()
+  89 | ERROR | Missing doc comment for function
+     |       | testCanBeDeletedReturnsTrueWhenNoNotesAssigned()
+ 108 | ERROR | Missing doc comment for function testCanBeDeletedReturnsFalseWhenNotesExist()
+ 127 | ERROR | Missing doc comment for function
+     |       | testCanBeDeletedReturnsFalseOnRepositoryException()
+ 146 | ERROR | Missing doc comment for function testFindOneByIdDelegatesToRepository()
+ 168 | ERROR | Missing doc comment for function
+     |       | testGetCategoriesByUserDelegatesToRepository()
+---------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Service/TagServiceTest.php
+------------------------------------------------------------------------------------------
+FOUND 8 ERRORS AFFECTING 8 LINES
+------------------------------------------------------------------------------------------
+  19 | ERROR | Missing doc comment for class TagServiceTest
+  25 | ERROR | Missing doc comment for function setUp()
+  34 | ERROR | Missing doc comment for function testSaveTagToDatabase()
+  54 | ERROR | Missing doc comment for function testDeleteRemovesTagFromDatabase()
+  68 | ERROR | Missing doc comment for function testGetPaginatedListReturnsPagination()
+  83 | ERROR | Missing doc comment for function testSaveDelegatesToRepository()
+ 101 | ERROR | Missing doc comment for function testDeleteDelegatesToRepository()
+ 119 | ERROR | Missing doc comment for function testFindOneByTitleDelegatesToRepository()
+------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Service/NoteServiceTest.php
+------------------------------------------------------------------------------------------
+FOUND 5 ERRORS AFFECTING 5 LINES
+------------------------------------------------------------------------------------------
+  26 | ERROR | Missing doc comment for class NoteServiceTest
+  28 | ERROR | Missing doc comment for function testSaveDelegatesToRepository()
+  47 | ERROR | Missing doc comment for function testDeleteDelegatesToRepository()
+  66 | ERROR | Missing doc comment for function testGetPaginatedListWithoutFilters()
+ 102 | ERROR | Missing doc comment for function testGetPaginatedListWithResolvedFilters()
+------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Resolver/NoteListInputFiltersDtoResolverTest.php
+---------------------------------------------------------------------------------
+FOUND 3 ERRORS AFFECTING 3 LINES
+---------------------------------------------------------------------------------
+  15 | ERROR | Missing doc comment for class NoteListInputFiltersDtoResolverTest
+  19 | ERROR | Missing doc comment for function setUp()
+ 102 | ERROR | Missing doc comment for function createFiltersArgument()
+---------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Resolver/TaskListInputFiltersDtoResolverTest.php
+---------------------------------------------------------------------------------------------
+FOUND 8 ERRORS AFFECTING 8 LINES
+---------------------------------------------------------------------------------------------
+ 15 | ERROR | Missing doc comment for class TaskListInputFiltersDtoResolverTest
+ 19 | ERROR | Missing doc comment for function setUp()
+ 26 | ERROR | Missing doc comment for function testResolveReturnsEmptyForUnsupportedType()
+ 36 | ERROR | Missing doc comment for function testResolveReturnsEmptyWhenTypeIsNull()
+ 46 | ERROR | Missing doc comment for function
+    |       | testResolveReturnsDtoWithNullFiltersWhenNoQueryParams()
+ 59 | ERROR | Missing doc comment for function
+    |       | testResolveReturnsDtoWithCategoryIdAndTagIdFromQuery()
+ 75 | ERROR | Missing doc comment for function testResolveReturnsDtoWithOnlyCategoryId()
+ 87 | ERROR | Missing doc comment for function createFiltersArgument()
+---------------------------------------------------------------------------------------------
+
+Time: 1.24 secs; Memory: 10MB
+
  ------- -------- ---- ---------------------- 
   State   Domain   Id   Message Preview (en)  
  ------- -------- ---- ---------------------- 
@@ -9,9 +292,9 @@ Found 0 of 56 files that can be fixed in 0.970 seconds, 18.00 MB memory used
  ------- -------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20240621194341
-[notice] finished in 265.2ms, used 24M memory, 11 migrations executed, 30 sql queries
+[notice] finished in 611.8ms, used 26M memory, 11 migrations executed, 30 sql queries
 
- [OK] Successfully migrated to version: DoctrineMigrations\Version20240621194341                                        
+ [OK] Successfully migrated to version: DoctrineMigrations\Version20240621194341             
 
 
    > purging database

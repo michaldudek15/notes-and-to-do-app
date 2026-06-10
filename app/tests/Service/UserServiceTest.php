@@ -25,9 +25,10 @@ class UserServiceTest extends KernelTestCase
     public function setUp(): void
     {
         $container = static::getContainer();
-        $this->entityManager = $container->get('doctrine.orm.entity_manager');
+        $this->entityManager = $container->get(\Doctrine\ORM\EntityManager::class);
         $this->userService = $container->get(UserService::class);
     }
+
     public function testSaveUserToDatabase(): void
     {
         // given
@@ -71,7 +72,6 @@ class UserServiceTest extends KernelTestCase
 
         // then
         self::assertNull($this->entityManager->find(User::class, $id));
-
     }
 
     public function testGetPaginatedListReturnsPagination(): void
@@ -92,7 +92,6 @@ class UserServiceTest extends KernelTestCase
         self::assertSame(1, $pagination->getCurrentPageNumber());
         self::assertSame(10, $pagination->getItemNumberPerPage());
         self::assertGreaterThanOrEqual(1, $pagination->getTotalItemCount());
-
     }
 
     public function testSaveDelegatesToRepository(): void

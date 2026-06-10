@@ -75,9 +75,7 @@ class NoteServiceTest extends TestCase
             ->method('queryByAuthor')
             ->with(
                 self::identicalTo($author),
-                self::callback(function (NoteListFiltersDto $preparedFilters): bool {
-                    return null === $preparedFilters->category && null === $preparedFilters->tag;
-                })
+                self::callback(fn (NoteListFiltersDto $preparedFilters): bool => !$preparedFilters->category instanceof Category && !$preparedFilters->tag instanceof Tag)
             )
             ->willReturn($query);
 
@@ -133,9 +131,7 @@ class NoteServiceTest extends TestCase
             ->method('queryByAuthor')
             ->with(
                 self::identicalTo($author),
-                self::callback(function (NoteListFiltersDto $preparedFilters) use ($category, $tag): bool {
-                    return $preparedFilters->category === $category && $preparedFilters->tag === $tag;
-                })
+                self::callback(fn (NoteListFiltersDto $preparedFilters): bool => $preparedFilters->category === $category && $preparedFilters->tag === $tag)
             )
             ->willReturn($query);
 
