@@ -25,7 +25,7 @@ class UserServiceTest extends KernelTestCase
     public function setUp(): void
     {
         $container = static::getContainer();
-        $this->entityManager = $container->get(\Doctrine\ORM\EntityManager::class);
+        $this->entityManager = $container->get(EntityManagerInterface::class);
         $this->userService = $container->get(UserService::class);
     }
 

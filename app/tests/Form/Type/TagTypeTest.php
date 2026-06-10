@@ -20,7 +20,7 @@ class TagTypeTest extends KernelTestCase
         parent::setUp();
 
         self::bootKernel();
-        $this->formFactory = static::getContainer()->get(\Symfony\Component\Form\FormFactory::class);
+        $this->formFactory = static::getContainer()->get(FormFactoryInterface::class);
     }
 
     public function testFormContainsTitleField(): void
