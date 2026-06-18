@@ -38,7 +38,7 @@ class Task
     private ?string $title = null;
 
     #[ORM\Column(type: 'boolean')]
-    private ?string $status = null;
+    private ?bool $status = null;
 
     /**
      * Category.
