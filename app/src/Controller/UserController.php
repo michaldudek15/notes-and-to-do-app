@@ -111,7 +111,9 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $newPassword = $form->get('password')->getData();
 
-            $user->setPassword($this->passwordHasher->hashPassword($user, $newPassword));
+            if (is_string($newPassword) && '' !== trim($newPassword)) {
+                $user->setPassword($this->passwordHasher->hashPassword($user, $newPassword));
+            }
             $this->userService->save($user);
 
             $this->addFlash(

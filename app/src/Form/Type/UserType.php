@@ -70,7 +70,7 @@ class UserType extends AbstractType
                 'invalid_message' => $this->translator->trans('message.invalid_repeated_password'),
                 'mapped' => false,
                 'label' => 'label.password',
-                'required' => true,
+                'required' => false,
             ]
         );
     }// end buildForm()

@@ -121,6 +121,31 @@ class UserControllerTest extends AbstractWebTestCase
         self::assertTrue($passwordHasher->isPasswordValid($updated, 'newpassword'));
     }
 
+    public function testEditAdminPutEmailOnlyUpdatesEmailWithoutChangingPassword(): void
+    {
+        $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
+        $target = $this->createUser([UserRole::ROLE_USER->value]);
+        $targetId = $target->getId();
+        $this->login($admin);
+
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$targetId.'/edit');
+        $form = $crawler->filter('form')->form([
+            'user[email]' => 'email-only-'.uniqid().'@example.com',
+            'user[password][first]' => '',
+            'user[password][second]' => '',
+        ]);
+        $this->client->submit($form);
+
+        $this->assertResponseRedirects('/user');
+
+        $updated = $this->userRepository->find($targetId);
+        self::assertInstanceOf(User::class, $updated);
+        self::assertStringContainsString('email-only-', $updated->getEmail());
+
+        $passwordHasher = static::getContainer()->get(UserPasswordHasherInterface::class);
+        self::assertTrue($passwordHasher->isPasswordValid($updated, 'password'));
+    }
+
     public function testEditAdminPutInvalidShowsFormAgain(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
