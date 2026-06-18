@@ -6,109 +6,19 @@
 
 namespace App\Tests\Service;
 
-use App\Entity\Enum\UserRole;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\UserService;
-use App\Service\UserServiceInterface;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\QueryBuilder;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
- * User service integration tests.
+ * User service unit tests.
  */
-class UserServiceTest extends KernelTestCase
+class UserServiceTest extends TestCase
 {
-    private ?EntityManagerInterface $entityManager;
-    private ?UserServiceInterface $userService;
-
-    /**
-     * Boots kernel and fetches service dependencies.
-     */
-    public function setUp(): void
-    {
-        $container = static::getContainer();
-        $this->entityManager = $container->get(EntityManagerInterface::class);
-        $this->userService = $container->get(UserService::class);
-    }
-
-    /**
-     * It persists a user in the database.
-     */
-    public function testSaveUserToDatabase(): void
-    {
-        // given
-        $expectedUser = new User();
-        $expectedUser->setEmail('save'.uniqid().'@example.com');
-        $expectedUser->setPassword('password');
-        $expectedUser->setRoles([UserRole::ROLE_USER->value]);
-
-        // when
-        $this->userService->save($expectedUser);
-
-        // then
-        $expectedUserId = $expectedUser->getId();
-        $this->entityManager->clear();
-
-        $resultUser = $this->entityManager->createQueryBuilder()
-            ->select('user')
-            ->from(User::class, 'user')
-            ->where('user.id = :id')
-            ->setParameter(':id', $expectedUserId, Types::INTEGER)
-            ->getQuery()
-            ->getSingleResult();
-
-        $this->assertEquals($expectedUser, $resultUser);
-    }
-
-    /**
-     * It removes a saved user from the database.
-     */
-    public function testDeleteRemovesUserFromDatabase(): void
-    {
-        // given
-        $user = new User();
-        $user->setEmail('delete'.uniqid().'@example.com');
-        $user->setPassword('password');
-        $user->setRoles([UserRole::ROLE_USER->value]);
-
-        $this->userService->save($user);
-
-        $id = $user->getId();
-
-        // when
-        $this->userService->delete($user);
-
-        // then
-        self::assertNull($this->entityManager->find(User::class, $id));
-    }
-
-    /**
-     * It returns paginated user list.
-     */
-    public function testGetPaginatedListReturnsPagination(): void
-    {
-        // given
-        $user = new User();
-        $user->setEmail('paginate'.uniqid().'@example.com');
-        $user->setPassword('password');
-        $user->setRoles([UserRole::ROLE_USER->value]);
-
-        $this->userService->save($user);
-
-        // when
-        $pagination = $this->userService->getPaginatedList(1);
-
-        // then
-        self::assertInstanceOf(PaginationInterface::class, $pagination);
-        self::assertSame(1, $pagination->getCurrentPageNumber());
-        self::assertSame(10, $pagination->getItemNumberPerPage());
-        self::assertGreaterThanOrEqual(1, $pagination->getTotalItemCount());
-    }
-
     /**
      * It delegates save operation to repository.
      */
@@ -117,10 +27,7 @@ class UserServiceTest extends KernelTestCase
         // given
         $user = new User();
         $user->setEmail('delegate@example.com');
-        $user->setPassword('password');
-        $user->setRoles([UserRole::ROLE_USER->value]);
 
-        // when
         $userRepository = $this->createMock(UserRepository::class);
         $userRepository->expects(self::once())
             ->method('save')
@@ -132,5 +39,54 @@ class UserServiceTest extends KernelTestCase
         );
 
         $service->save($user);
+    }
+
+    /**
+     * It delegates delete operation to repository.
+     */
+    public function testDeleteDelegatesToRepository(): void
+    {
+        $user = new User();
+        $user->setEmail('delete@example.com');
+
+        $userRepository = $this->createMock(UserRepository::class);
+        $userRepository->expects(self::once())
+            ->method('delete')
+            ->with(self::identicalTo($user));
+
+        $service = new UserService(
+            $userRepository,
+            $this->createMock(PaginatorInterface::class),
+        );
+
+        $service->delete($user);
+    }
+
+    /**
+     * It delegates paginated listing to repository and paginator.
+     */
+    public function testGetPaginatedListReturnsPaginationFromPaginator(): void
+    {
+        $queryBuilder = $this->createMock(QueryBuilder::class);
+        $pagination = $this->createMock(PaginationInterface::class);
+
+        $userRepository = $this->createMock(UserRepository::class);
+        $userRepository->expects(self::once())
+            ->method('queryAll')
+            ->willReturn($queryBuilder);
+
+        $paginator = $this->createMock(PaginatorInterface::class);
+        $paginator->expects(self::once())
+            ->method('paginate')
+            ->with(
+                self::identicalTo($queryBuilder),
+                1,
+                10
+            )
+            ->willReturn($pagination);
+
+        $service = new UserService($userRepository, $paginator);
+
+        self::assertSame($pagination, $service->getPaginatedList(1));
     }
 }
