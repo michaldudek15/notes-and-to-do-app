@@ -11,10 +11,16 @@ use App\Entity\User;
 use App\Tests\AbstractWebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * User controller integration tests.
+ */
 class UserControllerTest extends AbstractWebTestCase
 {
     private const string TEST_ROUTE = '/user';
 
+    /**
+     * Guest is redirected to login from index.
+     */
     public function testIndexGuestRedirectsToLogin(): void
     {
         $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
@@ -22,6 +28,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Non-admin is redirected away from index.
+     */
     public function testIndexNonAdminRedirectsToNote(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
@@ -32,6 +41,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/note');
     }
 
+    /**
+     * Admin can access index page.
+     */
     public function testIndexAdminReturnsSuccess(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -43,6 +55,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    /**
+     * Admin can open user details.
+     */
     public function testShowAdminReturnsSuccess(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -54,6 +69,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    /**
+     * Non-admin cannot open user details.
+     */
     public function testShowNonAdminRedirectsToNote(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
@@ -65,6 +83,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/note');
     }
 
+    /**
+     * Guest cannot open user details.
+     */
     public function testShowGuestRedirectsToLogin(): void
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
@@ -74,6 +95,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Admin sees edit form.
+     */
     public function testEditAdminGetShowsForm(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -87,6 +111,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertSelectorExists('input[name="user[email]"]');
     }
 
+    /**
+     * Guest cannot access edit form.
+     */
     public function testEditGuestRedirectsToLogin(): void
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
@@ -96,6 +123,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Admin updates email and password.
+     */
     public function testEditAdminPutValidUpdatesUserAndRedirects(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -121,6 +151,9 @@ class UserControllerTest extends AbstractWebTestCase
         self::assertTrue($passwordHasher->isPasswordValid($updated, 'newpassword'));
     }
 
+    /**
+     * Admin can update email without changing password.
+     */
     public function testEditAdminPutEmailOnlyUpdatesEmailWithoutChangingPassword(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -146,6 +179,9 @@ class UserControllerTest extends AbstractWebTestCase
         self::assertTrue($passwordHasher->isPasswordValid($updated, 'password'));
     }
 
+    /**
+     * Invalid edit payload re-renders edit form.
+     */
     public function testEditAdminPutInvalidShowsFormAgain(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -169,6 +205,9 @@ class UserControllerTest extends AbstractWebTestCase
         self::assertSame($beforeEmail, $unchanged->getEmail());
     }
 
+    /**
+     * Admin sees delete confirmation form.
+     */
     public function testDeleteAdminGetShowsConfirmation(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -181,6 +220,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertCount(1, $crawler->filter('form'));
     }
 
+    /**
+     * Admin can delete user.
+     */
     public function testDeleteAdminDeleteRemovesUserAndRedirects(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -196,6 +238,9 @@ class UserControllerTest extends AbstractWebTestCase
         self::assertNull($this->userRepository->find($targetId));
     }
 
+    /**
+     * Non-admin cannot delete users.
+     */
     public function testDeleteNonAdminRedirectsToNote(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
@@ -207,6 +252,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/note');
     }
 
+    /**
+     * Guest cannot delete users.
+     */
     public function testDeleteGuestRedirectsToLogin(): void
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
@@ -216,6 +264,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/login');
     }
 
+    /**
+     * Admin sees role change form.
+     */
     public function testChangeRoleAdminGetShowsForm(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -228,6 +279,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertCount(1, $crawler->filter('form'));
     }
 
+    /**
+     * Admin can change role of another user.
+     */
     public function testChangeRoleAdminPutValidUpdatesRolesAndRedirects(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -248,6 +302,9 @@ class UserControllerTest extends AbstractWebTestCase
         self::assertContains(UserRole::ROLE_ADMIN->value, $updated->getRoles());
     }
 
+    /**
+     * Admin cannot change own role.
+     */
     public function testChangeRoleForCurrentAdminRedirectsToIndex(): void
     {
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
@@ -258,6 +315,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/user');
     }
 
+    /**
+     * Non-admin cannot change roles.
+     */
     public function testChangeRoleNonAdminRedirectsToNote(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
@@ -269,6 +329,9 @@ class UserControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/note');
     }
 
+    /**
+     * Guest cannot access role change route.
+     */
     public function testChangeRoleGuestRedirectsToLogin(): void
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);

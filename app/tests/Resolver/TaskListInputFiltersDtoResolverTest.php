@@ -12,10 +12,16 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
+/**
+ * Task filters resolver tests.
+ */
 class TaskListInputFiltersDtoResolverTest extends TestCase
 {
     private TaskListInputFiltersDtoResolver $resolver;
 
+    /**
+     * Creates resolver instance for tests.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -23,6 +29,9 @@ class TaskListInputFiltersDtoResolverTest extends TestCase
         $this->resolver = new TaskListInputFiltersDtoResolver();
     }
 
+    /**
+     * It skips unsupported argument types.
+     */
     public function testResolveReturnsEmptyForUnsupportedType(): void
     {
         $request = Request::create('/task');
@@ -33,6 +42,9 @@ class TaskListInputFiltersDtoResolverTest extends TestCase
         self::assertSame([], $result);
     }
 
+    /**
+     * It skips arguments without declared type.
+     */
     public function testResolveReturnsEmptyWhenTypeIsNull(): void
     {
         $request = Request::create('/task');
@@ -43,6 +55,9 @@ class TaskListInputFiltersDtoResolverTest extends TestCase
         self::assertSame([], $result);
     }
 
+    /**
+     * It builds DTO with null filters when query is empty.
+     */
     public function testResolveReturnsDtoWithNullFiltersWhenNoQueryParams(): void
     {
         $request = Request::create('/task');
@@ -56,6 +71,9 @@ class TaskListInputFiltersDtoResolverTest extends TestCase
         self::assertNull($result[0]->tagId);
     }
 
+    /**
+     * It reads both categoryId and tagId query params.
+     */
     public function testResolveReturnsDtoWithCategoryIdAndTagIdFromQuery(): void
     {
         $request = Request::create('/task', Request::METHOD_GET, [
@@ -72,6 +90,9 @@ class TaskListInputFiltersDtoResolverTest extends TestCase
         self::assertSame(34, $result[0]->tagId);
     }
 
+    /**
+     * It reads only categoryId when tagId is missing.
+     */
     public function testResolveReturnsDtoWithOnlyCategoryId(): void
     {
         $request = Request::create('/task', Request::METHOD_GET, ['categoryId' => '7']);
@@ -84,6 +105,9 @@ class TaskListInputFiltersDtoResolverTest extends TestCase
         self::assertNull($result[0]->tagId);
     }
 
+    /**
+     * Builds argument metadata for filters DTO.
+     */
     private function createFiltersArgument(): ArgumentMetadata
     {
         return new ArgumentMetadata(

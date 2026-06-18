@@ -11,10 +11,16 @@ use App\Form\Type\PasswordChangeType;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Form\FormFactoryInterface;
 
+/**
+ * Password change form type tests.
+ */
 class PasswordChangeTypeTest extends KernelTestCase
 {
     private FormFactoryInterface $formFactory;
 
+    /**
+     * Boots kernel and fetches form factory.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -23,6 +29,9 @@ class PasswordChangeTypeTest extends KernelTestCase
         $this->formFactory = static::getContainer()->get(FormFactoryInterface::class);
     }
 
+    /**
+     * It exposes current and new password fields.
+     */
     public function testFormContainsCurrentPasswordAndPasswordFields(): void
     {
         $form = $this->formFactory->create(PasswordChangeType::class, new User());
@@ -31,6 +40,9 @@ class PasswordChangeTypeTest extends KernelTestCase
         self::assertTrue($form->has('password'));
     }
 
+    /**
+     * It exposes expected block prefix.
+     */
     public function testGetBlockPrefixReturnsUser(): void
     {
         $formType = static::getContainer()->get(PasswordChangeType::class);
@@ -38,6 +50,9 @@ class PasswordChangeTypeTest extends KernelTestCase
         self::assertSame('user', $formType->getBlockPrefix());
     }
 
+    /**
+     * It accepts matching new passwords.
+     */
     public function testSubmitMatchingNewPasswordsIsValidAndExposesNewPassword(): void
     {
         $user = new User();
@@ -62,6 +77,9 @@ class PasswordChangeTypeTest extends KernelTestCase
         self::assertSame('oldpassword123', $user->getPassword());
     }
 
+    /**
+     * It rejects mismatched new passwords.
+     */
     public function testSubmitMismatchedNewPasswordsIsInvalid(): void
     {
         $user = new User();

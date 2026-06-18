@@ -23,8 +23,14 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Note service unit tests.
+ */
 class NoteServiceTest extends TestCase
 {
+    /**
+     * It delegates save operation to repository.
+     */
     public function testSaveDelegatesToRepository(): void
     {
         $note = new Note();
@@ -44,6 +50,9 @@ class NoteServiceTest extends TestCase
         $service->save($note);
     }
 
+    /**
+     * It delegates delete operation to repository.
+     */
     public function testDeleteDelegatesToRepository(): void
     {
         $note = new Note();
@@ -63,6 +72,9 @@ class NoteServiceTest extends TestCase
         $service->delete($note);
     }
 
+    /**
+     * It paginates notes without resolved filters.
+     */
     public function testGetPaginatedListWithoutFilters(): void
     {
         $author = new User();
@@ -99,6 +111,9 @@ class NoteServiceTest extends TestCase
         self::assertSame($pagination, $service->getPaginatedList(1, $author, $filters));
     }
 
+    /**
+     * It resolves filters and paginates notes.
+     */
     public function testGetPaginatedListWithResolvedFilters(): void
     {
         $author = new User();

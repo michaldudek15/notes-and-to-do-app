@@ -9,6 +9,9 @@ namespace App\Tests\Controller;
 use App\Entity\Enum\UserRole;
 use App\Tests\AbstractWebTestCase;
 
+/**
+ * Task controller integration tests.
+ */
 class TaskControllerTest extends AbstractWebTestCase
 {
     private const string TEST_ROUTE = '/task';

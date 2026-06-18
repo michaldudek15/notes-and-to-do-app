@@ -16,12 +16,18 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * Tag service integration tests.
+ */
 class TagServiceTest extends KernelTestCase
 {
     private ?EntityManagerInterface $entityManager;
 
     private ?TagServiceInterface $tagService;
 
+    /**
+     * Boots kernel and fetches service dependencies.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -31,6 +37,9 @@ class TagServiceTest extends KernelTestCase
         $this->tagService = $container->get(TagService::class);
     }
 
+    /**
+     * It persists a tag in the database.
+     */
     public function testSaveTagToDatabase(): void
     {
         $expectedTag = new Tag();
@@ -51,6 +60,9 @@ class TagServiceTest extends KernelTestCase
         self::assertEquals($expectedTag, $resultTag);
     }
 
+    /**
+     * It removes a saved tag from the database.
+     */
     public function testDeleteRemovesTagFromDatabase(): void
     {
         $tag = new Tag();
@@ -65,6 +77,9 @@ class TagServiceTest extends KernelTestCase
         self::assertNull($this->entityManager->find(Tag::class, $id));
     }
 
+    /**
+     * It returns paginated tag list.
+     */
     public function testGetPaginatedListReturnsPagination(): void
     {
         $tag = new Tag();
@@ -80,6 +95,9 @@ class TagServiceTest extends KernelTestCase
         self::assertGreaterThanOrEqual(1, $pagination->getTotalItemCount());
     }
 
+    /**
+     * It delegates save operation to repository.
+     */
     public function testSaveDelegatesToRepository(): void
     {
         $tag = new Tag();
@@ -98,6 +116,9 @@ class TagServiceTest extends KernelTestCase
         $service->save($tag);
     }
 
+    /**
+     * It delegates delete operation to repository.
+     */
     public function testDeleteDelegatesToRepository(): void
     {
         $tag = new Tag();
@@ -116,6 +137,9 @@ class TagServiceTest extends KernelTestCase
         $service->delete($tag);
     }
 
+    /**
+     * It delegates title lookup to repository.
+     */
     public function testFindOneByTitleDelegatesToRepository(): void
     {
         $tagRepository = $this->getMockBuilder(TagRepository::class)

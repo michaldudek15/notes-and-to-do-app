@@ -9,6 +9,9 @@ namespace App\Tests\Controller;
 use App\Entity\Enum\UserRole;
 use App\Tests\AbstractWebTestCase;
 
+/**
+ * Note controller integration tests.
+ */
 class NoteControllerTest extends AbstractWebTestCase
 {
     private const string TEST_ROUTE = '/note';

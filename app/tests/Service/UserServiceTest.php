@@ -17,11 +17,17 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
+/**
+ * User service integration tests.
+ */
 class UserServiceTest extends KernelTestCase
 {
     private ?EntityManagerInterface $entityManager;
     private ?UserServiceInterface $userService;
 
+    /**
+     * Boots kernel and fetches service dependencies.
+     */
     public function setUp(): void
     {
         $container = static::getContainer();
@@ -29,6 +35,9 @@ class UserServiceTest extends KernelTestCase
         $this->userService = $container->get(UserService::class);
     }
 
+    /**
+     * It persists a user in the database.
+     */
     public function testSaveUserToDatabase(): void
     {
         // given
@@ -55,6 +64,9 @@ class UserServiceTest extends KernelTestCase
         $this->assertEquals($expectedUser, $resultUser);
     }
 
+    /**
+     * It removes a saved user from the database.
+     */
     public function testDeleteRemovesUserFromDatabase(): void
     {
         // given
@@ -74,6 +86,9 @@ class UserServiceTest extends KernelTestCase
         self::assertNull($this->entityManager->find(User::class, $id));
     }
 
+    /**
+     * It returns paginated user list.
+     */
     public function testGetPaginatedListReturnsPagination(): void
     {
         // given
@@ -94,6 +109,9 @@ class UserServiceTest extends KernelTestCase
         self::assertGreaterThanOrEqual(1, $pagination->getTotalItemCount());
     }
 
+    /**
+     * It delegates save operation to repository.
+     */
     public function testSaveDelegatesToRepository(): void
     {
         // given

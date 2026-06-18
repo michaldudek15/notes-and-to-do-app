@@ -11,8 +11,14 @@ use App\Tests\AbstractWebTestCase;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
+/**
+ * User repository integration tests.
+ */
 class UserRepositoryTest extends AbstractWebTestCase
 {
+    /**
+     * It persists the new hashed password.
+     */
     public function testUpgradePasswordUpdatesPersistedPassword(): void
     {
         $user = $this->createUser();
@@ -25,9 +31,15 @@ class UserRepositoryTest extends AbstractWebTestCase
         self::assertSame('rehashed-password', $updated->getPassword());
     }
 
+    /**
+     * It throws when user implementation is unsupported.
+     */
     public function testUpgradePasswordThrowsForUnsupportedUser(): void
     {
-        $unsupportedUser = new class () implements PasswordAuthenticatedUserInterface {
+        $unsupportedUser = new class() implements PasswordAuthenticatedUserInterface {
+            /**
+             * Returns a password required by the interface.
+             */
             public function getPassword(): ?string
             {
                 return 'password';
@@ -39,6 +51,9 @@ class UserRepositoryTest extends AbstractWebTestCase
         $this->userRepository->upgradePassword($unsupportedUser, 'new-password');
     }
 
+    /**
+     * It deletes user and all authored dependent data.
+     */
     public function testDeleteRemovesUserWithAuthoredData(): void
     {
         $user = $this->createUser();

@@ -12,10 +12,16 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
+/**
+ * Note filters resolver tests.
+ */
 class NoteListInputFiltersDtoResolverTest extends TestCase
 {
     private NoteListInputFiltersDtoResolver $resolver;
 
+    /**
+     * Creates resolver instance for tests.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -99,6 +105,9 @@ class NoteListInputFiltersDtoResolverTest extends TestCase
         self::assertNull($result[0]->tagId);
     }
 
+    /**
+     * Builds argument metadata for filters DTO.
+     */
     private function createFiltersArgument(): ArgumentMetadata
     {
         return new ArgumentMetadata(

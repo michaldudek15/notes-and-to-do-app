@@ -11,10 +11,16 @@ use App\Form\Type\EmailChangeType;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Form\FormFactoryInterface;
 
+/**
+ * Email change form type tests.
+ */
 class EmailChangeTypeTest extends KernelTestCase
 {
     private FormFactoryInterface $formFactory;
 
+    /**
+     * Boots kernel and fetches form factory.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -23,6 +29,9 @@ class EmailChangeTypeTest extends KernelTestCase
         $this->formFactory = static::getContainer()->get(FormFactoryInterface::class);
     }
 
+    /**
+     * It exposes email field.
+     */
     public function testFormContainsEmailField(): void
     {
         $form = $this->formFactory->create(EmailChangeType::class, new User());
@@ -30,6 +39,9 @@ class EmailChangeTypeTest extends KernelTestCase
         self::assertTrue($form->has('email'));
     }
 
+    /**
+     * It exposes expected block prefix.
+     */
     public function testGetBlockPrefixReturnsUser(): void
     {
         $formType = static::getContainer()->get(EmailChangeType::class);
@@ -37,6 +49,9 @@ class EmailChangeTypeTest extends KernelTestCase
         self::assertSame('user', $formType->getBlockPrefix());
     }
 
+    /**
+     * It accepts valid email values.
+     */
     public function testSubmitValidEmailUpdatesEntity(): void
     {
         $user = new User();
@@ -56,6 +71,9 @@ class EmailChangeTypeTest extends KernelTestCase
         self::assertStringContainsString('new', $user->getEmail());
     }
 
+    /**
+     * It rejects invalid email values.
+     */
     public function testSubmitInvalidEmailIsInvalid(): void
     {
         $user = new User();

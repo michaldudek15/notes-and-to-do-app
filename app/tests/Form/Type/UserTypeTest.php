@@ -11,10 +11,16 @@ use App\Form\Type\UserType;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Form\FormFactoryInterface;
 
+/**
+ * User form type tests.
+ */
 class UserTypeTest extends KernelTestCase
 {
     private FormFactoryInterface $formFactory;
 
+    /**
+     * Boots kernel and fetches form factory.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -23,6 +29,9 @@ class UserTypeTest extends KernelTestCase
         $this->formFactory = static::getContainer()->get(FormFactoryInterface::class);
     }
 
+    /**
+     * It exposes email and password fields.
+     */
     public function testFormContainsEmailAndPasswordFields(): void
     {
         $form = $this->formFactory->create(UserType::class, new User());
@@ -31,6 +40,9 @@ class UserTypeTest extends KernelTestCase
         self::assertTrue($form->has('password'));
     }
 
+    /**
+     * It exposes expected block prefix.
+     */
     public function testGetBlockPrefixReturnsUser(): void
     {
         $userType = static::getContainer()->get(UserType::class);
@@ -38,6 +50,9 @@ class UserTypeTest extends KernelTestCase
         self::assertSame('user', $userType->getBlockPrefix());
     }
 
+    /**
+     * It accepts valid payload and exposes submitted password.
+     */
     public function testSubmitValidDataUpdatesEmailAndExposesPassword(): void
     {
         $user = new User();
@@ -65,6 +80,9 @@ class UserTypeTest extends KernelTestCase
         self::assertSame('oldpassword123', $user->getPassword());
     }
 
+    /**
+     * It rejects mismatched repeated passwords.
+     */
     public function testSubmitMismatchedPasswordsIsInvalid(): void
     {
         $user = new User();
@@ -87,6 +105,9 @@ class UserTypeTest extends KernelTestCase
         self::assertFalse($form->isValid());
     }
 
+    /**
+     * It allows email change without password update.
+     */
     public function testSubmitWithoutPasswordDoesNotChangeEntityPassword(): void
     {
         $user = new User();
@@ -112,6 +133,9 @@ class UserTypeTest extends KernelTestCase
         self::assertNull($form->get('password')->getData());
     }
 
+    /**
+     * It rejects invalid email values.
+     */
     public function testSubmitInvalidEmailIsInvalid(): void
     {
         $user = new User();

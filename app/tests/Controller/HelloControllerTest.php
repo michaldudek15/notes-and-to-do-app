@@ -30,6 +30,9 @@ class HelloControllerTest extends WebTestCase
         $this->assertEquals(200, $resultHttpStatusCode);
     }
 
+    /**
+     * Home route redirects guests to login page.
+     */
     public function testRootRedirectsToLogin(): void
     {
         $client = static::createClient();
@@ -39,6 +42,9 @@ class HelloControllerTest extends WebTestCase
         $this->assertEquals(\Symfony\Component\HttpFoundation\Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     * Invalid path parameter should return 404.
+     */
     public function testHelloWithInvalidNameReturns404(): void
     {
         $client = static::createClient();
@@ -47,6 +53,9 @@ class HelloControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(404);
     }
 
+    /**
+     * POST method is not allowed on hello route.
+     */
     public function testHelloPostMethodNotAllowed(): void
     {
         $client = static::createClient();
@@ -55,6 +64,9 @@ class HelloControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(405);
     }
 
+    /**
+     * Named route should generate an accessible URL.
+     */
     public function testHelloRouteIsAccessibleByName(): void
     {
         $client = static::createClient();

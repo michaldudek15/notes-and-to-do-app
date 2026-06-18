@@ -20,6 +20,9 @@ use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Shared helpers for web integration tests.
+ */
 abstract class AbstractWebTestCase extends WebTestCase
 {
     protected KernelBrowser $client;
@@ -34,6 +37,9 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     protected TaskRepository $taskRepository;
 
+    /**
+     * Boots the kernel and fetches repositories.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -48,7 +54,11 @@ abstract class AbstractWebTestCase extends WebTestCase
     }
 
     /**
+     * Creates and persists a user.
+     *
      * @param array<int, string> $roles
+     *
+     * @return User Persisted user
      */
     protected function createUser(array $roles = [UserRole::ROLE_USER->value]): User
     {
@@ -63,6 +73,14 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $user;
     }
 
+    /**
+     * Creates and persists a category.
+     *
+     * @param User   $author Category author
+     * @param string $title  Category title
+     *
+     * @return Category Persisted category
+     */
     protected function createCategory(User $author, string $title = 'Test category'): Category
     {
         $author = $this->userRepository->find($author->getId());
@@ -77,6 +95,15 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $category;
     }
 
+    /**
+     * Creates and persists a note.
+     *
+     * @param User     $author   Note author
+     * @param Category $category Note category
+     * @param string   $title    Note title
+     *
+     * @return Note Persisted note
+     */
     protected function createNote(User $author, Category $category, string $title = 'Test note'): Note
     {
         $author = $this->userRepository->find($author->getId());
@@ -95,6 +122,13 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $note;
     }
 
+    /**
+     * Creates and persists a tag.
+     *
+     * @param string $title Tag title
+     *
+     * @return Tag Persisted tag
+     */
     protected function createTag(string $title = 'Test tag'): Tag
     {
         $tag = new Tag();
@@ -105,12 +139,18 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $tag;
     }
 
-    protected function createTask(
-        User $author,
-        Category $category,
-        string $title = 'Test task',
-        bool $status = false,
-    ): Task {
+    /**
+     * Creates and persists a task.
+     *
+     * @param User     $author   Task author
+     * @param Category $category Task category
+     * @param string   $title    Task title
+     * @param bool     $status   Task status
+     *
+     * @return Task Persisted task
+     */
+    protected function createTask(User $author, Category $category, string $title = 'Test task', bool $status = false): Task
+    {
         $author = $this->userRepository->find($author->getId());
         $category = $this->categoryRepository->find($category->getId());
         self::assertInstanceOf(User::class, $author);
@@ -127,6 +167,11 @@ abstract class AbstractWebTestCase extends WebTestCase
         return $task;
     }
 
+    /**
+     * Logs in provided user in test client.
+     *
+     * @param User $user User to authenticate
+     */
     protected function login(User $user): void
     {
         $user = $this->userRepository->find($user->getId());
@@ -137,6 +182,8 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     /**
      * Log in as the category owner so CategoryVoter identity checks pass.
+     *
+     * @param Category $category Category to resolve owner from
      */
     protected function loginAsCategoryOwner(Category $category): void
     {
@@ -149,6 +196,8 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     /**
      * Log in as the note owner so NoteVoter identity checks pass.
+     *
+     * @param Note $note Note to resolve owner from
      */
     protected function loginAsNoteOwner(Note $note): void
     {
@@ -161,6 +210,8 @@ abstract class AbstractWebTestCase extends WebTestCase
 
     /**
      * Log in as the task owner so TaskVoter identity checks pass.
+     *
+     * @param Task $task Task to resolve owner from
      */
     protected function loginAsTaskOwner(Task $task): void
     {

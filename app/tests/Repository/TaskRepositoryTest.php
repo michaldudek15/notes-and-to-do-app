@@ -8,8 +8,14 @@ namespace App\Tests\Repository;
 
 use App\Tests\AbstractWebTestCase;
 
+/**
+ * Task repository integration tests.
+ */
 class TaskRepositoryTest extends AbstractWebTestCase
 {
+    /**
+     * It counts tasks assigned to the given category.
+     */
     public function testCountByCategoryReturnsNumberOfTasksInGivenCategory(): void
     {
         $user = $this->createUser();
@@ -23,6 +29,9 @@ class TaskRepositoryTest extends AbstractWebTestCase
         self::assertSame(2, $this->taskRepository->countByCategory($category));
     }
 
+    /**
+     * It returns zero when category has no tasks.
+     */
     public function testCountByCategoryReturnsZeroWhenCategoryHasNoTasks(): void
     {
         $user = $this->createUser();

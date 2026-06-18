@@ -9,6 +9,9 @@ namespace App\Tests\Controller;
 use App\Entity\Enum\UserRole;
 use App\Tests\AbstractWebTestCase;
 
+/**
+ * Category controller integration tests.
+ */
 class CategoryControllerTest extends AbstractWebTestCase
 {
     private const string TEST_ROUTE = '/category';

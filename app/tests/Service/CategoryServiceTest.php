@@ -17,8 +17,14 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Category service unit tests.
+ */
 class CategoryServiceTest extends TestCase
 {
+    /**
+     * It delegates paginated listing to repository and paginator.
+     */
     public function testGetPaginatedListDelegatesToRepositoryAndPaginator(): void
     {
         $author = new User();
@@ -50,6 +56,9 @@ class CategoryServiceTest extends TestCase
         self::assertSame($pagination, $service->getPaginatedList(2, $author));
     }
 
+    /**
+     * It delegates save operation to repository.
+     */
     public function testSaveDelegatesToRepository(): void
     {
         $category = new Category();
@@ -68,6 +77,9 @@ class CategoryServiceTest extends TestCase
         $service->save($category);
     }
 
+    /**
+     * It delegates delete operation to repository.
+     */
     public function testDeleteDelegatesToRepository(): void
     {
         $category = new Category();
@@ -86,6 +98,9 @@ class CategoryServiceTest extends TestCase
         $service->delete($category);
     }
 
+    /**
+     * It allows deleting category without notes.
+     */
     public function testCanBeDeletedReturnsTrueWhenNoNotesAssigned(): void
     {
         $category = new Category();
@@ -105,6 +120,9 @@ class CategoryServiceTest extends TestCase
         self::assertTrue($service->canBeDeleted($category));
     }
 
+    /**
+     * It blocks deleting category when notes exist.
+     */
     public function testCanBeDeletedReturnsFalseWhenNotesExist(): void
     {
         $category = new Category();
@@ -124,6 +142,9 @@ class CategoryServiceTest extends TestCase
         self::assertFalse($service->canBeDeleted($category));
     }
 
+    /**
+     * It safely blocks deletion when repository fails.
+     */
     public function testCanBeDeletedReturnsFalseOnRepositoryException(): void
     {
         $category = new Category();
@@ -143,6 +164,9 @@ class CategoryServiceTest extends TestCase
         self::assertFalse($service->canBeDeleted($category));
     }
 
+    /**
+     * It delegates lookup by id to repository.
+     */
     public function testFindOneByIdDelegatesToRepository(): void
     {
         $expectedCategory = new Category();
@@ -165,6 +189,9 @@ class CategoryServiceTest extends TestCase
         self::assertSame($expectedCategory, $service->findOneById(12));
     }
 
+    /**
+     * It delegates author category lookup to repository.
+     */
     public function testGetCategoriesByUserDelegatesToRepository(): void
     {
         $user = new User();

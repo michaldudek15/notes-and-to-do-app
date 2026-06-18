@@ -11,10 +11,16 @@ use App\Form\Type\RegistrationType;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Form\FormFactoryInterface;
 
+/**
+ * Registration form type tests.
+ */
 class RegistrationTypeTest extends KernelTestCase
 {
     private FormFactoryInterface $formFactory;
 
+    /**
+     * Boots kernel and fetches form factory.
+     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -23,6 +29,9 @@ class RegistrationTypeTest extends KernelTestCase
         $this->formFactory = static::getContainer()->get(FormFactoryInterface::class);
     }
 
+    /**
+     * It exposes email and password fields.
+     */
     public function testFormContainsEmailAndPasswordFields(): void
     {
         $form = $this->formFactory->create(RegistrationType::class, new User());
@@ -31,6 +40,9 @@ class RegistrationTypeTest extends KernelTestCase
         self::assertTrue($form->has('password'));
     }
 
+    /**
+     * It exposes expected block prefix.
+     */
     public function testGetBlockPrefixReturnsUser(): void
     {
         $formType = static::getContainer()->get(RegistrationType::class);
@@ -38,6 +50,9 @@ class RegistrationTypeTest extends KernelTestCase
         self::assertSame('user', $formType->getBlockPrefix());
     }
 
+    /**
+     * It accepts valid email and repeated password.
+     */
     public function testSubmitValidDataUpdatesEntityPassword(): void
     {
         $user = new User();
@@ -64,6 +79,9 @@ class RegistrationTypeTest extends KernelTestCase
         self::assertSame('newpassword', $user->getPassword());
     }
 
+    /**
+     * It rejects mismatched repeated passwords.
+     */
     public function testSubmitMismatchedPasswordsIsInvalid(): void
     {
         $user = new User();
