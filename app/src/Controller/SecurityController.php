@@ -12,9 +12,12 @@ use App\Entity\User;
 use App\Form\Type\EmailChangeType;
 use App\Form\Type\PasswordChangeType;
 use App\Form\Type\RegistrationType;
+use App\Repository\UserRepository;
 use App\Service\CategoryServiceInterface;
 use App\Service\UserServiceInterface;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -132,7 +135,7 @@ class SecurityController extends AbstractController
         name: 'changeEmail',
         methods: 'GET|PUT',
     )]
-    public function changeEmail(Request $request): Response
+    public function changeEmail(Request $request, UserRepository $userRepository): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             $this->addFlash(
@@ -144,12 +147,54 @@ class SecurityController extends AbstractController
         }
 
         $user = $this->getUser();
-        $form = $this->createForm(EmailChangeType::class, $user, ['method' => 'PUT']);
+        if (!$user instanceof User) {
+            $this->addFlash(
+                'danger',
+                $this->translator->trans('message.not_allowed')
+            );
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Use detached form data so invalid submissions never mutate authenticated user object.
+        $formUser = new User();
+        $formUser->setEmail($user->getEmail());
+        $form = $this->createForm(EmailChangeType::class, $formUser, ['method' => 'PUT']);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->userService->save($user);
+            $newEmail = $formUser->getEmail();
+            $existingUser = $userRepository->findOneBy(['email' => $newEmail]);
+
+            if ($existingUser instanceof User && $existingUser->getId() !== $user->getId()) {
+                $form->get('email')->addError(
+                    new FormError($this->translator->trans('message.email_already_taken'))
+                );
+
+                return $this->render(
+                    'security/changeEmail.html.twig',
+                    ['form' => $form->createView()]
+                );
+            }
+
+            $oldEmail = $user->getEmail();
+            $user->setEmail($newEmail);
+
+            try {
+                $this->userService->save($user);
+            } catch (UniqueConstraintViolationException) {
+                $user->setEmail($oldEmail);
+                $form->get('email')->addError(
+                    new FormError($this->translator->trans('message.email_already_taken'))
+                );
+
+                return $this->render(
+                    'security/changeEmail.html.twig',
+                    ['form' => $form->createView()]
+                );
+            }
+
             $this->addFlash(
                 'success',
                 $this->translator->trans('message.changed_successfully')

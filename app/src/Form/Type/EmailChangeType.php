@@ -11,6 +11,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class EmailChangeType.
@@ -40,6 +43,11 @@ class EmailChangeType extends AbstractType
                     'maxlength' => 180,
                     'minlength' => 1,
                 ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Email(),
+                    new Length(min: 1, max: 180),
+                ],
             ]
         );
     }// end buildForm()
@@ -51,7 +59,11 @@ class EmailChangeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => User::class]);
+        $resolver->setDefaults([
+            'data_class' => User::class,
+            // Avoid validating unrelated User fields (e.g. password) on this partial form.
+            'validation_groups' => false,
+        ]);
     }// end configureOptions()
 
     /**

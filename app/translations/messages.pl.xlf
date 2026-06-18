@@ -172,6 +172,10 @@
 <source>message.changed_successfully</source>
 <target>Udało się wprowadzić zmiany</target>
 </trans-unit>
+<trans-unit id="message.email_already_taken">
+<source>message.email_already_taken</source>
+<target>Ten adres email jest już zajęty.</target>
+</trans-unit>
 
 <trans-unit id="message.wrong_current_password">
 <source>message.wrong_current_password</source>
