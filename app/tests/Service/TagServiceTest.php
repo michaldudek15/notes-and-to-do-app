@@ -43,7 +43,7 @@ class TagServiceTest extends KernelTestCase
     public function testSaveTagToDatabase(): void
     {
         $expectedTag = new Tag();
-        $expectedTag->setTitle('save' . uniqid());
+        $expectedTag->setTitle('save'.uniqid());
 
         $this->tagService->save($expectedTag);
 
@@ -66,7 +66,7 @@ class TagServiceTest extends KernelTestCase
     public function testDeleteRemovesTagFromDatabase(): void
     {
         $tag = new Tag();
-        $tag->setTitle('delete' . uniqid());
+        $tag->setTitle('delete'.uniqid());
 
         $this->tagService->save($tag);
 
@@ -83,7 +83,7 @@ class TagServiceTest extends KernelTestCase
     public function testGetPaginatedListReturnsPagination(): void
     {
         $tag = new Tag();
-        $tag->setTitle('paginate' . uniqid());
+        $tag->setTitle('paginate'.uniqid());
 
         $this->tagService->save($tag);
 

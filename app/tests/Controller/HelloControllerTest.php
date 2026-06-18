@@ -107,7 +107,7 @@ class HelloControllerTest extends WebTestCase
         $client = static::createClient();
 
         // when
-        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/hello/' . $name);
+        $client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, '/hello/'.$name);
 
         // then
         $this->assertSelectorTextContains('html title', $expectedGreetings);
