@@ -382,5 +382,4 @@ class TaskControllerTest extends AbstractWebTestCase
         $this->assertResponseRedirects('/task');
         self::assertNull($this->taskRepository->find($taskId));
     }
-    
 }

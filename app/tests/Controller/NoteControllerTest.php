@@ -27,7 +27,7 @@ class NoteControllerTest extends AbstractWebTestCase
      */
     private function getEntityManager(): EntityManagerInterface
     {
-        return static::getContainer()->get('doctrine.orm.entity_manager');
+        return static::getContainer()->get(\Doctrine\ORM\EntityManager::class);
     }
 
     /**

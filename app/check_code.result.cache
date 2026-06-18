@@ -1,7 +1,47 @@
 
-Found 0 of 57 files that can be fixed in 0.821 seconds, 126.00 MB memory used
+Found 0 of 57 files that can be fixed in 0.843 seconds, 126.00 MB memory used
 
-Found 0 of 22 files that can be fixed in 0.829 seconds, 72.00 MB memory used
+Found 0 of 22 files that can be fixed in 0.841 seconds, 72.00 MB memory used
+
+FILE: /home/wwwroot/app/tests/Controller/NoteControllerTest.php
+------------------------------------------------------------------------------------------------------------------------------
+FOUND 13 ERRORS AFFECTING 9 LINES
+------------------------------------------------------------------------------------------------------------------------------
+ 27 | ERROR | Missing @return tag in function comment
+ 33 | ERROR | Doc comment for parameter "$author" missing
+ 33 | ERROR | Doc comment for parameter "$title" missing
+ 35 | ERROR | Missing @return tag in function comment
+ 50 | ERROR | Doc comment for parameter "$author" missing
+ 50 | ERROR | Doc comment for parameter "$category" missing
+ 50 | ERROR | Doc comment for parameter "$title" missing
+ 50 | ERROR | Doc comment for parameter "$content" missing
+ 52 | ERROR | Missing @return tag in function comment
+ 53 | ERROR | Declare all the arguments on the same line as the method/function name, no matter how many arguments there are.
+ 73 | ERROR | Doc comment for parameter "$title" missing
+ 75 | ERROR | Missing @return tag in function comment
+ 92 | ERROR | Declare public methods first,then protected ones and finally private ones
+------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: /home/wwwroot/app/tests/Controller/CategoryControllerTest.php
+------------------------------------------------------------------------------------------------------------------------------
+FOUND 11 ERRORS AFFECTING 7 LINES
+------------------------------------------------------------------------------------------------------------------------------
+ 26 | ERROR | Missing @return tag in function comment
+ 32 | ERROR | Doc comment for parameter "$author" missing
+ 32 | ERROR | Doc comment for parameter "$title" missing
+ 34 | ERROR | Missing @return tag in function comment
+ 49 | ERROR | Doc comment for parameter "$author" missing
+ 49 | ERROR | Doc comment for parameter "$category" missing
+ 49 | ERROR | Doc comment for parameter "$title" missing
+ 49 | ERROR | Doc comment for parameter "$content" missing
+ 51 | ERROR | Missing @return tag in function comment
+ 52 | ERROR | Declare all the arguments on the same line as the method/function name, no matter how many arguments there are.
+ 75 | ERROR | Declare public methods first,then protected ones and finally private ones
+------------------------------------------------------------------------------------------------------------------------------
+
+Time: 1.03 secs; Memory: 10MB
+
  ------- -------- ---- ---------------------- 
   State   Domain   Id   Message Preview (en)  
  ------- -------- ---- ---------------------- 
@@ -11,7 +51,7 @@ Found 0 of 22 files that can be fixed in 0.829 seconds, 72.00 MB memory used
  ------- -------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20240621194341
-[notice] finished in 474.6ms, used 26M memory, 11 migrations executed, 30 sql queries
+[notice] finished in 607ms, used 26M memory, 11 migrations executed, 30 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240621194341                                        
 
