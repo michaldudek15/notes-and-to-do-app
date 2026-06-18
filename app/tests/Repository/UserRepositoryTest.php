@@ -36,7 +36,7 @@ class UserRepositoryTest extends AbstractWebTestCase
      */
     public function testUpgradePasswordThrowsForUnsupportedUser(): void
     {
-        $unsupportedUser = new class() implements PasswordAuthenticatedUserInterface {
+        $unsupportedUser = new class () implements PasswordAuthenticatedUserInterface {
             /**
              * Returns a password required by the interface.
              */
