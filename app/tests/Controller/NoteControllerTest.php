@@ -6,8 +6,14 @@
 
 namespace App\Tests\Controller;
 
+use App\Entity\Category;
+use App\Entity\Note;
+use App\Entity\Tag;
+use App\Entity\User;
 use App\Entity\Enum\UserRole;
 use App\Tests\AbstractWebTestCase;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Note controller integration tests.
@@ -17,11 +23,75 @@ class NoteControllerTest extends AbstractWebTestCase
     private const string TEST_ROUTE = '/note';
 
     /**
+     * Returns Doctrine entity manager.
+     */
+    private function getEntityManager(): EntityManagerInterface
+    {
+        return static::getContainer()->get('doctrine.orm.entity_manager');
+    }
+
+    /**
+     * Creates and persists category via entity manager.
+     */
+    private function createManagedCategory(User $author, string $title = 'Test category'): Category
+    {
+        $entityManager = $this->getEntityManager();
+
+        $category = new Category();
+        $category->setTitle($title);
+        $category->setAuthor($author);
+
+        $entityManager->persist($category);
+        $entityManager->flush();
+
+        return $category;
+    }
+
+    /**
+     * Creates and persists note via entity manager.
+     */
+    private function createManagedNote(
+        User $author,
+        Category $category,
+        string $title = 'Test note',
+        string $content = 'Test content for note.',
+    ): Note {
+        $entityManager = $this->getEntityManager();
+
+        $note = new Note();
+        $note->setTitle($title);
+        $note->setContent($content);
+        $note->setAuthor($author);
+        $note->setCategory($category);
+
+        $entityManager->persist($note);
+        $entityManager->flush();
+
+        return $note;
+    }
+
+    /**
+     * Creates and persists tag via entity manager.
+     */
+    private function createManagedTag(string $title = 'Test tag'): Tag
+    {
+        $entityManager = $this->getEntityManager();
+
+        $tag = new Tag();
+        $tag->setTitle($title);
+
+        $entityManager->persist($tag);
+        $entityManager->flush();
+
+        return $tag;
+    }
+
+    /**
      * Note list is only for logged-in users.
      */
     public function testIndexGuest(): void
     {
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE);
 
         $this->assertResponseRedirects('/login');
     }
@@ -34,7 +104,7 @@ class NoteControllerTest extends AbstractWebTestCase
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($user);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE);
 
         $this->assertResponseIsSuccessful();
     }
@@ -45,14 +115,14 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testIndexPagination(): void
     {
         $user = $this->createUser([UserRole::ROLE_USER->value]);
-        $category = $this->createCategory($user, 'Notes category');
+        $category = $this->createManagedCategory($user, 'Notes category');
         $this->login($user);
 
         for ($i = 1; $i <= 11; ++$i) {
-            $this->createNote($user, $category, sprintf('Note %02d', $i));
+            $this->createManagedNote($user, $category, sprintf('Note %02d', $i));
         }
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?page=2');
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'?page=2');
 
         $this->assertResponseIsSuccessful();
     }
@@ -63,11 +133,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testIndexWithCategoryIdFilter(): void
     {
         $user = $this->createUser();
-        $category = $this->createCategory($user, 'Filtered category');
-        $this->createNote($user, $category);
+        $category = $this->createManagedCategory($user, 'Filtered category');
+        $this->createManagedNote($user, $category);
         $this->login($user);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?categoryId='.$category->getId());
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'?categoryId='.$category->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -78,14 +148,16 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testIndexWithTagIdFilter(): void
     {
         $user = $this->createUser();
-        $category = $this->createCategory($user, 'Tagged notes');
-        $tag = $this->createTag('filtertag');
-        $note = $this->createNote($user, $category);
+        $category = $this->createManagedCategory($user, 'Tagged notes');
+        $tag = $this->createManagedTag('filtertag');
+        $note = $this->createManagedNote($user, $category);
         $note->addTag($tag);
-        $this->noteRepository->save($note);
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($note);
+        $entityManager->flush();
         $this->login($user);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?tagId='.$tag->getId());
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'?tagId='.$tag->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -96,10 +168,10 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testShowGuestRedirectsToLogin(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Private note');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Private note');
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId());
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId());
 
         $this->assertResponseRedirects('/login');
     }
@@ -110,11 +182,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testShowOwnerReturnsSuccess(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'My note');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'My note');
         $this->loginAsNoteOwner($note);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId());
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -127,11 +199,11 @@ class NoteControllerTest extends AbstractWebTestCase
     {
         $owner = $this->createUser();
         $other = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Not yours');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Not yours');
 
         $this->login($other);
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId());
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId());
 
         $this->assertResponseRedirects('/note');
     }
@@ -141,7 +213,7 @@ class NoteControllerTest extends AbstractWebTestCase
      */
     public function testCreateGuestRedirectsToLogin(): void
     {
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
 
         $this->assertResponseRedirects('/login');
     }
@@ -152,10 +224,10 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testCreateGetShowsForm(): void
     {
         $user = $this->createUser();
-        $this->createCategory($user, 'Form category');
+        $this->createManagedCategory($user, 'Form category');
         $this->login($user);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -169,10 +241,10 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testCreatePostValidRedirectsToIndex(): void
     {
         $user = $this->createUser();
-        $category = $this->createCategory($user, 'Create note category');
+        $category = $this->createManagedCategory($user, 'Create note category');
         $this->login($user);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
         $form = $crawler->filter('form')->form([
             'note[title]' => 'New note title',
             'note[content]' => 'Valid note content.',
@@ -196,11 +268,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testCreatePostInvalidRendersFormAgain(): void
     {
         $user = $this->createUser();
-        $category = $this->createCategory($user, 'Invalid create category');
+        $category = $this->createManagedCategory($user, 'Invalid create category');
         $this->login($user);
         $beforeCount = count($this->noteRepository->findBy(['author' => $user]));
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
         $form = $crawler->filter('form')->form([
             'note[title]' => 'Valid title',
             'note[content]' => 'Valid note content.',
@@ -219,10 +291,10 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testEditGuestRedirectsToLogin(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'To edit');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'To edit');
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
 
         $this->assertResponseRedirects('/login');
     }
@@ -235,11 +307,11 @@ class NoteControllerTest extends AbstractWebTestCase
     {
         $owner = $this->createUser();
         $other = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Protected');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Protected');
 
         $this->login($other);
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
 
         $this->assertResponseRedirects('/note');
     }
@@ -251,11 +323,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testEditOwnerGetShowsForm(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Editable');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Editable');
         $this->loginAsNoteOwner($note);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -268,11 +340,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testEditOwnerPutValidUpdatesAndRedirects(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Old title');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Old title');
         $this->loginAsNoteOwner($note);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
         $form = $crawler->filter('form')->form([
             'note[title]' => 'Updated title',
             'note[content]' => 'Updated content.',
@@ -294,11 +366,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testEditOwnerPutInvalidShowsForm(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Valid title');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Valid title');
         $this->loginAsNoteOwner($note);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/edit');
         $form = $crawler->filter('form')->form([
             'note[title]' => 'Valid title',
             'note[content]' => 'Still valid content.',
@@ -321,10 +393,10 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testDeleteGuestRedirectsToLogin(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'To delete');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'To delete');
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/delete');
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/delete');
 
         $this->assertResponseRedirects('/login');
     }
@@ -337,11 +409,11 @@ class NoteControllerTest extends AbstractWebTestCase
     {
         $owner = $this->createUser();
         $other = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Keep');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Keep');
 
         $this->login($other);
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/delete');
+        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/delete');
 
         $this->assertResponseRedirects('/note');
     }
@@ -353,11 +425,11 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testDeleteGetShowsConfirmation(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Delete me');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Delete me');
         $this->loginAsNoteOwner($note);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/delete');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$note->getId().'/delete');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -370,12 +442,12 @@ class NoteControllerTest extends AbstractWebTestCase
     public function testDeletePostSuccessRemovesNote(): void
     {
         $owner = $this->createUser();
-        $category = $this->createCategory($owner);
-        $note = $this->createNote($owner, $category, 'Gone soon');
+        $category = $this->createManagedCategory($owner);
+        $note = $this->createManagedNote($owner, $category, 'Gone soon');
         $noteId = $note->getId();
         $this->loginAsNoteOwner($note);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$noteId.'/delete');
+        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$noteId.'/delete');
         $form = $crawler->filter('form')->form();
         $this->client->submit($form);
 
