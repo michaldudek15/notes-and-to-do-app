@@ -840,115 +840,579 @@
 ----------------------------------------------------------------------------------------------
 
 
+[1mFILE: tests/Form/Type/UserTypeTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 1 LINE[0m
+----------------------------------------------------------------------
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Form/Type/RegistrationTypeTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 1 LINE[0m
+----------------------------------------------------------------------
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Form/Type/EmailChangeTypeTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 1 LINE[0m
+----------------------------------------------------------------------
+ 66 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 66 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 66 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 66 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
 [1mFILE: tests/AbstractWebTestCase.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AND 2 WARNINGS AFFECTING 3 LINES[0m
+--------------------------------------------------------------------------
+  65 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 152 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 124 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/bootstrap.php[0m
 ----------------------------------------------------------------------
-[1mFOUND 0 ERRORS AND 2 WARNINGS AFFECTING 2 LINES[0m
+[1mFOUND 8 ERRORS AFFECTING 4 LINES[0m
 ----------------------------------------------------------------------
-  65 | [33mWARNING[0m | Line exceeds 120 characters; contains 131 characters
- 152 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+  5 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+  5 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+  7 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+  7 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+  8 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+  8 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 10 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 10 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 8 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
 ----------------------------------------------------------------------
 
 
 [1mFILE: tests/Controller/UserControllerTest.php[0m
-----------------------------------------------------------------------
-[1mFOUND 0 ERRORS AND 17 WARNINGS AFFECTING 17 LINES[0m
-----------------------------------------------------------------------
-  67 | [33mWARNING[0m | Line exceeds 120 characters; contains 129 characters
-  81 | [33mWARNING[0m | Line exceeds 120 characters; contains 129 characters
-  93 | [33mWARNING[0m | Line exceeds 120 characters; contains 129 characters
- 107 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
- 121 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
- 136 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
- 164 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
- 193 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
- 217 | [33mWARNING[0m | Line exceeds 120 characters; contains 152 characters
- 233 | [33mWARNING[0m | Line exceeds 120 characters; contains 145 characters
- 250 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
- 262 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
- 276 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
- 292 | [33mWARNING[0m | Line exceeds 120 characters; contains 149 characters
- 313 | [33mWARNING[0m | Line exceeds 120 characters; contains 144 characters
- 327 | [33mWARNING[0m | Line exceeds 120 characters; contains 145 characters
- 339 | [33mWARNING[0m | Line exceeds 120 characters; contains 145 characters
-----------------------------------------------------------------------
+--------------------------------------------------------------------------
+[1mFOUND 104 ERRORS AND 17 WARNINGS AFFECTING 19 LINES[0m
+--------------------------------------------------------------------------
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+  93 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  93 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  93 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  93 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  93 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 107 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 144 characters
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 121 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 136 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 217 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 233 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 139 characters
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 250 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 262 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 276 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 150 characters
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 292 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 143 characters
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 313 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 138 characters
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 139 characters
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 339 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 139 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 104 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
 
 
 [1mFILE: tests/Controller/NoteControllerTest.php[0m
-----------------------------------------------------------------------
-[1mFOUND 0 ERRORS AND 17 WARNINGS AFFECTING 17 LINES[0m
-----------------------------------------------------------------------
-  70 | [33mWARNING[0m | Line exceeds 120 characters; contains 142 characters
-  88 | [33mWARNING[0m | Line exceeds 120 characters; contains 132 characters
- 102 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 117 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 134 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 158 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 175 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 203 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 225 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
- 242 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
- 258 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
- 275 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
- 301 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
- 327 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
- 344 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
- 360 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
- 378 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
-----------------------------------------------------------------------
+--------------------------------------------------------------------------
+[1mFOUND 84 ERRORS AND 17 WARNINGS AFFECTING 19 LINES[0m
+--------------------------------------------------------------------------
+  55 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  55 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 138 characters
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 128 characters
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 175 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 203 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 203 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 203 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 301 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 144 characters
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 84 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
 
 
 [1mFILE: tests/Controller/TaskControllerTest.php[0m
-----------------------------------------------------------------------
-[1mFOUND 0 ERRORS AND 17 WARNINGS AFFECTING 17 LINES[0m
-----------------------------------------------------------------------
-  70 | [33mWARNING[0m | Line exceeds 120 characters; contains 142 characters
-  88 | [33mWARNING[0m | Line exceeds 120 characters; contains 132 characters
- 102 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 117 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 134 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 158 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 175 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 204 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 225 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
- 242 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
- 258 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
- 275 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
- 302 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
- 327 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
- 344 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
- 360 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
- 378 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
-----------------------------------------------------------------------
+--------------------------------------------------------------------------
+[1mFOUND 84 ERRORS AND 17 WARNINGS AFFECTING 19 LINES[0m
+--------------------------------------------------------------------------
+  55 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  55 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 138 characters
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 128 characters
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 175 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 204 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 204 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 204 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 302 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 144 characters
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 84 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
 
 
 [1mFILE: tests/Controller/CategoryControllerTest.php[0m
-----------------------------------------------------------------------
-[1mFOUND 0 ERRORS AND 16 WARNINGS AFFECTING 16 LINES[0m
-----------------------------------------------------------------------
-  67 | [33mWARNING[0m | Line exceeds 120 characters; contains 131 characters
-  81 | [33mWARNING[0m | Line exceeds 120 characters; contains 131 characters
-  97 | [33mWARNING[0m | Line exceeds 120 characters; contains 131 characters
- 118 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 135 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 160 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
- 177 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
- 193 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
- 207 | [33mWARNING[0m | Line exceeds 120 characters; contains 152 characters
- 222 | [33mWARNING[0m | Line exceeds 120 characters; contains 152 characters
- 244 | [33mWARNING[0m | Line exceeds 120 characters; contains 152 characters
- 265 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
- 281 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
- 295 | [33mWARNING[0m | Line exceeds 120 characters; contains 154 characters
- 311 | [33mWARNING[0m | Line exceeds 120 characters; contains 147 characters
- 331 | [33mWARNING[0m | Line exceeds 120 characters; contains 136 characters
-----------------------------------------------------------------------
+--------------------------------------------------------------------------
+[1mFOUND 82 ERRORS AND 16 WARNINGS AFFECTING 18 LINES[0m
+--------------------------------------------------------------------------
+  54 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  54 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 127 characters
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 127 characters
+  97 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  97 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  97 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  97 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  97 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 127 characters
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 118 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 118 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 118 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 135 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 135 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 135 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 160 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 160 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 160 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 177 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 207 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 222 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 244 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 265 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 281 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 295 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 148 characters
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 311 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 141 characters
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 331 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 130 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 82 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
 
 
 [1mFILE: tests/Controller/HelloControllerTest.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------
+  42 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 110 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 110 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/Service/UserServiceTest.php[0m
 ----------------------------------------------------------------------
-[1mFOUND 0 ERRORS AND 1 WARNING AFFECTING 1 LINE[0m
+[1mFOUND 12 ERRORS AFFECTING 3 LINES[0m
 ----------------------------------------------------------------------
- 42 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+ 45 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 45 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 45 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 45 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 12 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Service/TagServiceTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 3 LINES[0m
+----------------------------------------------------------------------
+ 46 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 46 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 69 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 69 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 86 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 86 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
 ----------------------------------------------------------------------
 
 
@@ -960,5 +1424,5 @@
  149 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
 ----------------------------------------------------------------------
 
-Time: 112ms; Memory: 10MB
+Time: 8.18 secs; Memory: 14MB
 

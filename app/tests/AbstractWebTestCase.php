@@ -64,7 +64,7 @@ abstract class AbstractWebTestCase extends WebTestCase
     {
         $passwordHasher = static::getContainer()->get(\Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface::class);
         $user = new User();
-        $user->setEmail('user' . uniqid() . '@example.com');
+        $user->setEmail('user'.uniqid().'@example.com');
         $user->setRoles($roles);
         $user->setPassword($passwordHasher->hashPassword($user, 'password'));
 
