@@ -6,13 +6,8 @@
 
 namespace App\Tests\Controller;
 
-use App\Entity\Category;
-use App\Entity\Note;
-use App\Entity\User;
 use App\Entity\Enum\UserRole;
 use App\Tests\AbstractWebTestCase;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Category controller integration tests.
@@ -22,59 +17,11 @@ class CategoryControllerTest extends AbstractWebTestCase
     private const string TEST_ROUTE = '/category';
 
     /**
-     * Returns Doctrine entity manager.
-     */
-    private function getEntityManager(): EntityManagerInterface
-    {
-        return static::getContainer()->get(\Doctrine\ORM\EntityManager::class);
-    }
-
-    /**
-     * Creates and persists category via entity manager.
-     */
-    private function createManagedCategory(User $author, string $title = 'Test category'): Category
-    {
-        $entityManager = $this->getEntityManager();
-
-        $category = new Category();
-        $category->setTitle($title);
-        $category->setAuthor($author);
-
-        $entityManager->persist($category);
-        $entityManager->flush();
-
-        return $category;
-    }
-
-    /**
-     * Creates and persists note via entity manager.
-     */
-    private function createManagedNote(
-        User $author,
-        Category $category,
-        string $title = 'Test note',
-        string $content = 'Test content for note.',
-    ): Note {
-        $entityManager = $this->getEntityManager();
-
-        $note = new Note();
-        $note->setTitle($title);
-        $note->setContent($content);
-        $note->setAuthor($author);
-        $note->setCategory($category);
-
-        $entityManager->persist($note);
-        $entityManager->flush();
-
-        return $note;
-    }
-
-    /**
      * category list is only for logged-in users.
      */
     public function testIndexGuest(): void
     {
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
 
         $this->assertResponseRedirects('/login');
     }
@@ -87,7 +34,7 @@ class CategoryControllerTest extends AbstractWebTestCase
         $user = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($user);
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE);
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE);
 
         $this->assertResponseIsSuccessful();
     }
@@ -101,10 +48,10 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->login($user);
 
         for ($i = 1; $i <= 11; ++$i) {
-            $this->createManagedCategory($user, sprintf('Category %02d', $i));
+            $this->createCategory($user, sprintf('Category %02d', $i));
         }
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'?page=2');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'?page=2');
 
         $this->assertResponseIsSuccessful();
     }
@@ -115,9 +62,9 @@ class CategoryControllerTest extends AbstractWebTestCase
     public function testShowGuestRedirectsToLogin(): void
     {
         $owner = $this->createUser();
-        $category = $this->createManagedCategory($owner, 'Private category');
+        $category = $this->createCategory($owner, 'Private category');
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId());
 
         $this->assertResponseRedirects('/login');
     }
@@ -128,10 +75,10 @@ class CategoryControllerTest extends AbstractWebTestCase
     public function testShowOwnerReturnsSuccess(): void
     {
         $owner = $this->createUser();
-        $category = $this->createManagedCategory($owner, 'My category');
+        $category = $this->createCategory($owner, 'My category');
         $this->loginAsCategoryOwner($category);
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -144,10 +91,10 @@ class CategoryControllerTest extends AbstractWebTestCase
     {
         $owner = $this->createUser();
         $other = $this->createUser();
-        $category = $this->createManagedCategory($owner, 'Not yours');
+        $category = $this->createCategory($owner, 'Not yours');
 
         $this->login($other);
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId());
 
         $this->assertResponseRedirects('/category');
     }
@@ -157,7 +104,7 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testCreateGuestRedirectsToLogin(): void
     {
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
 
         $this->assertResponseRedirects('/login');
     }
@@ -168,7 +115,7 @@ class CategoryControllerTest extends AbstractWebTestCase
     public function testCreateGetShowsForm(): void
     {
         $this->login($this->createUser());
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -185,7 +132,7 @@ class CategoryControllerTest extends AbstractWebTestCase
         $user = $this->createUser();
         $this->login($user);
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
         $form = $crawler->filter('form')->form([
             'category[title]' => 'New category title',
         ]);
@@ -210,7 +157,7 @@ class CategoryControllerTest extends AbstractWebTestCase
         $this->login($user);
         $beforeCount = count($this->categoryRepository->findBy(['author' => $user]));
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/create');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/create');
         $form = $crawler->filter('form')->form([
             'category[title]' => 'ab',
         ]);
@@ -225,9 +172,9 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testEditGuestRedirectsToLogin(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'To edit');
+        $category = $this->createCategory($this->createUser(), 'To edit');
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
 
         $this->assertResponseRedirects('/login');
     }
@@ -240,10 +187,10 @@ class CategoryControllerTest extends AbstractWebTestCase
     {
         $owner = $this->createUser();
         $other = $this->createUser();
-        $category = $this->createManagedCategory($owner, 'Protected');
+        $category = $this->createCategory($owner, 'Protected');
 
         $this->login($other);
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
 
         $this->assertResponseRedirects('/category');
     }
@@ -254,10 +201,10 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testEditOwnerGetShowsForm(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'Editable');
+        $category = $this->createCategory($this->createUser(), 'Editable');
         $this->loginAsCategoryOwner($category);
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -269,10 +216,10 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testEditOwnerPutValidUpdatesAndRedirects(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'Old title');
+        $category = $this->createCategory($this->createUser(), 'Old title');
         $this->loginAsCategoryOwner($category);
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $form = $crawler->filter('form')->form([
             'category[title]' => 'Updated title',
         ]);
@@ -291,10 +238,10 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testEditOwnerPutInvalidShowsForm(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'Valid title');
+        $category = $this->createCategory($this->createUser(), 'Valid title');
         $this->loginAsCategoryOwner($category);
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/edit');
         $form = $crawler->filter('form')->form([
             'category[title]' => 'no',
         ]);
@@ -313,9 +260,9 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testDeleteGuestRedirectsToLogin(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'To delete');
+        $category = $this->createCategory($this->createUser(), 'To delete');
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/delete');
 
         $this->assertResponseRedirects('/login');
     }
@@ -328,10 +275,10 @@ class CategoryControllerTest extends AbstractWebTestCase
     {
         $owner = $this->createUser();
         $other = $this->createUser();
-        $category = $this->createManagedCategory($owner, 'Keep');
+        $category = $this->createCategory($owner, 'Keep');
 
         $this->login($other);
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/delete');
 
         $this->assertResponseRedirects('/category');
     }
@@ -342,10 +289,10 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testDeleteGetShowsConfirmation(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'Delete me');
+        $category = $this->createCategory($this->createUser(), 'Delete me');
         $this->loginAsCategoryOwner($category);
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/delete');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$category->getId().'/delete');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -357,11 +304,11 @@ class CategoryControllerTest extends AbstractWebTestCase
      */
     public function testDeletePostSuccessRemovesCategory(): void
     {
-        $category = $this->createManagedCategory($this->createUser(), 'Gone soon');
+        $category = $this->createCategory($this->createUser(), 'Gone soon');
         $categoryId = $category->getId();
         $this->loginAsCategoryOwner($category);
 
-        $crawler = $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$categoryId.'/delete');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$categoryId.'/delete');
         $form = $crawler->filter('form')->form();
         $this->client->submit($form);
 
@@ -376,12 +323,12 @@ class CategoryControllerTest extends AbstractWebTestCase
     public function testDeleteCategoryWithNotesRedirectsAndKeepsCategory(): void
     {
         $owner = $this->createUser();
-        $category = $this->createManagedCategory($owner, 'Has notes');
-        $this->createManagedNote($owner, $category);
+        $category = $this->createCategory($owner, 'Has notes');
+        $this->createNote($owner, $category);
         $categoryId = $category->getId();
         $this->loginAsCategoryOwner($category);
 
-        $this->client->request(Request::METHOD_GET, self::TEST_ROUTE.'/'.$categoryId.'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$categoryId.'/delete');
 
         $this->assertResponseRedirects('/category');
         self::assertNotNull($this->categoryRepository->find($categoryId));
