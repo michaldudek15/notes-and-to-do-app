@@ -1,0 +1,1432 @@
+
+[1mFILE: config/reference.php[0m
+-----------------------------------------------------------------------
+[1mFOUND 1 ERROR AND 166 WARNINGS AFFECTING 167 LINES[0m
+-----------------------------------------------------------------------
+   36 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+   38 | [33mWARNING[0m | Line exceeds 120 characters; contains 165 characters
+   39 | [33mWARNING[0m | Line exceeds 120 characters; contains 157 characters
+  130 | [33mWARNING[0m | Line exceeds 120 characters; contains 181 characters
+  132 | [33mWARNING[0m | Line exceeds 120 characters; contains 198 characters
+  136 | [33mWARNING[0m | Line exceeds 120 characters; contains 205 characters
+  137 | [33mWARNING[0m | Line exceeds 120 characters; contains 164 characters
+  147 | [33mWARNING[0m | Line exceeds 120 characters; contains 166 characters
+  148 | [33mWARNING[0m | Line exceeds 120 characters; contains 134 characters
+  187 | [33mWARNING[0m | Line exceeds 120 characters; contains 158 characters
+  191 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
+  235 | [33mWARNING[0m | Line exceeds 120 characters; contains 211 characters
+  236 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+  239 | [33mWARNING[0m | Line exceeds 120 characters; contains 441 characters
+  245 | [33mWARNING[0m | Line exceeds 120 characters; contains 159 characters
+  257 | [33mWARNING[0m | Line exceeds 120 characters; contains 126 characters
+  259 | [33mWARNING[0m | Line exceeds 120 characters; contains 247 characters
+  260 | [33mWARNING[0m | Line exceeds 120 characters; contains 283 characters
+  268 | [33mWARNING[0m | Line exceeds 120 characters; contains 123 characters
+  276 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
+  289 | [33mWARNING[0m | Line exceeds 120 characters; contains 138 characters
+  290 | [33mWARNING[0m | Line exceeds 120 characters; contains 164 characters
+  291 | [33mWARNING[0m | Line exceeds 120 characters; contains 164 characters
+  292 | [33mWARNING[0m | Line exceeds 120 characters; contains 317 characters
+  294 | [33mWARNING[0m | Line exceeds 120 characters; contains 134 characters
+  295 | [33mWARNING[0m | Line exceeds 120 characters; contains 167 characters
+  297 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
+  310 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
+  334 | [33mWARNING[0m | Line exceeds 120 characters; contains 170 characters
+  367 | [33mWARNING[0m | Line exceeds 120 characters; contains 121 characters
+  388 | [33mWARNING[0m | Line exceeds 120 characters; contains 190 characters
+  414 | [33mWARNING[0m | Line exceeds 120 characters; contains 129 characters
+  434 | [33mWARNING[0m | Line exceeds 120 characters; contains 177 characters
+  436 | [33mWARNING[0m | Line exceeds 120 characters; contains 191 characters
+  444 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
+  448 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+  449 | [33mWARNING[0m | Line exceeds 120 characters; contains 171 characters
+  450 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+  455 | [33mWARNING[0m | Line exceeds 120 characters; contains 144 characters
+  481 | [33mWARNING[0m | Line exceeds 120 characters; contains 135 characters
+  483 | [33mWARNING[0m | Line exceeds 120 characters; contains 123 characters
+  484 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  487 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+  495 | [33mWARNING[0m | Line exceeds 120 characters; contains 151 characters
+  501 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
+  506 | [33mWARNING[0m | Line exceeds 120 characters; contains 138 characters
+  508 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
+  518 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+  519 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+  520 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+  521 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  524 | [33mWARNING[0m | Line exceeds 120 characters; contains 164 characters
+  526 | [33mWARNING[0m | Line exceeds 120 characters; contains 185 characters
+  527 | [33mWARNING[0m | Line exceeds 120 characters; contains 121 characters
+  530 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
+  534 | [33mWARNING[0m | Line exceeds 120 characters; contains 135 characters
+  536 | [33mWARNING[0m | Line exceeds 120 characters; contains 123 characters
+  537 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  540 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+  548 | [33mWARNING[0m | Line exceeds 120 characters; contains 152 characters
+  554 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
+  559 | [33mWARNING[0m | Line exceeds 120 characters; contains 138 characters
+  561 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
+  571 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+  572 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+  573 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+  574 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  580 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+  593 | [33mWARNING[0m | Line exceeds 120 characters; contains 127 characters
+  602 | [33mWARNING[0m | Line exceeds 120 characters; contains 130 characters
+  609 | [33mWARNING[0m | Line exceeds 120 characters; contains 214 characters
+  615 | [33mWARNING[0m | Line exceeds 120 characters; contains 126 characters
+  621 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+  634 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+  635 | [33mWARNING[0m | Line exceeds 120 characters; contains 143 characters
+  636 | [33mWARNING[0m | Line exceeds 120 characters; contains 165 characters
+  637 | [33mWARNING[0m | Line exceeds 120 characters; contains 144 characters
+  640 | [33mWARNING[0m | Line exceeds 120 characters; contains 257 characters
+  642 | [33mWARNING[0m | Line exceeds 120 characters; contains 203 characters
+  659 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
+  666 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
+  669 | [33mWARNING[0m | Line exceeds 120 characters; contains 128 characters
+  672 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+  698 | [33mWARNING[0m | Line exceeds 120 characters; contains 197 characters
+  702 | [33mWARNING[0m | Line exceeds 120 characters; contains 161 characters
+  708 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  709 | [33mWARNING[0m | Line exceeds 120 characters; contains 158 characters
+  718 | [33mWARNING[0m | Line exceeds 120 characters; contains 186 characters
+  721 | [33mWARNING[0m | Line exceeds 120 characters; contains 134 characters
+  722 | [33mWARNING[0m | Line exceeds 120 characters; contains 162 characters
+  723 | [33mWARNING[0m | Line exceeds 120 characters; contains 231 characters
+  730 | [33mWARNING[0m | Line exceeds 120 characters; contains 243 characters
+  731 | [33mWARNING[0m | Line exceeds 120 characters; contains 429 characters
+  733 | [33mWARNING[0m | Line exceeds 120 characters; contains 230 characters
+  738 | [33mWARNING[0m | Line exceeds 120 characters; contains 133 characters
+  739 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
+  745 | [33mWARNING[0m | Line exceeds 120 characters; contains 180 characters
+  753 | [33mWARNING[0m | Line exceeds 120 characters; contains 165 characters
+  759 | [33mWARNING[0m | Line exceeds 120 characters; contains 126 characters
+  760 | [33mWARNING[0m | Line exceeds 120 characters; contains 162 characters
+  767 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+  769 | [33mWARNING[0m | Line exceeds 120 characters; contains 190 characters
+  772 | [33mWARNING[0m | Line exceeds 120 characters; contains 138 characters
+  773 | [33mWARNING[0m | Line exceeds 120 characters; contains 166 characters
+  774 | [33mWARNING[0m | Line exceeds 120 characters; contains 235 characters
+  779 | [33mWARNING[0m | Line exceeds 120 characters; contains 123 characters
+  781 | [33mWARNING[0m | Line exceeds 120 characters; contains 247 characters
+  782 | [33mWARNING[0m | Line exceeds 120 characters; contains 433 characters
+  785 | [33mWARNING[0m | Line exceeds 120 characters; contains 165 characters
+  791 | [33mWARNING[0m | Line exceeds 120 characters; contains 126 characters
+  792 | [33mWARNING[0m | Line exceeds 120 characters; contains 162 characters
+  799 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+  801 | [33mWARNING[0m | Line exceeds 120 characters; contains 190 characters
+  804 | [33mWARNING[0m | Line exceeds 120 characters; contains 138 characters
+  805 | [33mWARNING[0m | Line exceeds 120 characters; contains 166 characters
+  806 | [33mWARNING[0m | Line exceeds 120 characters; contains 235 characters
+  811 | [33mWARNING[0m | Line exceeds 120 characters; contains 123 characters
+  813 | [33mWARNING[0m | Line exceeds 120 characters; contains 247 characters
+  814 | [33mWARNING[0m | Line exceeds 120 characters; contains 433 characters
+  820 | [33mWARNING[0m | Line exceeds 120 characters; contains 272 characters
+  821 | [33mWARNING[0m | Line exceeds 120 characters; contains 177 characters
+  822 | [33mWARNING[0m | Line exceeds 120 characters; contains 159 characters
+  823 | [33mWARNING[0m | Line exceeds 120 characters; contains 270 characters
+  824 | [33mWARNING[0m | Line exceeds 120 characters; contains 239 characters
+  827 | [33mWARNING[0m | Line exceeds 120 characters; contains 187 characters
+  828 | [33mWARNING[0m | Line exceeds 120 characters; contains 146 characters
+  857 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  867 | [33mWARNING[0m | Line exceeds 120 characters; contains 251 characters
+  868 | [33mWARNING[0m | Line exceeds 120 characters; contains 209 characters
+  923 | [33mWARNING[0m | Line exceeds 120 characters; contains 133 characters
+  938 | [33mWARNING[0m | Line exceeds 120 characters; contains 149 characters
+  940 | [33mWARNING[0m | Line exceeds 120 characters; contains 201 characters
+  942 | [33mWARNING[0m | Line exceeds 120 characters; contains 153 characters
+  943 | [33mWARNING[0m | Line exceeds 120 characters; contains 183 characters
+  951 | [33mWARNING[0m | Line exceeds 120 characters; contains 168 characters
+  962 | [33mWARNING[0m | Line exceeds 120 characters; contains 149 characters
+  969 | [33mWARNING[0m | Line exceeds 120 characters; contains 129 characters
+  975 | [33mWARNING[0m | Line exceeds 120 characters; contains 181 characters
+  983 | [33mWARNING[0m | Line exceeds 120 characters; contains 176 characters
+ 1037 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+ 1039 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
+ 1058 | [33mWARNING[0m | Line exceeds 120 characters; contains 179 characters
+ 1059 | [33mWARNING[0m | Line exceeds 120 characters; contains 287 characters
+ 1071 | [33mWARNING[0m | Line exceeds 120 characters; contains 189 characters
+ 1115 | [33mWARNING[0m | Line exceeds 120 characters; contains 150 characters
+ 1119 | [33mWARNING[0m | Line exceeds 120 characters; contains 188 characters
+ 1150 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
+ 1153 | [33mWARNING[0m | Line exceeds 120 characters; contains 164 characters
+ 1154 | [33mWARNING[0m | Line exceeds 120 characters; contains 129 characters
+ 1155 | [33mWARNING[0m | Line exceeds 120 characters; contains 159 characters
+ 1168 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+ 1169 | [33mWARNING[0m | Line exceeds 120 characters; contains 160 characters
+ 1172 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
+ 1174 | [33mWARNING[0m | Line exceeds 120 characters; contains 169 characters
+ 1175 | [33mWARNING[0m | Line exceeds 120 characters; contains 169 characters
+ 1275 | [33mWARNING[0m | Line exceeds 120 characters; contains 193 characters
+ 1278 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+ 1281 | [33mWARNING[0m | Line exceeds 120 characters; contains 136 characters
+ 1288 | [33mWARNING[0m | Line exceeds 120 characters; contains 124 characters
+ 1291 | [33mWARNING[0m | Line exceeds 120 characters; contains 133 characters
+ 1296 | [33mWARNING[0m | Line exceeds 120 characters; contains 225 characters
+ 1297 | [33mWARNING[0m | Line exceeds 120 characters; contains 140 characters
+ 1302 | [33mWARNING[0m | Line exceeds 120 characters; contains 148 characters
+ 1458 | [33mWARNING[0m | Line exceeds 120 characters; contains 228 characters
+ 1605 | [33mWARNING[0m | Line exceeds 120 characters; contains 136 characters
+ 1606 | [33mWARNING[0m | Line exceeds 120 characters; contains 130 characters
+ 1777 | [31mERROR[0m   | Each class must be in a file by itself
+-----------------------------------------------------------------------
+
+
+[1mFILE: src/Dto/TaskListFiltersDto.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 25 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 26 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Dto/NoteListFiltersDto.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 25 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 26 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Dto/TaskListInputFiltersDto.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 22 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 23 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Dto/NoteListInputFiltersDto.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 22 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 23 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Repository/TagRepository.php[0m
+------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+------------------------------------------------------------------------------------------------
+ 35 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 44 | [33mWARNING[0m | Line exceeds 120 characters; contains 139 characters
+ 45 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 62 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 77 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 89 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 90 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Repository/CategoryRepository.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES[0m
+-------------------------------------------------------------------------------------------------
+  36 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  45 | [33mWARNING[0m | Line exceeds 120 characters; contains 149 characters
+  46 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  63 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  78 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  94 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 106 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 107 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Repository/TaskRepository.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 9 ERRORS AND 1 WARNING AFFECTING 10 LINES[0m
+-------------------------------------------------------------------------------------------------
+  40 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  58 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  75 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  90 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 106 | [33mWARNING[0m | Line exceeds 120 characters; contains 177 characters
+ 107 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 124 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 145 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 157 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 158 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Repository/NoteRepository.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 9 ERRORS AND 1 WARNING AFFECTING 10 LINES[0m
+-------------------------------------------------------------------------------------------------
+  37 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  55 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  70 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  85 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 101 | [33mWARNING[0m | Line exceeds 120 characters; contains 177 characters
+ 102 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 119 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 131 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 152 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 153 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Repository/UserRepository.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 6 LINES[0m
+-----------------------------------------------------------------------------------------------
+  34 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  44 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  61 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  74 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 128 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 152 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/DataTransformer/TagsDataTransformer.php[0m
+------------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AND 1 WARNING AFFECTING 5 LINES[0m
+------------------------------------------------------------------------------------------------
+ 28 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 50 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 72 | [33mWARNING[0m | Line exceeds 120 characters; contains 134 characters
+ 84 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 85 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/TaskType.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 2 WARNINGS AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  37 | [33mWARNING[0m | Line exceeds 120 characters; contains 191 characters
+  39 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 116 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+ 121 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 132 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 145 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 146 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/TagType.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 4 LINES[0m
+----------------------------------------------------------------------------------------------
+ 61 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 71 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 84 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 85 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/PasswordChangeType.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 5 LINES[0m
+----------------------------------------------------------------------------------------------
+ 29 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 75 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 85 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 98 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 99 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/EmailChangeType.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 4 LINES[0m
+----------------------------------------------------------------------------------------------
+ 53 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 67 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 80 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 81 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/RegistrationType.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 5 LINES[0m
+----------------------------------------------------------------------------------------------
+ 30 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 74 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 84 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 97 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 98 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/RoleType.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 4 LINES[0m
+----------------------------------------------------------------------------------------------
+ 43 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 53 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 66 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 67 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/UserType.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AFFECTING 5 LINES[0m
+-----------------------------------------------------------------------------------------------
+  28 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  76 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  86 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  99 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 100 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Form/Type/NoteType.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 2 WARNINGS AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  35 | [33mWARNING[0m | Line exceeds 120 characters; contains 191 characters
+  37 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 119 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+ 124 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 135 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 148 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 149 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Security/Voter/NoteVoter.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  53 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  66 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  83 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  96 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 109 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 122 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 123 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Security/Voter/CategoryVoter.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  53 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  66 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  83 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  96 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 109 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 122 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 123 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Security/Voter/TaskVoter.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  53 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  66 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  83 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  96 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 109 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 122 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 123 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Security/LoginFormAuthenticator.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  52 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  67 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  99 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 118 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+ 129 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 141 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 142 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Entity/Category.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 12 ERRORS AFFECTING 12 LINES[0m
+-----------------------------------------------------------------------------------------------
+  82 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  92 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 102 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 112 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 122 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 132 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 142 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 152 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 166 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 176 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 190 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 191 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Entity/Note.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 18 ERRORS AFFECTING 18 LINES[0m
+-----------------------------------------------------------------------------------------------
+  72 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  82 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  92 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 104 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 114 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 126 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 136 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 148 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 158 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 170 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 180 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 194 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 204 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 218 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 230 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 240 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 254 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 255 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Entity/Tag.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 10 ERRORS AFFECTING 10 LINES[0m
+-----------------------------------------------------------------------------------------------
+  74 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  84 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  94 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 104 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 114 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 124 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 134 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 144 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 158 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 159 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Entity/Enum/UserRole.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 28 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 29 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Entity/User.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 12 ERRORS AFFECTING 12 LINES[0m
+-----------------------------------------------------------------------------------------------
+  72 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  82 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  92 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 104 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 114 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 130 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 140 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 152 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 162 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 175 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 186 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 187 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Entity/Task.php[0m
+-----------------------------------------------------------------------------------------------
+[1mFOUND 18 ERRORS AFFECTING 18 LINES[0m
+-----------------------------------------------------------------------------------------------
+  71 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  81 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+  91 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 103 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 113 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 125 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 135 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 147 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 157 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 169 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 179 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 193 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 203 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 215 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 225 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 235 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 249 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 250 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/DataFixtures/NoteFixtures.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES[0m
+-------------------------------------------------------------------------------------------------
+  30 | [33mWARNING[0m | Line exceeds 120 characters; contains 122 characters
+  94 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 111 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 112 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/DataFixtures/CategoryFixtures.php[0m
+------------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AND 1 WARNING AFFECTING 4 LINES[0m
+------------------------------------------------------------------------------------------------
+ 40 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+ 64 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 77 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 78 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/DataFixtures/TaskFixtures.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 3 ERRORS AFFECTING 3 LINES[0m
+----------------------------------------------------------------------------------------------
+ 80 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 96 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 97 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/DataFixtures/TagFixtures.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 48 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 49 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/DataFixtures/AbstractBaseFixtures.php[0m
+----------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 4 WARNINGS AFFECTING 4 LINES[0m
+----------------------------------------------------------------------
+  71 | [33mWARNING[0m | Line exceeds 120 characters; contains 137 characters
+ 131 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+ 137 | [33mWARNING[0m | Line exceeds 120 characters; contains 125 characters
+ 146 | [33mWARNING[0m | Line exceeds 120 characters; contains 172 characters
+----------------------------------------------------------------------
+
+
+[1mFILE: src/Controller/UserController.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 8 ERRORS AND 1 WARNING AFFECTING 9 LINES[0m
+-------------------------------------------------------------------------------------------------
+  35 | [33mWARNING[0m | Line exceeds 120 characters; contains 195 characters
+  37 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  62 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  84 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 134 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 179 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 231 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 259 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 260 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Controller/SecurityController.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 2 WARNINGS AFFECTING 9 LINES[0m
+-------------------------------------------------------------------------------------------------
+  39 | [33mWARNING[0m | Line exceeds 120 characters; contains 255 characters
+  41 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  65 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  75 | [33mWARNING[0m | Line exceeds 120 characters; contains 123 characters
+  76 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 124 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 211 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 263 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 264 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Controller/NoteController.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 2 WARNINGS AFFECTING 9 LINES[0m
+-------------------------------------------------------------------------------------------------
+  35 | [33mWARNING[0m | Line exceeds 120 characters; contains 193 characters
+  37 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  46 | [33mWARNING[0m | Line exceeds 120 characters; contains 173 characters
+  56 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  83 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 119 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 171 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 221 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 222 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Controller/TaskController.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 2 WARNINGS AFFECTING 9 LINES[0m
+-------------------------------------------------------------------------------------------------
+  35 | [33mWARNING[0m | Line exceeds 120 characters; contains 193 characters
+  37 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  46 | [33mWARNING[0m | Line exceeds 120 characters; contains 173 characters
+  56 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  83 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 119 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 171 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 221 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 222 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Controller/TagController.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES[0m
+-------------------------------------------------------------------------------------------------
+  32 | [33mWARNING[0m | Line exceeds 120 characters; contains 131 characters
+  34 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  58 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  85 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 129 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 179 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 229 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 230 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Controller/CategoryController.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES[0m
+-------------------------------------------------------------------------------------------------
+  32 | [33mWARNING[0m | Line exceeds 120 characters; contains 141 characters
+  34 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  49 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  76 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 114 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 164 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 223 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 224 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/CategoryServiceInterface.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------
+ 61 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/TaskService.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  43 | [33mWARNING[0m | Line exceeds 120 characters; contains 238 characters
+  45 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  65 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  75 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  88 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 103 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 104 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/TagService.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 7 ERRORS AND 1 WARNING AFFECTING 8 LINES[0m
+-------------------------------------------------------------------------------------------------
+  39 | [33mWARNING[0m | Line exceeds 120 characters; contains 126 characters
+  41 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  57 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  67 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  80 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  92 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 106 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 107 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/NoteService.php[0m
+-------------------------------------------------------------------------------------------------
+[1mFOUND 6 ERRORS AND 1 WARNING AFFECTING 7 LINES[0m
+-------------------------------------------------------------------------------------------------
+  43 | [33mWARNING[0m | Line exceeds 120 characters; contains 238 characters
+  45 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  65 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  75 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+  88 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 103 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 104 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+-------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/NoteServiceInterface.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------
+ 45 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/CategoryService.php[0m
+-----------------------------------------------------------------------------------------------------
+[1mFOUND 10 ERRORS AND 1 WARNING AFFECTING 10 LINES[0m
+-----------------------------------------------------------------------------------------------------
+  43 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 185 characters
+  45 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+  62 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+  72 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+  85 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+ 100 | [31mERROR[0m   | [x] Expected at least 1 space before "|"; 0 found
+ 100 | [31mERROR[0m   | [x] Expected at least 1 space after "|"; 0 found
+ 103 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+ 117 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+ 129 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+ 130 | [31mERROR[0m   | [ ] Closing brace must not be followed by any comment or statement on the same line
+-----------------------------------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+-----------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/UserServiceInterface.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------
+ 37 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/TaskServiceInterface.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------
+ 41 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/TagServiceInterface.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 1 ERROR AFFECTING 1 LINE[0m
+----------------------------------------------------------------------------------------------
+ 50 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Service/UserService.php[0m
+------------------------------------------------------------------------------------------------
+[1mFOUND 5 ERRORS AND 1 WARNING AFFECTING 6 LINES[0m
+------------------------------------------------------------------------------------------------
+ 27 | [33mWARNING[0m | Line exceeds 120 characters; contains 128 characters
+ 29 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 45 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 55 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 68 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+ 69 | [31mERROR[0m   | Closing brace must not be followed by any comment or statement on the same line
+------------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Resolver/TaskListInputFiltersDtoResolver.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 39 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 40 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: src/Resolver/NoteListInputFiltersDtoResolver.php[0m
+----------------------------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------------------------------
+ 39 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+ 40 | [31mERROR[0m | Closing brace must not be followed by any comment or statement on the same line
+----------------------------------------------------------------------------------------------
+
+
+[1mFILE: tests/Form/Type/UserTypeTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 1 LINE[0m
+----------------------------------------------------------------------
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Form/Type/RegistrationTypeTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 1 LINE[0m
+----------------------------------------------------------------------
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 63 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Form/Type/EmailChangeTypeTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 4 ERRORS AFFECTING 1 LINE[0m
+----------------------------------------------------------------------
+ 66 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 66 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 66 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 66 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/AbstractWebTestCase.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 4 ERRORS AND 2 WARNINGS AFFECTING 3 LINES[0m
+--------------------------------------------------------------------------
+  65 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 152 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 124 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 4 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/bootstrap.php[0m
+----------------------------------------------------------------------
+[1mFOUND 8 ERRORS AFFECTING 4 LINES[0m
+----------------------------------------------------------------------
+  5 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+  5 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+  7 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+  7 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+  8 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+  8 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 10 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 10 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 8 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Controller/UserControllerTest.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 104 ERRORS AND 17 WARNINGS AFFECTING 19 LINES[0m
+--------------------------------------------------------------------------
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+  93 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  93 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  93 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  93 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  93 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 107 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 144 characters
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 121 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 121 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 136 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 136 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 138 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 164 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 164 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 166 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 217 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 217 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 233 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 233 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 139 characters
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 250 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 250 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 262 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 262 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 276 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 276 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 150 characters
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 292 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 292 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 143 characters
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 313 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 313 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 138 characters
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 139 characters
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 339 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 339 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 139 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 104 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/Controller/NoteControllerTest.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 84 ERRORS AND 17 WARNINGS AFFECTING 19 LINES[0m
+--------------------------------------------------------------------------
+  55 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  55 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 138 characters
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 128 characters
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 175 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 203 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 203 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 203 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 301 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 301 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 144 characters
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 84 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/Controller/TaskControllerTest.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 84 ERRORS AND 17 WARNINGS AFFECTING 19 LINES[0m
+--------------------------------------------------------------------------
+  55 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  55 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  70 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  70 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 138 characters
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  88 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  88 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 128 characters
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 102 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 102 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 117 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 117 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 134 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 134 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 123 characters
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 144 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 158 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 158 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 175 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 175 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 204 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 204 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 204 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 225 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 225 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 242 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 242 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 131 characters
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 258 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 258 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 275 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 275 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 302 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 302 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 142 characters
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 327 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 327 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 344 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 344 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 133 characters
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 360 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 360 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 144 characters
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 378 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 378 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 84 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/Controller/CategoryControllerTest.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 82 ERRORS AND 16 WARNINGS AFFECTING 18 LINES[0m
+--------------------------------------------------------------------------
+  54 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  54 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  67 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  67 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 127 characters
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  81 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  81 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 127 characters
+  97 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  97 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  97 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+  97 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+  97 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 127 characters
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 107 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 118 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 118 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 118 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 135 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 135 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 135 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 160 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 160 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 160 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 177 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 177 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 193 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 193 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 135 characters
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 207 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 207 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 222 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 222 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 244 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 244 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 146 characters
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 265 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 265 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 281 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 281 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 137 characters
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 295 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 295 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 148 characters
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 311 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 311 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 141 characters
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 331 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+ 331 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 130 characters
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 82 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/Controller/HelloControllerTest.php[0m
+--------------------------------------------------------------------------
+[1mFOUND 2 ERRORS AND 1 WARNING AFFECTING 2 LINES[0m
+--------------------------------------------------------------------------
+  42 | [33mWARNING[0m | [ ] Line exceeds 120 characters; contains 125 characters
+ 110 | [31mERROR[0m   | [x] Expected at least 1 space before "."; 0 found
+ 110 | [31mERROR[0m   | [x] Expected at least 1 space after "."; 0 found
+--------------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+--------------------------------------------------------------------------
+
+
+[1mFILE: tests/Service/UserServiceTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 12 ERRORS AFFECTING 3 LINES[0m
+----------------------------------------------------------------------
+ 45 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 45 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 45 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 45 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 74 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 96 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 12 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Service/TagServiceTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 6 ERRORS AFFECTING 3 LINES[0m
+----------------------------------------------------------------------
+ 46 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 46 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 69 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 69 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+ 86 | [31mERROR[0m | [x] Expected at least 1 space before "."; 0 found
+ 86 | [31mERROR[0m | [x] Expected at least 1 space after "."; 0 found
+----------------------------------------------------------------------
+[1mPHPCBF CAN FIX THE 6 MARKED SNIFF VIOLATIONS AUTOMATICALLY[0m
+----------------------------------------------------------------------
+
+
+[1mFILE: tests/Service/NoteServiceTest.php[0m
+----------------------------------------------------------------------
+[1mFOUND 0 ERRORS AND 2 WARNINGS AFFECTING 2 LINES[0m
+----------------------------------------------------------------------
+  90 | [33mWARNING[0m | Line exceeds 120 characters; contains 170 characters
+ 149 | [33mWARNING[0m | Line exceeds 120 characters; contains 156 characters
+----------------------------------------------------------------------
+
+Time: 127ms; Memory: 12MB
+

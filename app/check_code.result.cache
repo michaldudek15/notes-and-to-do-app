@@ -1,17 +1,7 @@
 
-Found 0 of 57 files that can be fixed in 0.907 seconds, 126.00 MB memory used
+Found 0 of 57 files that can be fixed in 0.838 seconds, 126.00 MB memory used
 
-Found 0 of 22 files that can be fixed in 0.890 seconds, 72.00 MB memory used
-
-FILE: /home/wwwroot/app/tests/Repository/UserRepositoryTest.php
-----------------------------------------------------------------------
-FOUND 1 ERROR AFFECTING 1 LINE
-----------------------------------------------------------------------
- 41 | ERROR | Use parentheses when instantiating classes
-----------------------------------------------------------------------
-
-Time: 1.03 secs; Memory: 10MB
-
+Found 0 of 22 files that can be fixed in 0.847 seconds, 72.00 MB memory used
  ------- -------- ---- ---------------------- 
   State   Domain   Id   Message Preview (en)  
  ------- -------- ---- ---------------------- 
@@ -21,7 +11,7 @@ Time: 1.03 secs; Memory: 10MB
  ------- -------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20240621194341
-[notice] finished in 462.9ms, used 26M memory, 11 migrations executed, 30 sql queries
+[notice] finished in 565.9ms, used 26M memory, 11 migrations executed, 30 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240621194341                                        
 
