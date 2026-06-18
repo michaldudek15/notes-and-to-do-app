@@ -45,7 +45,7 @@ rm -f -- .phpunit.result.cache
 
 echo "Tear down..."
 {
-  ./bin/console doctrine:schema:drop --no-interaction --full-database --force
-  rm -rf var
-  rm -rf vendor
+  # ./bin/console doctrine:schema:drop --no-interaction --full-database --force
+  # rm -rf var
+  # rm -rf vendor
 } > /dev/null 2>&1

@@ -1,17 +1,16 @@
 
-Found 0 of 57 files that can be fixed in 0.899 seconds, 126.00 MB memory used
+Found 0 of 57 files that can be fixed in 0.907 seconds, 126.00 MB memory used
 
-Found 0 of 22 files that can be fixed in 0.823 seconds, 72.00 MB memory used
+Found 0 of 22 files that can be fixed in 0.890 seconds, 72.00 MB memory used
 
 FILE: /home/wwwroot/app/tests/Repository/UserRepositoryTest.php
 ----------------------------------------------------------------------
-FOUND 2 ERRORS AFFECTING 2 LINES
+FOUND 1 ERROR AFFECTING 1 LINE
 ----------------------------------------------------------------------
- 36 | ERROR | Missing @return tag in function comment
- 39 | ERROR | Use parentheses when instantiating classes
+ 41 | ERROR | Use parentheses when instantiating classes
 ----------------------------------------------------------------------
 
-Time: 1.08 secs; Memory: 10MB
+Time: 1.03 secs; Memory: 10MB
 
  ------- -------- ---- ---------------------- 
   State   Domain   Id   Message Preview (en)  
@@ -22,7 +21,7 @@ Time: 1.08 secs; Memory: 10MB
  ------- -------- ---- ---------------------- ------------------------------- 
 
 [notice] Migrating up to DoctrineMigrations\Version20240621194341
-[notice] finished in 476.2ms, used 26M memory, 11 migrations executed, 30 sql queries
+[notice] finished in 462.9ms, used 26M memory, 11 migrations executed, 30 sql queries
 
  [OK] Successfully migrated to version: DoctrineMigrations\Version20240621194341                                        
 
