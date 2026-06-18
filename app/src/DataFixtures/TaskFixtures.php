@@ -8,7 +8,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Task;
-use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Generator;
@@ -33,6 +32,29 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             return;
         }
 
+        /** @var Category[] $categories */
+        $categories = $this->manager->getRepository(Category::class)->findAll();
+        foreach ($categories as $i => $category) {
+            $task = new Task();
+            $task->setTitle(sprintf('Default task %d', $i + 1));
+            $task->setCreatedAt(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-100 days', '-1 days')
+                )
+            );
+            $task->setUpdatedAt(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-100 days', '-1 days')
+                )
+            );
+            $task->setStatus($this->faker->boolean);
+            $task->setCategory($category);
+            $task->setAuthor($category->getAuthor());
+
+            $this->manager->persist($task);
+        }
+        $this->manager->flush();
+
         $this->createMany(100, 'task', function (int $i) {
             $task = new Task();
             $task->setTitle($this->faker->sentence);
@@ -51,8 +73,7 @@ class TaskFixtures extends AbstractBaseFixtures implements DependentFixtureInter
             $category = $this->getRandomReference('category', Category::class);
             $task->setCategory($category);
 
-            $author = $this->getRandomReference('user', User::class);
-            $task->setAuthor($author);
+            $task->setAuthor($category->getAuthor());
 
             return $task;
         });

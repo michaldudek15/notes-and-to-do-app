@@ -9,7 +9,6 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Note;
 use App\Entity\Tag;
-use App\Entity\User;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 /**
@@ -31,6 +30,33 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
         if (!$this->manager instanceof \Doctrine\Persistence\ObjectManager || !$this->faker instanceof \Faker\Generator) {
             return;
         }
+
+        /** @var Category[] $categories */
+        $categories = $this->manager->getRepository(Category::class)->findAll();
+        foreach ($categories as $i => $category) {
+            $note = new Note();
+            $note->setTitle(sprintf('Default note %d', $i + 1));
+            $note->setContent($this->faker->realText);
+            $note->setCreatedAt(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-100 days', '-1 days')
+                )
+            );
+            $note->setUpdatedAt(
+                \DateTimeImmutable::createFromMutable(
+                    $this->faker->dateTimeBetween('-100 days', '-1 days')
+                )
+            );
+            $note->setCategory($category);
+            for ($j = 0; $j < 3; ++$j) {
+                $tag = $this->getRandomReference('tags', Tag::class);
+                $note->addTag($tag);
+            }
+
+            $note->setAuthor($category->getAuthor());
+            $this->manager->persist($note);
+        }
+        $this->manager->flush();
 
         $this->createMany(
             100,
@@ -58,8 +84,7 @@ class NoteFixtures extends AbstractBaseFixtures implements DependentFixtureInter
                     $note->addTag($tag);
                 }
 
-                $author = $this->getRandomReference('user', User::class);
-                $note->setAuthor($author);
+                $note->setAuthor($category->getAuthor());
 
                 return $note;
             }
