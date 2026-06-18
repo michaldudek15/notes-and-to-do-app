@@ -107,6 +107,8 @@ class NoteListInputFiltersDtoResolverTest extends TestCase
 
     /**
      * Builds argument metadata for filters DTO.
+     *
+     * @return ArgumentMetadata Filters DTO argument metadata
      */
     private function createFiltersArgument(): ArgumentMetadata
     {

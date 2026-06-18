@@ -39,6 +39,8 @@ class UserRepositoryTest extends AbstractWebTestCase
         $unsupportedUser = new class () implements PasswordAuthenticatedUserInterface {
             /**
              * Returns a password required by the interface.
+             *
+             * @return string|null Password
              */
             public function getPassword(): ?string
             {
