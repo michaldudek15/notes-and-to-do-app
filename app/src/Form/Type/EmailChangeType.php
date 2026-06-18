@@ -44,9 +44,9 @@ class EmailChangeType extends AbstractType
                     'minlength' => 1,
                 ],
                 'constraints' => [
-                    new NotBlank(),
-                    new Email(),
-                    new Length(min: 1, max: 180),
+                    new NotBlank(groups: ['email_change']),
+                    new Email(groups: ['email_change']),
+                    new Length(min: 1, max: 180, groups: ['email_change']),
                 ],
             ]
         );
@@ -61,8 +61,8 @@ class EmailChangeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            // Avoid validating unrelated User fields (e.g. password) on this partial form.
-            'validation_groups' => false,
+            // Validate only email constraints for this partial update form.
+            'validation_groups' => ['email_change'],
         ]);
     }// end configureOptions()
 
