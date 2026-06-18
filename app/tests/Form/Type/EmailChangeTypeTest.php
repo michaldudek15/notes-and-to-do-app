@@ -63,7 +63,7 @@ class EmailChangeTypeTest extends KernelTestCase
             'csrf_protection' => false,
         ]);
         $form->submit([
-            'email' => 'new'.uniqid().'@example.com',
+            'email' => 'new' . uniqid() . '@example.com',
         ]);
 
         self::assertTrue($form->isSynchronized());

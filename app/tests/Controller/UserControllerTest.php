@@ -64,7 +64,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($admin);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId());
 
         $this->assertResponseIsSuccessful();
     }
@@ -78,7 +78,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($user);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId());
 
         $this->assertResponseRedirects('/note');
     }
@@ -90,7 +90,7 @@ class UserControllerTest extends AbstractWebTestCase
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId());
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId());
 
         $this->assertResponseRedirects('/login');
     }
@@ -104,7 +104,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/edit');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -118,7 +118,7 @@ class UserControllerTest extends AbstractWebTestCase
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/edit');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/edit');
 
         $this->assertResponseRedirects('/login');
     }
@@ -133,9 +133,9 @@ class UserControllerTest extends AbstractWebTestCase
         $targetId = $target->getId();
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$targetId.'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $targetId . '/edit');
         $form = $crawler->filter('form')->form([
-            'user[email]' => 'updated'.uniqid().'@example.com',
+            'user[email]' => 'updated' . uniqid() . '@example.com',
             'user[password][first]' => 'newpassword',
             'user[password][second]' => 'newpassword',
         ]);
@@ -161,9 +161,9 @@ class UserControllerTest extends AbstractWebTestCase
         $targetId = $target->getId();
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$targetId.'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $targetId . '/edit');
         $form = $crawler->filter('form')->form([
-            'user[email]' => 'email-only-'.uniqid().'@example.com',
+            'user[email]' => 'email-only-' . uniqid() . '@example.com',
             'user[password][first]' => '',
             'user[password][second]' => '',
         ]);
@@ -190,7 +190,7 @@ class UserControllerTest extends AbstractWebTestCase
         $beforeEmail = $target->getEmail();
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$targetId.'/edit');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $targetId . '/edit');
         $form = $crawler->filter('form')->form([
             'user[email]' => 'invalid-email',
             'user[password][first]' => 'newpassword',
@@ -214,7 +214,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/delete');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/delete');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -230,7 +230,7 @@ class UserControllerTest extends AbstractWebTestCase
         $targetId = $target->getId();
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$targetId.'/delete');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $targetId . '/delete');
         $form = $crawler->filter('form')->form();
         $this->client->submit($form);
 
@@ -247,7 +247,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($user);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/delete');
 
         $this->assertResponseRedirects('/note');
     }
@@ -259,7 +259,7 @@ class UserControllerTest extends AbstractWebTestCase
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/delete');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/delete');
 
         $this->assertResponseRedirects('/login');
     }
@@ -273,7 +273,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/changeRole');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/changeRole');
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('form'));
@@ -289,7 +289,7 @@ class UserControllerTest extends AbstractWebTestCase
         $targetId = $target->getId();
         $this->login($admin);
 
-        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$targetId.'/changeRole');
+        $crawler = $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $targetId . '/changeRole');
         $form = $crawler->filter('form')->form([
             'user[roles]' => [UserRole::ROLE_ADMIN->value],
         ]);
@@ -310,7 +310,7 @@ class UserControllerTest extends AbstractWebTestCase
         $admin = $this->createUser([UserRole::ROLE_ADMIN->value]);
         $this->login($admin);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$admin->getId().'/changeRole');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $admin->getId() . '/changeRole');
 
         $this->assertResponseRedirects('/user');
     }
@@ -324,7 +324,7 @@ class UserControllerTest extends AbstractWebTestCase
         $target = $this->createUser([UserRole::ROLE_USER->value]);
         $this->login($user);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/changeRole');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/changeRole');
 
         $this->assertResponseRedirects('/note');
     }
@@ -336,7 +336,7 @@ class UserControllerTest extends AbstractWebTestCase
     {
         $target = $this->createUser([UserRole::ROLE_USER->value]);
 
-        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE.'/'.$target->getId().'/changeRole');
+        $this->client->request(\Symfony\Component\HttpFoundation\Request::METHOD_GET, self::TEST_ROUTE . '/' . $target->getId() . '/changeRole');
 
         $this->assertResponseRedirects('/login');
     }

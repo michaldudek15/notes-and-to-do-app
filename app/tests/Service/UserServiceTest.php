@@ -42,7 +42,7 @@ class UserServiceTest extends KernelTestCase
     {
         // given
         $expectedUser = new User();
-        $expectedUser->setEmail('save'.uniqid().'@example.com');
+        $expectedUser->setEmail('save' . uniqid() . '@example.com');
         $expectedUser->setPassword('password');
         $expectedUser->setRoles([UserRole::ROLE_USER->value]);
 
@@ -71,7 +71,7 @@ class UserServiceTest extends KernelTestCase
     {
         // given
         $user = new User();
-        $user->setEmail('delete'.uniqid().'@example.com');
+        $user->setEmail('delete' . uniqid() . '@example.com');
         $user->setPassword('password');
         $user->setRoles([UserRole::ROLE_USER->value]);
 
@@ -93,7 +93,7 @@ class UserServiceTest extends KernelTestCase
     {
         // given
         $user = new User();
-        $user->setEmail('paginate'.uniqid().'@example.com');
+        $user->setEmail('paginate' . uniqid() . '@example.com');
         $user->setPassword('password');
         $user->setRoles([UserRole::ROLE_USER->value]);
 

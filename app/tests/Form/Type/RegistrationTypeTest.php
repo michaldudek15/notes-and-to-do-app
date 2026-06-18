@@ -60,7 +60,7 @@ class RegistrationTypeTest extends KernelTestCase
         $user->setPassword('oldpassword123');
         $user->setRoles(['ROLE_USER']);
 
-        $email = 'new'.uniqid().'@example.com';
+        $email = 'new' . uniqid() . '@example.com';
 
         $form = $this->formFactory->create(RegistrationType::class, $user, [
             'csrf_protection' => false,
