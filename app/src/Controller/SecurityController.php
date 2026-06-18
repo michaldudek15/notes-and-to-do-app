@@ -126,7 +126,8 @@ class SecurityController extends AbstractController
     /**
      * Change email.
      *
-     * @param Request $request Request
+     * @param Request        $request Request
+     * @param UserRepository $userRepository User repository
      *
      * @return Response Response
      */
